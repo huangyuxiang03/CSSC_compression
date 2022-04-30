@@ -1,8 +1,5 @@
-﻿  ByteArrayOutputStream.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(65,14): error C2065: “buf2”: 未声明的标识符
-  LongDeltaEncoder.cpp
-  LongDeltaEncoder.h
-  main.cpp
+﻿  LongDeltaEncoder.h
   TS_2DIFF_encoder.cpp
   正在生成代码...
+x64\Debug\LongDeltaEncoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+  CSSC_compression_code.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe

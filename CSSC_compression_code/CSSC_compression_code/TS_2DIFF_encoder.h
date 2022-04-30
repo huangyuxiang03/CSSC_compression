@@ -14,11 +14,11 @@ protected:
 	int writeWidth = 0;
 public:
 	TS_2DIFF_encoder(int size);
-	virtual void writeHeader();
-	virtual void writeValueToBytes(int i);
-	virtual void calcTwoDiff(int i);
-	virtual void reset();
-	virtual int calculateBitWidthsForDeltaBlockBuffer();
+	virtual void writeHeader() {};
+	virtual void writeValueToBytes(int i) {};
+	virtual void calcTwoDiff(int i) {};
+	virtual void reset() {};
+	virtual int calculateBitWidthsForDeltaBlockBuffer() { return 0; };
 
 	void writeDataWithMinWidth();
 	void writeHeaderToBytes();
