@@ -37,11 +37,7 @@ int LongDeltaEncoder::getValueWidth(ll v) {
 	return ans;
 }
 
-void LongDeltaEncoder::writeValueToBytes(int i) {
-	longToBytes(deltaBlockBuffer[i], encodingBlockBuffer, writeWidth * i, writeWidth);
-}
-
-void longToBytes(ll srcNum, char *result, int pos, int width) {
+void longToBytes(ll srcNum, char* result, int pos, int width) {
 	int cnt = pos & (0x07);
 	int index = pos >> 3;
 	while (width > 0) {
@@ -53,7 +49,7 @@ void longToBytes(ll srcNum, char *result, int pos, int width) {
 		y = (char)(y << (8 - cnt));
 		mask = ~(mask - (1 << (8 - cnt)));
 		result[index] = (char)(result[index] & mask | y);
-		srcNum = srcNum & ~((ll) - 1 << width);
+		srcNum = srcNum & ~((ll)-1 << width);
 		if (cnt == 8) {
 			index++;
 			cnt = 0;
@@ -71,6 +67,10 @@ char* longToBytes(ll num, int len) {
 
 char* longToBytes(ll num) {
 	return longToBytes(num, 8);
+}
+
+void LongDeltaEncoder::writeValueToBytes(int i) {
+	longToBytes(deltaBlockBuffer[i], encodingBlockBuffer, writeWidth * i, writeWidth);
 }
 
 void LongDeltaEncoder::calcTwoDiff(int i) {

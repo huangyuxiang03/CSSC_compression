@@ -1,3 +1,4 @@
+#pragma once
 #include "ByteArrayOutputStream.h"
 // 基础类型到容器转换
 template <typename T>
