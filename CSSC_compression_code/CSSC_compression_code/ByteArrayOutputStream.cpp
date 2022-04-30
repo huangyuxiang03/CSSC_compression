@@ -68,3 +68,8 @@ void ByteArrayOutputStream::write2file()
 		outfile.close();
 	}
 }
+
+std::vector<std::uint8_t> ByteArrayOutputStream::getBytes()
+{
+	return bytes;
+}

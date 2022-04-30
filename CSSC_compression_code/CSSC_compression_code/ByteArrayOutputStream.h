@@ -24,6 +24,7 @@ public:
 	void writeBytes(char b[]);
 	void write(char b[], int offset, int len);
 	void write2file();
+	std::vector<std::uint8_t> getBytes();
 };
 
 #endif // !__BYTEARRAYOUTPUTSTREAM__
