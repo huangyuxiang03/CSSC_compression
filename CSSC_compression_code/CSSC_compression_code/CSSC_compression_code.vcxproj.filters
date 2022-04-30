@@ -19,6 +19,9 @@
     <Filter Include="头文件\File">
       <UniqueIdentifier>{790681a4-9516-4caa-8fec-dc010516afa9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Decoder">
+      <UniqueIdentifier>{dd2f0f09-a772-44ec-9c1c-8a8fd76176e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +39,12 @@
     <ClCompile Include="ByteArrayOutputStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TS_2DIFF_decoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LongDeltaDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TS_2DIFF_encoder.h">
@@ -46,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="ByteBuffer.h">
       <Filter>头文件\File</Filter>
+    </ClInclude>
+    <ClInclude Include="TS_2DIFF_decoder.h">
+      <Filter>头文件\Decoder</Filter>
+    </ClInclude>
+    <ClInclude Include="LongDeltaDecoder.h">
+      <Filter>头文件\Decoder</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
