@@ -19,6 +19,9 @@
     <Filter Include="头文件\File">
       <UniqueIdentifier>{790681a4-9516-4caa-8fec-dc010516afa9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\GZIP">
+      <UniqueIdentifier>{e83e4e7f-e655-45df-8c0a-ffbb2f5d93e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="ByteArrayOutputStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GZIP.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TS_2DIFF_encoder.h">
@@ -43,6 +49,18 @@
     </ClInclude>
     <ClInclude Include="ByteArrayOutputStream.h">
       <Filter>头文件\File</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib.h">
+      <Filter>头文件\GZIP</Filter>
+    </ClInclude>
+    <ClInclude Include="zconf.h">
+      <Filter>头文件\GZIP</Filter>
+    </ClInclude>
+    <ClInclude Include="zutil.h">
+      <Filter>头文件\GZIP</Filter>
+    </ClInclude>
+    <ClInclude Include="GZIP.h">
+      <Filter>头文件\GZIP</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
