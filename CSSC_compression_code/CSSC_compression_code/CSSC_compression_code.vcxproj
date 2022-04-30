@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteArrayOutputStream.cpp" />
+    <ClCompile Include="ByteBuffer.cpp" />
     <ClCompile Include="LongDeltaDecoder.cpp" />
     <ClCompile Include="LongDeltaEncoder.cpp" />
     <ClCompile Include="LongDeltaEncoder.h" />
