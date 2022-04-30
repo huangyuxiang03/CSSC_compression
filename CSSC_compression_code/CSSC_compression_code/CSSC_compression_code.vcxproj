@@ -140,14 +140,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteArrayOutputStream.cpp" />
+    <ClCompile Include="LongDeltaDecoder.cpp" />
     <ClCompile Include="LongDeltaEncoder.cpp" />
     <ClCompile Include="LongDeltaEncoder.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TS_2DIFF_decoder.cpp" />
     <ClCompile Include="TS_2DIFF_encoder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteArrayOutputStream.h" />
     <ClInclude Include="ByteBuffer.h" />
+    <ClInclude Include="LongDeltaDecoder.h" />
+    <ClInclude Include="TS_2DIFF_decoder.h" />
     <ClInclude Include="TS_2DIFF_encoder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
