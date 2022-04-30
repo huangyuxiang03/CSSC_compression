@@ -44,5 +44,8 @@
     <ClInclude Include="ByteArrayOutputStream.h">
       <Filter>头文件\File</Filter>
     </ClInclude>
+    <ClInclude Include="ByteBuffer.h">
+      <Filter>头文件\File</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

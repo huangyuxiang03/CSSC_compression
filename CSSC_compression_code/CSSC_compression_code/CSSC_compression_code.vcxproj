@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteArrayOutputStream.h" />
+    <ClInclude Include="ByteBuffer.h" />
     <ClInclude Include="TS_2DIFF_encoder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
