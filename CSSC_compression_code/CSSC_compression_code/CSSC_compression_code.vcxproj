@@ -141,15 +141,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteArrayOutputStream.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="GZIP.cpp" />
+=======
+    <ClCompile Include="ByteBuffer.cpp" />
+    <ClCompile Include="LongDeltaDecoder.cpp" />
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
     <ClCompile Include="LongDeltaEncoder.cpp" />
     <ClCompile Include="LongDeltaEncoder.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TS_2DIFF_decoder.cpp" />
     <ClCompile Include="TS_2DIFF_encoder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteArrayOutputStream.h" />
+<<<<<<< HEAD
     <ClInclude Include="GZIP.h" />
+=======
+    <ClInclude Include="ByteBuffer.h" />
+    <ClInclude Include="LongDeltaDecoder.h" />
+    <ClInclude Include="TS_2DIFF_decoder.h" />
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
     <ClInclude Include="TS_2DIFF_encoder.h" />
     <ClInclude Include="zconf.h" />
     <ClInclude Include="zlib.h" />

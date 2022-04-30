@@ -19,8 +19,13 @@
     <Filter Include="头文件\File">
       <UniqueIdentifier>{790681a4-9516-4caa-8fec-dc010516afa9}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
     <Filter Include="头文件\GZIP">
       <UniqueIdentifier>{e83e4e7f-e655-45df-8c0a-ffbb2f5d93e4}</UniqueIdentifier>
+=======
+    <Filter Include="头文件\Decoder">
+      <UniqueIdentifier>{dd2f0f09-a772-44ec-9c1c-8a8fd76176e2}</UniqueIdentifier>
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,7 +44,17 @@
     <ClCompile Include="ByteArrayOutputStream.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="GZIP.cpp">
+=======
+    <ClCompile Include="TS_2DIFF_decoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LongDeltaDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ByteBuffer.cpp">
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,6 +65,7 @@
     <ClInclude Include="ByteArrayOutputStream.h">
       <Filter>头文件\File</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="zlib.h">
       <Filter>头文件\GZIP</Filter>
     </ClInclude>
@@ -61,6 +77,16 @@
     </ClInclude>
     <ClInclude Include="GZIP.h">
       <Filter>头文件\GZIP</Filter>
+=======
+    <ClInclude Include="ByteBuffer.h">
+      <Filter>头文件\File</Filter>
+    </ClInclude>
+    <ClInclude Include="TS_2DIFF_decoder.h">
+      <Filter>头文件\Decoder</Filter>
+    </ClInclude>
+    <ClInclude Include="LongDeltaDecoder.h">
+      <Filter>头文件\Decoder</Filter>
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
     </ClInclude>
   </ItemGroup>
 </Project>
