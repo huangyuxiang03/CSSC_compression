@@ -54,14 +54,15 @@ void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
 	outfile.open(filepath, ios::app);
-	if (!outfile) //检查文件是否正常打开//不是用于检查文件是否存在
+	if (!outfile)
 	{
 		cout << "the file can't open" << endl;
-		abort(); //打开失败，结束程序
-	}
-	else
+		abort();
+	}else
 	{
-		outfile << buf2 << " :world1" << endl;
+		for(std::uint8_t bt:this->bytes)
+			outfile << bt << endl;
+		vector <std::uint8_t>().swap(this->bytes);
 		outfile.close();
 	}
 }
