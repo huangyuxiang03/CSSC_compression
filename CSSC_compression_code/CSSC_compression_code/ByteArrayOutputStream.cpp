@@ -44,6 +44,7 @@ void ByteArrayOutputStream::write(char b[], int offset, int len)
 	int end = offset + len;
 	if (end > length || offset < 0) {
 		std::cout << "offset error" << std::endl;
+		abort();
 	}
 	for (int i=offset; i < end; i++) {
 		std::vector<std::uint8_t> byte_tmp = ToByte(b[i]);
