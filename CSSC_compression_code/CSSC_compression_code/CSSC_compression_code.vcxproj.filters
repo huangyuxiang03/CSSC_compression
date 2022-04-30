@@ -13,10 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\Encoder">
+      <UniqueIdentifier>{7c52dd2f-d09b-42c4-8868-e960716ebd7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\File">
+      <UniqueIdentifier>{790681a4-9516-4caa-8fec-dc010516afa9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TS_2DIFF_encoder.h">
+      <Filter>头文件\Encoder</Filter>
+    </ClInclude>
+    <ClInclude Include="ByteArrayOutputStream.h">
+      <Filter>头文件\File</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
