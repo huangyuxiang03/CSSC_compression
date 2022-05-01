@@ -16,7 +16,8 @@ ll LongDeltaDecoder::loadIntBatch(ByteBuffer buffer) {
 
 	encodingLength = ceil(packNum * packWidth);
 	deltaBuf = new char[encodingLength];
-	buffer.get(deltaBuf);
+	buffer.get(deltaBuf, encodingLength);
+	allocateDataArray();
 
 	previous = firstValue;
 	readIntTotalCount = packNum;
