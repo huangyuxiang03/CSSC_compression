@@ -1,10 +1,10 @@
 ﻿  ByteArrayOutputStream.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   ByteBuffer.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp(5,21): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp(17,21): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp(51,8): warning C4101: “buffer_byte”: 未引用的局部变量
+  GZIP.cpp
   LongDeltaDecoder.cpp
   LongDeltaEncoder.cpp
-  LongDeltaEncoder.h
   main.cpp
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(21,14): warning C4101: “str2long”: 未引用的局部变量
   TS_2DIFF_decoder.cpp
@@ -12,5 +12,11 @@ D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\TS_2D
   TS_2DIFF_encoder.cpp
   正在生成代码...
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_decoder.cpp(7): warning C4717: “TS_2DIFF_decoder::ceil”: 如递归所有控件路径，函数将导致运行时堆栈溢出
-x64\Debug\LongDeltaEncoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
-  CSSC_compression_code.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.cpp(77): warning C4715: “GZIP::data_decompress”: 不是所有的控件路径都返回值
+GZIP.obj : error LNK2019: 无法解析的外部符号 deflate，函数 "public: int __cdecl GZIP::data_compress(unsigned char *,int,unsigned char *,int *)" (?data_compress@GZIP@@QEAAHPEAEH0PEAH@Z) 中引用了该符号
+GZIP.obj : error LNK2019: 无法解析的外部符号 deflateEnd，函数 "public: int __cdecl GZIP::data_compress(unsigned char *,int,unsigned char *,int *)" (?data_compress@GZIP@@QEAAHPEAEH0PEAH@Z) 中引用了该符号
+GZIP.obj : error LNK2019: 无法解析的外部符号 inflate，函数 "public: int __cdecl GZIP::data_decompress(unsigned char *,int,unsigned char *,int *)" (?data_decompress@GZIP@@QEAAHPEAEH0PEAH@Z) 中引用了该符号
+GZIP.obj : error LNK2019: 无法解析的外部符号 inflateEnd，函数 "public: int __cdecl GZIP::data_decompress(unsigned char *,int,unsigned char *,int *)" (?data_decompress@GZIP@@QEAAHPEAEH0PEAH@Z) 中引用了该符号
+GZIP.obj : error LNK2019: 无法解析的外部符号 deflateInit_，函数 "public: int __cdecl GZIP::data_compress(unsigned char *,int,unsigned char *,int *)" (?data_compress@GZIP@@QEAAHPEAEH0PEAH@Z) 中引用了该符号
+GZIP.obj : error LNK2019: 无法解析的外部符号 inflateInit_，函数 "public: int __cdecl GZIP::data_decompress(unsigned char *,int,unsigned char *,int *)" (?data_decompress@GZIP@@QEAAHPEAEH0PEAH@Z) 中引用了该符号
+D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe : fatal error LNK1120: 6 个无法解析的外部命令
