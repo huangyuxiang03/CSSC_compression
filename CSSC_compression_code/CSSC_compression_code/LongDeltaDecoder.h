@@ -11,6 +11,7 @@ private:
 	ll* data;
 	ll previous;
 	ll minDeltaBase;
+	bool dataArrayAllocated = false;
 public:
 	ll readT(ByteBuffer buffer);
 	ll loadIntBatch(ByteBuffer buffer);
@@ -20,6 +21,7 @@ public:
 	void allocateDataArray();
 	void readValue(int i);
 	void reset() { }
+	~LongDeltaDecoder();
 };
 
 #endif // !__LONGDELTADECODER__
