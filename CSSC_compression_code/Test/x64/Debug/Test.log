@@ -1,4 +1,4 @@
-﻿  pch.cpp
-  Test.cpp
-    正在创建库 D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\Test.lib 和对象 D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\Test.exp
+﻿  Test.cpp
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp(17,21): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp(51,8): warning C4101: “buffer_byte”: 未引用的局部变量
   Test.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\Test.dll

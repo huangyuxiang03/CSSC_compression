@@ -24,6 +24,9 @@ public:
 	long long readLong();
 	float readFloat();
 	void get(char* dst, int len);//copy the current len'th byte to dst
+	std::vector<std::uint8_t> Bytes() {
+		return bytes;
+	}
 };
 
 #endif

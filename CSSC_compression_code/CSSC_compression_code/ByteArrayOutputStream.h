@@ -19,10 +19,14 @@ public:
 	ByteArrayOutputStream(string fp){
 		this->filepath = fp;
 	};
+	ByteArrayOutputStream(std::vector<std::uint8_t> bytes) {
+		vector <std::uint8_t>().swap(this->bytes);
+		this->bytes.insert(this->bytes.begin(), bytes.begin(), bytes.end());
+	};
 	void write(int b);
 	void write(long long b);
 	void writeBytes(char b[]);
-	void write(char b[], int offset, int len);
+	void write(char* b, int offset, int len);
 	void write2file();
 	std::vector<std::uint8_t> getBytes();
 };

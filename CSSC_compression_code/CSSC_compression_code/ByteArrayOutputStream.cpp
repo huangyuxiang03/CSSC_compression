@@ -25,7 +25,7 @@ void ByteArrayOutputStream::writeBytes(char b[]){
     }
 }
 
-void ByteArrayOutputStream::write(char b[], int offset, int len)
+void ByteArrayOutputStream::write(char* b, int offset, int len)
 {
 	int length = sizeof(b);
 	int end = offset + len;

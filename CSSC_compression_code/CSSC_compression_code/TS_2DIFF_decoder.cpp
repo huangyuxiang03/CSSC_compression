@@ -2,8 +2,9 @@
 #include "TS_2DIFF_decoder.h"
 #include <corecrt_math.h>
 
-int TS_2DIFF_decoder::ceil(int v) {
-	return (int)ceil((double)v / 8.0);
+int TS_2DIFF_decoder::dceil(int v) {
+	double ans = ceil(v / 8.0);
+	return (int)ans;
 }
 
 bool TS_2DIFF_decoder::hasNext(ByteBuffer buffer) {

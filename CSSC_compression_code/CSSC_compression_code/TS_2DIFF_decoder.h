@@ -17,7 +17,7 @@ protected:
 
 public:
 	virtual void readHeader(ByteBuffer buffer) {};
-	int ceil(int v);
+	int dceil(int v);
 	bool hasNext(ByteBuffer buffer);
 
 };
