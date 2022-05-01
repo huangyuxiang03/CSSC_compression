@@ -12,7 +12,6 @@ private:
 	ll previousValue;
 	ll minDeltaBase;
 public:
-	~LongDeltaEncoder();
 	LongDeltaEncoder(int size);
 	LongDeltaEncoder();
 	int calculateBitWidthsForDeltaBlockBuffer();

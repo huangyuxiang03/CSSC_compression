@@ -49,7 +49,7 @@ void longToBytes(ll srcNum, char* result, int pos, int width) {
 		y = (char)(y << (8 - cnt));
 		mask = ~(mask - (1 << (8 - cnt)));
 		result[index] = (char)(result[index] & mask | y);
-		srcNum = srcNum & ~(-1 << width);
+		srcNum = srcNum & ~((ll)-1 << width);
 		if (cnt == 8) {
 			index++;
 			cnt = 0;
@@ -78,12 +78,8 @@ void LongDeltaEncoder::calcTwoDiff(int i) {
 }
 
 void LongDeltaEncoder::writeHeader() {
-	char* a = longToBytes(minDeltaBase);
-	char* b = longToBytes(firstValue);
-	out.write(a, 0, 8);
-	out.write(b, 0, 8);
-	delete[] a;
-	delete[] b;
+	out.write(longToBytes(minDeltaBase), 0, 8);
+	out.write(longToBytes(firstValue), 0, 8);
 }
 
 void LongDeltaEncoder::encode(ll value, ByteArrayOutputStream out) {
@@ -110,10 +106,5 @@ int LongDeltaEncoder::calculateBitWidthsForDeltaBlockBuffer() {
 		width = max(width, getValueWidth(deltaBlockBuffer[i]));
 	}
 	return width;
-}
-
-LongDeltaEncoder::~LongDeltaEncoder() {
-	delete[] deltaBlockBuffer;
-	delete[] encodingBlockBuffer;
 }
 
