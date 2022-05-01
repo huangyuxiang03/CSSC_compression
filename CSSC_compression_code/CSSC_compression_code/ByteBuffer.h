@@ -14,6 +14,10 @@ public:
 	ByteBuffer(string fp) {
 		this->filepath = fp;
 	};
+	ByteBuffer(std::vector<std::uint8_t> bytes) {
+		vector <std::uint8_t>().swap(this->bytes);
+		this->bytes.insert(this->bytes.begin(), bytes.begin(),bytes.end());
+	};
 	int remaining();
 	int readInt();
 	char readByte();
