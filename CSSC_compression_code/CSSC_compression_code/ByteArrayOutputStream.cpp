@@ -1,24 +1,11 @@
 #pragma once
 #include "ByteArrayOutputStream.h"
-// 基础类型到容器转换
+
 template <typename T>
 std::vector<std::uint8_t> ToByte(T input)
 {
 	std::uint8_t* bytePointer = reinterpret_cast<std::uint8_t*>(&input);
 	return std::vector<std::uint8_t>(bytePointer, bytePointer + sizeof(T));
-}
-
-// 容器到基础类型转换
-template <typename T>
-std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
-{
-	if (in.size() >= sizeof(T)) {
-		out = *reinterpret_cast<T*>(in.data());
-		in.erase(in.begin(), in.begin() + sizeof(T));
-	}else {
-		out = T{ 0 };
-	}
-	return in;
 }
 
 void ByteArrayOutputStream::write(int b){

@@ -1,5 +1,17 @@
 #include "ByteBuffer.h"
 
+template <typename T>
+std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
+{
+	if (in.size() >= sizeof(T)) {
+		out = *reinterpret_cast<T*>(in.data());
+		in.erase(in.begin(), in.begin() + sizeof(T));
+	}
+	else {
+		out = T{ 0 };
+	}
+	return in;
+}
 int ByteBuffer::remaining()
 {
 	return bytes.size();
@@ -7,12 +19,16 @@ int ByteBuffer::remaining()
 
 int ByteBuffer::readInt()
 {
-	return 0;
+	int buffer_int = 0;
+	this->bytes  >> buffer_int;
+	return buffer_int;
 }
 
 char ByteBuffer::readByte()
 {
-	return 0;
+	char buffer_int;
+	this->bytes >> buffer_int;
+	return buffer_int;
 }
 
 long long ByteBuffer::readLong()
