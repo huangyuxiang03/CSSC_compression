@@ -16,6 +16,29 @@ ll LongDeltaDecoder::loadIntBatch(ByteBuffer buffer) {
 
 	encodingLength = ceil(packNum * packWidth);
 	deltaBuf = new char[encodingLength];
-	buffer.get(deltaBuf);
+	buffer.get(deltaBuf, encodingLength);
+	allocateDataArray();
 
+	previous = firstValue;
+	readIntTotalCount = packNum;
+	nextReadIndex = 0;
+	readPack();
+	return firstValue;
+}
+
+void LongDeltaDecoder::readPack() {
+	for (int i = 0; i < packNum; i++) {
+		readValue(i);
+		previous = data[i];
+	}
+}
+
+void LongDeltaDecoder::readHeader(ByteBuffer buffer) {
+	minDeltaBase = buffer.readLong();
+	firstValue = buffer.readLong();
+}
+
+void LongDeltaDecoder::allocateDataArray() {
+	delete[] data;
+	data = new ll[packNum];
 }

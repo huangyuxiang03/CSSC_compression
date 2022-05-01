@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{62053f01-272d-4651-b3e6-829d10f31b96}</ProjectGuid>
     <RootNamespace>CSSCcompressioncode</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -116,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,8 +141,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteArrayOutputStream.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="GZIP.cpp" />
+=======
     <ClCompile Include="ByteBuffer.cpp" />
     <ClCompile Include="LongDeltaDecoder.cpp" />
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
     <ClCompile Include="LongDeltaEncoder.cpp" />
     <ClCompile Include="LongDeltaEncoder.h" />
     <ClCompile Include="main.cpp" />
@@ -150,10 +155,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteArrayOutputStream.h" />
+<<<<<<< HEAD
+    <ClInclude Include="GZIP.h" />
+=======
     <ClInclude Include="ByteBuffer.h" />
     <ClInclude Include="LongDeltaDecoder.h" />
     <ClInclude Include="TS_2DIFF_decoder.h" />
+>>>>>>> 06764fc77e132777aadec4ee520992df75ee53dc
     <ClInclude Include="TS_2DIFF_encoder.h" />
+    <ClInclude Include="zconf.h" />
+    <ClInclude Include="zlib.h" />
+    <ClInclude Include="zutil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
