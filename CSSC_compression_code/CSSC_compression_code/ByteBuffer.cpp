@@ -26,21 +26,29 @@ int ByteBuffer::readInt()
 
 char ByteBuffer::readByte()
 {
-	char buffer_int;
-	this->bytes >> buffer_int;
-	return buffer_int;
+	char buffer_byte;
+	this->bytes >> buffer_byte;
+	return buffer_byte;
 }
 
 long long ByteBuffer::readLong()
 {
-	return 0;
+	long long buffer_ll=0;
+	this->bytes >> buffer_ll;
+	return buffer_ll;
 }
 
 float ByteBuffer::readFloat()
 {
-	return 0.0f;
+	float buffer_float = 0.0;
+	this->bytes >> buffer_float;
+	return buffer_float;
 }
 
 void ByteBuffer::get(char* dst, int len)
 {
+	for (int i = 0; i < len; i++) {
+		char buffer_byte;
+		this->bytes >> dst[i];
+	}
 }
