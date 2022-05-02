@@ -6,26 +6,25 @@
 #include <sstream>
 using namespace std;
 
-
-template <typename T>
-void read_csv(string filename,vector<vector<T>> strArray,char seq)
+void read_csv(string filename)
 {
     ifstream inFile(filename);
     string lineStr;
+    vector<vector<long long>> strArray;
     cout << "the whole line is: " << endl;
     int i = 0;
     while (getline(inFile, lineStr))
     {
-        //cout << lineStr << endl;
+        cout << lineStr << endl;
         stringstream ss(lineStr);
         string str;
-        T str2long;
-        vector<T> lineArray;
-        while (getline(ss, str, seq))
+        long str2long;
+        vector<long long> lineArray;
+        while (getline(ss, str, ','))
         {
             stringstream strIn;
             strIn << str;
-            T llNum;
+            long long llNum;
             strIn >> std::hex >> llNum;
             lineArray.push_back(llNum);
         }
@@ -35,22 +34,20 @@ void read_csv(string filename,vector<vector<T>> strArray,char seq)
     }
     
 
-   cout << "--------------------------------------------" << endl;
-    cout << "print what we have saved in the vector: " << endl;
-    for (auto s : strArray)
-    {
-        for (auto x : s)
-        {
-            cout << x << " ";
-        }
-        cout << endl;
-    }
+   //cout << "--------------------------------------------" << endl;
+   // cout << "print what we have saved in the vector: " << endl;
+   // for (auto s : strArray)
+   // {
+   //     for (auto x : s)
+   //     {
+   //         cout << x << " ";
+   //     }
+   //     cout << endl;
+   // }
 
 }
 int main() {
-    vector<vector<long long>> strArrayll;
-    vector<vector<float>> strArrayf;
-    read_csv("C:\\Users\\xiaoj\\Desktop\\data_well_public.hxv", strArrayll,',');
-    read_csv("C:\\Users\\xiaoj\\Desktop\\shore_public.dat", strArrayf, ' ');
-    return 0;
+
+    read_csv("C:\\Users\\xiaoj\\Desktop\\data_well_public.hxv");
+	return 0;
 }
