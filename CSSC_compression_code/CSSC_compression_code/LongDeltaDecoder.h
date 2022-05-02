@@ -13,11 +13,11 @@ private:
 	ll minDeltaBase;
 	bool dataArrayAllocated = false;
 public:
-	ll readT(ByteBuffer buffer);
-	ll loadIntBatch(ByteBuffer buffer);
+	ll readT(ByteBuffer &buffer);
+	ll loadIntBatch(ByteBuffer &buffer);
 	void readPack();
-	ll readLong(ByteBuffer buffer);
-	void readHeader(ByteBuffer buffer);
+	ll readLong(ByteBuffer &buffer);
+	void readHeader(ByteBuffer &buffer);
 	void allocateDataArray();
 	void readValue(int i);
 	void reset() { }

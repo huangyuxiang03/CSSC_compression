@@ -16,9 +16,9 @@ protected:
 	int encodingLength;
 
 public:
-	virtual void readHeader(ByteBuffer buffer) {};
+	virtual void readHeader(ByteBuffer &buffer) {};
 	int dceil(int v);
-	bool hasNext(ByteBuffer buffer);
+	bool hasNext(ByteBuffer &buffer);
 
 };
 

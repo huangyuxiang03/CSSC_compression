@@ -1,5 +1,2 @@
-﻿  ByteArrayOutputStream.cpp
-  LongDeltaEncoder.cpp
-  TS_2DIFF_encoder.cpp
-  正在生成代码...
+﻿  LongDeltaEncoder.cpp
   CSSC_compression_code.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe

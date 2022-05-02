@@ -17,13 +17,13 @@ public:
 	LongDeltaEncoder();
 	int calculateBitWidthsForDeltaBlockBuffer();
 	void calcDelta(ll value);
-	void encodeValue(ll value, ByteArrayOutputStream out);
+	void encodeValue(ll value, ByteArrayOutputStream &out);
 	void reset();
 	int getValueWidth(ll v);
 	void writeValueToBytes(int i);
 	void calcTwoDiff(int i);
-	void writeHeader();
-	void encode(ll value, ByteArrayOutputStream out);
+	void writeHeader(ByteArrayOutputStream& out);
+	void encode(ll value, ByteArrayOutputStream &out);
 
 };
 

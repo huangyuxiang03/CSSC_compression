@@ -1,14 +1,14 @@
 #pragma once
 #include "LongDeltaDecoder.h"
 
-ll LongDeltaDecoder::readT(ByteBuffer buffer) {
+ll LongDeltaDecoder::readT(ByteBuffer& buffer) {
 	if (nextReadIndex == readIntTotalCount) {
 		return loadIntBatch(buffer);
 	}
 	return data[nextReadIndex++];
 }
 
-ll LongDeltaDecoder::loadIntBatch(ByteBuffer buffer) {
+ll LongDeltaDecoder::loadIntBatch(ByteBuffer& buffer) {
 	packNum = buffer.readInt();
 	packWidth = buffer.readInt();
 	count++;
@@ -33,7 +33,7 @@ void LongDeltaDecoder::readPack() {
 	}
 }
 
-void LongDeltaDecoder::readHeader(ByteBuffer buffer) {
+void LongDeltaDecoder::readHeader(ByteBuffer& buffer) {
 	minDeltaBase = buffer.readLong();
 	firstValue = buffer.readLong();
 }
@@ -71,7 +71,7 @@ void LongDeltaDecoder::readValue(int i) {
 	data[i] = previous + minDeltaBase + v;
 }
 
-ll LongDeltaDecoder::readLong(ByteBuffer buffer) {
+ll LongDeltaDecoder::readLong(ByteBuffer& buffer) {
 	ll r = readT(buffer);
 	return r;
 }

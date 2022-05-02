@@ -34,7 +34,7 @@ int LongDeltaEncoder::getValueWidth(ll v) {
 		else
 			break;
 	}
-	return ans;
+	return 64-ans;
 }
 
 void longToBytes(ll srcNum, char* result, int pos, int width) {
@@ -77,7 +77,7 @@ void LongDeltaEncoder::calcTwoDiff(int i) {
 	deltaBlockBuffer[i] = deltaBlockBuffer[i] - minDeltaBase;
 }
 
-void LongDeltaEncoder::writeHeader() {
+void LongDeltaEncoder::writeHeader(ByteArrayOutputStream& out) {
 	char* a = longToBytes(minDeltaBase);
 	char* b = longToBytes(firstValue);
 	out.write(a, 0, 8);
@@ -86,11 +86,11 @@ void LongDeltaEncoder::writeHeader() {
 	delete[] b;
 }
 
-void LongDeltaEncoder::encode(ll value, ByteArrayOutputStream out) {
+void LongDeltaEncoder::encode(ll value, ByteArrayOutputStream &out) {
 	encodeValue(value, out);
 }
 
-void LongDeltaEncoder::encodeValue(ll value, ByteArrayOutputStream out) {
+void LongDeltaEncoder::encodeValue(ll value, ByteArrayOutputStream &out) {
 	if (writeIndex == -1) {
 		writeIndex++;
 		firstValue = value;

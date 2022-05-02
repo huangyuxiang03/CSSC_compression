@@ -7,6 +7,6 @@ int TS_2DIFF_decoder::dceil(int v) {
 	return (int)ans;
 }
 
-bool TS_2DIFF_decoder::hasNext(ByteBuffer buffer) {
+bool TS_2DIFF_decoder::hasNext(ByteBuffer &buffer) {
 	return (nextReadIndex < readIntTotalCount) || buffer.remaining() > 0;
 }

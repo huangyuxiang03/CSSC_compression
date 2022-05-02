@@ -27,12 +27,12 @@ void ByteArrayOutputStream::writeBytes(char b[]){
 
 void ByteArrayOutputStream::write(char* b, int offset, int len)
 {
-	int length = sizeof(b);
+	//int length = sizeof(b);
 	int end = offset + len;
-	if (end > length || offset < 0) {
+	/*if (end > length || offset < 0) {
 		std::cout << "offset error" << std::endl;
 		abort();
-	}
+	}*/
 	for (int i=offset; i < end; i++) {
 		std::vector<std::uint8_t> byte_tmp = ToByte(b[i]);
 		this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
