@@ -4,7 +4,7 @@ template <typename T>
 std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
 {
 	if (in.size() >= sizeof(T)) {
-		//out = *reinterpret_cast<T*>(in.data());
+		/*//out = *reinterpret_cast<T*>(in.data());
 		//memcpy(&out, in.data(), sizeof(T));
 
 		//in.erase(in.begin(), in.begin() + sizeof(T));
@@ -12,13 +12,13 @@ std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
 		for (int i = 0; i < sizeof(T); i++) {
 			p[sizeof(T) - 1 - i] = *(in.data() + i);
 		}
-		if(sizeof(out) == 8)
-			out = *reinterpret_cast<T*>(p);
-		else
-			out = *reinterpret_cast<T*>(in.data());
+		//if(sizeof(out) == 8)
+			//out = *reinterpret_cast<T*>(p);
+		//else*/
+		out = *reinterpret_cast<T*>(in.data());
 		in.erase(in.begin(), in.begin() + sizeof(T));
 		char* pp = (char*)&out;
-		delete[] p;
+		//delete[] p;
 	}
 	else {
 		out = T{ 0 };
@@ -62,6 +62,6 @@ void ByteBuffer::get(char* dst, int len)
 {
 	for (int i = 0; i < len; i++) {
 		char buffer_byte;
-		this->bytes >> dst[i];
+		this->bytes >> dst[len- i -1];
 	}
 }

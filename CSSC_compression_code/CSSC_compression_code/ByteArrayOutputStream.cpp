@@ -20,7 +20,7 @@ void ByteArrayOutputStream::write(long long b){
 void ByteArrayOutputStream::writeBytes(char b[]){
 	int len = sizeof(b);
 	for (int i=0; i < len;i++) {
-		std::vector<std::uint8_t> byte_tmp = ToByte(b[i]);
+		std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
         this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
     }
 }
@@ -34,7 +34,7 @@ void ByteArrayOutputStream::write(char* b, int offset, int len)
 		abort();
 	}*/
 	for (int i=offset; i < end; i++) {
-		std::vector<std::uint8_t> byte_tmp = ToByte(b[i]);
+		std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
 		this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
 	}
 }

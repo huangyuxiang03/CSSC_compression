@@ -39,6 +39,21 @@
     <ClCompile Include="TS_2DIFF_encoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="IntDeltaEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IntDeltaDecoder.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IntDeltaDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatDeltaEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatDeltaDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteArrayOutputStream.h">
@@ -69,6 +84,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GZIP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IntDeltaEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatDeltaEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatDeltaDecoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
