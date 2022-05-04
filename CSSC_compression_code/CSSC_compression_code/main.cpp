@@ -124,7 +124,7 @@ int main(int argc, char* argv[]) {
             cost = difftime(end, start);
             cout << cost << endl;
             cout << "out" << endl;
-            //encoder.flush(out);
+            encoder.flush(out);
             cout << out.getBytes().size() << endl;
             out.write2file();
         }
@@ -150,7 +150,7 @@ int main(int argc, char* argv[]) {
             cost = difftime(end, start);
             cout << cost << endl;
             cout << "out" << endl;
-            //encoder.flush(out);
+            encoder.flush(out);
             cout << out.getBytes().size() << endl;
             out.write2file();
             //ByteBuffer in(out.getBytes());
