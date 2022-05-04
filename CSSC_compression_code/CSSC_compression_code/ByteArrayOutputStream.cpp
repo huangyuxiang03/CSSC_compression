@@ -42,18 +42,20 @@ void ByteArrayOutputStream::write(char* b, int offset, int len)
 void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
-	outfile.open(filepath, ios::app);
+	outfile.open(filepath, ios::app|ios::out|ios::binary);
 	if (!outfile)
 	{
 		cout << "the file can't open" << endl;
 		abort();
 	}else
 	{
-		cout << this->bytes.size() << endl;
-		for(std::uint8_t bt:this->bytes)
-			outfile << bt << endl;
+		//cout << this->bytes.size() << endl;
+		for (std::uint8_t bt : this->bytes) {
+			outfile <<  bt;
+		}
+		//cout << outfile. << endl;
 		vector <std::uint8_t>().swap(this->bytes);
-		cout << this->bytes.size() << endl;
+		//cout << this->bytes.size() << endl;
 		outfile.close();
 	}
 }
