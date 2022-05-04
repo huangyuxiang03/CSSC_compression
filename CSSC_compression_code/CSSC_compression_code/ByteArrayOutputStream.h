@@ -13,25 +13,12 @@ class ByteArrayOutputStream {
 private:
 	string filepath;
 	std::vector<std::uint8_t> bytes;
-	int colnum{1};
-	std::vector<int>bytesnum;
 public:
 	
 	ByteArrayOutputStream(){};
 	ByteArrayOutputStream(string fp){
 		this->filepath = fp;
 	};
-	void setFilePath(string fp) {
-		this->filepath = fp;
-	}
-	void concatenate(ByteArrayOutputStream& b) {
-		bytesnum.push_back(bytes.size());
-		bytes.insert(bytes.end(), b.bytes.begin(), b.bytes.end());
-		colnum += b.colnum;
-	}
-	void saveSize() {
-		bytesnum.push_back(bytes.size());
-	}
 	ByteArrayOutputStream(std::vector<std::uint8_t> bytes) {
 		vector <std::uint8_t>().swap(this->bytes);
 		this->bytes.insert(this->bytes.begin(), bytes.begin(), bytes.end());
