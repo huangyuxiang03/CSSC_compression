@@ -83,23 +83,40 @@ int main(int argc, char* argv[]) {
             vector<vector<long long>> strArrayll;
             read_csv(argv[2], strArrayll, ',');
             vector<vector<long long>> resArray = transpose(strArrayll);
-            ByteArrayOutputStream out(argv[3]);
-            LongDeltaEncoder encoder;
+            //ByteArrayOutputStream out(argv[3]);
+            //LongDeltaEncoder encoder;
             //LongDeltaDecoder decoder;
             time(&start);
+            int colnum = resArray[0].size();
+            LongDeltaEncoder* encoder = new LongDeltaEncoder[colnum];
+            ByteArrayOutputStream* out = new ByteArrayOutputStream[colnum];
+            for (int i = 0; i < colnum; i++)
+                out[i].setFilePath(argv[3]);
 
             for (vector<long long > perArrayll : resArray) {
-                for (ll num : perArrayll) {
-                    encoder.encode(num, out);
+                for (int i = 0; i < colnum; i++) {
+                    encoder[i].encode(perArrayll[i], out[i]);
+                }
+                //for (ll num : perArrayll) {
+                //    encoder.encode(num, out);
+                //}
+            }
+
+            for (int i = 0; i < colnum; i++) {
+                encoder[i].flush(out[i]);
+                if (i != 0) {
+                    out[0].concatenate(out[i]);
                 }
             }
+            out[0].saveSize();
+            out[0].write2file();
             time(&end);
             cost = difftime(end, start);
             cout << cost << endl;
             cout << "out" << endl;
             //encoder.flush(out);
-            cout << out.getBytes().size() << endl;
-            out.write2file();
+           // cout << out.getBytes().size() << endl;
+            //out.write2file();
             //ByteBuffer in(out.getBytes());
             //for (int j = 0; j < 2000; j++) {
             //    ll r = decoder.readLong(in);
@@ -124,7 +141,7 @@ int main(int argc, char* argv[]) {
             cost = difftime(end, start);
             cout << cost << endl;
             cout << "out" << endl;
-            //encoder.flush(out);
+            encoder.flush(out);
             cout << out.getBytes().size() << endl;
             out.write2file();
         }
@@ -177,7 +194,7 @@ int main(int argc, char* argv[]) {
             cost = difftime(end, start);
             cout << cost << endl;
             cout << "out" << endl;
-            //encoder.flush(out);
+            encoder.flush(out);
             cout << out.getBytes().size() << endl;
             out.write2file();
         }
