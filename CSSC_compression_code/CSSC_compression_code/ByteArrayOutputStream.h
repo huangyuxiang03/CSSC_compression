@@ -28,6 +28,7 @@ public:
 	void writeBytes(char b[]);
 	void write(char* b, int offset, int len);
 	void write2file();
+	void readFromFile();
 	std::vector<std::uint8_t> getBytes();
 };
 

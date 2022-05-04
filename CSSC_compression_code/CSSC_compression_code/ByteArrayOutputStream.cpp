@@ -60,6 +60,27 @@ void ByteArrayOutputStream::write2file()
 	}
 }
 
+void ByteArrayOutputStream::readFromFile()
+{
+	ifstream infile;
+	infile.open(filepath, ios::in | ios::binary);
+	if (!infile)
+	{
+		cout << "the file can't open" << endl;
+		abort();
+	}
+	else
+	{
+		char* var{};
+		infile.read(var, sizeof(std::uint8_t));
+		for (var; *var != NULL; var++)
+		{
+			this->bytes.push_back((std::uint8_t)var);
+		}
+		infile.close();
+	}
+}
+
 std::vector<std::uint8_t> ByteArrayOutputStream::getBytes()
 {
 	return bytes;

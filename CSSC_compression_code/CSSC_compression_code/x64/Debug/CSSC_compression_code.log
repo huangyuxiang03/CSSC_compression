@@ -1,8 +1,13 @@
-﻿  main.cpp
+﻿  ByteArrayOutputStream.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(78,43): warning C4302: “类型强制转换”: 从“char *”到“uint8_t”截断
+  main.cpp
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(119,41): warning C4244: “初始化”: 从“float”转换到“__int64”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(172,41): warning C4244: “初始化”: 从“float”转换到“__int64”，可能丢失数据
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(27,11): warning C4101: “str2long”: 未引用的局部变量
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(84): message : 查看对正在编译的函数 模板 实例化“void read_csv<__int64>(std::string,std::vector<std::vector<__int64,std::allocator<__int64>>,std::allocator<std::vector<__int64,std::allocator<__int64>>>> &,char)”的引用
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(55,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(85): message : 查看对正在编译的函数 模板 实例化“std::vector<std::vector<__int64,std::allocator<__int64>>,std::allocator<std::vector<__int64,std::allocator<__int64>>>> transpose<__int64>(std::vector<std::vector<__int64,std::allocator<__int64>>,std::allocator<std::vector<__int64,std::allocator<__int64>>>>)”的引用
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(58,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  正在生成代码...
+x64\Debug\IntDeltaDecoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
   CSSC_compression_code.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe
