@@ -49,9 +49,11 @@ void ByteArrayOutputStream::write2file()
 		abort();
 	}else
 	{
+		cout << this->bytes.size() << endl;
 		for(std::uint8_t bt:this->bytes)
 			outfile << bt << endl;
 		vector <std::uint8_t>().swap(this->bytes);
+		cout << this->bytes.size() << endl;
 		outfile.close();
 	}
 }
