@@ -19,7 +19,7 @@ void read_csv(string filename, vector<vector<T>> &strArray, char seq)
     int i = 0;
     while (getline(inFile, lineStr))
     {
-        if (i > 5000) break;
+        if (i > 180000) break;
         i++;        
         //cout << lineStr << endl;
         stringstream ss(lineStr);
@@ -53,7 +53,6 @@ void read_csv(string filename, vector<vector<T>> &strArray, char seq)
 template <typename T>
 vector<vector<T>> transpose(vector<vector<T>> strArray) {
     int length = strArray.size();
-    cout << length << endl;
     vector<T> strArray0 = strArray[0];
     int width = strArray0.size();
     
@@ -67,6 +66,12 @@ vector<vector<T>> transpose(vector<vector<T>> strArray) {
     }
     return resArray;
 }
+//bool compareStr(char* str1, char* str2) {
+//    int len1 = str1.length();
+//    for (char c1 : str1) {
+//
+//    }
+//}
 int main(int argc, char* argv[]) {
     time_t start, end;
     double cost;
@@ -123,10 +128,11 @@ int main(int argc, char* argv[]) {
             //}
             //bool a = decoder.hasNext(in);
         }
-        else if (!strcmp(argv[2], "shore_public.dat")) {
+        else if (argv[2] == "shore_public.dat") {
             vector<vector<float>> strArrayf;
-            read_csv(argv[2], strArrayf, ' ');
+            read_csv(argv[1], strArrayf, ' ');
             vector<vector<float>> resArray = transpose(strArrayf);
+<<<<<<< HEAD
             ByteArrayOutputStream out(argv[3]);
             LongDeltaEncoder encoder;
             //LongDeltaDecoder decoder;
@@ -197,6 +203,8 @@ int main(int argc, char* argv[]) {
             encoder.flush(out);
             cout << out.getBytes().size() << endl;
             out.write2file();
+=======
+>>>>>>> parent of b71d19f (update write)
         }
     }
 
