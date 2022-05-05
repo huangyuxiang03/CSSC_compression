@@ -71,12 +71,16 @@ void ByteArrayOutputStream::readFromFile()
 	}
 	else
 	{
-		char* var{};
-		infile.read(var, sizeof(std::uint8_t));
-		for (var; *var != NULL; var++)
-		{
-			this->bytes.push_back((std::uint8_t)var);
+		infile.seekg(0, std::ios::end);
+		int length = infile.tellg();
+		infile.seekg(0, std::ios::beg);
+		char* buffer = new char[length];    
+		infile.read(buffer, length);
+		for (int i = 0; i < length; i++) {
+			//cout << buffer[i] << endl;
+			this->bytes.push_back((std::uint8_t)buffer[i]);
 		}
+		cout << this->bytes.size() << endl;
 		infile.close();
 	}
 }

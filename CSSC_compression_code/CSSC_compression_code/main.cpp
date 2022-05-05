@@ -19,7 +19,7 @@ void read_csv(string filename, vector<vector<T>>& strArray, char seq)
 	int i = 0;
 	while (getline(inFile, lineStr))
 	{
-		if (i > 5000) break;
+		if (i > 18000) break;
 		i++;
 		//cout << lineStr << endl;
 		stringstream ss(lineStr);
@@ -50,6 +50,7 @@ void read_csv(string filename, vector<vector<T>>& strArray, char seq)
    // }
 
 }
+
 template <typename T>
 vector<vector<T>> transpose(vector<vector<T>> strArray) {
 	int length = strArray.size();
@@ -66,6 +67,47 @@ vector<vector<T>> transpose(vector<vector<T>> strArray) {
 		resArray.push_back(preArray);
 	}
 	return resArray;
+}
+
+template <typename T>
+void write_csv(string filename, vector<T>& strArray, string seq, int col)
+{
+	ofstream outFile(filename);
+	int length = strArray.size();
+	int row = length / col;
+	
+	for (int i = 0; i < row; i++) {
+		string lineStr;
+		int j = 0;
+		for (; j < col - 1; j++) {
+			outFile << std::hex << strArray[j * row + i];
+			outFile << seq;
+		}
+		//cout << strArray[j * row + i] << endl;
+		outFile << std::hex << strArray[j * row + i];
+		outFile << "\n";
+	}
+	//int i = 0;
+	//while (getline(inFile, lineStr))
+	//{
+	//	if (i > 5000) break;
+	//	i++;
+	//	//cout << lineStr << endl;
+	//	stringstream ss(lineStr);
+	//	string str;
+	//	T str2long;
+	//	vector<T> lineArray;
+	//	while (getline(ss, str, seq))
+	//	{
+	//		stringstream strIn;
+	//		strIn << str;
+	//		T llNum;
+	//		strIn >> std::hex >> llNum;
+	//		lineArray.push_back(llNum);
+	//	}
+	//	strArray.push_back(lineArray);
+	//}
+	cout << "finish writing " << endl;
 }
 int main(int argc, char* argv[]) {
 	time_t start, end;
@@ -88,17 +130,18 @@ int main(int argc, char* argv[]) {
 			//LongDeltaDecoder decoder;
 			time(&start);
 
-			for (vector<long long > perArrayll : resArray) {
+			for (vector<long long> perArrayll : resArray) {
 				for (ll num : perArrayll) {
 					encoder.encode(num, out);
 				}
 			}
+			cout << resArray[0].size() << endl;
 			time(&end);
 			cost = difftime(end, start);
-			cout << cost << endl;
-			cout << "out" << endl;
-			//encoder.flush(out);
-			cout << out.getBytes().size() << endl;
+			//cout << cost << endl;
+			//cout << "out" << endl;
+			encoder.flush(out);
+			//cout << out.getBytes().size() << endl;
 			out.write2file();
 			//ByteBuffer in(out.getBytes());
 			//for (int j = 0; j < 2000; j++) {
@@ -123,45 +166,40 @@ int main(int argc, char* argv[]) {
 			time(&end);
 			cost = difftime(end, start);
 			cout << cost << endl;
-			cout << "out" << endl;
-			//encoder.flush(out);
+			//cout << "out" << endl;
+			encoder.flush(out);
 			cout << out.getBytes().size() << endl;
 			out.write2file();
 		}
 	}
 	else if (argv[1][0] == 'd') {
-		if (!strcmp(argv[2], "data_well_public.hxv")) {
-			//cout << argv[2] << endl;
+
+		if (!strcmp(argv[3], "data_well_public1.hxv")) {
+			cout << argv[3] << endl;
 			//int length = 0;
 			vector<vector<long long>> strArrayll;
 			//read_csv(argv[2], strArrayll, ',');
 			
-			ByteArrayOutputStream out(argv[3]);
+			ByteArrayOutputStream out(argv[2]);
 			//LongDeltaEncoder encoder;
 			LongDeltaDecoder decoder;
+			
 			time(&start);
-			//for (vector<long long > perArrayll : resArray) {
-			//	for (ll num : perArrayll) {
-			//		encoder.encode(num, out);
-			//	}
-			//}
-			//time(&end);
-			//cost = difftime(end, start);
-			//cout << cost << endl;
-			//cout << "out" << endl;
-			////encoder.flush(out);
-			//cout << out.getBytes().size() << endl;
-			//out.write2file();
 			out.readFromFile();
 			ByteBuffer in(out.getBytes());
 			int length = out.getBytes().size();
-			for (int j = 0; j < length; j++) {
+			vector<long long> llArray;
+			while(in.remaining()!=0) {
 			    ll r = decoder.readLong(in);
+				//cout << r << endl;
+				llArray.push_back(r);
 			}
-			vector<vector<long long>> resArray = transpose(strArrayll);
+			cout<< llArray.size() << endl;
+			write_csv(argv[3], llArray, ",",5);
+			//vector<vector<long long>> resArray = transpose(strArrayll);
 			//bool a = decoder.hasNext(in);
 		}
-		else if (!strcmp(argv[2], "shore_public.dat")) {
+		else if (!strcmp(argv[3], "shore_public1.dat")) {
 			vector<vector<float>> strArrayf;
 			read_csv(argv[2], strArrayf, ' ');
 			vector<vector<float>> resArray = transpose(strArrayf);
