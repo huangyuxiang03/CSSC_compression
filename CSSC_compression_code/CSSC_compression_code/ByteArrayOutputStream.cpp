@@ -53,7 +53,7 @@ void ByteArrayOutputStream::write2file()
 		for (std::uint8_t bt : this->bytes) {
 			outfile <<  bt;
 		}
-		//cout << outfile. << endl;
+		//outfile << endl;
 		vector <std::uint8_t>().swap(this->bytes);
 		//cout << this->bytes.size() << endl;
 		outfile.close();
@@ -71,6 +71,20 @@ void ByteArrayOutputStream::readFromFile()
 	}
 	else
 	{
+		//string buffer;
+		//int i = 0;
+		//while (getline(infile, buffer))
+		//{
+		//	if (i != ith_row) {
+		//		i++;
+		//		continue;
+		//	}
+		//	int strLen = buffer.length();
+		//	for (int j = 0; j < strLen; j++) {
+		//		this->bytes.push_back((std::uint8_t)buffer[j]);
+		//	}
+		//	break;
+		//}
 		infile.seekg(0, std::ios::end);
 		int length = infile.tellg();
 		infile.seekg(0, std::ios::beg);

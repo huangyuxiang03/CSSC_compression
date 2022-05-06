@@ -176,8 +176,8 @@ int main(int argc, char* argv[]) {
 		else if (!strcmp(argv[2], "shore_public.dat")) {
 			vector<vector<float>> strArrayf;
 			ByteArrayOutputStream out(argv[3]);
-			FloatDeltaEncoder encoder;
-			read_csv(argv[2], strArrayf, ' ',0);
+			
+			read_csv(argv[2], strArrayf, ' ',50000);
 
 			int length = strArrayf.size();
 			cout << length << endl;
@@ -185,12 +185,13 @@ int main(int argc, char* argv[]) {
 			int width = strArray0.size();
 			cout << width << endl;
 			for (int i = 0; i < width; i++) {
+				FloatDeltaEncoder encoder;
 				for (int j = 0; j < length; j++) {
 					encoder.encode(strArrayf[j][i], out);
 				}
+				encoder.flush(out);
+				out.write2file();
 			}
-			encoder.flush(out);
-			out.write2file();
 		}
 	}
 	else if (argv[1][0] == 'd') {
