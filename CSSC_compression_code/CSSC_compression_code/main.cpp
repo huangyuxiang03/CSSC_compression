@@ -337,7 +337,7 @@ int main(int argc, char* argv[]) {
 			encoder.flush(out);
 			out.write2file();
 		}
-		else if (!strcmp(argv[2], "shore_public1.dat")) {
+		else if (!strcmp(argv[2], "shore_public.dat")) {
 			std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
 			LongDeltaEncoder encoder;
