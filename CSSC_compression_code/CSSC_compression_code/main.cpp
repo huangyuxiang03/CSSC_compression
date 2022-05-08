@@ -348,7 +348,7 @@ int main(int argc, char* argv[]) {
 			std::cout << width << endl;
 			for (int i = 0; i < width; i++) {
 				for (int j = 0; j < length; j++) {
-					if (j % 1000000 == 0) cout << j << endl;
+					//if (j % 100000 == 0) cout << j << endl;
 					encoder.encode(strArrayll[i][j], out);
 				}
 			}
