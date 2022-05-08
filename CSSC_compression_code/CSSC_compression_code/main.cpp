@@ -366,6 +366,7 @@ int main(int argc, char* argv[]) {
 			out.readFromFile();
 			ByteBuffer in(out.getBytes());
 			int length = out.getBytes().size();
+			cout << length << endl;
 			vector<long long> llArray;
 			while(decoder.hasNext(in)) {
 			    ll r = decoder.readLong(in);
@@ -381,6 +382,7 @@ int main(int argc, char* argv[]) {
 			out.readFromFile();
 			ByteBuffer in(out.getBytes());
 			int length = out.getBytes().size();
+			cout << length << endl;
 			vector<float> fArray;
 			while (decoder.hasNext(in)) {
 				float r = decoder.readFloat(in);
