@@ -49,6 +49,7 @@ void ByteArrayOutputStream::write2file()
 		abort();
 	}else
 	{
+		//outfile.write((const char*)&this->bytes, this->bytes.size());
 		//cout << this->bytes.size() << endl;
 		for (std::uint8_t bt : this->bytes) {
 			outfile <<  bt;
