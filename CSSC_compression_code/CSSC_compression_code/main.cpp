@@ -93,12 +93,13 @@ int char2hex(char c) {
 ll char16toll(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
-float char16tofloat(char* num) {
+float chartofloat(char* num) {
 	return atof(num);
 }
 ll** read_csvll(string filename,char sep, int subrow, int& row,int& col)
 {
-	ifstream inFile(filename);
+	ifstream inFile;
+	inFile.open(filename, ios::in | ios::binary);
 	ll** strArray;
 	cout << "read data: " << endl;
 	inFile.seekg(0, std::ios::end);
@@ -161,7 +162,8 @@ ll** read_csvll(string filename,char sep, int subrow, int& row,int& col)
 }
 float** read_csvf(string filename, char sep, int subrow, int& row, int& col)
 {
-	ifstream inFile(filename);
+	ifstream inFile;
+	inFile.open(filename, ios::in | ios::binary);
 	float** strArray;
 	cout << "read data: " << endl;
 	inFile.seekg(0, std::ios::end);
@@ -187,7 +189,7 @@ float** read_csvf(string filename, char sep, int subrow, int& row, int& col)
 		i++;
 	}
 	i++;
-	row = (length + 1) / i; //row 可以固定
+	row = 1000000; //row 可以固定
 	strArray = new float * [col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new float[row];
@@ -202,16 +204,21 @@ float** read_csvf(string filename, char sep, int subrow, int& row, int& col)
 			num_j++;
 		}
 		else if (buffer[i] == sep) {
-			strArray[col_n][row_n] = char16tofloat(num);
+			//char* numt = new char[num_j];
+			//for (int ni = 0; ni < num_j; ni++) numt[ni] = num[ni];
+			strArray[col_n][row_n] = chartofloat(num);
 			//cout << strArray[col_n][row_n] << endl;
 			num = new char[10];
 			num_j = 0;
 			col_n++;
 		}
 		else if (buffer[i] == '\n') {
-			strArray[col_n][row_n] = char16tofloat(num);
-			cout.setf(ios::fixed, ios::floatfield);
-			cout << setprecision(5) << strArray[col_n][row_n] << endl;
+			//char* numt = new char[num_j];
+			//for (int ni = 0; ni < num_j; ni++) numt[ni] = num[ni];
+			strArray[col_n][row_n] = chartofloat(num);
+			//cout.setf(ios::fixed, ios::floatfield);
+			//cout << strArray[col_n][row_n] << endl;
+			//if (row_n % 100==0) cout << row_n << endl;
 			num = new char[10];
 			num_j = 0;
 			row_n++;
@@ -219,7 +226,7 @@ float** read_csvf(string filename, char sep, int subrow, int& row, int& col)
 		}
 		i++;
 	}
-
+	row = row_n;
 	delete[] buffer;
 	cout << "finish reading " << endl;
 	return strArray;
@@ -267,7 +274,6 @@ void write_csvll(string filename, vector<ll>& strArray, string seq, int col)
 	int row = length / col;
 	
 	for (int i = 0; i < row; i++) {
-		string lineStr;
 		int j = 0;
 		for (; j < col - 1; j++) {
 			outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
@@ -286,7 +292,6 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 	int row = length / col;
 
 	for (int i = 0; i < row; i++) {
-		string lineStr;
 		int j = 0;
 		outFile.setf(ios::fixed, ios::floatfield);
 		outFile << setprecision(3) << strArray[j * row + i];
@@ -305,8 +310,8 @@ int main(int argc, char* argv[]) {
 	time_t start, end;
 	double cost;
 	time(&start);
-	int width = 0, length = 0;
-	float** strArrayll = read_csvf("C:\\Users\\xiaoj\\Documents\\GitHub\\CSSC_compression\\CSSC_compression_code\\x64\\Debug\\shore_public.dat", ' ', 0, length, width);
+	//int width = 0, length = 0;
+	//float** strarrayll = read_csvf("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\x64\\debug\\shore_public.dat", ' ', 0, length, width);
 
 	//cout << argc << endl;
 	if (argc != 4) return 0;
@@ -317,10 +322,8 @@ int main(int argc, char* argv[]) {
 			std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
 			LongDeltaEncoder encoder;
-			ll num = 0;
 			int width = 0, length = 0;
-			//vector<vector<long long>> strArrayll;
-			ll** strArrayll = read_csvll("C:\\Users\\xiaoj\\Documents\\GitHub\\CSSC_compression\\CSSC_compression_code\\x64\\Debug\\data_well_public.hxv", ',', 0, length, width);
+			ll** strArrayll = read_csvll(argv[2], ',', 0, length, width);
 
 			std::cout << length << endl;
 			std::cout << width << endl;
@@ -334,26 +337,24 @@ int main(int argc, char* argv[]) {
 			encoder.flush(out);
 			out.write2file();
 		}
-		else if (!strcmp(argv[2], "shore_public.dat")) {
-			//std::cout << argv[2] << endl;
-			//ByteArrayOutputStream out(argv[3]);
-			//LongDeltaEncoder encoder;
-			//ll num = 0;
-			//int width = 0, length = 0;
-			////vector<vector<long long>> strArrayll;
-			//ll** strArrayll = read_csvf("C:\\Users\\xiaoj\\Documents\\GitHub\\CSSC_compression\\CSSC_compression_code\\x64\\Debug\\data_well_public.hxv", num, ',', 0, length, width);
+		else if (!strcmp(argv[2], "shore_public1.dat")) {
+			std::cout << argv[2] << endl;
+			ByteArrayOutputStream out(argv[3]);
+			LongDeltaEncoder encoder;
+			int width = 0, length = 0;
+			float** strArrayll = read_csvf(argv[2], ' ', 0, length, width);
 
-			//std::cout << length << endl;
-			//std::cout << width << endl;
-			//for (int i = 0; i < width; i++) {
-			//	for (int j = 0; j < length; j++) {
-			//		if (j % 1000000 == 0) cout << j << endl;
-			//		encoder.encode(strArrayll[i][j], out);
-			//	}
-			//}
-			//cout << "finish encode" << endl;
-			//encoder.flush(out);
-			//out.write2file();
+			std::cout << length << endl;
+			std::cout << width << endl;
+			for (int i = 0; i < width; i++) {
+				for (int j = 0; j < length; j++) {
+					if (j % 1000000 == 0) cout << j << endl;
+					encoder.encode(strArrayll[i][j], out);
+				}
+			}
+			cout << "finish encode" << endl;
+			encoder.flush(out);
+			out.write2file();
 
 		}
 	}
