@@ -21,9 +21,6 @@
     <ClCompile Include="ByteBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GZIP.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="LongDeltaDecoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -74,18 +71,6 @@
     <ClInclude Include="TS_2DIFF_encoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="zconf.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="zlib.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="zutil.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GZIP.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="IntDeltaEncoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -95,15 +80,5 @@
     <ClInclude Include="FloatDeltaDecoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\zlib\zlibwapi.dll">
-      <Filter>源文件</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\zlib\zlibwapi.lib">
-      <Filter>源文件</Filter>
-    </Library>
   </ItemGroup>
 </Project>

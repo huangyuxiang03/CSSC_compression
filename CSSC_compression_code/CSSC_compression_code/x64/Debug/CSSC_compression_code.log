@@ -1,14 +1,13 @@
 ﻿  main.cpp
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(20,23): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(28,32): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(38,23): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(47,32): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(97,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(106,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(170,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(273,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(291,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(352,36): warning C4244: “参数”: 从“float”转换到“__int64”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(368,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(383,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  CSSC_compression_code.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(27,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(36,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(100,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(166,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(186,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(301,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(327,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+x64\Debug\IntDeltaDecoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+FloatDeltaDecoder.obj : error LNK2019: 无法解析的外部符号 "public: int __cdecl IntDeltaDecoder::readInt(class ByteBuffer &)" (?readInt@IntDeltaDecoder@@QEAAHAEAVByteBuffer@@@Z)，函数 "public: float __cdecl FloatDeltaDecoder::readFloat(class ByteBuffer &)" (?readFloat@FloatDeltaDecoder@@QEAAMAEAVByteBuffer@@@Z) 中引用了该符号
+main.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __cdecl IntDeltaDecoder::readHeader(class ByteBuffer &)" (?readHeader@IntDeltaDecoder@@UEAAXAEAVByteBuffer@@@Z)
+main.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl IntDeltaDecoder::~IntDeltaDecoder(void)" (??1IntDeltaDecoder@@QEAA@XZ)，函数 "public: __cdecl FloatDeltaDecoder::~FloatDeltaDecoder(void)" (??1FloatDeltaDecoder@@QEAA@XZ) 中引用了该符号
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe : fatal error LNK1120: 3 个无法解析的外部命令
