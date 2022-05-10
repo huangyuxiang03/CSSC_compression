@@ -37,6 +37,7 @@ public:
 	void write(char* b, int offset, int len);
 	void write2file();
 	void readFromFile();
+	void writeDatatype(char datatype);
 	std::vector<std::uint8_t> getBytes();
 	std::vector<std::uint8_t> getColBytes();
 	bool hasNextCol();

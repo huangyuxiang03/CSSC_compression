@@ -108,7 +108,7 @@ void ByteArrayOutputStream::readFromFile()
 			//cout << "col_pos[col_i_i] : " << col_pos[col_i_i] <<endl;
 
 		}
-		for (i=0; i < col_start; i++) {
+		for (i=1; i < col_start; i++) {
 			this->bytes.push_back((std::uint8_t)buffer[i]);
 		}
 		//col_pos = new int[100];
@@ -128,6 +128,23 @@ void ByteArrayOutputStream::readFromFile()
 		//}
 		cout << this->bytes.size() << endl;
 		infile.close();
+	}
+}
+
+void ByteArrayOutputStream::writeDatatype(char datatype)
+{
+	ofstream outfile;
+	outfile.open(filepath, ios::app | ios::out | ios::binary);
+	if (!outfile)
+	{
+		cout << "the file can't open" << endl;
+		abort();
+	}
+	else
+	{
+		outfile << (std::uint8_t) datatype;
+		vector <std::uint8_t>().swap(this->bytes);
+		outfile.close();
 	}
 }
 
