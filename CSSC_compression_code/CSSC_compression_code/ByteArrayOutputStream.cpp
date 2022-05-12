@@ -4,7 +4,7 @@
 template <typename T>
 std::vector<std::uint8_t> ToByte(T input)
 {
-	std::uint8_t* bytePointer = reinterpret_cast<std::uint8_t*>(&input);
+	std::uint8_t* bytePointer = reinterpret_cast<std::uint8_t*>(&input); 
 	return std::vector<std::uint8_t>(bytePointer, bytePointer + sizeof(T));
 }
 template <typename T>

@@ -285,7 +285,6 @@ int main(int argc, char* argv[]) {
 			int* col_pos = new int[width + 1]; // the position of per column data
 			int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
 			col_pos[0] = 0;
-
 			std::cout << length << endl;
 			std::cout << width << endl;
 			out.writeDatatype('f');
@@ -300,7 +299,7 @@ int main(int argc, char* argv[]) {
 				col_n++;
 				encoder.flush(out);
 				col_pos[col_n] = out.getBytes().size();
-				cout << "col_pos[col_n] : " << col_pos[col_n] <<endl;
+				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
 				out.write2file();
 			}
 			cout << "finish encode" << endl;
@@ -362,12 +361,13 @@ int main(int argc, char* argv[]) {
 				while (decoder.hasNext(in)) {
 					float r = decoder.readFloat(in);
 					fArray.push_back(r);
-					//if (count % 10000 == 0) {
-					//	time(&end_d);
-					//	cost_d = difftime(end_d, start_d);
-					//	std::cout << "decode read time :" << cost_d << endl;
-					//}
-					//count++;
+					if (count % 10000 == 0) {
+						time(&end_d);
+						cost_d = difftime(end_d, start_d);
+						time(&start_d);
+						std::cout << "decode read time :" << cost_d << endl;
+					}
+					count++;
 				}
 				//cout << col << endl;
 				std::cout << fArray.size() << endl;

@@ -15,6 +15,7 @@ void TS_2DIFF_encoder::writeDataWithMinWidth(ByteArrayOutputStream& out) {
 
 void TS_2DIFF_encoder::writeHeaderToBytes(ByteArrayOutputStream& out) {
 	out.write(writeIndex);
+	//cout << writeIndex << endl;
 	out.write(writeWidth);
 	writeHeader(out);
 }
@@ -36,4 +37,4 @@ void TS_2DIFF_encoder::flush(ByteArrayOutputStream &out) {
 	flushBlockBuffer(out);
 }
 
-int TS_2DIFF_encoder::BLOCK_DEFAULT_SIZE = 128;
+int TS_2DIFF_encoder::BLOCK_DEFAULT_SIZE = 4096;

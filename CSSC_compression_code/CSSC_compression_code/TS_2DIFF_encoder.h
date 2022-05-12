@@ -13,6 +13,7 @@ protected:
 	int writeWidth = 0;
 public:
 	TS_2DIFF_encoder(int size);
+	TS_2DIFF_encoder() : TS_2DIFF_encoder(BLOCK_DEFAULT_SIZE) { }
 	virtual void writeHeader(ByteArrayOutputStream& out) {};
 	virtual void writeValueToBytes(int i) {};
 	virtual void calcTwoDiff(int i) {};

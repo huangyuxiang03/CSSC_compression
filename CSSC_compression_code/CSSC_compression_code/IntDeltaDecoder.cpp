@@ -1,5 +1,7 @@
 #pragma once
 #include "IntDeltaDecoder.h"
+#include <iostream>
+using namespace std;
 
 int IntDeltaDecoder::readT(ByteBuffer& buffer) {
 	if (nextReadIndex == readIntTotalCount) {
@@ -10,19 +12,26 @@ int IntDeltaDecoder::readT(ByteBuffer& buffer) {
 
 int IntDeltaDecoder::loadIntBatch(ByteBuffer& buffer) {
 	packNum = buffer.readInt();
+	//cout << "packNum" << packNum << endl;
 	packWidth = buffer.readInt();
 	count++;
 	readHeader(buffer);
-
+	time_t start_t, end_t;
 	encodingLength = dceil(packNum * packWidth);
 	deltaBuf = new char[encodingLength];
+	//time(&start_t);
 	buffer.get(deltaBuf, encodingLength);
+	//time(&end_t);
+	//cout << "get_time: " << end_t - start_t << endl;
 	allocateDataArray();
 
 	previous = firstValue;
 	readIntTotalCount = packNum;
 	nextReadIndex = 0;
+	//time(&start_t);
 	readPack();
+	//time(&end_t);
+	//cout << "cal_time: " << end_t - start_t << endl;
 	return firstValue;
 }
 

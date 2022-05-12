@@ -1,13 +1,12 @@
 ﻿  main.cpp
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(27,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(36,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(100,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(166,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(186,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(301,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(327,38): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-x64\Debug\IntDeltaDecoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
-FloatDeltaDecoder.obj : error LNK2019: 无法解析的外部符号 "public: int __cdecl IntDeltaDecoder::readInt(class ByteBuffer &)" (?readInt@IntDeltaDecoder@@QEAAHAEAVByteBuffer@@@Z)，函数 "public: float __cdecl FloatDeltaDecoder::readFloat(class ByteBuffer &)" (?readFloat@FloatDeltaDecoder@@QEAAMAEAVByteBuffer@@@Z) 中引用了该符号
-main.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __cdecl IntDeltaDecoder::readHeader(class ByteBuffer &)" (?readHeader@IntDeltaDecoder@@UEAAXAEAVByteBuffer@@@Z)
-main.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl IntDeltaDecoder::~IntDeltaDecoder(void)" (??1IntDeltaDecoder@@QEAA@XZ)，函数 "public: __cdecl FloatDeltaDecoder::~FloatDeltaDecoder(void)" (??1FloatDeltaDecoder@@QEAA@XZ) 中引用了该符号
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe : fatal error LNK1120: 3 个无法解析的外部命令
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(30,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(74,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(137,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(203,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(223,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(272,42): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(301,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(328,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(357,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1092,5): error MSB6006: “link.exe”已退出，代码为 1168。
+LINK : fatal error LNK1168: 无法打开 D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe 进行写入

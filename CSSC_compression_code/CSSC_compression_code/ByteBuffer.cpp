@@ -1,7 +1,10 @@
 #include "ByteBuffer.h"
+#include <time.h>
+#include <iostream>
+using namespace std;
 
 template <typename T>
-std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
+std::vector<std::uint8_t>& operator<<(std::vector<std::uint8_t>& in, T& out)
 {
 	if (in.size() >= sizeof(T)) {
 		/*//out = *reinterpret_cast<T*>(in.data());
@@ -33,35 +36,43 @@ int ByteBuffer::remaining()
 int ByteBuffer::readInt()
 {
 	int buffer_int = 0;
-	this->bytes  >> buffer_int;
+	this->bytes  << buffer_int;
 	return buffer_int;
 }
 
 char ByteBuffer::readByte()
 {
 	char buffer_byte;
-	this->bytes >> buffer_byte;
+	this->bytes << buffer_byte;
 	return buffer_byte;
 }
 
 long long ByteBuffer::readLong()
 {
 	long long buffer_ll=0;
-	this->bytes >> buffer_ll;
+	this->bytes << buffer_ll;
 	return buffer_ll;
 }
 
 float ByteBuffer::readFloat()
 {
 	float buffer_float = 0.0;
-	this->bytes >> buffer_float;
+	this->bytes << buffer_float;
 	return buffer_float;
 }
 
 void ByteBuffer::get(char* dst, int len)
 {
+	char* buffer_byte = new char[len];
+	memcpy(buffer_byte, bytes.data(), len);
+	bytes.erase(bytes.begin(), bytes.begin() + len);
 	for (int i = 0; i < len; i++) {
-		char buffer_byte;
-		this->bytes >> dst[len- i -1];
+		dst[len - i - 1] = buffer_byte[i];
 	}
+	delete[] buffer_byte;
+
+	//for (int i = 0; i < len; i++) {
+	//	char buffer_byte;
+	//	this->bytes << dst[len- i -1];
+	//}
 }
