@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -86,7 +87,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;ZLIB_WINAPI;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -139,29 +140,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\Array.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteBuffer.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FunctionEncoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\GZIP.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_decoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zconf.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zlib.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\Array.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.cpp" />
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FunctionEncoder.cpp" />
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\GZIP.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp" />
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaDecoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaEncoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\main.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_decoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\CSSC_compression_code\zlib\zlibwapi.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\CSSC_compression_code\zlib\zlibwapi.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

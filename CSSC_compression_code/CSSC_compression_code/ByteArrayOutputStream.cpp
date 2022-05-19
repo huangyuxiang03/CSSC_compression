@@ -29,6 +29,13 @@ void ByteArrayOutputStream::write(long long b){
    std::vector<std::uint8_t> bytes_tmp = ToByte(b);
    this->bytes.insert(this->bytes.end(),bytes_tmp.begin(),bytes_tmp.end());
 }
+
+void ByteArrayOutputStream::write(char b)
+{
+	std::vector<std::uint8_t> bytes_tmp = ToByte(b);
+	this->bytes.insert(this->bytes.end(), bytes_tmp.begin(), bytes_tmp.end());
+}
+
 void ByteArrayOutputStream::writeBytes(char b[]){
 	int len = sizeof(b);
 	for (int i=0; i < len;i++) {

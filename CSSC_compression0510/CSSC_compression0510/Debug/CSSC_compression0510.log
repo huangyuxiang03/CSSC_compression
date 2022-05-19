@@ -1,0 +1,4 @@
+﻿Debug\Array.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+IntFunctionEncoder.obj : error LNK2019: 无法解析的外部符号 "public: void __thiscall Array<int>::append(int)" (?append@?$Array@H@@QAEXH@Z)，函数 "public: void __thiscall IntFunctionEncoder::encode(int,class ByteArrayOutputStream)" (?encode@IntFunctionEncoder@@QAEXHVByteArrayOutputStream@@@Z) 中引用了该符号
+IntFunctionEncoder.obj : error LNK2019: 无法解析的外部符号 "public: void __thiscall Array<int>::clear(void)" (?clear@?$Array@H@@QAEXXZ)，函数 "public: void __thiscall IntFunctionEncoder::encode(int,class ByteArrayOutputStream)" (?encode@IntFunctionEncoder@@QAEXHVByteArrayOutputStream@@@Z) 中引用了该符号
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0510\Debug\CSSC_compression0510.exe : fatal error LNK1120: 2 个无法解析的外部命令

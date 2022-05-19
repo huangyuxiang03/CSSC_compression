@@ -1,0 +1,23 @@
+﻿  IntFunctionEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.cpp(77,38): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(58,19): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(54): message : 在编译 类 模板 成员函数“void Array<int>::resize(void)”时
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(74): message : 查看对正在编译的函数 模板 实例化“void Array<int>::resize(void)”的引用
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(72): message : 在编译 类 模板 成员函数“void Array<int>::append(T)”时
+          with
+          [
+              T=int
+          ]
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.cpp(59): message : 查看对正在编译的函数 模板 实例化“void Array<int>::append(T)”的引用
+          with
+          [
+              T=int
+          ]
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.h(31): message : 查看对正在编译的 类 模板 实例化“Array<int>”的引用
+  main.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(36,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(80,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(147,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(211,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+  正在生成代码...
+  CSSC_compression0518.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0518\Debug\CSSC_compression0518.exe

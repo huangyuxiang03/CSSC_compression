@@ -8,6 +8,8 @@
 #include <iomanip>
 #include "ByteArrayOutputStream.h"
 #include "LongDeltaEncoder.h"
+#include "IntDeltaEncoder.h"
+#include "IntFunctionEncoder.h"
 #include "LongDeltaDecoder.h"
 #include "FloatDeltaDecoder.h"
 #include "FloatDeltaEncoder.h"
@@ -23,6 +25,10 @@ int char2hex(char c) {
 }
 
 ll char16toll(char* num) {
+	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
+}
+
+int char16toint(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
 
@@ -64,6 +70,73 @@ int justify_file_decode(string filename) {
 	return jresult;
 }
 
+int** read_csvint(string filename, char sep, int& row, int& col)
+{
+	ifstream inFile;
+	inFile.open(filename, ios::in | ios::binary);
+	int** strArray;
+	cout << "read data: " << endl;
+	inFile.seekg(0, std::ios::end);
+	int length = inFile.tellg();
+	inFile.seekg(0, std::ios::beg);
+	char* buffer = new char[length + 1];
+	inFile.read(buffer, length);
+	if (buffer[length - 1] != '\n') buffer[length] = '\n';
+	else length--;
+	cout << length << endl;
+	//int i = 0, col=0,row=0;
+	int i = 0;
+	// find \n
+	while (i != length + 1) {
+		if (buffer[i] == sep)
+			col++;
+		if (buffer[i] == '\n') {
+			col++;
+			break;
+		}
+		i++;
+	}
+	i++;
+	row = (length + 1) / i;
+	strArray = new int* [col];
+	for (int j = 0; j < col; j++) {
+		strArray[j] = new int[row];
+	}
+	//cout << "here" << endl;
+	i = 0;
+	int num_j = 0, row_n = 0, col_n = 0;
+	char* num = new char[4];
+	while (i != length + 1) {
+		if (buffer[i] != '\n' && buffer[i] != sep) {
+			num[num_j] = buffer[i];
+			num_j++;
+		}
+		else if (buffer[i] == sep) {
+			strArray[col_n][row_n] = char16toint(num);
+			delete[] num;
+			num = new char[4];
+			num_j = 0;
+			col_n++;
+		}
+		else if (buffer[i] == '\n') {
+			strArray[col_n][row_n] = char16toint(num);
+			delete[] num;
+			num = new char[4];
+			num_j = 0;
+			row_n++;
+			if (row_n == 180000) break;
+			col_n = 0;
+		}
+		i++;
+	}
+	row = row_n;
+	delete[] buffer;
+	cout << "finish reading " << endl;
+	return strArray;
+
+}
+
+
 ll** read_csvll(string filename,char sep, int& row,int& col)
 {
 	ifstream inFile;
@@ -75,7 +148,8 @@ ll** read_csvll(string filename,char sep, int& row,int& col)
 	inFile.seekg(0, std::ios::beg);
 	char* buffer = new char[length+1];
 	inFile.read(buffer, length);
-	buffer[length] = '\n';
+	if (buffer[length - 1] != '\n') buffer[length] = '\n';
+	else length--;
 	cout << length << endl;
 	//int i = 0, col=0,row=0;
 	int i = 0;
@@ -138,7 +212,8 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 	inFile.seekg(0, std::ios::beg);
 	char* buffer = new char[length + 1];
 	inFile.read(buffer, length);
-	buffer[length] = '\n';
+	if (buffer[length - 1] != '\n') buffer[length] = '\n';
+	else length--;
 	cout << length << endl;
 	//int i = 0, col=0,row=0;
 	int i = 0;
@@ -244,137 +319,161 @@ int main(int argc, char* argv[]) {
 	time_t start, end;
 	double cost;
 	time(&start);
-	
-	if (argc != 4) return 0;
-	if (argv[1][0] == 'c') {
-		//justify the number is ll or float
-		int jresult = justify_file(argv[2]);
-		cout << jresult << endl;
-		if (jresult==0) {
-			//std::cout << argv[2] << endl;
-			ByteArrayOutputStream out(argv[3]);
-			LongDeltaEncoder encoder;
-			int width = 0, length = 0;
-			ll** strArrayll = read_csvll(argv[2], ',', length, width);
-			int* col_pos= new int[width+1]; // the position of per column data
-			int col_n=0; //the number of remaining column of the ByteArrayOutputStream
-			col_pos[0] = 0;
-			std::cout << length << endl;
-			std::cout << width << endl;
-			out.writeDatatype('l');
-			for (int i = 0; i < width; i++) {
-				for (int j = 0; j < length; j++) {
-					if (j == 18000000) cout << j << endl;
-					encoder.encode(strArrayll[i][j], out);
-				}
-				col_n++;
-				encoder.flush(out);
-				col_pos[col_n] =out.getBytes().size();
-				out.write2file();
-			}
-			cout << "finish encoding" << endl;
-			out.writeRowCol(col_n, col_pos);
-			cout << "finish writing" << endl;
+	ByteArrayOutputStream out("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\debug\\well05191");
+	IntFunctionEncoder encoder;
+	int width = 0, length = 0;
+	int** strArrayll = read_csvint("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\debug\\data_well_public.hxv", ',', length, width);
+	int* col_pos = new int[width + 1]; // the position of per column data
+	int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
+	col_pos[0] = 0;
+	std::cout << length << endl;
+	std::cout << width << endl;
+	out.writeDatatype('l');
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < length; j++) {
+			if (j == 18000000) cout << j << endl;
+			encoder.encode(strArrayll[i][j], out);
 		}
-		else if (jresult==1) {
-			//std::cout << argv[2] << endl;
-			ByteArrayOutputStream out(argv[3]);
-			FloatDeltaEncoder encoder;
-			int width = 0, length = 0;
-			float** strArrayll = read_csvf(argv[2], ' ', length, width);
-			int* col_pos = new int[width + 1]; // the position of per column data
-			int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
-			col_pos[0] = 0;
-			std::cout << length << endl;
-			std::cout << width << endl;
-			out.writeDatatype('f');
-			for (int i = 0; i < width; i++) {
-				for (int j = 0; j < length; j++) {
-					if (j == 500000) {
-                        cout << j << endl;
-						//break;
-					} 
-					encoder.encode(strArrayll[i][j], out);
-				}
-				col_n++;
-				encoder.flush(out);
-				col_pos[col_n] = out.getBytes().size();
-				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
-				out.write2file();
-			}
-			cout << "finish encode" << endl;
-			out.writeRowCol(col_n, col_pos);
-			cout << "finish writing" << endl;
-		}
+		col_n++;
+		encoder.flush(out);
+		col_pos[col_n] = out.getBytes().size();
+		out.write2file();
 	}
-	else if (argv[1][0] == 'd') {
-		int jresult = justify_file_decode(argv[2]);
-		cout << jresult << endl;
-		time_t start_d, end_d;
-		double cost_d;
-		time(&start_d);		
-		if (jresult == 0) {
-			ByteArrayOutputStream baos(argv[2]);
-			LongDeltaDecoder decoder;
-			baos.readFromFile();
+	cout << "finish encoding" << endl;
+	out.writeRowCol(col_n, col_pos);
+	cout << "finish writing" << endl;
 
-			vector<long long> llArray;
-			int col = 0;
-			
-			while (baos.hasNextCol()) {
-				col++;
-				//	cout << "current column : " << col << endl;
-				ByteBuffer in(baos.getColBytes());
-				int lengthb = in.Bytes().size();
-				cout << lengthb << endl;
-				int count = 0;
-				while (decoder.hasNext(in)) {
-					ll r = decoder.readLong(in);
-					llArray.push_back(r);
-					//if (count % 50000 ==0 ) {
-					//	time(&end_d);
-					//	cost_d = difftime(end_d, start_d);
-					//	cout << count << endl;
-					//	std::cout << "decode read time :" << cost_d << endl;
-					//}
-					//count++;
-				}
-				std::cout << llArray.size() << endl;
-			}
-			write_csvll(argv[3], llArray, ",",col);
-		}
-		else if (jresult == 1) {
-			ByteArrayOutputStream baos(argv[2]);
-			FloatDeltaDecoder decoder;
-			baos.readFromFile();
-			vector<float> fArray;
-			int col = 0;
 
-			while (baos.hasNextCol()) {
-				col++;
-				cout << "current column : " << col << endl;
-				ByteBuffer in(baos.getColBytes());
-				int lengthb = in.Bytes().size();
-				cout << "length of decode bytes : "<< lengthb << endl;
+	//if (argc != 4) return 0;
+	//if (argv[1][0] == 'c') {
+	//	//justify the number is ll or float
+	//	int jresult = justify_file(argv[2]);
+	//	cout << jresult << endl;
+	//	if (jresult==0) {
+	//		//std::cout << argv[2] << endl;
+	//		ByteArrayOutputStream out(argv[3]);
+	//		LongDeltaEncoder encoder;
+	//		int width = 0, length = 0;
+	//		ll** strArrayll = read_csvll(argv[2], ',', length, width);
+	//		int* col_pos= new int[width+1]; // the position of per column data
+	//		int col_n=0; //the number of remaining column of the ByteArrayOutputStream
+	//		col_pos[0] = 0;
+	//		std::cout << length << endl;
+	//		std::cout << width << endl;
+	//		out.writeDatatype('l');
+	//		for (int i = 0; i < width; i++) {
+	//			for (int j = 0; j < length; j++) {
+	//				if (j == 18000000) cout << j << endl;
+	//				encoder.encode(strArrayll[i][j], out);
+	//			}
+	//			col_n++;
+	//			encoder.flush(out);
+	//			col_pos[col_n] =out.getBytes().size();
+	//			out.write2file();
+	//		}
+	//		cout << "finish encoding" << endl;
+	//		out.writeRowCol(col_n, col_pos);
+	//		cout << "finish writing" << endl;
+	//	}
+	//	else if (jresult==1) {
+	//		//std::cout << argv[2] << endl;
+	//		ByteArrayOutputStream out(argv[3]);
+	//		FloatDeltaEncoder encoder;
+	//		int width = 0, length = 0;
+	//		float** strArrayll = read_csvf(argv[2], ' ', length, width);
+	//		int* col_pos = new int[width + 1]; // the position of per column data
+	//		int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
+	//		col_pos[0] = 0;
+	//		std::cout << length << endl;
+	//		std::cout << width << endl;
+	//		out.writeDatatype('f');
+	//		for (int i = 0; i < width; i++) {
+	//			for (int j = 0; j < length; j++) {
+	//				if (j == 500000) {
+ //                       cout << j << endl;
+	//					//break;
+	//				} 
+	//				encoder.encode(strArrayll[i][j], out);
+	//			}
+	//			col_n++;
+	//			encoder.flush(out);
+	//			col_pos[col_n] = out.getBytes().size();
+	//			cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
+	//			out.write2file();
+	//		}
+	//		cout << "finish encode" << endl;
+	//		out.writeRowCol(col_n, col_pos);
+	//		cout << "finish writing" << endl;
+	//	}
+	//}
+	//else if (argv[1][0] == 'd') {
+	//	int jresult = justify_file_decode(argv[2]);
+	//	cout << jresult << endl;
+	//	time_t start_d, end_d;
+	//	double cost_d;
+	//	time(&start_d);		
+	//	if (jresult == 0) {
+	//		ByteArrayOutputStream baos(argv[2]);
+	//		LongDeltaDecoder decoder;
+	//		baos.readFromFile();
 
-				int count = 0;
-				while (decoder.hasNext(in)) {
-					float r = decoder.readFloat(in);
-					fArray.push_back(r);
-					if (count % 10000 == 0) {
-						time(&end_d);
-						cost_d = difftime(end_d, start_d);
-						time(&start_d);
-						std::cout << "decode read time :" << cost_d << endl;
-					}
-					count++;
-				}
-				//cout << col << endl;
-				std::cout << fArray.size() << endl;
-			}
-			write_csvf(argv[3], fArray, " ", col);
-		}
-	}
+	//		vector<long long> llArray;
+	//		int col = 0;
+	//		
+	//		while (baos.hasNextCol()) {
+	//			col++;
+	//			//	cout << "current column : " << col << endl;
+	//			ByteBuffer in(baos.getColBytes());
+	//			int lengthb = in.Bytes().size();
+	//			cout << lengthb << endl;
+	//			int count = 0;
+	//			while (decoder.hasNext(in)) {
+	//				ll r = decoder.readLong(in);
+	//				llArray.push_back(r);
+	//				//if (count % 50000 ==0 ) {
+	//				//	time(&end_d);
+	//				//	cost_d = difftime(end_d, start_d);
+	//				//	cout << count << endl;
+	//				//	std::cout << "decode read time :" << cost_d << endl;
+	//				//}
+	//				//count++;
+	//			}
+	//			std::cout << llArray.size() << endl;
+	//		}
+	//		write_csvll(argv[3], llArray, ",",col);
+	//	}
+	//	else if (jresult == 1) {
+	//		ByteArrayOutputStream baos(argv[2]);
+	//		FloatDeltaDecoder decoder;
+	//		baos.readFromFile();
+	//		vector<float> fArray;
+	//		int col = 0;
+
+	//		while (baos.hasNextCol()) {
+	//			col++;
+	//			cout << "current column : " << col << endl;
+	//			ByteBuffer in(baos.getColBytes());
+	//			int lengthb = in.Bytes().size();
+	//			cout << "length of decode bytes : "<< lengthb << endl;
+
+	//			int count = 0;
+	//			while (decoder.hasNext(in)) {
+	//				float r = decoder.readFloat(in);
+	//				fArray.push_back(r);
+	//				//if (count % 10000 == 0) {
+	//				//	time(&end_d);
+	//				//	cost_d = difftime(end_d, start_d);
+	//				//	time(&start_d);
+	//				//	//std::cout << "decode read time :" << cost_d << endl;
+	//				//}
+	//				//count++;
+	//			}
+	//			//cout << col << endl;
+	//			std::cout << fArray.size() << endl;
+	//		}
+	//		write_csvf(argv[3], fArray, " ", col);
+	//	}
+	//}
 	time(&end);
 	cost = difftime(end, start);
 	std::cout << cost << endl;

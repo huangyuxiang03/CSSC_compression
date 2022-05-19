@@ -33,6 +33,7 @@ public:
 	};
 	void write(int b);
 	void write(long long b);
+	void write(char b);
 	void writeBytes(char b[]);
 	void write(char* b, int offset, int len);
 	void write2file();
