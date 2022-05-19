@@ -6,19 +6,19 @@
 
 class FunctionEncoder {
 protected:
-	char* encodingBlockBuffer;
+	//char* encodingBlockBuffer;
 	int blockSize;
 	int definitionalDomainSize;
 public:
 	FunctionEncoder() {
-		blockSize = 256;
+		//blockSize = 256;
 		definitionalDomainSize = 64;
 	}
 	FunctionEncoder(int bs,int dds) {
-		blockSize = bs;
+		//blockSize = bs;
 		definitionalDomainSize = dds;
 	}
-	int getBlockSize();
+	//int getBlockSize();
 	int getDefinitionalDomainSize();
 	// how blockSize can not is not divisible by definitionalDomainSize
 

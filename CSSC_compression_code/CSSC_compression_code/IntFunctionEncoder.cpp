@@ -121,6 +121,7 @@ void IntFunctionEncoder::flush(ByteArrayOutputStream& baos)
 
 	//cout<< baos.getBytes().size() << endl;
 
+	delete[] xi;
 	readyEncodeBuffer->clear();
 	this->sigma = 0;
 	this->beta = 0;
