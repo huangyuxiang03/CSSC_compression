@@ -87,6 +87,7 @@ void IntDeltaEncoder::writeHeader(ByteArrayOutputStream& out) {
 }
 
 void IntDeltaEncoder::encode(int value, ByteArrayOutputStream& out) {
+	//cout << value << endl;
 	encodeValue(value, out);
 }
 

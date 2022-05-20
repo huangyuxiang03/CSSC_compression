@@ -1,12 +1,15 @@
 ﻿  main.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(30,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(74,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(137,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(203,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(223,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(272,42): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(301,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(328,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(357,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1092,5): error MSB6006: “link.exe”已退出，代码为 1168。
-LINK : fatal error LNK1168: 无法打开 D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe 进行写入
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(36,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(80,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(147,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(211,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(278,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(336,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(409,42): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(438,43): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(465,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(494,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(450,19): warning C4101: “end_d”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(451,10): warning C4101: “cost_d”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(331): warning C4715: “round_double”: 不是所有的控件路径都返回值
+  CSSC_compression_code.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe

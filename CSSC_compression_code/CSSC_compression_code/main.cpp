@@ -292,6 +292,12 @@ void write_csvll(string filename, vector<ll>& strArray, string seq, int col)
 }
 double round_double(double number, int loc)
 {
+	unsigned long long a;
+	memcpy(&a, &number, sizeof(long long));
+	if (a == 9223372036854775808)
+		return number;
+	
+
 	switch (loc)
 	{
 	case 1:

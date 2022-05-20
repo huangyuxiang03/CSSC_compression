@@ -22,6 +22,7 @@
 
 #include "../CSSC_compression_code/TS_2DIFF_encoder.cpp"
 #include "../CSSC_compression_code/TS_2DIFF_decoder.cpp"
+#include "../CSSC_compression_code/main.cpp"
 
 
 #include <corecrt_math.h>
@@ -239,6 +240,37 @@ namespace Test
 				Assert::AreEqual(v[i], r);
 			}
 			Assert::AreEqual(false, decoder.hasNext(in));
+		}
+
+		TEST_METHOD(MinusZeroTest) {
+			vector<int> v;
+			for (int i = 0; i < 20; i++) {
+				float r = -0.0;
+				int a;
+				memcpy(&a, &r, sizeof(int));
+				v.push_back(a);
+			}
+			ByteArrayOutputStream out;
+			IntDeltaEncoder encoder;
+			IntDeltaDecoder decoder;
+			for (int i = 0; i < 20; i++) {
+				encoder.encode(v[i], out);
+			}
+			encoder.flush(out);
+			ByteBuffer in(out.getBytes());
+			for (int i = 0; i < 20; i++) {
+				int r = decoder.readInt(in);
+				Assert::AreEqual(v[i], r);
+				float r1;
+				memcpy(&r1, &r, sizeof(int));
+			}
+			Assert::AreEqual(false, decoder.hasNext(in));
+		}
+
+		TEST_METHOD(RoundDouble) {
+			float r = -0.000000;
+			float r1 = round_double(r, 5);
+			Assert::AreEqual(r1, r);
 		}
 	};
 }
