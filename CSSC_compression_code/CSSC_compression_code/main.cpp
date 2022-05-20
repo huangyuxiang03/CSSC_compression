@@ -290,7 +290,39 @@ void write_csvll(string filename, vector<ll>& strArray, string seq, int col)
 	std::cout << "finish writing " << endl;
 	//outFile.close();
 }
-
+double round_double(double number, int loc)
+{
+	switch (loc)
+	{
+	case 1:
+		if (number > 0)
+			return double(int((number + 0.05) * 10)) / 10;
+		else
+			return double(int((number - 0.05) * 10)) / 10;
+	case 2:
+		if (number > 0)
+			return double(int((number + 0.005) * 100)) / 100;
+		else
+			return double(int((number - 0.005) * 100)) / 100;
+	case 3:
+		if (number > 0)
+			return double(int((number + 0.0005) * 1000)) / 1000;
+		else
+			return double(int((number - 0.0005) * 1000)) / 1000;
+	case 4:
+		if (number > 0)
+			return double(int((number + 0.00005) * 10000)) / 10000;
+		else
+			return double(int((number - 0.00005) * 10000)) / 10000;
+	case 5:
+		if (number > 0)
+			return double(int((number + 0.000005) * 100000)) / 100000;
+		else
+			return double(int((number - 0.000005) * 100000)) / 100000;
+	default:
+		break;
+	}
+}
 void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 {
 	ofstream outFile(filename);
@@ -302,12 +334,12 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 		int j = 0;
 		outFile.setf(ios::fixed, ios::floatfield);
 		//cout << strArray[j * row + i];
-		outFile << setprecision(3) << strArray[j * row + i];
+		outFile << setprecision(3) << round_double(strArray[j * row + i], 3);
 		j++;
 		for (; j < col; j++) {
 			outFile << seq;
-			outFile.setf(ios::fixed, ios::floatfield);
-			outFile << setprecision(5) << strArray[j * row + i];
+			//outFile.setf(ios::fixed, ios::floatfield);
+			outFile << setprecision(5) << round_double(strArray[j * row + i], 5);
 		}
 		outFile << "\n";
 	}
