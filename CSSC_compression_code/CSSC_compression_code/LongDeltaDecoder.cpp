@@ -15,7 +15,10 @@ ll LongDeltaDecoder::loadIntBatch(ByteBuffer& buffer) {
 	readHeader(buffer);
 
 	encodingLength = dceil(packNum * packWidth);
+	if (deltaBufAllocated)
+		delete[] deltaBuf;
 	deltaBuf = new char[encodingLength];
+	deltaBufAllocated = true;
 	buffer.get(deltaBuf, encodingLength);
 	allocateDataArray();
 

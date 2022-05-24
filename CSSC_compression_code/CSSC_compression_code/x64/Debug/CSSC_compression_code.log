@@ -1,4 +1,9 @@
-﻿  main.cpp
+﻿  IntDeltaDecoder.cpp
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp(19,18): warning C4101: “end_t”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp(19,9): warning C4101: “start_t”: 未引用的局部变量
+  IntDeltaDecoder.h
+  LongDeltaDecoder.cpp
+  main.cpp
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(36,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(80,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(147,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
@@ -11,5 +16,6 @@ D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(494,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(450,19): warning C4101: “end_d”: 未引用的局部变量
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(451,10): warning C4101: “cost_d”: 未引用的局部变量
+  正在生成代码...
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(331): warning C4715: “round_double”: 不是所有的控件路径都返回值
   CSSC_compression_code.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe

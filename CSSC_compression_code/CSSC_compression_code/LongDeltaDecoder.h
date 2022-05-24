@@ -12,6 +12,7 @@ private:
 	ll previous;
 	ll minDeltaBase;
 	bool dataArrayAllocated = false;
+	bool deltaBufAllocated = false;
 public:
 	ll readT(ByteBuffer &buffer);
 	ll loadIntBatch(ByteBuffer &buffer);

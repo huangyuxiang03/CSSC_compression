@@ -18,7 +18,10 @@ int IntDeltaDecoder::loadIntBatch(ByteBuffer& buffer) {
 	readHeader(buffer);
 	time_t start_t, end_t;
 	encodingLength = dceil(packNum * packWidth);
+	if (deltaBufAllocated)
+		delete[] deltaBuf;
 	deltaBuf = new char[encodingLength];
+	deltaBufAllocated = true;
 	//time(&start_t);
 	buffer.get(deltaBuf, encodingLength);
 	//time(&end_t);

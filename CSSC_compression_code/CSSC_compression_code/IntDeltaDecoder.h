@@ -12,6 +12,7 @@ private:
 	int previous;
 	int minDeltaBase;
 	bool dataArrayAllocated = false;
+	bool deltaBufAllocated = false;
 public:
 	int readT(ByteBuffer& buffer);
 	int loadIntBatch(ByteBuffer& buffer);
