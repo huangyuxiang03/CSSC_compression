@@ -66,6 +66,9 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="BitVector.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp">

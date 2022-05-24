@@ -180,16 +180,18 @@ ll** read_csvll(string filename,char sep, int& row,int& col)
 		}
 		else if (buffer[i] == sep) {
 			strArray[col_n][row_n] = char16toll(num);
+			delete[] num;
 			num = new char[4];
 			num_j = 0;
 			col_n++;
 		}
 		else if (buffer[i] == '\n') {
 			strArray[col_n][row_n] = char16toll(num);
+			delete[] num;
 			num = new char[4];
 			num_j = 0;
 			row_n++;
-			//if (row_n == 1000) break;
+			//if (row_n == 1800000) break;
 			col_n = 0;
 		}
 		i++;
@@ -357,29 +359,29 @@ int main(int argc, char* argv[]) {
 	time_t start, end;
 	double cost;
 	time(&start);
-	//ByteArrayOutputStream out("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\debug\\well05191");
-	//IntFunctionEncoder encoder;
-	//int width = 0, length = 0;
-	//int** strArrayll = read_csvint("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\debug\\data_well_public.hxv", ',', length, width);
-	//int* col_pos = new int[width + 1]; // the position of per column data
-	//int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
-	//col_pos[0] = 0;
-	//std::cout << length << endl;
-	//std::cout << width << endl;
-	//out.writeDatatype('l');
-	//for (int i = 3; i < 4; i++) {
-	//	for (int j = 0; j < length; j++) {
-	//		if (j == 18000000) cout << j << endl;
-	//		encoder.encode(strArrayll[i][j], out);
-	//	}
-	//	col_n++;
-	//	encoder.flush(out);
-	//	col_pos[col_n] = out.getBytes().size();
-	//	out.write2file();
-	//}
-	//cout << "finish encoding" << endl;
-	//out.writeRowCol(col_n, col_pos);
-	//cout << "finish writing" << endl;
+	ByteArrayOutputStream out("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\debug\\well0524");
+	LongDeltaEncoder encoder;
+	int width = 0, length = 0;
+	ll** strArrayll = read_csvll("c:\\users\\xiaoj\\documents\\github\\cssc_compression\\cssc_compression_code\\debug\\data_well_public.hxv", ',', length, width);
+	int* col_pos = new int[width + 1]; // the position of per column data
+	int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
+	col_pos[0] = 0;
+	std::cout << length << endl;
+	std::cout << width << endl;
+	out.writeDatatype('l');
+	for (int i = 0; i < width; i++) {
+		for (int j = 0; j < length; j++) {
+			if (j == 18000000) cout << j << endl;
+			encoder.encode(strArrayll[i][j], out);
+		}
+		col_n++;
+		encoder.flush(out);
+		col_pos[col_n] = out.getBytes().size();
+		out.write2file();
+	}
+	cout << "finish encoding" << endl;
+	out.writeRowCol(col_n, col_pos);
+	cout << "finish writing" << endl;
 
 
 	if (argc != 4) return 0;
