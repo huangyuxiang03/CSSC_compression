@@ -157,6 +157,7 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zconf.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zlib.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h" />
+    <ClInclude Include="BitVector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp" />
