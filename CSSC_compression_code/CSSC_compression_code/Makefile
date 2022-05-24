@@ -1,5 +1,5 @@
 main:main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o
-	g++ main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o -o main
+	g++ main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o -o task
 main.o:main.cpp ByteArrayOutputStream.h LongDeltaEncoder.h LongDeltaDecoder.h
 	g++ -c main.cpp -o main.o
 ByteArrayOutputStream.o: ByteArrayOutputStream.cpp ByteArrayOutputStream.h
