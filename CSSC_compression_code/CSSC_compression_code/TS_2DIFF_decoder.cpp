@@ -1,6 +1,6 @@
 #pragma once
 #include "TS_2DIFF_decoder.h"
-#include <cmath>
+#include <corecrt_math.h>
 
 int TS_2DIFF_decoder::dceil(int v) {
 	double ans = ceil(v / 8.0);

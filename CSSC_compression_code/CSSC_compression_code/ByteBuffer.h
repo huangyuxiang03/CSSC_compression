@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <cstring>
 using namespace std;
 #ifndef __ByteBuffer__
 #define __ByteBuffer__
