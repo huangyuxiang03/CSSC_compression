@@ -2,8 +2,7 @@
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(36,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(80,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(147,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(213,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(452,19): warning C4101: “end_d”: 未引用的局部变量
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(453,10): warning C4101: “cost_d”: 未引用的局部变量
-C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(333): warning C4715: “round_double”: 不是所有的控件路径都返回值
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(211,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(412,19): warning C4101: “end_d”: 未引用的局部变量
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(413,10): warning C4101: “cost_d”: 未引用的局部变量
   CSSC_compression0518.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0518\Debug\CSSC_compression0518.exe
