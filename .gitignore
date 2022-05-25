@@ -26,3 +26,5 @@ CSSC_compression_code/x64/Debug/shore_decoded2
 CSSC_compression_code/x64/Debug/shore_decoded
 *.csv
 *.csv
+CSSC_compression0518/Debug/shore_compressed
+CSSC_compression0518/Debug/shore_decompressed

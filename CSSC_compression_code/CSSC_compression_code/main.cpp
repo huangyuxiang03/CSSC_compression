@@ -244,7 +244,8 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 			num_j++;
 		}
 		else if (buffer[i] == sep) {
-			char* num = new char[num_j+1];
+			delete[] num;
+			num = new char[num_j+1];
 			for (int k = 0; k < num_j; k++) {
 				num[k] = buffer[i - num_j + k];
 			}
@@ -253,7 +254,8 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 			col_n++;
 		}
 		else if (buffer[i] == '\n') {
-			char* num = new char[num_j+1];
+			delete[] num;
+			num = new char[num_j+1];
 			for (int k = 0; k < num_j; k++) {
 				num[k] = buffer[i - num_j + k];
 			}
@@ -264,7 +266,10 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 			col_n = 0;
 		}
 		i++;
+		if(i%1000000 == 0)
+			cout << (double)i / length << endl;
 	}
+	delete[] num;
 	row = row_n;
 	delete[] buffer;
 	cout << "finish reading " << endl;

@@ -2,7 +2,8 @@
 #include "FloatDeltaDecoder.h"
 
 float FloatDeltaDecoder::readFloat(ByteBuffer& buffer) {
-	int ans = decoder.readInt(buffer);
+	int ans;// = decoder.readInt(buffer);
+	ans = decoder.readInt(buffer);
 	return convertIntToFloat(ans);
 }
 
