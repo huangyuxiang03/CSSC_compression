@@ -36,6 +36,10 @@ float chartofloat(char* num) {
 	return atof(num);
 }
 
+float chartoint(char* num) {
+	return atoi(num);
+}
+
 //justify the number is ll or float, if it is ll, return 0;else return 1;
 int justify_file(string filename) {
 	int try_len = 10;
@@ -136,6 +140,77 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 
 }
 
+int** read_csvint_vector(string filename, char sep, int& row, int& col)
+{
+	ifstream inFile;
+	inFile.open(filename, ios::in | ios::binary);
+	int** strArray;
+	cout << "read data: " << endl;
+	inFile.seekg(0, std::ios::end);
+	int length = inFile.tellg();
+	inFile.seekg(0, std::ios::beg);
+	char* buffer = new char[length + 1];
+	inFile.read(buffer, length);
+	if (buffer[length - 1] != '\n') buffer[length] = '\n';
+	else length--;
+	cout << length << endl;
+	//int i = 0, col=0,row=0;
+	int i = 0;
+	// find \n
+	while (i != length + 1) {
+		if (buffer[i] == sep) {
+			col++;
+			cout << col << endl;
+		}
+
+		if (buffer[i] == '\n') {
+			col++;
+			break;
+		}
+		i++;
+	}
+
+	i++;
+	row = 20000000;// (length + 1) / i;
+	strArray = new int* [col];
+	for (int j = 0; j < col; j++) {
+		strArray[j] = new int[row];
+	}
+	//cout << "here" << endl;
+	i = 0;
+
+	int num_j = 0, row_n = 0, col_n = 0;
+	char* num = new char[5];
+	while (i != length + 1) {
+		if (buffer[i] != '\n' && buffer[i] != sep) {
+			num[num_j] = buffer[i];
+			num_j++;
+		}
+		else if (buffer[i] == sep) {
+			strArray[col_n][row_n] = chartoint(num);
+			delete[] num;
+			num = new char[5];
+			num_j = 0;
+			col_n++;
+		}
+		else if (buffer[i] == '\n') {
+			strArray[col_n][row_n] = chartoint(num);
+			delete[] num;
+			num = new char[5];
+			num_j = 0;
+			row_n++;
+			//cout << row_n << endl;
+			//if (row_n == 180000) break;
+			col_n = 0;
+		}
+		i++;
+	}
+	row = row_n;
+	delete[] buffer;
+	cout << "finish reading " << endl;
+	return strArray;
+
+}
 
 ll** read_csvll(string filename,char sep, int& row,int& col)
 {
@@ -180,12 +255,14 @@ ll** read_csvll(string filename,char sep, int& row,int& col)
 		}
 		else if (buffer[i] == sep) {
 			strArray[col_n][row_n] = char16toll(num);
+			delete[] num;
 			num = new char[4];
 			num_j = 0;
 			col_n++;
 		}
 		else if (buffer[i] == '\n') {
 			strArray[col_n][row_n] = char16toll(num);
+			delete[] num;
 			num = new char[4];
 			num_j = 0;
 			row_n++;
@@ -266,8 +343,8 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 			col_n = 0;
 		}
 		i++;
-		if(i%1000000 == 0)
-			cout << (double)i / length << endl;
+		//if(i%1000000 == 0)
+		//	cout << (double)i / length << endl;
 	}
 	delete[] num;
 	row = row_n;
@@ -395,9 +472,11 @@ int main(int argc, char* argv[]) {
 		if (jresult==0) {
 			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
-			LongDeltaEncoder encoder;
+			IntDeltaEncoder encoder;
+			//LongDeltaEncoder encoder;
 			int width = 0, length = 0;
-			ll** strArrayll = read_csvll(argv[2], ',', length, width);
+			int** strArrayll =  read_csvint_vector(argv[2], ',', length, width);
+			//ll** strArrayll = read_csvll(argv[2], ',', length, width);
 			int* col_pos= new int[width+1]; // the position of per column data
 			int col_n=0; //the number of remaining column of the ByteArrayOutputStream
 			col_pos[0] = 0;
