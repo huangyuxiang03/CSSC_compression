@@ -111,7 +111,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 	int num_j = 0, row_n = 0, col_n = 0;
 	char* num = new char[4];
 	while (i != length + 1) {
-		if (buffer[i] != '\n' && buffer[i] != sep) {
+		if (buffer[i] != '\n' && buffer[i]!='\r' && buffer[i] != sep) {
 			num[num_j] = buffer[i];
 			num_j++;
 		}
@@ -122,7 +122,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 			num_j = 0;
 			col_n++;
 		}
-		else if (buffer[i] == '\n') {
+		else if (buffer[i] == '\n' || buffer[i] == '\r') {
 			strArray[col_n][row_n] = char16toint(num);
 			delete[] num;
 			num = new char[4];
@@ -130,6 +130,11 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 			row_n++;
 			if (row_n == 1800000) break;
 			col_n = 0;
+			if (i + 1 <= length) {
+				if (buffer[i] == '\n' || buffer[i] == '\r') {
+					i++;
+				}
+			}
 		}
 		i++;
 	}
@@ -495,19 +500,20 @@ int main(int argc, char* argv[]) {
 			IntDeltaEncoder encoder;
 			//LongDeltaEncoder encoder;
 			int width = 0, length = 0;
-			int** strArrayll =  read_csvint_vector(argv[2], ',', length, width);
+			int** strArrayll =  read_csvint(argv[2], ',', length, width);
 			//ll** strArrayll = read_csvll(argv[2], ',', length, width);
 			int* col_pos= new int[width+1]; // the position of per column data
 			int col_n=0; //the number of remaining column of the ByteArrayOutputStream
 			col_pos[0] = 0;
 			std::cout << length << endl;
-			std::cout << width << endl;
+			std::cout << "width: " << width << endl;
 			out.writeDatatype('l');
 			for (int i = 0; i < width; i++) {
 				for (int j = 0; j < length; j++) {
 					if (j == 18000000) cout << j << endl;
 					encoder.encode(strArrayll[i][j], out);
 				}
+				cout << endl;
 				col_n++;
 				encoder.flush(out);
 				col_pos[col_n] =out.getBytes().size();
