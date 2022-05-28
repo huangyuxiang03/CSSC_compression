@@ -109,7 +109,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 	//cout << "here" << endl;
 	i = 0;
 	int num_j = 0, row_n = 0, col_n = 0;
-	char* num = new char[4];
+	char* num = new char[5];
 	while (i != length + 1) {
 		if (buffer[i] != '\n' && buffer[i]!='\r' && buffer[i] != sep) {
 			num[num_j] = buffer[i];
@@ -118,23 +118,19 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 		else if (buffer[i] == sep) {
 			strArray[col_n][row_n] = char16toint(num);
 			delete[] num;
-			num = new char[4];
+			num = new char[5];
 			num_j = 0;
 			col_n++;
 		}
-		else if (buffer[i] == '\n' || buffer[i] == '\r') {
+		else if (buffer[i] == '\n') {
 			strArray[col_n][row_n] = char16toint(num);
 			delete[] num;
-			num = new char[4];
+			num = new char[5];
 			num_j = 0;
 			row_n++;
 			if (row_n == 1800000) break;
 			col_n = 0;
-			if (i + 1 <= length) {
-				if (buffer[i] == '\n' || buffer[i] == '\r') {
-					i++;
-				}
-			}
+			
 		}
 		i++;
 	}
