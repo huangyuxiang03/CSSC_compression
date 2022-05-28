@@ -352,6 +352,25 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 	cout << "finish reading " << endl;
 	return strArray;
 }
+void write_csvint(string filename, vector<int>& strArray, string seq, int col)
+{
+	ofstream outFile(filename);
+	//outFile.open(filename, ios::out );
+	int length = strArray.size();
+	int row = length / col;
+
+	for (int i = 0; i < row; i++) {
+		int j = 0;
+		for (; j < col - 1; j++) {
+			outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
+			outFile << seq;
+		}
+		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
+		outFile << "\n";
+	}
+	std::cout << "finish writing " << endl;
+	//outFile.close();
+}
 
 void write_csvll(string filename, vector<ll>& strArray, string seq, int col)
 {
@@ -429,6 +448,7 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 			//outFile.setf(ios::fixed, ios::floatfield);
 			outFile << setprecision(5) << round_double(strArray[j * row + i], 5);
 		}
+		outFile << "\r";
 		outFile << "\n";
 	}
 	std::cout << "finish writing " << endl;
@@ -536,10 +556,10 @@ int main(int argc, char* argv[]) {
 		time(&start_d);		
 		if (jresult == 0) {
 			ByteArrayOutputStream baos(argv[2]);
-			LongDeltaDecoder decoder;
+			IntDeltaDecoder decoder;
 			baos.readFromFile();
 
-			vector<long long> llArray;
+			vector<int> llArray;
 			int col = 0;
 			
 			while (baos.hasNextCol()) {
@@ -550,7 +570,7 @@ int main(int argc, char* argv[]) {
 				cout << lengthb << endl;
 				int count = 0;
 				while (decoder.hasNext(in)) {
-					ll r = decoder.readLong(in);
+					int r = decoder.readInt(in);
 					llArray.push_back(r);
 					//if (count % 50000 ==0 ) {
 					//	time(&end_d);
@@ -562,7 +582,7 @@ int main(int argc, char* argv[]) {
 				}
 				std::cout << llArray.size() << endl;
 			}
-			write_csvll(argv[3], llArray, ",",col);
+			write_csvint(argv[3], llArray, ",",col);
 		}
 		else if (jresult == 1) {
 			ByteArrayOutputStream baos(argv[2]);
