@@ -128,7 +128,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 			num = new char[5];
 			num_j = 0;
 			row_n++;
-			if (row_n == 1800000) break;
+			//if (row_n == 1800000) break;
 			col_n = 0;
 			
 		}
