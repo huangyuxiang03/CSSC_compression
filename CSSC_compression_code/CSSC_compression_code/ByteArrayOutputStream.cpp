@@ -141,7 +141,7 @@ void ByteArrayOutputStream::readFromFile()
 void ByteArrayOutputStream::writeDatatype(char datatype)
 {
 	ofstream outfile;
-	outfile.open(filepath, ios::app | ios::out | ios::binary);
+	outfile.open(filepath, ios::out | ios::binary);
 	if (!outfile)
 	{
 		cout << "the file can't open" << endl;
