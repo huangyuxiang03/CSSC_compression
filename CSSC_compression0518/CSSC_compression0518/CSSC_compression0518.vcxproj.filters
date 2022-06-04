@@ -42,9 +42,6 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaDecoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -64,6 +61,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\RleEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntRleEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntPacker.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -92,9 +98,6 @@
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaDecoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -108,6 +111,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\RleEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntPacker.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntRleEncoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

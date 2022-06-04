@@ -63,11 +63,17 @@ float ByteBuffer::readFloat()
 
 void ByteBuffer::get(char* dst, int len)
 {
-	char* buffer_byte = new char[len];
-	memcpy(buffer_byte, bytes.data(), len);
-	bytes.erase(bytes.begin(), bytes.begin() + len);
-	for (int i = 0; i < len; i++) {
-		dst[len - i - 1] = buffer_byte[i];
+	int max = len;
+	//if (len > bytes.size()) max = bytes.size();
+	char* buffer_byte = new char[max];
+	memcpy(buffer_byte, bytes.data(), max);
+	//if (len ) {
+	//	bytes.erase(bytes.begin(), bytes.end());
+	//}
+	//else 
+	bytes.erase(bytes.begin(), bytes.begin() + max);
+	for (int i = 0; i < max; i++) {
+		dst[max - i - 1] = buffer_byte[i];
 	}
 	delete[] buffer_byte;
 

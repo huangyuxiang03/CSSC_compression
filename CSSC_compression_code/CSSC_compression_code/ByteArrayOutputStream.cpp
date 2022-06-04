@@ -1,6 +1,7 @@
 #pragma once
 #include "ByteArrayOutputStream.h"
 
+
 template <typename T>
 std::vector<std::uint8_t> ToByte(T input)
 {
@@ -57,7 +58,39 @@ void ByteArrayOutputStream::write(char* b, int offset, int len)
 		this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
 	}
 }
+void ByteArrayOutputStream::write(vector<std::uint8_t> b, int offset, int len)
+{
+	int end = offset + len;
+	/*if (end > length || offset < 0) {
+		std::cout << "offset error" << std::endl;
+		abort();
+	}*/
+	//for (int i = offset; i < end; i++) {
+	//	std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
+	this->bytes.insert(this->bytes.end(), b.begin(), b.end());
+	//}
+}
+void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
+{
+	int end = offset + len;
+	for (int i = offset; i < end; i++) {
+		this->bytes.push_back(b[i]);
+	}
+}
+void ByteArrayOutputStream::compress() {
+	//int* olen;
+	int ilen = this->bytes.size();
+	std::uint8_t* idata = new std::uint8_t[ilen];
+	for (int i = 0; i < ilen;i++) {
+		 idata[i] = this->bytes[i];
+	}
+	//std::uint8_t* odata;
+	GZIP gzip;
+	this->compressed_bytes = new std::uint8_t[ilen];
+	gzip.data_compress(idata, ilen, this->compressed_bytes, this->olen);
 
+
+}
 void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
@@ -70,6 +103,12 @@ void ByteArrayOutputStream::write2file()
 	{
 		//outfile.write((const char*)&this->bytes, this->bytes.size());
 		//cout << this->bytes.size() << endl;
+		//compress();
+		//int ilen = this->bytes.size();
+		//for (int i = 0; i < ilen; i++) {
+		//	outfile << this->compressed_bytes[i];
+		//}
+
 		for (std::uint8_t bt : this->bytes) {
 			outfile <<  bt;
 		}

@@ -1,6 +1,6 @@
 #pragma once
 #include "TS_2DIFF_encoder.h"
-#include <corecrt_math.h>
+#include <cmath>
 
 TS_2DIFF_encoder::TS_2DIFF_encoder(int size) :
 	blockSize(size) { }

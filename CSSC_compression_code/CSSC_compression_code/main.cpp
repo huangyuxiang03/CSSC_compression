@@ -9,10 +9,13 @@
 #include "ByteArrayOutputStream.h"
 #include "LongDeltaEncoder.h"
 #include "IntDeltaEncoder.h"
-#include "IntFunctionEncoder.h"
+//#include "IntFunctionEncoder.h"
 #include "LongDeltaDecoder.h"
 #include "FloatDeltaDecoder.h"
 #include "FloatDeltaEncoder.h"
+#include "RleEncoder.h"
+#include "IntRleEncoder.h"
+
 using namespace std;
 
 int char2hex(char c) {
@@ -87,6 +90,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 	inFile.read(buffer, length);
 	if (buffer[length - 1] != '\n') buffer[length] = '\n';
 	else length--;
+
 	cout << length << endl;
 	//int i = 0, col=0,row=0;
 	int i = 0;
@@ -101,11 +105,13 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 		i++;
 	}
 	i++;
+
 	row = (length + 1) / i;
 	strArray = new int* [col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new int[row];
 	}
+
 	//cout << "here" << endl;
 	i = 0;
 	int num_j = 0, row_n = 0, col_n = 0;
@@ -128,7 +134,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 			num = new char[5];
 			num_j = 0;
 			row_n++;
-		//	if (row_n == 1800000) break;
+			if (row_n == 18000) break;
 			col_n = 0;
 			
 		}
@@ -493,7 +499,7 @@ int main(int argc, char* argv[]) {
 		if (jresult==0) {
 			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
-			IntDeltaEncoder encoder;
+			IntRleEncoder encoder;
 			//LongDeltaEncoder encoder;
 			int width = 0, length = 0;
 			int** strArrayll =  read_csvint(argv[2], ',', length, width);

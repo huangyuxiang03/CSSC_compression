@@ -10,6 +10,8 @@
 #include "../CSSC_compression_code/TS_2DIFF_decoder.h"
 #include "../CSSC_compression_code/FloatDeltaDecoder.h"
 #include "../CSSC_compression_code/FloatDeltaEncoder.h"
+#include "../CSSC_compression_code/RleEncoder.h"
+#include "../CSSC_compression_code/IntRleEncoder.h"
 
 #include "../CSSC_compression_code/ByteBuffer.cpp"
 #include "../CSSC_compression_code/ByteArrayOutputStream.cpp"
@@ -25,7 +27,7 @@
 #include "../CSSC_compression_code/main.cpp"
 
 
-#include <corecrt_math.h>
+#include <cmath>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -272,5 +274,83 @@ namespace Test
 			float r1 = round_double(r, 5);
 			Assert::AreEqual(r1, r);
 		}
+	};
+
+	TEST_CLASS(RleEncoderTest)
+	{
+	public:
+
+		TEST_METHOD(SingleValue)
+		{
+			int data[] = { 0,1,22,333,4444,5555,6666,12131123122,2143487800 };
+			//ll data[] = { 1 };
+			for (auto d : data) {
+				ByteArrayOutputStream out;
+				IntRleEncoder encoder;
+				//LongDeltaDecoder decoder;
+				encoder.encode(d, out);
+				encoder.flush(out);
+				//ByteBuffer in(out.getBytes());
+				//ll r = decoder.readLong(in);
+				//Assert::AreEqual(d, r);
+			}
+		}
+
+		//TEST_METHOD(RepeatValue)
+		//{
+		//	for (int i = 0; i < 100; i++) {
+		//		ByteArrayOutputStream out;
+		//		LongDeltaEncoder encoder;
+		//		LongDeltaDecoder decoder;
+		//		for (int j = 0; j < 2000; j++) {
+		//			encoder.encode(i, out);
+		//		}
+		//		encoder.flush(out);
+		//		ByteBuffer in(out.getBytes());
+		//		for (int j = 0; j < 2000; j++) {
+		//			ll r = decoder.readLong(in);
+		//			Assert::AreEqual((ll)i, r);
+		//		}
+		//		bool a = decoder.hasNext(in);
+		//		Assert::AreEqual(false, decoder.hasNext(in));
+		//	}
+		//}
+
+		//TEST_METHOD(MultipleValues) {
+		//	ByteArrayOutputStream out;
+		//	LongDeltaEncoder encoder;
+		//	LongDeltaDecoder decoder;
+		//	for (int j = 0; j < 2000; j++) {
+		//		encoder.encode((ll)(j * pow(-1, j)), out);
+		//	}
+		//	encoder.flush(out);
+		//	ByteBuffer in(out.getBytes());
+		//	for (int j = 0; j < 2000; j++) {
+		//		ll r = decoder.readLong(in);
+		//		Assert::AreEqual((ll)(j * pow(-1, j)), r);
+		//	}
+		//	bool a = decoder.hasNext(in);
+		//	Assert::AreEqual(false, decoder.hasNext(in));
+		//}
+
+		//TEST_METHOD(FinalTest) {
+		//	vector<ll> v;
+		//	for (int i = 0; i < 20000; i++) {
+		//		v.push_back(rand());
+		//	}
+		//	ByteArrayOutputStream out;
+		//	LongDeltaEncoder encoder;
+		//	LongDeltaDecoder decoder;
+		//	for (int i = 0; i < 2000; i++) {
+		//		encoder.encode(v[i], out);
+		//	}
+		//	encoder.flush(out);
+		//	ByteBuffer in(out.getBytes());
+		//	for (int i = 0; i < 2000; i++) {
+		//		ll r = decoder.readLong(in);
+		//		Assert::AreEqual(v[i], r);
+		//	}
+		//	Assert::AreEqual(false, decoder.hasNext(in));
+		//}
 	};
 }
