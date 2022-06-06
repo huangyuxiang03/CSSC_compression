@@ -38,6 +38,7 @@ public:
 	void write(int b);
 	void write(long long b);
 	void write(char b);
+	void write(std::uint8_t b);
 	void writeBytes(char b[]);
 	void write(char* b, int offset, int len);
 	void write(vector<std::uint8_t> b, int offset, int len);
@@ -45,11 +46,12 @@ public:
 	void write2file();
 	void readFromFile();
 	void writeDatatype(char datatype);
-	void compress();
+	//void compress();
 	std::vector<std::uint8_t> getBytes();
 	std::vector<std::uint8_t> getColBytes();
 	bool hasNextCol();
 	void writeRowCol(int col_n, int* col_pos);
+	void reset();
 };
 
 #endif // !__BYTEARRAYOUTPUTSTREAM__

@@ -134,7 +134,7 @@ int** read_csvint(string filename, char sep, int& row, int& col)
 			num = new char[5];
 			num_j = 0;
 			row_n++;
-			if (row_n == 18000) break;
+			//if (row_n == 1800000) break;
 			col_n = 0;
 			
 		}
@@ -512,12 +512,15 @@ int main(int argc, char* argv[]) {
 			out.writeDatatype('l');
 			for (int i = 0; i < width; i++) {
 				for (int j = 0; j < length; j++) {
-					if (j == 18000000) cout << j << endl;
+					if (j %1800000==0) {
+						cout << j << endl;
+					} 
+					//cout << j << endl;
 					encoder.encode(strArrayll[i][j], out);
 				}
-				cout << endl;
 				col_n++;
-				encoder.flush(out);
+				encoder.flushint(out);
+				//cout << out.getBytes().size() << endl;
 				col_pos[col_n] =out.getBytes().size();
 				out.write2file();
 			}

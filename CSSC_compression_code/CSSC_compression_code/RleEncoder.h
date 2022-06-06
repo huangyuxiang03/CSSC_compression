@@ -14,7 +14,7 @@ protected:
 	int repeatCount;
 	int bitPackedGroupCount;
 	int numBufferedValues;
-	vector<std::uint8_t*> bytesBuffer;
+	vector<vector<std::uint8_t>> bytesBuffer;
 	bool isBitPackRun;
 	//T preValue;
 	//T[] bufferedValues;
@@ -34,15 +34,15 @@ public:
 		RLE_MAX_REPEATED_NUM = 0x7FFF;
 	}
 	void reset();
-	void flush(ByteArrayOutputStream out);
+	void flush(ByteArrayOutputStream& out);
 	virtual void writeRleRun() {};
 	virtual void clearBuffer() {};
 	virtual void convertBuffer(){};
 	void writeOrAppendBitPackedRun();
-	int writeUnsignedVarInt(int value, ByteArrayOutputStream out);
+	int writeUnsignedVarInt(int value, ByteArrayOutputStream& out);
 	static int getIntMaxBitWidth(vector<int> list);
 	static int numberOfLeadingZeros(int i);
-	static void writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream out, int bitWidth);
+	static void writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream& out, int bitWidth);
 	void endPreviousBitPackedRun(int lastBitPackedNum);
 
 };

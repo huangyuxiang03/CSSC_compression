@@ -37,6 +37,11 @@ void ByteArrayOutputStream::write(char b)
 	this->bytes.insert(this->bytes.end(), bytes_tmp.begin(), bytes_tmp.end());
 }
 
+void ByteArrayOutputStream::write(std::uint8_t b)
+{
+	this->bytes.push_back(b);
+}
+
 void ByteArrayOutputStream::writeBytes(char b[]){
 	int len = sizeof(b);
 	for (int i=0; i < len;i++) {
@@ -77,20 +82,20 @@ void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
 		this->bytes.push_back(b[i]);
 	}
 }
-void ByteArrayOutputStream::compress() {
-	//int* olen;
-	int ilen = this->bytes.size();
-	std::uint8_t* idata = new std::uint8_t[ilen];
-	for (int i = 0; i < ilen;i++) {
-		 idata[i] = this->bytes[i];
-	}
-	//std::uint8_t* odata;
-	GZIP gzip;
-	this->compressed_bytes = new std::uint8_t[ilen];
-	gzip.data_compress(idata, ilen, this->compressed_bytes, this->olen);
-
-
-}
+//void ByteArrayOutputStream::compress() {
+//	//int* olen;
+//	int ilen = this->bytes.size();
+//	std::uint8_t* idata = new std::uint8_t[ilen];
+//	for (int i = 0; i < ilen;i++) {
+//		 idata[i] = this->bytes[i];
+//	}
+//	//std::uint8_t* odata;
+//	GZIP gzip;
+//	this->compressed_bytes = new std::uint8_t[ilen];
+//	gzip.data_compress(idata, ilen, this->compressed_bytes, this->olen);
+//
+//
+//}
 void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
@@ -238,6 +243,12 @@ void ByteArrayOutputStream::writeRowCol(int col_nf, int* col_posf)
 		} 
 		outfile.close();
 	}
+}
+
+void ByteArrayOutputStream::reset()
+{
+	vector <std::uint8_t>().swap(this->bytes);
+	//this->bytes.clear();
 }
 
 

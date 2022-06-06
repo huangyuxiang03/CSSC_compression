@@ -20,9 +20,10 @@ public:
 		preValue = 0;
 		//values = new ArrayList<>();
 	}
-	void encode(int value, ByteArrayOutputStream out);
-	void encode(bool value, ByteArrayOutputStream out);
-	void flush(ByteArrayOutputStream out);
+	void encode(int value, ByteArrayOutputStream& out);
+	int getIntMaxBitWidth(vector<int> list);
+	void encode(bool value, ByteArrayOutputStream& out);
+	void flushint(ByteArrayOutputStream& out);
 	void reset(); 
 	void writeRleRun();
 	void clearBuffer();

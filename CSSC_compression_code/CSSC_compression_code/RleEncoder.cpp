@@ -8,10 +8,10 @@ void RleEncoder::reset() {
     bytesBuffer.clear();
     isBitPackRun = false;
     isBitWidthSaved = false;
-    //byteCache.reset();
+    byteCache.reset();
 }
 
-void RleEncoder::flush(ByteArrayOutputStream out)
+void RleEncoder::flush(ByteArrayOutputStream& out)
 {
     int lastBitPackedNum = numBufferedValues;
 	if (repeatCount >= this->RLE_MIN_REPEATED_NUM) {
@@ -29,6 +29,7 @@ void RleEncoder::flush(ByteArrayOutputStream out)
 	writeUnsignedVarInt(byteCache.getBytes().size(), out);
 	out.write(byteCache.getBytes(),0, byteCache.getBytes().size());
 	reset();
+    //cout << out.getBytes().size() << endl;
 }
 
 void RleEncoder::writeOrAppendBitPackedRun()
@@ -49,7 +50,7 @@ void RleEncoder::writeOrAppendBitPackedRun()
     ++bitPackedGroupCount;
 }
 
-int RleEncoder::writeUnsignedVarInt(int value, ByteArrayOutputStream out)
+int RleEncoder::writeUnsignedVarInt(int value, ByteArrayOutputStream& out)
 {
     int position = 1;
     while ((value & 0xFFFFFF80) != 0L) {
@@ -61,15 +62,6 @@ int RleEncoder::writeUnsignedVarInt(int value, ByteArrayOutputStream out)
     return position;
 }
 
-int RleEncoder::getIntMaxBitWidth(vector<int> list)
-{
-    int maxnum = 1;
-    for (int num : list) {
-        int bitWidth = 32 - numberOfLeadingZeros(num);
-        maxnum = max(bitWidth, maxnum);
-    }
-    return maxnum;
-}
 
 int RleEncoder::numberOfLeadingZeros(int i)
 {
@@ -83,7 +75,7 @@ int RleEncoder::numberOfLeadingZeros(int i)
     return n - (i >> 1);
 }
 
-void RleEncoder::writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream out, int bitWidth)
+void RleEncoder::writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream& out, int bitWidth)
 {
     int paddedByteNum = (bitWidth + 7) / 8;
     if (paddedByteNum > 4) {
@@ -105,9 +97,13 @@ void RleEncoder::endPreviousBitPackedRun(int lastBitPackedNum)
     std::uint8_t bitPackHeader = (std::uint8_t)((bitPackedGroupCount << 1) | 1);
     byteCache.write(bitPackHeader);
     byteCache.write(lastBitPackedNum);
-    for (std::uint8_t* bytes : bytesBuffer) {
-        int len = sizeof(bytes) / sizeof(std::uint8_t);
-        byteCache.write(bytes, 0, len);
+    for (vector<std::uint8_t> bytes : bytesBuffer) {
+        //int len = 0;
+        //while (*bytes != NULL) {
+        //    bytes++;
+        //    len++;
+        //}
+        byteCache.write(bytes, 0, bytes.size());
     }
     bytesBuffer.clear();
     isBitPackRun = false;

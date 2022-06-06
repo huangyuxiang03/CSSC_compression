@@ -1,11 +1,11 @@
 #include "IntRleEncoder.h"
 
-void IntRleEncoder::encode(int value, ByteArrayOutputStream out)
+void IntRleEncoder::encode(int value, ByteArrayOutputStream& out)
 {
 	values.push_back(value);
 }
 
-void IntRleEncoder::encode(bool value, ByteArrayOutputStream out)
+void IntRleEncoder::encode(bool value, ByteArrayOutputStream& out)
 {
     if (value) {
         this->encode(1, out);
@@ -15,10 +15,21 @@ void IntRleEncoder::encode(bool value, ByteArrayOutputStream out)
     }
 }
 
-void IntRleEncoder::flush(ByteArrayOutputStream out)
+int IntRleEncoder::getIntMaxBitWidth(vector<int> list)
+{
+    int maxnum = 1;
+    for (int num : list) {
+        int bitWidth = 32 - numberOfLeadingZeros(num);
+        maxnum = max(bitWidth, maxnum);
+    }
+    return maxnum;
+}
+
+void IntRleEncoder::flushint(ByteArrayOutputStream& out)
 {
     this->bitWidth = getIntMaxBitWidth(values);
-    packer.setWidth(bitWidth);
+    IntPacker new_packer(bitWidth);
+    packer = new_packer;
     for (int value : values) {
         encodeValue(value);
     }
@@ -50,7 +61,7 @@ void IntRleEncoder::clearBuffer()
 
 void IntRleEncoder::convertBuffer()
 {
-    std::uint8_t* bytes = new std::uint8_t[bitWidth];
+    vector<std::uint8_t> bytes(bitWidth);
 
     int* tmpBuffer = new int[RLE_MIN_REPEATED_NUM];
     for (int i = 0; i < RLE_MIN_REPEATED_NUM; i++) {
