@@ -1,4 +1,4 @@
-#include "GZIP.h"
+#include "C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h"
 
 //idata 待压缩数据
 //ilen  待压缩数据的长度

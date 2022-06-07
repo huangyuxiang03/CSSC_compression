@@ -1,6 +1,9 @@
-﻿  FloatDeltaDecoder.cpp
-x64\Debug\IntDeltaDecoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
-FloatDeltaDecoder.obj : error LNK2019: 无法解析的外部符号 "public: int __cdecl IntDeltaDecoder::readInt(class ByteBuffer &)" (?readInt@IntDeltaDecoder@@QEAAHAEAVByteBuffer@@@Z)，函数 "public: float __cdecl FloatDeltaDecoder::readFloat(class ByteBuffer &)" (?readFloat@FloatDeltaDecoder@@QEAAMAEAVByteBuffer@@@Z) 中引用了该符号
-main.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __cdecl IntDeltaDecoder::readHeader(class ByteBuffer &)" (?readHeader@IntDeltaDecoder@@UEAAXAEAVByteBuffer@@@Z)
-main.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl IntDeltaDecoder::~IntDeltaDecoder(void)" (??1IntDeltaDecoder@@QEAA@XZ)，函数 "public: __cdecl FloatDeltaDecoder::~FloatDeltaDecoder(void)" (??1FloatDeltaDecoder@@QEAA@XZ) 中引用了该符号
-D:\本科\Git\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe : fatal error LNK1120: 3 个无法解析的外部命令
+﻿x64\Debug\IntDeltaDecoder.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+ByteArrayOutputStream.obj : error LNK2019: 无法解析的外部符号 "public: int __cdecl GZIP::data_compress(unsigned char *,int,unsigned char *,int &)" (?data_compress@GZIP@@QEAAHPEAEH0AEAH@Z)，函数 "public: void __cdecl ByteArrayOutputStream::compress(void)" (?compress@ByteArrayOutputStream@@QEAAXXZ) 中引用了该符号
+main.obj : error LNK2019: 无法解析的外部符号 "public: void __cdecl IntRleEncoder::encode(int,class ByteArrayOutputStream)" (?encode@IntRleEncoder@@QEAAXHVByteArrayOutputStream@@@Z)，函数 main 中引用了该符号
+main.obj : error LNK2019: 无法解析的外部符号 "public: void __cdecl IntRleEncoder::flush(class ByteArrayOutputStream)" (?flush@IntRleEncoder@@QEAAXVByteArrayOutputStream@@@Z)，函数 main 中引用了该符号
+main.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __cdecl IntRleEncoder::writeRleRun(void)" (?writeRleRun@IntRleEncoder@@UEAAXXZ)
+main.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __cdecl IntRleEncoder::clearBuffer(void)" (?clearBuffer@IntRleEncoder@@UEAAXXZ)
+main.obj : error LNK2001: 无法解析的外部符号 "public: virtual void __cdecl IntRleEncoder::convertBuffer(void)" (?convertBuffer@IntRleEncoder@@UEAAXXZ)
+zlibwapi.lib : warning LNK4272: 库计算机类型“x86”与目标计算机类型“x64”冲突
+C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\x64\Debug\CSSC_compression_code.exe : fatal error LNK1120: 6 个无法解析的外部命令
