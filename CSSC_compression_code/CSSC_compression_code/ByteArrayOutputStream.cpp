@@ -88,20 +88,20 @@ void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
 	}
 	//delete[] b;
 }
-//void ByteArrayOutputStream::compress() {
-//	//int* olen;
-//	int ilen = this->bytes.size();
-//	std::uint8_t* idata = new std::uint8_t[ilen];
-//	for (int i = 0; i < ilen;i++) {
-//		 idata[i] = this->bytes[i];
-//	}
-//	//std::uint8_t* odata;
-//	GZIP gzip;
-//	this->compressed_bytes = new std::uint8_t[ilen];
-//	gzip.data_compress(idata, ilen, this->compressed_bytes, this->olen);
-//
-//
-//}
+void ByteArrayOutputStream::compress() {
+	//int* olen;
+	int ilen = this->bytes.size();
+	std::uint8_t* idata = new std::uint8_t[ilen];
+	for (int i = 0; i < ilen;i++) {
+		 idata[i] = this->bytes[i];
+	}
+	//std::uint8_t* odata;
+	GZIP gzip;
+	this->compressed_bytes = new std::uint8_t[ilen];
+	gzip.data_compress(idata, ilen, this->compressed_bytes, this->olen);
+
+
+}
 void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
