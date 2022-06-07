@@ -33,8 +33,12 @@ public:
 		RLE_MAX_BIT_PACKED_NUM = 63;
 		RLE_MAX_REPEATED_NUM = 0x7FFF;
 	}
+	~RleEncoder() {
+		vector <vector <std::uint8_t>>().swap(this->bytesBuffer);
+		byteCache.reset();
+	}
 	void reset();
-	void flush(ByteArrayOutputStream& out);
+	void flushrle(ByteArrayOutputStream& out);
 	virtual void writeRleRun() {};
 	virtual void clearBuffer() {};
 	virtual void convertBuffer(){};

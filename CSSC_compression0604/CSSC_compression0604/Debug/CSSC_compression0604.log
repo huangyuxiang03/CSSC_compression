@@ -1,1 +1,5 @@
-﻿  CSSC_compression0604.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0604\Debug\CSSC_compression0604.exe
+﻿  IntDeltaEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(15,18): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(16,35): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(69,20): warning C4244: “参数”: 从“__int64”转换到“int”，可能丢失数据
+  CSSC_compression0604.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0604\Debug\CSSC_compression0604.exe

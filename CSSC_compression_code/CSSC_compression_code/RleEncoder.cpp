@@ -4,14 +4,15 @@
 void RleEncoder::reset() {
     numBufferedValues = 0;
     repeatCount = 0;
+    vector <vector <std::uint8_t>>().swap(this->bytesBuffer);
     bitPackedGroupCount = 0;
-    bytesBuffer.clear();
+    //bytesBuffer.clear();
     isBitPackRun = false;
     isBitWidthSaved = false;
     byteCache.reset();
 }
 
-void RleEncoder::flush(ByteArrayOutputStream& out)
+void RleEncoder::flushrle(ByteArrayOutputStream& out)
 {
     int lastBitPackedNum = numBufferedValues;
 	if (repeatCount >= this->RLE_MIN_REPEATED_NUM) {
@@ -28,7 +29,7 @@ void RleEncoder::flush(ByteArrayOutputStream& out)
 	// write length
 	writeUnsignedVarInt(byteCache.getBytes().size(), out);
 	out.write(byteCache.getBytes(),0, byteCache.getBytes().size());
-	reset();
+	this->reset();
     //cout << out.getBytes().size() << endl;
 }
 
@@ -105,7 +106,8 @@ void RleEncoder::endPreviousBitPackedRun(int lastBitPackedNum)
         //}
         byteCache.write(bytes, 0, bytes.size());
     }
-    bytesBuffer.clear();
+    vector <vector <std::uint8_t>>().swap(this->bytesBuffer);
+    //bytesBuffer.clear();
     isBitPackRun = false;
     bitPackedGroupCount = 0;
 }

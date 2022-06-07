@@ -25,7 +25,7 @@ int IntRleEncoder::getIntMaxBitWidth(vector<int> list)
     return maxnum;
 }
 
-void IntRleEncoder::flushint(ByteArrayOutputStream& out)
+void IntRleEncoder::flush(ByteArrayOutputStream& out)
 {
     this->bitWidth = getIntMaxBitWidth(values);
     IntPacker new_packer(bitWidth);
@@ -39,7 +39,9 @@ void IntRleEncoder::flushint(ByteArrayOutputStream& out)
 void IntRleEncoder::reset()
 {
     reset();
-    values.clear();
+    vector <int>().swap(values);
+    //values.clear();
+    delete[] bufferedValues;
     preValue = 0;
 }
 

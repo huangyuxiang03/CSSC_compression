@@ -47,7 +47,9 @@ void ByteArrayOutputStream::writeBytes(char b[]){
 	for (int i=0; i < len;i++) {
 		std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
         this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
+		vector <std::uint8_t>().swap(byte_tmp);
     }
+	delete[] b;
 }
 
 void ByteArrayOutputStream::write(char* b, int offset, int len)
@@ -61,7 +63,9 @@ void ByteArrayOutputStream::write(char* b, int offset, int len)
 	for (int i=offset; i < end; i++) {
 		std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
 		this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
+		vector <std::uint8_t>().swap(byte_tmp);
 	}
+	delete[] b;
 }
 void ByteArrayOutputStream::write(vector<std::uint8_t> b, int offset, int len)
 {
@@ -73,6 +77,7 @@ void ByteArrayOutputStream::write(vector<std::uint8_t> b, int offset, int len)
 	//for (int i = offset; i < end; i++) {
 	//	std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
 	this->bytes.insert(this->bytes.end(), b.begin(), b.end());
+	vector <std::uint8_t>().swap(b);
 	//}
 }
 void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
@@ -81,6 +86,7 @@ void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
 	for (int i = offset; i < end; i++) {
 		this->bytes.push_back(b[i]);
 	}
+	delete[] b;
 }
 //void ByteArrayOutputStream::compress() {
 //	//int* olen;

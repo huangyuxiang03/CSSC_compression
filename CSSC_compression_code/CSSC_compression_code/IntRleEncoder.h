@@ -20,10 +20,14 @@ public:
 		preValue = 0;
 		//values = new ArrayList<>();
 	}
+	~IntRleEncoder() {
+		vector <int>().swap(values);
+		delete[] bufferedValues;
+	}
 	void encode(int value, ByteArrayOutputStream& out);
 	int getIntMaxBitWidth(vector<int> list);
 	void encode(bool value, ByteArrayOutputStream& out);
-	void flushint(ByteArrayOutputStream& out);
+	void flush(ByteArrayOutputStream& out);
 	void reset(); 
 	void writeRleRun();
 	void clearBuffer();
