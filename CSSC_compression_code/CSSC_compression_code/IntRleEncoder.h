@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class IntRleEncoder : RleEncoder {
+class IntRleEncoder : public RleEncoder {
 protected:
 	vector<int> values;
 	int preValue;

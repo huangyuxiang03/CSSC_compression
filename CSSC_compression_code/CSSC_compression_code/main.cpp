@@ -9,12 +9,12 @@
 #include "ByteArrayOutputStream.h"
 #include "LongDeltaEncoder.h"
 #include "IntDeltaEncoder.h"
-//#include "IntFunctionEncoder.h"
 #include "LongDeltaDecoder.h"
 #include "FloatDeltaDecoder.h"
 #include "FloatDeltaEncoder.h"
 #include "RleEncoder.h"
 #include "IntRleEncoder.h"
+#include "FloatRleEncoder.h"
 
 using namespace std;
 
@@ -602,9 +602,9 @@ int main(int argc, char* argv[]) {
 		if (jresult==0) {
 			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
-			IntDeltaEncoder encoder;
+			
 			int width = 0, length = 0;
-			int** strArrayll =  read_csvint7(argv[2], ',', length, width);
+			int** strArrayll =  read_csvint5(argv[2], ',', length, width);
 			int* col_pos= new int[width+1]; // the position of per column data
 			int col_n=0; //the number of remaining column of the ByteArrayOutputStream
 			col_pos[0] = 0;
@@ -612,6 +612,7 @@ int main(int argc, char* argv[]) {
 			std::cout << "width: " << width << endl;
 			out.writeDatatype('l');
 			for (int i = 0; i < width; i++) {
+				IntRleEncoder encoder;
 				for (int j = 0; j < length; j++) {
 					if (j %18000000==0) {
 						cout << "col:"<<i << endl;
@@ -632,7 +633,7 @@ int main(int argc, char* argv[]) {
 		else if (jresult==1) {
 			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
-			FloatDeltaEncoder encoder;
+			
 			int width = 0, length = 0;
 			float** strArrayll = read_csvf(argv[2], ' ', length, width);
 			int* col_pos = new int[width + 1]; // the position of per column data
@@ -642,6 +643,7 @@ int main(int argc, char* argv[]) {
 			std::cout << width << endl;
 			out.writeDatatype('f');
 			for (int i = 0; i < width; i++) {
+				FloatRleEncoder encoder;
 				for (int j = 0; j < length; j++) {
 					if (j% 18000000==0) {
 						cout << "col:" << i << endl;

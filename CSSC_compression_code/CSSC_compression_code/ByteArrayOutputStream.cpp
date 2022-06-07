@@ -49,7 +49,7 @@ void ByteArrayOutputStream::writeBytes(char b[]){
         this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
 		vector <std::uint8_t>().swap(byte_tmp);
     }
-	delete[] b;
+	//delete[] b;
 }
 
 void ByteArrayOutputStream::write(char* b, int offset, int len)
@@ -65,7 +65,7 @@ void ByteArrayOutputStream::write(char* b, int offset, int len)
 		this->bytes.insert(this->bytes.end(), byte_tmp.begin(), byte_tmp.end());
 		vector <std::uint8_t>().swap(byte_tmp);
 	}
-	delete[] b;
+	//delete[] b;
 }
 void ByteArrayOutputStream::write(vector<std::uint8_t> b, int offset, int len)
 {
@@ -86,7 +86,7 @@ void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
 	for (int i = offset; i < end; i++) {
 		this->bytes.push_back(b[i]);
 	}
-	delete[] b;
+	//delete[] b;
 }
 //void ByteArrayOutputStream::compress() {
 //	//int* olen;

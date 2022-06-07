@@ -33,7 +33,7 @@ void IntRleEncoder::flush(ByteArrayOutputStream& out)
     for (int value : values) {
         encodeValue(value);
     }
-    flush(out);
+    flushrle(out);
 }
 
 void IntRleEncoder::reset()
