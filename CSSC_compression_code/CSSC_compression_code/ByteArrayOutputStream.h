@@ -46,7 +46,7 @@ public:
 	void write2file();
 	void readFromFile();
 	void writeDatatype(char datatype);
-	//void compress();
+	void compress();
 	std::vector<std::uint8_t> getBytes();
 	std::vector<std::uint8_t> getColBytes();
 	bool hasNextCol();
