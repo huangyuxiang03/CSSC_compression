@@ -106,8 +106,7 @@ void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
 	outfile.open(filepath, ios::app | ios::out|ios::binary);
-	if (!outfile)
-	{
+	if (!outfile){
 		cout << "the file can't open" << endl;
 		abort();
 	}else
@@ -219,7 +218,14 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytes()
    //col_n--;
    return getbytes;
 }
-
+std::vector<std::uint8_t> ByteArrayOutputStream::getBytesLength(int length)
+{
+	std::vector<std::uint8_t> getbytes;
+	int getbytesnum = length / 8 + 1;
+	getbytes.insert(getbytes.begin(), bytes.begin(), bytes.begin() + getbytesnum);
+	bytes.erase(bytes.begin(), bytes.begin() + getbytesnum);
+	return getbytes;
+}
 bool ByteArrayOutputStream::hasNextCol()
 {
 	if (col_n > col_index) return true;

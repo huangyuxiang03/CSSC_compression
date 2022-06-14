@@ -30,7 +30,7 @@ public:
 		isBitWidthSaved = false;
 		//byteCache = new ByteArrayOutputStream();
 		RLE_MIN_REPEATED_NUM = 8;
-		RLE_MAX_BIT_PACKED_NUM = 63;
+		RLE_MAX_BIT_PACKED_NUM = 31;
 		RLE_MAX_REPEATED_NUM = 0x7FFF;
 	}
 	~RleEncoder() {

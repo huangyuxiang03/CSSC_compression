@@ -1,62 +1,15 @@
-﻿  Array.cpp
-  ByteArrayOutputStream.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(139,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-  ByteBuffer.cpp
-  FloatDeltaDecoder.cpp
-  FloatDeltaEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-  FunctionEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-  IntDeltaDecoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp(19,18): warning C4101: “end_t”: 未引用的局部变量
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp(19,9): warning C4101: “start_t”: 未引用的局部变量
-  IntDeltaEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(15,18): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(16,35): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(69,20): warning C4244: “参数”: 从“__int64”转换到“int”，可能丢失数据
-  IntFunctionEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.cpp(77,38): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(58,19): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(54): message : 在编译 类 模板 成员函数“void Array<int>::resize(void)”时
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(74): message : 查看对正在编译的函数 模板 实例化“void Array<int>::resize(void)”的引用
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\Array.h(72): message : 在编译 类 模板 成员函数“void Array<int>::append(T)”时
-          with
-          [
-              T=int
-          ]
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.cpp(59): message : 查看对正在编译的函数 模板 实例化“void Array<int>::append(T)”的引用
-          with
-          [
-              T=int
-          ]
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntFunctionEncoder.h(31): message : 查看对正在编译的 类 模板 实例化“Array<int>”的引用
-  IntPacker.cpp
-  IntRleEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-  LongDeltaDecoder.cpp
-  LongDeltaEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-  main.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(39,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(43,13): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(87,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(157,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(197,38): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(204,38): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(229,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(295,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(565,19): warning C4101: “end_d”: 未引用的局部变量
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(566,10): warning C4101: “cost_d”: 未引用的局部变量
-  RleEncoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-  TS_2DIFF_decoder.cpp
-  TS_2DIFF_encoder.cpp
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
-  正在生成代码...
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(439): warning C4715: “round_double”: 不是所有的控件路径都返回值
-C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntRleEncoder.cpp(44): warning C4717: “IntRleEncoder::reset”: 如递归所有控件路径，函数将导致运行时堆栈溢出
-  CSSC_compression0604.vcxproj -> C:\Users\liuy\Desktop\Data\CSSC_compression\CSSC_compression0604\Debug\CSSC_compression0604.exe
+﻿  main.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(66,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(70,13): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(119,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(188,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(263,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(303,38): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(310,38): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(335,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(401,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(754,19): warning C4101: “end_d”: 未引用的局部变量
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(755,10): warning C4101: “cost_d”: 未引用的局部变量
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(591): warning C4715: “round_double”: 不是所有的控件路径都返回值
+  CSSC_compression0604.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0604\Debug\CSSC_compression0604.exe

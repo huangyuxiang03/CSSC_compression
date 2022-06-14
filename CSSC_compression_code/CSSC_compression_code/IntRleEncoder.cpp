@@ -34,14 +34,16 @@ void IntRleEncoder::flush(ByteArrayOutputStream& out)
         encodeValue(value);
     }
     flushrle(out);
+    reset();
 }
 
 void IntRleEncoder::reset()
 {
-    reset();
+    //reset();
     vector <int>().swap(values);
     //values.clear();
     delete[] bufferedValues;
+    bufferedValues = new int[RLE_MIN_REPEATED_NUM];
     preValue = 0;
 }
 
