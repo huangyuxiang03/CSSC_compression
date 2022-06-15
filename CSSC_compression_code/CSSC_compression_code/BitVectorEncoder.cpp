@@ -29,7 +29,7 @@ void BitVectorEncoder::encode_bitvector(ByteArrayOutputStream& out3)
 		for (int k = 0; k < 8; k++) {
 			single_num = single_num * 2 + bit_vector[j * 8 + k];
 		}
-		char c = single_num;
+		std::uint8_t c = single_num;
 		//bit_vector_char[j] = c;
 		out3.write(c);
 	}
@@ -40,7 +40,7 @@ void BitVectorEncoder::encode_bitvector(ByteArrayOutputStream& out3)
 	for (int k = 0; k < (num_byte + 1) * 8 - length; k++) {
 		single_num *= 2;
 	}
-	char c = single_num;
+	std::uint8_t c = single_num;
 	//bit_vector_char[num_byte] = c;
 	out3.write(c);
 }

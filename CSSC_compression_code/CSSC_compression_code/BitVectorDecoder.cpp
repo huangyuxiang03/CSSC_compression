@@ -1,23 +1,23 @@
 #include "BitVectorDecoder.h"
 
-void BitVectorDecoder::encode_bitvector(ByteBuffer& buffer)
+void BitVectorDecoder::decode_bitvector(ByteBuffer& buffer)
 {
 	int num_byte = length / 8;
 	for (int j = 0; j < num_byte; j++) {
-		char c = buffer.readByte();
+		std::uint8_t c = buffer.readuchar();
 		int single_num = c;
 		for (int k = 7; k >= 0; k--) {
 			bit_vector[j * 8 + k] = single_num & 1;
 			single_num /=  2;
 		}
 	}
-	char c = buffer.readByte();
+	std::uint8_t c = buffer.readuchar();
 	int single_num = c;
 
 	for (int k = 0; k < (num_byte + 1) * 8 - length; k++) {
 		single_num /= 2;
 	}
-	for (int k = length - 1;  k > num_byte * 8; k--) {
+	for (int k = length - 1;  k >= num_byte * 8; k--) {
 		bit_vector[k] = single_num & 1;
 		single_num /= 2;
 	}

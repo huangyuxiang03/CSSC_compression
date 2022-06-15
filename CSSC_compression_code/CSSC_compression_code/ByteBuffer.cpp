@@ -47,6 +47,13 @@ char ByteBuffer::readByte()
 	return buffer_byte;
 }
 
+std::uint8_t ByteBuffer::readuchar()
+{
+	std::uint8_t uc;
+	this->bytes << uc;
+	return uc;
+}
+
 long long ByteBuffer::readLong()
 {
 	long long buffer_ll=0;

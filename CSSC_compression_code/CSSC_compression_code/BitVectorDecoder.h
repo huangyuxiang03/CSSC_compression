@@ -3,7 +3,8 @@
 #define __BITVECTORDECODER__
 #include <iostream>
 #include "IntDeltaDecoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteBuffer.h"
+
 
 using namespace std;
 
@@ -22,7 +23,7 @@ public:
 		bit_vector = new int[length];
 		mid = middle;
 	}
-	void encode_bitvector(ByteBuffer& buffer);
+	void decode_bitvector(ByteBuffer& buffer);
 	int readInt(int j, ByteBuffer& buffer1, ByteBuffer& buffer2);
 	bool hasNext(ByteBuffer& buffer1, ByteBuffer& buffer2);
 };

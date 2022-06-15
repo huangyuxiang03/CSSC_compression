@@ -75,6 +75,12 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\BitVectorDecoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp">
@@ -126,6 +132,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\BitVectorDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

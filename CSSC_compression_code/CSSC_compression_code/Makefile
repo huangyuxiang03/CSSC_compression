@@ -1,5 +1,5 @@
-main:main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o
-	g++ main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o -o main
+task:main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o BitVectorDecoder.o BitVectorEncoder.o
+	g++ main.o ByteArrayOutputStream.o ByteBuffer.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o LongDeltaDecoder.o LongDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o FloatDeltaDecoder.o FloatDeltaEncoder.o BitVectorDecoder.o BitVectorEncoder.o -o task
 main.o:main.cpp ByteArrayOutputStream.h LongDeltaEncoder.h LongDeltaDecoder.h
 	g++ -c main.cpp -o main.o
 ByteArrayOutputStream.o: ByteArrayOutputStream.cpp ByteArrayOutputStream.h
@@ -22,6 +22,10 @@ FloatDeltaDecoder.o: FloatDeltaDecoder.cpp FloatDeltaDecoder.h IntDeltaDecoder.h
 	g++ -c FloatDeltaDecoder.cpp -o FloatDeltaDecoder.o
 FloatDeltaEncoder.o: FloatDeltaEncoder.cpp FloatDeltaEncoder.h IntDeltaEncoder.h ByteArrayOutputStream.h
 	g++ -c FloatDeltaEncoder.cpp -o FloatDeltaEncoder.o
+BitVectorDecoder.o: BitVectorDecoder.cpp BitVectorDecoder.h IntDeltaDecoder.h ByteArrayOutputStream.h
+	g++ -c BitVectorDecoder.cpp -o BitVectorDecoder.o
+BitVectorEncoder.o: BitVectorEncoder.cpp BitVectorEncoder.h IntDeltaEncoder.h ByteArrayOutputStream.h
+	g++ -c BitVectorEncoder.cpp -o BitVectorEncoder.o
 
 clean:
 	rm *.o

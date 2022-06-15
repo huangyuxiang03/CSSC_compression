@@ -149,6 +149,8 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntPacker.h" />
@@ -171,6 +173,8 @@
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.cpp" />
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.cpp" />
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp" />
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntPacker.cpp" />
