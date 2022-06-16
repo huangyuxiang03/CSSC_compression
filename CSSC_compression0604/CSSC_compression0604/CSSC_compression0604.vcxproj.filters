@@ -81,6 +81,21 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\RleDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntRleDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FragmentEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\lz4.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp">
@@ -138,6 +153,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\RleDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\IntRleDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\FragmentEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\lz4.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

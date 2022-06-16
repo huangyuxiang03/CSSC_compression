@@ -9,9 +9,9 @@ class FloatRleEncoder {
 private:
 	IntRleEncoder encoder;
 	int convertFloatToInt(float f) {
-		int a=f*100000;
+		//int a=f*100000;
 		//memcpy(&a, &f, sizeof(int));
-		return a;
+		return f * 100000;
 	}
 public:
 	void encode(float f, ByteArrayOutputStream& out);

@@ -4,6 +4,7 @@
 //#include <cstdint>
 #include <vector>
 #include <fstream>
+#include "lz4.h"
 //#include "GZIP.h"
 
 using namespace std;

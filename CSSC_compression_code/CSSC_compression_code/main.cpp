@@ -12,13 +12,15 @@
 #include "LongDeltaDecoder.h"
 #include "FloatDeltaDecoder.h"
 #include "FloatDeltaEncoder.h"
-//#include "RleEncoder.h"
-//#include "IntRleEncoder.h"
-//#include "FloatRleEncoder.h"
+#include "RleEncoder.h"
+#include "IntRleEncoder.h"
+#include "FloatRleEncoder.h"
 #include "BitVectorEncoder.h"
 #include "BitVectorDecoder.h"
 #include "IndexEncoder.h"
 #include "IndexDecoder.h"
+#include "IntRleDecoder.h"
+#include "FragmentEncoder.h"
 
 using namespace std;
 
@@ -30,15 +32,12 @@ int char2hex(char c) {
 		r = c - 55;
 	return r;
 }
-
 ll char16toll(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
-
 int char16toint(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
-
 int char16toint4byte(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
@@ -62,15 +61,12 @@ void int3bytetochar16(int num, char* ch) {
 	//cout << ch[2] << endl;
 	delete[] ich;
 }
-
 int char16toint2byte(char* num) {
 	return char2hex(num[0]) * 16 + char2hex(num[1]);
 }
-
 float chartofloat(char* num) {
 	return atof(num);
 }
-
 float chartoint(char* num) {
 	return atoi(num);
 }
@@ -96,7 +92,6 @@ int justify_file(string filename) {
 	//cout << jresult << endl;
 	return jresult;
 }
-
 //justify the number is ll or float, if it is ll, return 0;else return 1;
 int justify_file_decode(string filename) {
 	int try_len = 1;
@@ -241,11 +236,10 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 		}else if (buffer[i] == '\n') {
 			num_some_row = 0;
 			row_n++;
-			//if (row_n == 18000) break;
+			//if (row_n == 1800) break;
 			col_n = 0;
 		}
 
-		
 		i++;
 	}
 	row = row_n;
@@ -254,146 +248,7 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 	return strArray;
 
 }
-
-int** read_csvint_vector(string filename, char sep, int& row, int& col)
-{
-	ifstream inFile;
-	inFile.open(filename, ios::in | ios::binary);
-	int** strArray;
-	cout << "read data: " << endl;
-	inFile.seekg(0, std::ios::end);
-	int length = inFile.tellg();
-	inFile.seekg(0, std::ios::beg);
-	char* buffer = new char[length + 1];
-	inFile.read(buffer, length);
-	if (buffer[length - 1] != '\n') buffer[length] = '\n';
-	else length--;
-	cout << length << endl;
-	//int i = 0, col=0,row=0;
-	int i = 0;
-	// find \n
-	while (i != length + 1) {
-		if (buffer[i] == sep) {
-			col++;
-			cout << col << endl;
-		}
-
-		if (buffer[i] == '\n') {
-			col++;
-			break;
-		}
-		i++;
-	}
-
-	i++;
-	row = 20000000;// (length + 1) / i;
-	strArray = new int* [col];
-	for (int j = 0; j < col; j++) {
-		strArray[j] = new int[row];
-	}
-	//cout << "here" << endl;
-	i = 0;
-
-	int num_j = 0, row_n = 0, col_n = 0;
-	char* num = new char[5];
-	while (i != length + 1) {
-		if (buffer[i] != '\n' && buffer[i] != sep) {
-			num[num_j] = buffer[i];
-			num_j++;
-		}
-		else if (buffer[i] == sep) {
-			strArray[col_n][row_n] = chartoint(num);
-			delete[] num;
-			num = new char[5];
-			num_j = 0;
-			col_n++;
-		}
-		else if (buffer[i] == '\n') {
-			strArray[col_n][row_n] = chartoint(num);
-			delete[] num;
-			num = new char[5];
-			num_j = 0;
-			row_n++;
-			//cout << row_n << endl;
-			//if (row_n == 180000) break;
-			col_n = 0;
-		}
-		i++;
-	}
-	row = row_n;
-	delete[] buffer;
-	cout << "finish reading " << endl;
-	return strArray;
-
-}
-
-ll** read_csvll(string filename,char sep, int& row,int& col)
-{
-	ifstream inFile;
-	inFile.open(filename, ios::in | ios::binary);
-	ll** strArray;
-	cout << "read data: " << endl;
-	inFile.seekg(0, std::ios::end);
-	int length = inFile.tellg();
-	inFile.seekg(0, std::ios::beg);
-	char* buffer = new char[length+1];
-	inFile.read(buffer, length);
-	if (buffer[length - 1] != '\n') buffer[length] = '\n';
-	else length--;
-	cout << length << endl;
-	//int i = 0, col=0,row=0;
-	int i = 0;
-	// find \n
-	while (i != length+1) {
-		if (buffer[i] == sep)
-			col++;
-		if (buffer[i] == '\n') {
-			col++;
-			break;
-		}
-		i++;
-	}
-	i++;
-	row = (length + 1) / i;
-	strArray = new ll * [col];
-	for (int j = 0; j < col; j++) {
-		strArray[j] = new ll[row];
-	}
-
-	i = 0;
-	int num_j = 0,row_n=0,col_n=0;
-	char* num = new char[4];
-	while (i != length+1) {
-		if (buffer[i] != '\n' && buffer[i] != sep) {
-			num[num_j] = buffer[i];
-			num_j++;
-		}
-		else if (buffer[i] == sep) {
-			strArray[col_n][row_n] = char16toll(num);
-			delete[] num;
-			num = new char[4];
-			num_j = 0;
-			col_n++;
-		}
-		else if (buffer[i] == '\n') {
-			strArray[col_n][row_n] = char16toll(num);
-			delete[] num;
-			num = new char[4];
-			num_j = 0;
-			row_n++;
-			//if (row_n == 1000) break;
-			col_n = 0;
-		}
-		i++;
-	}
-	row = row_n;
-	delete[] buffer;
-	cout << "finish reading " << endl;
-	return strArray;
-
-}
-
-float** read_csvf(string filename, char sep, int& row, int& col)
+float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_i)
 {
 	ifstream inFile;
 	inFile.open(filename, ios::in | ios::binary);
@@ -407,7 +262,7 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 	if (buffer[length - 1] != '\n') buffer[length] = '\n';
 	else length--;
 	cout << length << endl;
-	//int i = 0, col=0,row=0;
+
 	int i = 0;
 	// find \n
 	while (i != length+1) {
@@ -420,11 +275,15 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 		i++;
 	}
 	i++;
-	row = 1000000; //row 可以固定
+	row = 600000; //row 可以固定
 	float** strArray;
 	strArray = new float * [col];
+	//miu_i = new float* [col]; // 前i个数的均值
+	//float* sum = new float[col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new float[row];
+		//miu_i[j] = new float[row];
+		//sum[j] = 0;
 	}
 
 	i = 0;
@@ -442,6 +301,8 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 				num[k] = buffer[i - num_j + k];
 			}
 			strArray[col_n][row_n] = chartofloat(num);
+			//sum[col_n] += strArray[col_n][row_n];
+			//miu_i[col_n][row_n] = sum[col_n] / (row_n + 1);
 			num_j = 0;
 			col_n++;
 		}
@@ -452,14 +313,15 @@ float** read_csvf(string filename, char sep, int& row, int& col)
 				num[k] = buffer[i - num_j + k];
 			}
 			strArray[col_n][row_n] = chartofloat(num);
+			//sum[col_n] += strArray[col_n][row_n];
+			//miu_i[col_n][row_n] = sum[col_n] / (row_n + 1);
+
 			num_j = 0;
 			row_n++;
-			//if (row_n == 100000) break;
+			//if (row_n == 51000) break;
 			col_n = 0;
 		}
 		i++;
-		//if(i%1000000 == 0)
-		//	cout << (double)i / length << endl;
 	}
 	delete[] num;
 	row = row_n;
@@ -524,25 +386,6 @@ void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>&
 		delete[] int3byte;
 	}
 	std::cout << "finish writing " << endl;
-}
-void write_csvll(string filename, vector<ll>& strArray, string seq, int col)
-{
-	ofstream outFile(filename);
-	//outFile.open(filename, ios::out );
-	int length = strArray.size();
-	int row = length / col;
-	
-	for (int i = 0; i < row; i++) {
-		int j = 0;
-		for (; j < col - 1; j++) {
-			outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
-			outFile << seq;
-		}
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
-		outFile << "\n";
-	}
-	std::cout << "finish writing " << endl;
-	//outFile.close();
 }
 double round_double(double number, int loc)
 {
@@ -670,7 +513,7 @@ int main(int argc, char* argv[]) {
 					out2.write2file();
 				}
 				else {
-					IntDeltaEncoder encoder;
+					IntRleEncoder encoder;
 					for (int j = 0; j < length; j++) {
 						if (j %18000000==0) {
 							cout << "col:"<<i << endl;
@@ -695,21 +538,22 @@ int main(int argc, char* argv[]) {
 			//int finum = 0;
 			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
-			
+			float** miu_i;
 			int width = 0, length = 0;
-			float** strArrayll = read_csvf(argv[2], ' ', length, width);
+			float** strArrayll = read_csvf(argv[2], ' ', length, width);// , miu_i);
 			int* col_pos = new int[width + 1]; // the position of per column data
 			int col_n = 0; //the number of remaining column of the ByteArrayOutputStream
 			col_pos[0] = 0;
 			std::cout << length << endl;
 			std::cout << width << endl;
+
 			out.writeDatatype('f');
 			int count = 0;
 			for (int i = 0; i < width; i++) {
+				//float miu = 0.0f;
 				FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
-				encoder->encode(strArrayll[i][0], out);
-				//float prevalue = strArrayll[i][0];
-				for (int j = 1; j < length; j++) {
+				//FragmentEncoder* encoder = new FragmentEncoder(miu,length);
+				for (int j = 0; j < length; j++) {
 					if (j% 510000==0) {
 						cout << "col:" << i << endl;
 						cout << "row:" << j << endl;
@@ -729,14 +573,17 @@ int main(int argc, char* argv[]) {
 					//	}	*/						
 					//}
 					encoder->encode(strArrayll[i][j], out);
-					//count++;
-					//prevalue = strArrayll[i][j];
+					//encoder->encode(strArrayll[i][j],j, out);
 				}
 				col_n++;
 				encoder->flush(out);
 				col_pos[col_n] = out.getBytes().size();
 				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
+				//encoder->encode_bitvector(out);
 				out.write2file();
+				time(&end);
+				cost = difftime(end, start);
+				std::cout << "time cost: " << cost << endl;
 			}
 			cout << "finish encode" << endl;
 			out.writeRowCol(col_n, col_pos);
@@ -770,7 +617,8 @@ int main(int argc, char* argv[]) {
 						llArray0.push_back(r);
 					}
 					cout <<"row_tol: " << row_tol << endl;
-				}else if (col == 2) {
+				}
+				else if (col == 2) {
 					IndexDecoder decoder(row_tol, 0);
 					ByteBuffer in_bit_vector0_count(baos.getInt());
 					int bit_vector0_count = in_bit_vector0_count.readInt();
@@ -802,7 +650,7 @@ int main(int argc, char* argv[]) {
 					}
 				}
 				else {
-					IntDeltaDecoder decoder;
+					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytes());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
@@ -850,6 +698,6 @@ int main(int argc, char* argv[]) {
 	}
 	time(&end);
 	cost = difftime(end, start);
-	std::cout << cost << endl;
+	std::cout <<"time cost: " << cost << endl;
 	return 0;
 }

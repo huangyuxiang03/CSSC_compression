@@ -33,6 +33,12 @@ int ByteBuffer::remaining()
 	return bytes.size();
 }
 
+bool ByteBuffer::hasRemaining()
+{
+	if (bytes.size() > 0) return true;
+	return false;
+}
+
 int ByteBuffer::readInt()
 {
 	int buffer_int = 0;
@@ -88,4 +94,14 @@ void ByteBuffer::get(char* dst, int len)
 	//	char buffer_byte;
 	//	this->bytes << dst[len- i -1];
 	//}
+}
+
+void ByteBuffer::get(std::vector<uint8_t> tmp, int offset, int length)
+{
+	if (length > remaining()) {
+		cout << "under flow exception" << endl;
+		return;
+	}
+	int maxi = offset + length;
+	for (int i = offset; i < maxi; i++) tmp[i] = readuchar();
 }

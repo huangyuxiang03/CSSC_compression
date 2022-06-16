@@ -21,12 +21,14 @@ public:
 		//this->bytes.insert(this->bytes.begin(), bytes.begin(),bytes.end());
 	};
 	int remaining();
+	bool hasRemaining();
 	int readInt();
 	char readByte();
 	std::uint8_t readuchar();
 	long long readLong();
 	float readFloat();
 	void get(char* dst, int len);//copy the current len'th byte to dst
+	void get(std::vector<uint8_t> tmp, int offset, int length);
 	std::vector<std::uint8_t> Bytes() {
 		return bytes;
 	}

@@ -44,7 +44,7 @@ public:
 	virtual void convertBuffer(){};
 	void writeOrAppendBitPackedRun();
 	int writeUnsignedVarInt(int value, ByteArrayOutputStream& out);
-	static int getIntMaxBitWidth(vector<int> list);
+	//static int getIntMaxBitWidth(vector<int> list);
 	static int numberOfLeadingZeros(int i);
 	static void writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream& out, int bitWidth);
 	void endPreviousBitPackedRun(int lastBitPackedNum);

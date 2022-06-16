@@ -18,8 +18,8 @@ public:
 	}
 	~IntPacker() {};
 	void pack8Values(int* values, int offset, vector<std::uint8_t>& buf);
-	void unpack8Values(std::uint8_t* buf, int offset, int* values);
-	void unpackAllValues(std::uint8_t* buf, int length, int* values);
+	void unpack8Values(vector<std::uint8_t>& buf, int offset, int* values);
+	void unpackAllValues(vector<std::uint8_t>& buf, int length, int* values);
 	void setWidth(int width);
 };
 

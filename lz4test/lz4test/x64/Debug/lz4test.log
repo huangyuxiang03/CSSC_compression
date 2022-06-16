@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\xiaoj\Documents\GitHub\lz4\lib\main.cpp(14,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\lz4\lib\main.cpp(11,8): warning C4101: “strArray”: 未引用的局部变量
+  lz4test.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\lz4test\x64\Debug\lz4test.exe

@@ -111,20 +111,28 @@ void ByteArrayOutputStream::write2file()
 		abort();
 	}else
 	{
-		//outfile.write((const char*)&this->bytes, this->bytes.size());
-		//cout << this->bytes.size() << endl;
-		//compress();
-		//int ilen = this->bytes.size();
-		//for (int i = 0; i < ilen; i++) {
-		//	outfile << this->compressed_bytes[i];
-		//}
 
-		for (std::uint8_t bt : this->bytes) {
-			outfile <<  bt;
+		int size = this->bytes.size();
+		char* buffer = new char[size];
+		for (int i = 0; i < size; i++) {
+			buffer[i] = this->bytes[i];
 		}
+		const char* const src = buffer;
+		char* dst = new char[size];
+		/*int srcSize = length;*/
+		int dstlength = LZ4_compress_default(src, dst, size, size);
+		//outfile << dst;
+		cout << dstlength << endl;
+		for (int i = 0; i < dstlength; i++) {
+			outfile << dst[i];
+		}
+		//for (std::uint8_t bt : this->bytes) {
+		//	outfile <<  bt;
+		//}
 		//outfile << "\n";
+
 		vector <std::uint8_t>().swap(this->bytes);
-		//cout << this->bytes.size() << endl;
+
 		outfile.close();
 	}
 }
