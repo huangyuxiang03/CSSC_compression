@@ -2,7 +2,8 @@
 
 void FloatRleEncoder::encode(float f, ByteArrayOutputStream& out)
 {
-	this->encoder.encode(convertFloatToInt(f), out);
+	int cft = convertFloatToInt(f);
+	this->encoder.encode(cft, out);
 }
 
 void FloatRleEncoder::flush(ByteArrayOutputStream& out)

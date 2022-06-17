@@ -111,18 +111,57 @@ void ByteArrayOutputStream::write2file()
 		abort();
 	}else
 	{
+		//int size = this->bytes.size();
+		//cout << size << endl;
+		//char* buffer = new char[size];
+		//for (int i = 0; i < size; i++) {
+		//	buffer[i] = this->bytes[i];
+		//}
+		//const char* const src = buffer;
+		//char* dst = new char[size*2];
+		///*int srcSize = length;*/
+		//dstlength = LZ4_compress_default(src, dst, size, size*2);
+		////outfile << dst;
+		//cout <<"lz4 compress data size:" << dstlength << endl;
+		//for (int i = 0; i < dstlength; i++) {
+		//	outfile << dst[i];
+		//}
+		for (std::uint8_t bt : this->bytes) {
+			outfile <<  bt;
+		}
+		//outfile << "\n";
 
+		vector <std::uint8_t>().swap(this->bytes);
+
+		outfile.close();
+		//delete[] dst;
+		//delete[] buffer;
+
+	}		
+}
+
+void ByteArrayOutputStream::write2filelz4()
+{
+	ofstream outfile;
+	outfile.open(filepath, ios::app | ios::out | ios::binary);
+	if (!outfile) {
+		cout << "the file can't open" << endl;
+		abort();
+	}
+	else
+	{
 		int size = this->bytes.size();
+		cout << size << endl;
 		char* buffer = new char[size];
 		for (int i = 0; i < size; i++) {
 			buffer[i] = this->bytes[i];
 		}
 		const char* const src = buffer;
-		char* dst = new char[size];
+		char* dst = new char[size * 2];
 		/*int srcSize = length;*/
-		int dstlength = LZ4_compress_default(src, dst, size, size);
+		dstlength = LZ4_compress_default(src, dst, size, size * 2);
 		//outfile << dst;
-		cout << dstlength << endl;
+		cout << "lz4 compress data size:" << dstlength << endl;
 		for (int i = 0; i < dstlength; i++) {
 			outfile << dst[i];
 		}
@@ -134,6 +173,9 @@ void ByteArrayOutputStream::write2file()
 		vector <std::uint8_t>().swap(this->bytes);
 
 		outfile.close();
+		delete[] dst;
+		delete[] buffer;
+		//delete[] dst;
 	}
 }
 
@@ -153,6 +195,7 @@ void ByteArrayOutputStream::readFromFile()
 		infile.seekg(0, std::ios::beg);
 		char* buffer = new char[length];    
 		infile.read(buffer, length);
+
 		int i = 0;
 		std::vector<std::uint8_t> bytes_col_n;
 		for (i = length - 4; i < length; i++) {
@@ -160,22 +203,41 @@ void ByteArrayOutputStream::readFromFile()
 		}
 		bytes_col_n >> col_n;
 		cout << "decode col num:" << col_n << endl;
+
 		col_pos = new int[col_n];
 		int col_start = length - 4 * (1+ col_n);
 		i = col_start;
 		for (int col_i_i = 0; col_i_i < col_n; col_i_i++) {
 			std::vector<std::uint8_t> bytes_col_pos;
+			
 			for (; i < 4 * (col_i_i + 1)+ col_start; i++) {
 				bytes_col_pos.push_back((std::uint8_t)buffer[i]);
 			}
 			bytes_col_pos >> col_pos[col_i_i];
-			//cout << "col_pos[col_i_i] : " << col_pos[col_i_i] <<endl;
-
+			
 		}
 		for (i=1; i < col_start; i++) {
 			this->bytes.push_back((std::uint8_t)buffer[i]);
 		}
-		//col_pos = new int[100];
+//		i = 1;
+//		int end_col_i=1;
+//		int start_col_i = 1;
+//		for (int j = 0; j < col_n; j++) {
+//			char* srctmp = new char[col_pos[j]];
+//			end_col_i += col_pos[j];
+//			for (; i < end_col_i; i++) {
+//				srctmp[i - start_col_i] = buffer[i];
+//				//this->bytes.push_back((std::uint8_t)buffer[i]);
+//			}
+//			
+//			const char* const src = srctmp;
+//			char* dst = new char[size];
+//start_col_i = end_col_i;
+//		}
+//
+//		int decompressed_size = LZ4_decompress_safe(compressed_data, regen_buffer, compressed_data_size, src_size);
+		
+        //col_pos = new int[100];
 		//int col_i_i = 0;
 		//for (int i = 0; i < length; i++) {
 		//	//cout << buffer[i] << endl;
@@ -226,14 +288,63 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getBytes()
 	return bytes;
 }
 
+int ByteArrayOutputStream::getCompressedBytesSize()
+{
+	return dstlength;
+}
+
 std::vector<std::uint8_t> ByteArrayOutputStream::getColBytes()
 {
    std::vector<std::uint8_t> getbytes;
    getbytes.insert(getbytes.begin(), bytes.begin(), bytes.begin() + col_pos[col_index]);
    bytes.erase(bytes.begin(), bytes.begin() + col_pos[col_index]);
    col_index++;
-   //col_n--;
    return getbytes;
+
+   //int size = getbytes.size();
+   //char* buffer = new char[size];
+   //for (int i = 0; i < size; i++) {
+	  // buffer[i] = getbytes[i];
+   //}
+   //const char* const src = buffer;
+   //char* dst = new char[size*1000];
+   ///*int srcSize = length;*/
+   //int decompdstlength = LZ4_decompress_safe(src, dst, size, size * 1000);
+   ////outfile << dst;
+   //cout << decompdstlength << endl;
+   //std::vector<std::uint8_t> newgetbytes(decompdstlength);
+   //for (int i = 0; i < decompdstlength; i++) {
+	  // newgetbytes[i] = dst[i];
+   //}
+   ////col_n--;
+   //return newgetbytes;
+}
+
+std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesLZ4()
+{
+	std::vector<std::uint8_t> getbytes;
+	getbytes.insert(getbytes.begin(), bytes.begin(), bytes.begin() + col_pos[col_index]);
+	bytes.erase(bytes.begin(), bytes.begin() + col_pos[col_index]);
+	col_index++;
+	//return getbytes;
+
+	int size = getbytes.size();
+	char* buffer = new char[size];
+	for (int i = 0; i < size; i++) {
+	    buffer[i] = getbytes[i];
+	}
+	const char* const src = buffer;
+	char* dst = new char[size*1000];
+	/*int srcSize = length;*/
+	int decompdstlength = LZ4_decompress_safe(src, dst, size, size * 1000);
+	//outfile << dst;
+	cout << decompdstlength << endl;
+	std::vector<std::uint8_t> newgetbytes(decompdstlength);
+	for (int i = 0; i < decompdstlength; i++) {
+	    newgetbytes[i] = dst[i];
+	}
+	//col_n--;
+	return newgetbytes;
 }
 
 // get bit_vector compressed part
@@ -243,7 +354,24 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getBytesLength(int length)
 	int getbytesnum = length / 8 + 1;
 	getbytes.insert(getbytes.begin(), bytes.begin(), bytes.begin() + getbytesnum);
 	bytes.erase(bytes.begin(), bytes.begin() + getbytesnum);
-	return getbytes;
+	
+	int size = getbytes.size();
+	char* buffer = new char[size];
+	for (int i = 0; i < size; i++) {
+		buffer[i] = getbytes[i];
+	}
+	const char* const src = buffer;
+	char* dst = new char[size * 1000];
+	/*int srcSize = length;*/
+	int decompdstlength = LZ4_decompress_safe(src, dst, size, size * 1000);
+	//outfile << dst;
+	cout << decompdstlength << endl;
+	std::vector<std::uint8_t> newgetbytes(decompdstlength);
+	for (int i = 0; i < decompdstlength; i++) {
+		newgetbytes[i] = dst[i];
+	}
+	//col_n--;
+	return newgetbytes;
 }
 bool ByteArrayOutputStream::hasNextCol()
 {

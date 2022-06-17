@@ -27,6 +27,7 @@ public:
 	void initPacker();
 	void readNumberInRle();
 	void readBitPackingBuffer(int bitPackedGroupCount, int lastBitPackedNum);
+	void reset() {};
 };
 
 #endif // !__INTRLEDECODER__

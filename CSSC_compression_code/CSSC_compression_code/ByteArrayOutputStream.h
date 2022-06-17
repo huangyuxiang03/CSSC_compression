@@ -21,20 +21,24 @@ private:
 	int* col_pos; // the position of per column data
 	int col_n; //the number of remaining column of the ByteArrayOutputStream
 	int col_index;
+	int dstlength;
 public:
 	
 	ByteArrayOutputStream() {
 		col_n = 0;
 		col_index = 0;
+		dstlength = 0;
 	};
 	ByteArrayOutputStream(string fp){
 		col_n = 0;
 		col_index = 0;
 		this->filepath = fp;
+		dstlength = 0;
 	};
 	ByteArrayOutputStream(std::vector<std::uint8_t> bytes) {
 		vector <std::uint8_t>().swap(this->bytes);
 		this->bytes.insert(this->bytes.begin(), bytes.begin(), bytes.end());
+		dstlength = 0;
 	};
 	void write(int b);
 	void write(long long b);
@@ -45,12 +49,15 @@ public:
 	void write(vector<std::uint8_t> b, int offset, int len);
 	void write(std::uint8_t* b, int offset, int len);
 	void write2file();
+	void write2filelz4();
 	void readFromFile();
 	void writeDatatype(char datatype);
 	//void compress();
 	std::vector<std::uint8_t> getInt();
-	std::vector<std::uint8_t> getBytes();
+	std::vector<std::uint8_t> getBytes(); 
+	int getCompressedBytesSize();
 	std::vector<std::uint8_t> getColBytes();
+	std::vector<std::uint8_t> getColBytesLZ4();
 	std::vector<std::uint8_t> getBytesLength(int length);
 	bool hasNextCol();
 	void writeRowCol(int col_n, int* col_pos);
