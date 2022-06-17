@@ -54,9 +54,6 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GZIP.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -94,6 +91,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\GZIP.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

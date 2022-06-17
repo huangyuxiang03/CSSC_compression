@@ -88,7 +88,7 @@ public:
 			return err;
 		}
 		inflateEnd(&z);
-		cout << "decompressed data:" << odata << endl;
+		//cout << "decompressed data:" << odata << endl;
 		return ret;
 	}
 

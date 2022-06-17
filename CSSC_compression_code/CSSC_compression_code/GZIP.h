@@ -59,35 +59,34 @@ public:
 		return 0;
 	}
 
-	int data_decompress(std::uint8_t* idata, int ilen, std::uint8_t* odata, int olen) {
-		z_stream z = { 0 };
-		z.zalloc = NULL;
-		z.zfree = NULL;
-		z.opaque = NULL;
+	int data_decompress(std::uint8_t* src, int src_size, std::uint8_t* dst, int& dst_size) {
+		z_stream strm;
+		strm.zalloc = NULL;
+		strm.zfree = NULL;
+		strm.opaque = NULL;
 
-		z.next_in = idata;
-		z.avail_in = ilen;
-		z.next_out = odata;
-		z.avail_out = olen;
+		strm.avail_in = src_size;
+		strm.avail_out = dst_size;
+		strm.next_in = (std::uint8_t*)src;
+		strm.next_out = (std::uint8_t*)dst;
 
-		int err = inflateInit2(&z, MAX_WBITS + 16);
-		int ret = 0;
+		int err = -1, ret = -1;
+		err = inflateInit2(&strm, MAX_WBITS + 16);
 		if (err == Z_OK) {
-			err = inflate(&z, Z_FINISH);
-			if (err = Z_STREAM_END) {
-				ret = z.total_out;
+			err = inflate(&strm, Z_FINISH);
+			if (err == Z_STREAM_END) {
+				ret = strm.total_out;
 			}
 			else {
-				inflateEnd(&z);
-				return err;
+				inflateEnd(&strm);
+				return ret;
 			}
 		}
 		else {
-			inflateEnd(&z);
-			return err;
+			inflateEnd(&strm);
+			return ret;
 		}
-		inflateEnd(&z);
-		cout << "decompressed data:" << odata << endl;
+		inflateEnd(&strm);
 		return ret;
 	}
 

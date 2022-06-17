@@ -1,4 +1,32 @@
-﻿  main.cpp
+﻿  BitVectorEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  ByteArrayOutputStream.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(220,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+  FloatDeltaEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  FloatRleEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.h(14,12): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+  FragmentEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\FragmentEncoder.cpp(23,16): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+  IndexEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  IntDeltaEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(15,18): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(16,35): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp(69,20): warning C4244: “参数”: 从“__int64”转换到“int”，可能丢失数据
+  IntRleEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  LongDeltaEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  RleEncoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  TS_2DIFF_encoder.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
+  main.cpp
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\GZIP.h(37,42): warning C4018: “<”: 有符号/无符号不匹配
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.h(14,12): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.h(14,12): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
@@ -9,5 +37,6 @@ C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_comp
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(261,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(622,19): warning C4101: “end_d”: 未引用的局部变量
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(623,10): warning C4101: “cost_d”: 未引用的局部变量
+  正在生成代码...
 C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression_code\CSSC_compression_code\main.cpp(431): warning C4715: “round_double”: 不是所有的控件路径都返回值
   CSSC_compression0604.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0604\Debug\CSSC_compression0604.exe

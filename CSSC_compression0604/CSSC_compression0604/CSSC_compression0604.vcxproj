@@ -151,6 +151,7 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FragmentEncoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\GZIP.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.h" />
@@ -168,7 +169,6 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zconf.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zlib.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h" />
-    <ClInclude Include="GZIP.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\BitVectorDecoder.cpp" />
