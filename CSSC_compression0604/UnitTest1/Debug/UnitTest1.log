@@ -1,5 +1,4 @@
 ﻿  UnitTest1.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(152,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(194,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
     正在创建库 D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.lib 和对象 D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.exp
-UnitTest1.obj : error LNK2019: 无法解析的外部符号 _LZ4_compress_default，函数 "public: void __thiscall ByteArrayOutputStream::write2file(void)" (?write2file@ByteArrayOutputStream@@QAEXXZ) 中引用了该符号
-D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.dll : fatal error LNK1120: 1 个无法解析的外部命令
+  UnitTest1.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.dll

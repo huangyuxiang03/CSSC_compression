@@ -20,6 +20,7 @@
 
 
 #include "../../CSSC_compression_code/CSSC_compression_code/lz4.h"
+#include "../../CSSC_compression_code/CSSC_compression_code/lz4.c"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
