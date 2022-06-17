@@ -14,7 +14,7 @@ int IntRleDecoder::readInt(ByteBuffer& buffer)
     }
 
     if (currentCount == 0) {
-           readNext();
+        readNext();
     }
     --currentCount;
     int result;

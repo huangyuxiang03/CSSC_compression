@@ -50,7 +50,7 @@ public:
 	bool hasNext(ByteBuffer& buffer);
 	bool hasNextPackage();
 	static int readIntLittleEndianPaddedOnBitWidth(ByteBuffer& buffer, int bitWidth);
-	int readInt(ByteBuffer& buffer) {};
+	//int readInt(ByteBuffer& buffer) {};
 };
 
 #endif // !__RLEDECODER__

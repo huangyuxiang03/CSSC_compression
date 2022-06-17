@@ -7,11 +7,11 @@ using namespace std;
 
 class IntPacker {
 private:
-	int NUM_OF_INTS;
+	int NUM_OF_INTS=8;
 	int width;
 public:
 	IntPacker() {
-		NUM_OF_INTS = 8;
+		this->width = 0;
 	}
 	IntPacker(int width) {
 		this->width = width;

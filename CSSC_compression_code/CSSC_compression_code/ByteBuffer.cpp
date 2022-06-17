@@ -96,7 +96,7 @@ void ByteBuffer::get(char* dst, int len)
 	//}
 }
 
-void ByteBuffer::get(std::vector<uint8_t> tmp, int offset, int length)
+void ByteBuffer::get(std::vector<uint8_t>& tmp, int offset, int length)
 {
 	if (length > remaining()) {
 		cout << "under flow exception" << endl;

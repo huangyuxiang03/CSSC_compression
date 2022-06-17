@@ -82,7 +82,7 @@ void IntRleEncoder::encodeValue(int value)
     if (!isBitWidthSaved) {
         // save bit width in header,
         // perpare for read
-        byteCache.write(bitWidth);
+        byteCache.write((std::uint8_t) bitWidth);
         isBitWidthSaved = true;
     }
     if (value==preValue) {

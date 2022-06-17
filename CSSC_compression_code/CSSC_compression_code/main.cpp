@@ -678,6 +678,16 @@ int main(int argc, char* argv[]) {
 						llArray1.push_back(r);
 					}
 				}
+				else if (col >= 4 && col <= 6) {
+					IntRleDecoder decoder;
+					ByteBuffer in(baos.getColBytes());
+					int lengthb = in.Bytes().size();
+					cout << "current bytes length: " << lengthb << endl;
+					while (decoder.hasNext(in)) {
+						int r = decoder.readInt(in);
+						llArray1.push_back(r);
+					}
+				}
 				else {
 					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytes());

@@ -55,11 +55,11 @@ int RleEncoder::writeUnsignedVarInt(int value, ByteArrayOutputStream& out)
 {
     int position = 1;
     while ((value & 0xFFFFFF80) != 0L) {
-        out.write((value & 0x7F) | 0x80);
+        out.write((std::uint8_t) ((value & 0x7F) | 0x80));
         value >>= 7;
         position++;
     }
-    out.write(value & 0x7F);
+    out.write((std::uint8_t)(value & 0x7F));
     return position;
 }
 
@@ -84,7 +84,7 @@ void RleEncoder::writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutput
     }
     int offset = 0;
     while (paddedByteNum > 0) {
-        out.write((value >> offset) & 0xFF);
+        out.write((std::uint8_t)((value >> offset) & 0xFF));
         offset += 8;
         paddedByteNum--;
     }
@@ -97,7 +97,7 @@ void RleEncoder::endPreviousBitPackedRun(int lastBitPackedNum)
     }
     std::uint8_t bitPackHeader = (std::uint8_t)((bitPackedGroupCount << 1) | 1);
     byteCache.write(bitPackHeader);
-    byteCache.write(lastBitPackedNum);
+    byteCache.write((std::uint8_t)(lastBitPackedNum & 0xFF));
     for (vector<std::uint8_t> bytes : bytesBuffer) {
         //int len = 0;
         //while (*bytes != NULL) {

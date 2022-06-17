@@ -1,4 +1,1 @@
-﻿  UnitTest1.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(194,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-    正在创建库 D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.lib 和对象 D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.exp
-  UnitTest1.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.dll
+﻿  UnitTest1.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.dll
