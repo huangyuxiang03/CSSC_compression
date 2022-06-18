@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>d  c:\users\xiaoj\documents\github\CSSC_compression\CSSC_compression_code\Debug\well0617lz4 c:\users\xiaoj\documents\github\CSSC_compression\CSSC_compression_code\Debug\data_well_public2.hxv</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>c D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\data_well_public.hxv D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\data</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

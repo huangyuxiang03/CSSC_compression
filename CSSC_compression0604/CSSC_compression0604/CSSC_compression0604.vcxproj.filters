@@ -96,6 +96,21 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\GZIP.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\version.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\utils.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\decompress.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\config.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\compress.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp">
