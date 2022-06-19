@@ -17,34 +17,47 @@
 
 #pragma comment( lib, "zlibwapi.lib")
 using namespace std;
+extern int DATA_DECOMPRESSED_POS;
 class GZIP {
 private:
 
 public:
 	GZIP() {};
 	int data_compress(std::uint8_t* idata, int ilen, std::uint8_t* odata, int olen) {
-		std::string itd;
+		/*std::vector<unsigned char> compressed_data;
+		std::string input;
 		for (int i = 0; i < ilen; i++) {
-			int temp = idata[i];
-			char temp_c = temp;
-			itd += temp_c;
-		}
-		std::string compressed_data = gzip::compress(itd.data(), itd.size());
-		std::string uncompressed = gzip::decompress(compressed_data.data(), compressed_data.size());
+			int t = idata[i];
+			input += (char)t;
+			if ((i+1) % 108 == 0 || i == ilen - 1) {
+				std::vector<unsigned char> temp = gzip::compress((unsigned char*)input.data(), input.size());
+				compressed_data.insert(compressed_data.end(), temp.begin(), temp.end());
+				DATA_DECOMPRESSED_POS = i;
+				std::vector<unsigned char> temp_d = gzip::decompress((unsigned char*)temp.data(), temp.size());
+				input.clear();
+			}
+		}*/
 
-		memcpy((void*)odata, compressed_data.data(), compressed_data.size());
-		return compressed_data.size();
+
+
+		//std::string compressed_data = gzip::compress((char*)idata, ilen);
+		//std::string uncompressed = gzip::decompress(compressed_data.data(), compressed_data.size());
+
+		/*memcpy((void*)odata, compressed_data.data(), compressed_data.size());
+		return compressed_data.size();*/
+		return 0;
 	}
 
 	int data_decompress(std::uint8_t* src, int src_size, std::uint8_t* dst, int& dst_size) {
-		std::string itd;
+		/*std::string itd;
 		for (int i = 0; i < src_size; i++) {
 			itd += src[i];
 		}
 		itd += '\0';
-		std::string decompressed_data = gzip::decompress(itd.data(), src_size);
+		std::vector<unsigned char> decompressed_data = gzip::decompress((unsigned char*)itd.data(), src_size);
 		memcpy((void*)dst, &decompressed_data, decompressed_data.size());
-		return decompressed_data.size();
+		return decompressed_data.size();*/
+		return 0;
 	}
 
 	//int data_compress(std::uint8_t* idata, int ilen, std::uint8_t* odata, int olen) {

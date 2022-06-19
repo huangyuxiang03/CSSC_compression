@@ -7,6 +7,7 @@
 #include <limits>
 #include <stdexcept>
 #include <string>
+#pragma comment(lib, "zlibwapi.lib")
 
 namespace gzip {
 

@@ -39,7 +39,8 @@
 #  define crc32_combine         z_crc32_combine
 #  define crc32_combine64       z_crc32_combine64
 #  define crc32_z               z_crc32_z
-#  define deflate               z_deflate
+#  define deflate               z
+
 #  define deflateBound          z_deflateBound
 #  define deflateCopy           z_deflateCopy
 #  define deflateEnd            z_deflateEnd

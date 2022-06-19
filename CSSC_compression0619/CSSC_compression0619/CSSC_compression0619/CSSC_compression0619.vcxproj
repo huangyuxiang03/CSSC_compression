@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{7c465199-e28f-4bdc-ab91-78ee04c008d2}</ProjectGuid>
+    <RootNamespace>CSSCcompression0619</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;ZLIP_WINAPI;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\本科\Git\CSSC_compression\CSSC_compression0619\CSSC_compression0619\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\BitVectorDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\BitVectorEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\ByteBuffer.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\compress.hpp" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\config.hpp" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\decompress.hpp" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FragmentEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\GZIP.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntPacker.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntRleDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntRleEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\RleDecoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\RleEncoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_decoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\utils.hpp" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\version.hpp" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\zconf.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\zlib.h" />
+    <ClInclude Include="..\..\..\CSSC_compression_code\CSSC_compression_code\zutil.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\BitVectorDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\BitVectorEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\ByteBuffer.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FloatRleEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\FragmentEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\GZIP.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IndexDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IndexEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntDeltaEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntPacker.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntRleDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\IntRleEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\LongDeltaEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\main.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\RleDecoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\RleEncoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_decoder.cpp" />
+    <ClCompile Include="..\..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,10 +1,11 @@
-﻿  UnitTest1.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\compress.hpp(67,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\compress.hpp(68,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\compress.hpp(73,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\decompress.hpp(46,9): warning C4068: 未知的杂注“GCC”
+﻿  pch.cpp
+  UnitTest1.cpp
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\decompress.hpp(52,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(224,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.cpp(226,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
     正在创建库 D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.lib 和对象 D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.exp
   UnitTest1.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug\UnitTest1.dll

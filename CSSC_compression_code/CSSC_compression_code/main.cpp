@@ -454,7 +454,26 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 	//outFile.close();
 }
 
+int DATA_DECOMPRESSED_POS = 0;
+
 int main(int argc, char* argv[]) {
+
+	std::string testin;
+	for (int i = 48; i <=156; i++) {
+		int* idx_int = &i;
+		char* idx =  (char*)idx_int;
+		testin += idx[0];
+	}
+
+	std::string compressed_data = gzip::compress(testin.data(), testin.size());
+	std::string uncompressed_data = gzip::decompress(compressed_data.data(), compressed_data.size());
+
+	return 0;
+
+
+
+
+
 	time_t start, end;
 	double cost;
 	time(&start);
