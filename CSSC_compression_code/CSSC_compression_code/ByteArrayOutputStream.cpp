@@ -168,6 +168,12 @@ void ByteArrayOutputStream::write2filelz4()
 		cout << "ilen: " << ilen << endl;
 		cout << "olen: " << olen << endl;
 		dstlength = olen;
+		
+		//ofstream outfile1;
+		//outfile1.open(filepath_compresssize , ios::app | ios::out );
+		//outfile1 << olen << ',';
+		//outfile1.close();
+
 		for (int i = 0; i < dstlength; i++) {
 			outfile << compressed_bytes[i];
 		}
