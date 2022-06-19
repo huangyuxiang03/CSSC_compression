@@ -159,6 +159,10 @@ void ByteArrayOutputStream::write2filelz4()
 		GZIP gzip;
 		std::uint8_t* compressed_bytes = new std::uint8_t[ilen*2];
 		olen = gzip.data_compress(idata, ilen, compressed_bytes, ilen*2);
+
+		std::uint8_t* uncompressed_bytes = new std::uint8_t[ilen];
+		int ulen = gzip.data_decompress(compressed_bytes, olen, uncompressed_bytes, ilen);
+
 		cout << "ilen: " << ilen << endl;
 		cout << "olen: " << olen << endl;
 		dstlength = olen;

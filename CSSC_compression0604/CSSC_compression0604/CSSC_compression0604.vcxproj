@@ -92,7 +92,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression0604\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\本科\Git\CSSC_compression\CSSC_compression0604\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -146,6 +146,9 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\BitVectorEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteArrayOutputStream.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\ByteBuffer.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\compress.hpp" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\config.hpp" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\decompress.hpp" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaDecoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatDeltaEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\FloatRleDecoder.h" />
@@ -166,6 +169,8 @@
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\RleEncoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_decoder.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\TS_2DIFF_encoder.h" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\utils.hpp" />
+    <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\version.hpp" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zconf.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zlib.h" />
     <ClInclude Include="..\..\CSSC_compression_code\CSSC_compression_code\zutil.h" />

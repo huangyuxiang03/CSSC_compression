@@ -239,7 +239,7 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 		}else if (buffer[i] == '\n') {
 			num_some_row = 0;
 			row_n++;
-			//if (row_n == 180000) break;
+			if (row_n == 180000) break;
 			col_n = 0;
 		}
 
