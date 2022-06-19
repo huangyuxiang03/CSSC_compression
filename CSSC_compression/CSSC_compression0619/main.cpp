@@ -48,7 +48,6 @@ int char16toint3byte(char* num) {
 	return char2hex(num[0]) * 256 + char2hex(num[1]) * 16 + char2hex(num[2]);
 }
 void int3bytetochar16(int num, char* ch) {
-	//ch = new char[3];
 	int* ich = new int[3];
 	ich[2] = num & 15;
 	num >>= 4;
@@ -59,9 +58,6 @@ void int3bytetochar16(int num, char* ch) {
 		if (ich[i] >= 10) ch[i] = ich[i] + 55;
 		else if(ich[i] < 10) ch[i] = ich[i] + 48;
 	}
-	//cout << ch[0] << endl;
-	//cout << ch[1] << endl;
-	//cout << ch[2] << endl;
 	delete[] ich;
 }
 int char16toint2byte(char* num) {
@@ -81,10 +77,6 @@ int justify_file(string filename) {
 	ifstream inFile;
 	inFile.open(filename, ios::in | ios::binary);
 	inFile.read(buffer, try_len);
-	//inFile.seekg(0, std::ios::end);
-	//int length = inFile.tellg();
-	//cout << "read data: " << length << endl;
-	//cout << buffer[4] << endl;
 	int jresult=0;
 	for (int i = 0; i < try_len; i++) {
 		if (buffer[i] == '.') {
@@ -92,7 +84,6 @@ int justify_file(string filename) {
 			break;
 		}
 	}
-	//cout << jresult << endl;
 	return jresult;
 }
 //justify the number is ll or float, if it is ll, return 0;else return 1;
@@ -112,75 +103,6 @@ int justify_file_decode(string filename) {
 	return jresult;
 }
 
-int** read_csvint5(string filename, char sep, int& row, int& col)
-{
-	ifstream inFile;
-	inFile.open(filename, ios::in | ios::binary);
-	int** strArray;
-	cout << "read data: " << endl;
-	inFile.seekg(0, std::ios::end);
-	int length = inFile.tellg();
-	inFile.seekg(0, std::ios::beg);
-	char* buffer = new char[length + 1];
-	inFile.read(buffer, length);
-	if (buffer[length - 1] != '\n') buffer[length] = '\n';
-	else length--;
-
-	cout << length << endl;
-	//int i = 0, col=0,row=0;
-	int i = 0;
-	// find \n
-	while (i != length + 1) {
-		if (buffer[i] == sep)
-			col++;
-		if (buffer[i] == '\n') {
-			col++;
-			break;
-		}
-		i++;
-	}
-	i++;
-
-	row = (length + 1) / i;
-	strArray = new int* [col];
-	for (int j = 0; j < col; j++) {
-		strArray[j] = new int[row];
-	}
-
-	//cout << "here" << endl;
-	i = 0;
-	int num_j = 0, row_n = 0, col_n = 0;
-	char* num = new char[5];
-	while (i != length + 1) {
-		if (buffer[i] != '\n' && buffer[i] != '\r' && buffer[i] != sep) {
-			num[num_j] = buffer[i];
-			num_j++;
-		}
-		else if (buffer[i] == sep) {
-			strArray[col_n][row_n] = char16toint(num);
-			delete[] num;
-			num = new char[5];
-			num_j = 0;
-			col_n++;
-		}
-		else if (buffer[i] == '\n') {
-			strArray[col_n][row_n] = char16toint(num);
-			delete[] num;
-			num = new char[5];
-			num_j = 0;
-			row_n++;
-			//if (row_n == 1800000) break;
-			col_n = 0;
-
-		}
-		i++;
-	}
-	row = row_n;
-	delete[] buffer;
-	cout << "finish reading " << endl;
-	return strArray;
-
-}
 int** read_csvint7(string filename, char sep, int& row, int& col)
 {
 	ifstream inFile;
@@ -332,25 +254,7 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	cout << "finish reading " << endl;
 	return strArray;
 }
-void write_csvint5(string filename, vector<int>& strArray, string seq, int col)
-{
-	ofstream outFile(filename);
-	//outFile.open(filename, ios::out );
-	int length = strArray.size();
-	int row = length / col;
 
-	for (int i = 0; i < row; i++) {
-		int j = 0;
-		for (; j < col - 1; j++) {
-			outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
-			outFile << seq;
-		}
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
-		outFile << "\n";
-	}
-	std::cout << "finish writing " << endl;
-	//outFile.close();
-}
 void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, string seq, int col)
 {
 	ofstream outFile(filename);
@@ -439,7 +343,6 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 	for (int i = 0; i < row; i++) {
 		int j = 0;
 		outFile.setf(ios::fixed, ios::floatfield);
-		//cout << strArray[j * row + i];
 		outFile << setprecision(3) << round_double(strArray[j * row + i], 3);
 		j++;
 		for (; j < col; j++) {
