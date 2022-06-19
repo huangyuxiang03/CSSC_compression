@@ -11,3 +11,8 @@
 ## 语言语法问题
 
 - 写参变量时一定要加引用，例如flush(ByteArrayOutputStream& out)中的&
+
+## gzip库的版本问题
++ 使用最新版gzip库（已经放置在Debug中）
++ 路径：CSSC_compression\CSSC_compression\x64\Debug
++ Note：Debug模式下x64在此版本库下是可用的

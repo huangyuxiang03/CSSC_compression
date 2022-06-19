@@ -1,7 +1,0 @@
-﻿ByteArrayOutputStream.obj : error LNK2001: 无法解析的外部符号 _inflateEnd@4
-ByteArrayOutputStream.obj : error LNK2001: 无法解析的外部符号 _inflate@8
-ByteArrayOutputStream.obj : error LNK2001: 无法解析的外部符号 _inflateInit2_@16
-ByteArrayOutputStream.obj : error LNK2001: 无法解析的外部符号 _deflateInit2_@32
-ByteArrayOutputStream.obj : error LNK2001: 无法解析的外部符号 _deflateEnd@4
-ByteArrayOutputStream.obj : error LNK2001: 无法解析的外部符号 _deflate@8
-D:\本科\Git\CSSC_compression\CSSC_compression0604\Release\CSSC_compression0604.exe : fatal error LNK1120: 6 个无法解析的外部命令
