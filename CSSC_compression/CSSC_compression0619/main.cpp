@@ -454,26 +454,8 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 	//outFile.close();
 }
 
-int DATA_DECOMPRESSED_POS = 0;
 
 int main(int argc, char* argv[]) {
-
-	std::string testin;
-	for (int i = 48; i <=156; i++) {
-		int* idx_int = &i;
-		char* idx =  (char*)idx_int;
-		testin += idx[0];
-	}
-
-	std::string compressed_data = gzip::compress(testin.data(), testin.size());
-	std::string uncompressed_data = gzip::decompress(compressed_data.data(), compressed_data.size());
-
-	return 0;
-
-
-
-
-
 	time_t start, end;
 	double cost;
 	time(&start);
@@ -528,7 +510,7 @@ int main(int argc, char* argv[]) {
 					out3.write2file();
 
 					col_n++;
-					out1.write2filelz4();
+					out1.write2filegzip();
 					col_pos[col_n] = out1.getCompressedBytesSize();
 					//col_pos[col_n] = out1.getBytes().size();
      //               out1.write2file();
@@ -536,7 +518,7 @@ int main(int argc, char* argv[]) {
 					col_n++;
 					//col_pos[col_n] = out2.getBytes().size();
 					//out2.write2file();
-					out2.write2filelz4();
+					out2.write2filegzip();
 					col_pos[col_n] = out2.getCompressedBytesSize();
 				}
 				////else if(i==6) {
@@ -552,7 +534,7 @@ int main(int argc, char* argv[]) {
 				////	col_n++;
 				////	//encoder.flush(out);
 				////	//cout << out.getBytes().size() << endl;
-				////	out.write2filelz4();
+				////	out.write2filegzip();
 				////	col_pos[col_n] = out.getCompressedBytesSize();
 
 				//}
@@ -571,7 +553,7 @@ int main(int argc, char* argv[]) {
 					//col_pos[col_n] = out.getBytes().size();
 					//out.write2file();
 					
-					out.write2filelz4();
+					out.write2filegzip();
 					col_pos[col_n] = out.getCompressedBytesSize();
 					
 				}
@@ -622,7 +604,7 @@ int main(int argc, char* argv[]) {
 				//col_pos[col_n] = out.getBytes().size();
 				//out.write2file();
 
-				out.write2filelz4();
+				out.write2filegzip();
 				col_pos[col_n] = out.getCompressedBytesSize();
 				
 				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
@@ -653,7 +635,7 @@ int main(int argc, char* argv[]) {
 				col++;
 				if(col==1) {
 					IntRleDecoder decoder;
-					ByteBuffer in(baos.getColBytesLZ4());
+					ByteBuffer in(baos.getColBytesGZip());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
@@ -696,7 +678,7 @@ int main(int argc, char* argv[]) {
 				//}
 				else if (col >= 4 && col <= 6) {
 					IntRleDecoder decoder;
-					ByteBuffer in(baos.getColBytesLZ4());
+					ByteBuffer in(baos.getColBytesGZip());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
@@ -706,7 +688,7 @@ int main(int argc, char* argv[]) {
 				}
 				else {
 					IntRleDecoder decoder;
-					ByteBuffer in(baos.getColBytesLZ4());
+					ByteBuffer in(baos.getColBytesGZip());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
@@ -728,7 +710,7 @@ int main(int argc, char* argv[]) {
 			while (baos.hasNextCol()) {
 				col++;
 				cout << "current column : " << col << endl;
-				ByteBuffer in(baos.getColBytesLZ4());
+				ByteBuffer in(baos.getColBytesGZip());
 				int lengthb = in.Bytes().size();
 				cout << "length of decode bytes : "<< lengthb << endl;
 
