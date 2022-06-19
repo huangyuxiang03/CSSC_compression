@@ -15,6 +15,7 @@ using namespace std;
 class ByteArrayOutputStream {
 private:
 	string filepath;
+	string filepath_compresssize;
 	std::vector<std::uint8_t> bytes;
 	//std::uint8_t* compressed_bytes;
 	//int olen;
@@ -34,6 +35,7 @@ public:
 		col_index = 0;
 		this->filepath = fp;
 		dstlength = 0;
+		filepath_compresssize = "compresssize.csv";
 	};
 	ByteArrayOutputStream(std::vector<std::uint8_t> bytes) {
 		vector <std::uint8_t>().swap(this->bytes);

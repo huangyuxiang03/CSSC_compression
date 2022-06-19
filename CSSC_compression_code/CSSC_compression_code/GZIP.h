@@ -71,9 +71,11 @@ public:
 		strm.next_out = (std::uint8_t*)dst;
 
 		int err = -1, ret = -1;
-		err = inflateInit2(&strm, MAX_WBITS + 16);
+		err = inflateInit(&strm, MAX_WBITS);
+		
 		if (err == Z_OK) {
 			err = inflate(&strm, Z_FINISH);
+			cout << strm.msg << endl;
 			if (err == Z_STREAM_END) {
 				ret = strm.total_out;
 			}
