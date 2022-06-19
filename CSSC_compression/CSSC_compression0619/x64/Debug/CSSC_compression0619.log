@@ -1,123 +1,22 @@
-﻿  BitVectorEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-  ByteArrayOutputStream.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteArrayOutputStream.cpp(154,32): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteArrayOutputStream.cpp(227,14): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteArrayOutputStream.cpp(365,28): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  FloatDeltaEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-  FloatRleEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\FloatRleEncoder.h(14,12): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-  FragmentEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\FragmentEncoder.cpp(23,16): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
-  GZIP.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(10,29): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(20,31): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-  IndexEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-  IntDeltaEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\IntDeltaEncoder.cpp(15,18): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\IntDeltaEncoder.cpp(16,35): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\IntDeltaEncoder.cpp(69,20): warning C4244: “参数”: 从“__int64”转换到“int”，可能丢失数据
-  IntRleEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-  LongDeltaEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-  RleEncoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\RleEncoder.cpp(30,54): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\RleEncoder.cpp(31,63): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\RleEncoder.cpp(107,47): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-  TS_2DIFF_encoder.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-  main.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\FloatRleEncoder.h(14,12): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\FloatRleDecoder.h(14,12): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(71,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(74,13): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(122,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(191,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(261,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(339,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(436,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(639,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(682,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(692,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(714,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(623,19): warning C4101: “end_d”: 未引用的局部变量
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(624,10): warning C4101: “cost_d”: 未引用的局部变量
-  正在生成代码...
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(431): warning C4715: “round_double”: 不是所有的控件路径都返回值
-  LINK : 没有找到 D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe 或上一个增量链接没有生成它；正在执行完全链接
-  CSSC_compression0619.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe
+﻿  main.cpp
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\FloatRleEncoder.h(14,12): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\FloatRleDecoder.h(14,12): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(68,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(71,13): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(115,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(185,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(342,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(475,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(488,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(498,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(520,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(459,19): warning C4101: “end_d”: 未引用的局部变量
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(460,10): warning C4101: “cost_d”: 未引用的局部变量
+C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(337): warning C4715: “round_double”: 不是所有的控件路径都返回值
+  CSSC_compression0619.vcxproj -> C:\Users\xiaoj\Documents\GitHub\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe

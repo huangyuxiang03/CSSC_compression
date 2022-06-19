@@ -48,7 +48,7 @@ int char16toint3byte(char* num) {
 	return char2hex(num[0]) * 256 + char2hex(num[1]) * 16 + char2hex(num[2]);
 }
 void int3bytetochar16(int num, char* ch) {
-	//ch = new char[3];
+
 	int* ich = new int[3];
 	ich[2] = num & 15;
 	num >>= 4;
@@ -59,9 +59,6 @@ void int3bytetochar16(int num, char* ch) {
 		if (ich[i] >= 10) ch[i] = ich[i] + 55;
 		else if(ich[i] < 10) ch[i] = ich[i] + 48;
 	}
-	//cout << ch[0] << endl;
-	//cout << ch[1] << endl;
-	//cout << ch[2] << endl;
 	delete[] ich;
 }
 int char16toint2byte(char* num) {
@@ -81,10 +78,6 @@ int justify_file(string filename) {
 	ifstream inFile;
 	inFile.open(filename, ios::in | ios::binary);
 	inFile.read(buffer, try_len);
-	//inFile.seekg(0, std::ios::end);
-	//int length = inFile.tellg();
-	//cout << "read data: " << length << endl;
-	//cout << buffer[4] << endl;
 	int jresult=0;
 	for (int i = 0; i < try_len; i++) {
 		if (buffer[i] == '.') {
@@ -112,75 +105,6 @@ int justify_file_decode(string filename) {
 	return jresult;
 }
 
-int** read_csvint5(string filename, char sep, int& row, int& col)
-{
-	ifstream inFile;
-	inFile.open(filename, ios::in | ios::binary);
-	int** strArray;
-	cout << "read data: " << endl;
-	inFile.seekg(0, std::ios::end);
-	int length = inFile.tellg();
-	inFile.seekg(0, std::ios::beg);
-	char* buffer = new char[length + 1];
-	inFile.read(buffer, length);
-	if (buffer[length - 1] != '\n') buffer[length] = '\n';
-	else length--;
-
-	cout << length << endl;
-	//int i = 0, col=0,row=0;
-	int i = 0;
-	// find \n
-	while (i != length + 1) {
-		if (buffer[i] == sep)
-			col++;
-		if (buffer[i] == '\n') {
-			col++;
-			break;
-		}
-		i++;
-	}
-	i++;
-
-	row = (length + 1) / i;
-	strArray = new int* [col];
-	for (int j = 0; j < col; j++) {
-		strArray[j] = new int[row];
-	}
-
-	//cout << "here" << endl;
-	i = 0;
-	int num_j = 0, row_n = 0, col_n = 0;
-	char* num = new char[5];
-	while (i != length + 1) {
-		if (buffer[i] != '\n' && buffer[i] != '\r' && buffer[i] != sep) {
-			num[num_j] = buffer[i];
-			num_j++;
-		}
-		else if (buffer[i] == sep) {
-			strArray[col_n][row_n] = char16toint(num);
-			delete[] num;
-			num = new char[5];
-			num_j = 0;
-			col_n++;
-		}
-		else if (buffer[i] == '\n') {
-			strArray[col_n][row_n] = char16toint(num);
-			delete[] num;
-			num = new char[5];
-			num_j = 0;
-			row_n++;
-			//if (row_n == 1800000) break;
-			col_n = 0;
-
-		}
-		i++;
-	}
-	row = row_n;
-	delete[] buffer;
-	cout << "finish reading " << endl;
-	return strArray;
-
-}
 int** read_csvint7(string filename, char sep, int& row, int& col)
 {
 	ifstream inFile;
@@ -239,7 +163,7 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 		}else if (buffer[i] == '\n') {
 			num_some_row = 0;
 			row_n++;
-			if (row_n == 180000) break;
+			//if (row_n == 180000) break;
 			col_n = 0;
 		}
 
@@ -332,25 +256,7 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	cout << "finish reading " << endl;
 	return strArray;
 }
-void write_csvint5(string filename, vector<int>& strArray, string seq, int col)
-{
-	ofstream outFile(filename);
-	//outFile.open(filename, ios::out );
-	int length = strArray.size();
-	int row = length / col;
 
-	for (int i = 0; i < row; i++) {
-		int j = 0;
-		for (; j < col - 1; j++) {
-			outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
-			outFile << seq;
-		}
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray[j * row + i];
-		outFile << "\n";
-	}
-	std::cout << "finish writing " << endl;
-	//outFile.close();
-}
 void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, string seq, int col)
 {
 	ofstream outFile(filename);
@@ -464,7 +370,6 @@ int main(int argc, char* argv[]) {
 	if (argv[1][0] == 'c') {
 		//justify the number is ll or float
 		int jresult = justify_file(argv[2]);
-		//cout << jresult << endl;
 		if (jresult==0) {
 			/*std::cout << argv[2] << endl;*/
 			
@@ -478,85 +383,23 @@ int main(int argc, char* argv[]) {
 			ByteArrayOutputStream out(argv[3]);
 			out.writeDatatype('l');
 			for (int i = 0; i < width; i++) {
-				if (i == 10) {
-					IndexEncoder encoder(length, strArrayll[i][0]);
-					for (int j = 1; j < length; j++) {
-						if (j % 18000000 == 0) {
-							cout << "col:" << i << endl;
-							cout << "row:" << j << endl;
-						}
-						encoder.encode(strArrayll[i][j], out);
-					}
-					encoder.flush(out);
-					col_n++;
-					col_pos[col_n] = encoder.getBit_vector1_num_count();
-					out.write2file();
+				IntRleEncoder encoder;
+				for (int j = 0; j < length; j++) {
+					if (j %18000000==0) {
+						cout << "col:"<<i << endl;
+						cout << "row:" << j << endl;
+					} 
+					encoder.encode(strArrayll[i][j], out);
 				}
-				else if(i>=30&&i<=5){
-					BitVectorEncoder encoder(length,1000);
-					ByteArrayOutputStream out1(argv[3]);
-					ByteArrayOutputStream out2(argv[3]);
-					ByteArrayOutputStream out3(argv[3]);
-					for (int j = 0; j < length; j++) {
-						if (j % 18000000 == 0) {
-							cout << "col:" << i << endl;
-							cout << "row:" << j << endl;
-						}
-						encoder.encode(strArrayll[i][j],j, out1,out2);
-					}
+				col_n++;
+				encoder.flush(out);
+
+				//col_pos[col_n] = out.getBytes().size();
+				//out.write2file();
 					
-					encoder.flush(out1,out2);
-					encoder.encode_bitvector(out3);
-					out3.write2file();
-
-					col_n++;
-					out1.write2filegzip();
-					col_pos[col_n] = out1.getCompressedBytesSize();
-					//col_pos[col_n] = out1.getBytes().size();
-     //               out1.write2file();
-
-					col_n++;
-					//col_pos[col_n] = out2.getBytes().size();
-					//out2.write2file();
-					out2.write2filegzip();
-					col_pos[col_n] = out2.getCompressedBytesSize();
-				}
-				////else if(i==6) {
-				////	IntDeltaEncoder encoder;
-				////	for (int j = 0; j < length; j++) {
-				////		if (j % 18000000 == 0) {
-				////			cout << "col:" << i << endl;
-				////			cout << "row:" << j << endl;
-				////		}
-				////		out.write(strArrayll[i][j]);
-				////		//encoder.encode(strArrayll[i][j], out);
-				////	}
-				////	col_n++;
-				////	//encoder.flush(out);
-				////	//cout << out.getBytes().size() << endl;
-				////	out.write2filegzip();
-				////	col_pos[col_n] = out.getCompressedBytesSize();
-
-				//}
-				else {
-					IntRleEncoder encoder;
-					for (int j = 0; j < length; j++) {
-						if (j %18000000==0) {
-							cout << "col:"<<i << endl;
-							cout << "row:" << j << endl;
-						} 
-						encoder.encode(strArrayll[i][j], out);
-					}
-					col_n++;
-					encoder.flush(out);
-
-					//col_pos[col_n] = out.getBytes().size();
-					//out.write2file();
-					
-					out.write2filegzip();
-					col_pos[col_n] = out.getCompressedBytesSize();
-					
-				}
+				out.write2filegzip();
+				col_pos[col_n] = out.getCompressedBytesSize();
+				
 				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
 			}
 			cout << "finish encoding" << endl;
@@ -564,11 +407,7 @@ int main(int argc, char* argv[]) {
 			cout << "finish writing" << endl;
 		}
 		else if (jresult==1) {
-			//int fi[] = {2112,5215,6963,9178,12435,14889,17973,22021,23504,23598,24779,26673,26848,27991,29773,29998,30998,31114,34088,36498,37628,38698,39598,39748,40853,42328,43283,45968,47782,48748};
-			//int finum = 0;
-			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
-			//float** miu_i;
 			int width = 0, length = 0;
 			float** strArrayll = read_csvf(argv[2], ' ', length, width);// , miu_i);
 			int* col_pos = new int[width + 1]; // the position of per column data
@@ -589,9 +428,6 @@ int main(int argc, char* argv[]) {
 						cout << "col:" << i << endl;
 						cout << "row:" << j << endl;
 					}
-
-					//int a = strArrayll[i][j] * 100000;
-					//out.write(a);
 					encoder->encode(strArrayll[i][j], out);
 					
 					//encoder->encode(strArrayll[i][j],j, out);
@@ -645,37 +481,7 @@ int main(int argc, char* argv[]) {
 					}
 					cout <<"row_tol: " << row_tol << endl;
 				}
-				//else if (col == 20) {
-				//	IndexDecoder decoder(row_tol, 0);
-				//	ByteBuffer in_bit_vector0_count(baos.getInt());
-				//	int bit_vector0_count = in_bit_vector0_count.readInt();
-				//	ByteBuffer in3(baos.getBytesLength(bit_vector0_count));
-				//	decoder.setBit_vector0_count(bit_vector0_count);
-				//	decoder.decode_bitvector(in3);
-				//	
-				//	ByteBuffer in(baos.getColBytes());
-				//	int lengthb = in.Bytes().size();
-				//	cout << "current bytes length: " << lengthb << endl;
-				//	decoder.readInt(llArray0, in);
-				//}
-				//else if (col >= 40 && col <= 6) {
-				//	//cout << row_tol << endl;
-				//	BitVectorDecoder decoder(row_tol,1000);
-				//	ByteBuffer in3(baos.getBytesLength(row_tol));
-				//	decoder.decode_bitvector(in3);
-				//	ByteBuffer in1(baos.getColBytes());
-				//	int lengthb = in1.Bytes().size();
-				//	cout << "in1 lengthb: " << lengthb << endl;
-				//	ByteBuffer in2(baos.getColBytes());
-				//	lengthb = in2.Bytes().size();
-				//	cout << "in2 lengthb: " << lengthb << endl;
-				//	int rowj = 0;
-				//	while (decoder.hasNext(in1,in2)&&rowj<row_tol) {
-				//		int r = decoder.readInt(rowj, in1, in2);
-				//		rowj++;
-				//		llArray1.push_back(r);
-				//	}
-				//}
+
 				else if (col >= 4 && col <= 6) {
 					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytesGZip());
