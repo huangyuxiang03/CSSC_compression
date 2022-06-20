@@ -396,7 +396,8 @@ int main(int argc, char* argv[]) {
 
 				//col_pos[col_n] = out.getBytes().size();
 				//out.write2file();
-					
+				if (i == 0)
+					cout << "the size of [out] is: "<<sizeof(out) << endl;
 				out.write2filegzip();
 				col_pos[col_n] = out.getCompressedBytesSize();
 				

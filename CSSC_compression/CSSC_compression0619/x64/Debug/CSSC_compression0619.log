@@ -12,11 +12,11 @@ D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(71
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(115,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(185,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(342,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(475,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(488,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(498,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(524,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(459,19): warning C4101: “end_d”: 未引用的局部变量
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(460,10): warning C4101: “cost_d”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(476,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(489,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(499,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(525,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(460,19): warning C4101: “end_d”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(461,10): warning C4101: “cost_d”: 未引用的局部变量
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(337): warning C4715: “round_double”: 不是所有的控件路径都返回值
   CSSC_compression0619.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe
