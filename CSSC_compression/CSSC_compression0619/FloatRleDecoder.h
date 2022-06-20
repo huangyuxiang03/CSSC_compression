@@ -9,9 +9,9 @@ private:
 	IntRleDecoder decoder;
 public:
 	float convertIntToFloat(int v) {
-		//float a = ;
-		//memcpy(&a, &v, sizeof(float));
-		return v / 100000;
+		float a = 0.0f;
+		memcpy(&a, &v, sizeof(float));
+		return a;
 	}
 	float readFloat(ByteBuffer& buffer);
 	bool hasNext(ByteBuffer& buffer);
