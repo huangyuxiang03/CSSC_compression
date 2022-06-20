@@ -103,5 +103,9 @@ void ByteBuffer::get(std::vector<uint8_t>& tmp, int offset, int length)
 		return;
 	}
 	int maxi = offset + length;
-	for (int i = offset; i < maxi; i++) tmp[i] = readuchar();
+	int max = length;
+	memcpy(tmp.data(), bytes.data(), max);
+	bytes.erase(bytes.begin(), bytes.begin() + max);
+	/*for (int i = offset; i < maxi; i++) 
+		tmp[i] = readuchar();*/
 }

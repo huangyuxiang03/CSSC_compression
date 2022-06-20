@@ -75,6 +75,7 @@ void IntRleEncoder::convertBuffer()
     // we'll not write bit-packing group to OutputStream immediately
     // we buffer them in list
     bytesBuffer.push_back(bytes);
+    delete[] tmpBuffer;
 }
 
 void IntRleEncoder::encodeValue(int value)

@@ -369,7 +369,7 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 	}
 	GZIP gzip;
 	int dstsize = ilen * 100;
-	std::uint8_t* decompressed_bytes = new std::uint8_t[dstsize];
+	std::string decompressed_bytes;
 	olen = gzip.data_decompress(idata, ilen, decompressed_bytes, dstsize);
 	cout << "ilen: " << ilen << endl;
 	cout << "olen: " << olen << endl;
@@ -379,7 +379,6 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 	for (int i = 0; i < decompdstlength; i++) {
 		newgetbytes[i] = decompressed_bytes[i];
 	}
-	delete[] decompressed_bytes;
 	delete[] idata;
 	return newgetbytes;
 

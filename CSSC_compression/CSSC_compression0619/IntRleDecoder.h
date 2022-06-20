@@ -17,6 +17,9 @@ private:
 
 	/** packer for unpacking int values. */
 	IntPacker* packer;
+
+
+	bool currentBufferAllocated{ false };
 public:
 	IntRleDecoder() {
 		reset();
@@ -28,6 +31,10 @@ public:
 	void readNumberInRle();
 	void readBitPackingBuffer(int bitPackedGroupCount, int lastBitPackedNum);
 	void reset() {};
+	~IntRleDecoder() {
+		delete[] packer;
+		delete[] currentBuffer;
+	}
 };
 
 #endif // !__INTRLEDECODER__

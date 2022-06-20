@@ -48,7 +48,6 @@ int char16toint3byte(char* num) {
 	return char2hex(num[0]) * 256 + char2hex(num[1]) * 16 + char2hex(num[2]);
 }
 void int3bytetochar16(int num, char* ch) {
-
 	int* ich = new int[3];
 	ich[2] = num & 15;
 	num >>= 4;
@@ -85,7 +84,6 @@ int justify_file(string filename) {
 			break;
 		}
 	}
-	//cout << jresult << endl;
 	return jresult;
 }
 //justify the number is ll or float, if it is ll, return 0;else return 1;
@@ -110,7 +108,6 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 	ifstream inFile;
 	inFile.open(filename, ios::in | ios::binary);
 	int** strArray;
-	//std::cout << filename << endl;
 	inFile.seekg(0, std::ios::end);
 	int length = inFile.tellg();
 	cout << "read data: " << length << endl;
@@ -128,7 +125,6 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 		strArray[j] = new int[row];
 	}
 
-	//cout << "here" << endl;
 	i = 0;
 	int num_j = 0, row_n = 0, col_n = 0;
 	char* num = new char[5];
@@ -205,12 +201,8 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	row = 600000; //row 可以固定
 	float** strArray;
 	strArray = new float * [col];
-	//miu_i = new float* [col]; // 前i个数的均值
-	//float* sum = new float[col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new float[row];
-		//miu_i[j] = new float[row];
-		//sum[j] = 0;
 	}
 
 	i = 0;
@@ -218,7 +210,6 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	char* num = new char[10];
 	while (i != length + 1) {
 		if (buffer[i] != '\n' && buffer[i] != sep) {
-			//num[num_j] = buffer[i];
 			num_j++;
 		}
 		else if (buffer[i] == sep) {
@@ -228,8 +219,6 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 				num[k] = buffer[i - num_j + k];
 			}
 			strArray[col_n][row_n] = chartofloat(num);
-			//sum[col_n] += strArray[col_n][row_n];
-			//miu_i[col_n][row_n] = sum[col_n] / (row_n + 1);
 			num_j = 0;
 			col_n++;
 		}
@@ -240,12 +229,10 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 				num[k] = buffer[i - num_j + k];
 			}
 			strArray[col_n][row_n] = chartofloat(num);
-			//sum[col_n] += strArray[col_n][row_n];
-			//miu_i[col_n][row_n] = sum[col_n] / (row_n + 1);
 
 			num_j = 0;
 			row_n++;
-			if (row_n == 51000) break;
+			//if (row_n == 51000) break;
 			col_n = 0;
 		}
 		i++;
@@ -256,7 +243,6 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	cout << "finish reading " << endl;
 	return strArray;
 }
-
 void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, string seq, int col)
 {
 	ofstream outFile(filename);
@@ -337,8 +323,7 @@ double round_double(double number, int loc)
 }
 void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 {
-	ofstream outFile(filename);
-	//outFile.open(filename, ios::out );
+	ofstream outFile(filename);;
 	int length = strArray.size();
 	int row = length / col;
 
@@ -346,18 +331,19 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 		int j = 0;
 		outFile.setf(ios::fixed, ios::floatfield);
 		//cout << strArray[j * row + i];
+		//cout << strArray[j * row + i] << endl;
 		outFile << setprecision(3) << round_double(strArray[j * row + i], 3);
 		j++;
 		for (; j < col; j++) {
 			outFile << seq;
 			//outFile.setf(ios::fixed, ios::floatfield);
+			//cout << strArray[j * row + i] << endl;
 			outFile << setprecision(5) << round_double(strArray[j * row + i], 5);
 		}
 		outFile << "\r";
 		outFile << "\n";
 	}
 	std::cout << "finish writing " << endl;
-	//outFile.close();
 }
 
 
@@ -370,6 +356,7 @@ int main(int argc, char* argv[]) {
 	if (argv[1][0] == 'c') {
 		//justify the number is ll or float
 		int jresult = justify_file(argv[2]);
+		//cout << jresult << endl;
 		if (jresult==0) {
 			/*std::cout << argv[2] << endl;*/
 			
@@ -394,12 +381,12 @@ int main(int argc, char* argv[]) {
 				col_n++;
 				encoder.flush(out);
 
-				//col_pos[col_n] = out.getBytes().size();
-				//out.write2file();
-					
+				/*col_pos[col_n] = out.getBytes().size();
+				out.write2file();*/
+				
 				out.write2filegzip();
 				col_pos[col_n] = out.getCompressedBytesSize();
-				
+					
 				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
 			}
 			cout << "finish encoding" << endl;
@@ -407,7 +394,11 @@ int main(int argc, char* argv[]) {
 			cout << "finish writing" << endl;
 		}
 		else if (jresult==1) {
+			//int fi[] = {2112,5215,6963,9178,12435,14889,17973,22021,23504,23598,24779,26673,26848,27991,29773,29998,30998,31114,34088,36498,37628,38698,39598,39748,40853,42328,43283,45968,47782,48748};
+			//int finum = 0;
+			//std::cout << argv[2] << endl;
 			ByteArrayOutputStream out(argv[3]);
+			//float** miu_i;
 			int width = 0, length = 0;
 			float** strArrayll = read_csvf(argv[2], ' ', length, width);// , miu_i);
 			int* col_pos = new int[width + 1]; // the position of per column data
@@ -428,6 +419,9 @@ int main(int argc, char* argv[]) {
 						cout << "col:" << i << endl;
 						cout << "row:" << j << endl;
 					}
+
+					//int a = strArrayll[i][j] * 100000;
+					//out.write(a);
 					encoder->encode(strArrayll[i][j], out);
 					
 					//encoder->encode(strArrayll[i][j],j, out);
@@ -472,6 +466,7 @@ int main(int argc, char* argv[]) {
 				if(col==1) {
 					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytesGZip());
+					//ByteBuffer in(baos.getColBytes());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
@@ -481,10 +476,10 @@ int main(int argc, char* argv[]) {
 					}
 					cout <<"row_tol: " << row_tol << endl;
 				}
-
 				else if (col >= 4 && col <= 6) {
 					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytesGZip());
+					//ByteBuffer in(baos.getColBytes());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
@@ -495,6 +490,7 @@ int main(int argc, char* argv[]) {
 				else {
 					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytesGZip());
+					//ByteBuffer in(baos.getColBytes());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
