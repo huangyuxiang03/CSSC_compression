@@ -140,7 +140,7 @@ void ByteArrayOutputStream::write2file()
 	}		
 }
 
-void ByteArrayOutputStream::write2filelz4()
+void ByteArrayOutputStream::write2filegzip()
 {
 	ofstream outfile;
 	outfile.open(filepath, ios::app | ios::out | ios::binary);
@@ -159,11 +159,6 @@ void ByteArrayOutputStream::write2filelz4()
 		GZIP gzip;
 		std::uint8_t* compressed_bytes = new std::uint8_t[ilen*2];
 		olen = gzip.data_compress(idata, ilen, compressed_bytes, ilen*2);
-
-		std::uint8_t* uncompressed_bytes = new std::uint8_t[ilen];
-		//int ulen = gzip.data_decompress(compressed_bytes, olen, uncompressed_bytes, ilen);
-			int ulen = 1;
-			uncompressed_bytes[0] = 'c';
 
 		cout << "ilen: " << ilen << endl;
 		cout << "olen: " << olen << endl;
@@ -358,7 +353,7 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytes()
    //return newgetbytes;
 }
 
-std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesLZ4()
+std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 {
 	std::vector<std::uint8_t> getbytes;
 	getbytes.insert(getbytes.begin(), bytes.begin(), bytes.begin() + col_pos[col_index]);

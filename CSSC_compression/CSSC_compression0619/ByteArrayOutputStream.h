@@ -51,7 +51,7 @@ public:
 	void write(vector<std::uint8_t> b, int offset, int len);
 	void write(std::uint8_t* b, int offset, int len);
 	void write2file();
-	void write2filelz4();
+	void write2filegzip();
 	void readFromFile();
 	void writeDatatype(char datatype);
 	//void compress();
@@ -59,7 +59,7 @@ public:
 	std::vector<std::uint8_t> getBytes(); 
 	int getCompressedBytesSize();
 	std::vector<std::uint8_t> getColBytes();
-	std::vector<std::uint8_t> getColBytesLZ4();
+	std::vector<std::uint8_t> getColBytesGZip();
 	std::vector<std::uint8_t> getBytesLength(int length);
 	bool hasNextCol();
 	void writeRowCol(int col_n, int* col_pos);
