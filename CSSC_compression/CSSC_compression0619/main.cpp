@@ -19,7 +19,7 @@
 #include "IndexEncoder.h"
 #include "IndexDecoder.h"
 #include "IntRleDecoder.h"
-//#include "FragmentEncoder.h"
+#include "FragmentEncoder.h"
 #include "FloatRleDecoder.h"
 
 #include "GZIP.h"
@@ -46,6 +46,18 @@ int char16toint4byte(char* num) {
 int char16toint3byte(char* num) {
 	return char2hex(num[0]) * 256 + char2hex(num[1]) * 16 + char2hex(num[2]);
 }
+void int2bytetochar16(int num, char* ch) {
+
+	int* ich = new int[2];
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 2; i++) {
+		if (ich[i] >= 10) ch[i] = ich[i] + 55;
+		else if(ich[i] < 10) ch[i] = ich[i] + 48;
+	}
+	delete[] ich;
+}
 void int3bytetochar16(int num, char* ch) {
 
 	int* ich = new int[3];
@@ -56,10 +68,125 @@ void int3bytetochar16(int num, char* ch) {
 	ich[0] = num & 15;
 	for (int i = 0; i < 3; i++) {
 		if (ich[i] >= 10) ch[i] = ich[i] + 55;
-		else if(ich[i] < 10) ch[i] = ich[i] + 48;
+		else if (ich[i] < 10) ch[i] = ich[i] + 48;
 	}
 	delete[] ich;
 }
+void int4bytetochar16(int num, char* ch) {
+
+	int* ich = new int[4];
+	ich[3] = num & 15;
+	num >>= 4;
+	ich[2] = num & 15;
+	num >>= 4;
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 4; i++) {
+		if (ich[i] >= 10) ch[i] = ich[i] + 55;
+		else if (ich[i] < 10) ch[i] = ich[i] + 48;
+	}
+	delete[] ich;
+}
+
+void intCol0Byte2Char16(int num, char* ch) {
+	int* ich = new int[2];
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 2; i++) {
+		if (ich[i] >= 10) ch[i] = ich[i] + 55;
+		else if (ich[i] < 10) ch[i] = ich[i] + 48;
+	}
+	delete[] ich;
+}
+void intCol1Byte2Char16(int num, char* ch) {
+	int* ich = new int[2];
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 2; i++) {
+		if (ich[i] >= 10) ch[i+2] = ich[i] + 55;
+		else if (ich[i] < 10) ch[i+2] = ich[i] + 48;
+	}
+	delete[] ich;
+}
+void intCol2Byte2Char16(int num, char* ch) {
+
+	int* ich = new int[4];
+	ich[3] = num & 15;
+	num >>= 4;
+	ich[2] = num & 15;
+	num >>= 4;
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 4; i++) {
+		if (ich[i] >= 10) ch[i+5] = ich[i] + 55;
+		else if (ich[i] < 10) ch[i+5] = ich[i] + 48;
+	}
+	delete[] ich;
+}
+void intCol3Byte2Char16(int num, char* ch) {
+
+	int* ich = new int[3];
+	ich[2] = num & 15;
+	num >>= 4;
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 3; i++) {
+		if (ich[i] >= 10) ch[i+10] = ich[i] + 55;
+		else if (ich[i] < 10) ch[i+10] = ich[i] + 48;
+	}
+	delete[] ich;
+}
+void intCol4Byte2Char16(int num, char* ch) {
+	int* ich = new int[3];
+	ich[2] = num & 15;
+	num >>= 4;
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	if (ich[0] >= 10) ch[13] = ich[0] + 55;
+	else if (ich[0] < 10) ch[13] = ich[0] + 48;
+	if (ich[1] >= 10) ch[15] = ich[1] + 55;
+	else if (ich[1] < 10) ch[15] = ich[1] + 48;
+	if (ich[2] >= 10) ch[16] = ich[2] + 55;
+	else if (ich[2] < 10) ch[16] = ich[2] + 48;
+	delete[] ich;
+}
+void intCol5Byte2Char16(int num, char* ch) {
+
+	int* ich = new int[3];
+	ich[2] = num & 15;
+	num >>= 4;
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	if (ich[0] >= 10) ch[17] = ich[0] + 55;
+	else if (ich[0] < 10) ch[17] = ich[0] + 48;
+	if (ich[1] >= 10) ch[18] = ich[1] + 55;
+	else if (ich[1] < 10) ch[18] = ich[1] + 48;
+	if (ich[2] >= 10) ch[20] = ich[2] + 55;
+	else if (ich[2] < 10) ch[20] = ich[2] + 48;
+	delete[] ich;
+}
+void intCol6Byte2Char16(int num, char* ch) {
+
+	int* ich = new int[3];
+	ich[2] = num & 15;
+	num >>= 4;
+	ich[1] = num & 15;
+	num >>= 4;
+	ich[0] = num & 15;
+	for (int i = 0; i < 3; i++) {
+		if (ich[i] >= 10) ch[i + 21] = ich[i] + 55;
+		else if (ich[i] < 10) ch[i + 21] = ich[i] + 48;
+	}
+	delete[] ich;
+}
+
 int char16toint2byte(char* num) {
 	return char2hex(num[0]) * 16 + char2hex(num[1]);
 }
@@ -162,7 +289,7 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 		}else if (buffer[i] == '\n') {
 			num_some_row = 0;
 			row_n++;
-			//if (row_n == 180000) break;
+			if (row_n == 180000) break;
 			col_n = 0;
 		}
 
@@ -244,7 +371,7 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 
 			num_j = 0;
 			row_n++;
-			if (row_n == 51000) break;
+			//if (row_n == 51000) break;
 			col_n = 0;
 		}
 		i++;
@@ -256,42 +383,32 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	return strArray;
 }
 
-void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, string seq, int col)
+void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, char seq, int col)
 {
 	ofstream outFile(filename);
 
 	for (int i = 0; i < row; i++) {
 		int j0 = 0;
 		int j1 = 0;
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(2) << std::hex << strArray0[j0 * row + i];
+		char* byte25_per_row = new char[25];
+		for (int i = 4; i < 24; i += 5) {
+			byte25_per_row[i] = seq;
+		}
+		byte25_per_row[24] = '\n';
+		intCol0Byte2Char16(strArray0[j0 * row + i], byte25_per_row);
 		j0++;
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(2) << std::hex << strArray0[j0 * row + i];
-		outFile << seq;
+		intCol1Byte2Char16(strArray0[j0 * row + i], byte25_per_row);
 		j0++;
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(4) << std::hex << strArray0[j0 * row + i];
-		outFile << seq;
+		intCol2Byte2Char16(strArray0[j0 * row + i], byte25_per_row);
 		j0++;
-		outFile << setiosflags(ios::uppercase) << setfill('0') << setw(3) << std::hex << strArray1[j1 * row + i];
+		intCol3Byte2Char16(strArray1[j1 * row + i], byte25_per_row);
 		j1++;
-		char* int3byte = new char[3];
-		int3bytetochar16(strArray1[j1 * row + i], int3byte);
-		outFile << int3byte[0];
-		outFile << seq;
-		outFile << int3byte[1];
-		outFile << int3byte[2];
+		intCol4Byte2Char16(strArray1[j1 * row + i], byte25_per_row);
 		j1++;
-		int3bytetochar16(strArray1[j1 * row + i], int3byte);
-		outFile << int3byte[0];
-		outFile << int3byte[1];
-		outFile << seq;
-		outFile << int3byte[2];
+		intCol5Byte2Char16(strArray1[j1 * row + i], byte25_per_row);
 		j1++;
-		int3bytetochar16(strArray0[j0 * row + i], int3byte);
-		outFile << int3byte[0];
-		outFile << int3byte[1];
-		outFile << int3byte[2];
-		outFile << "\n";
-		delete[] int3byte;
+		intCol6Byte2Char16(strArray0[j0 * row + i], byte25_per_row);
+		outFile.write(byte25_per_row, 25 * sizeof(char));
 	}
 	std::cout << "finish writing " << endl;
 }
@@ -395,8 +512,8 @@ int main(int argc, char* argv[]) {
 
 				//col_pos[col_n] = out.getBytes().size();
 				//out.write2file();
-				if (i == 0)
-					cout << "the size of [out] is: "<<sizeof(out) << endl;
+				//if (i == 0)
+				//	cout << "the size of [out] is: "<<sizeof(out) << endl;
 				out.write2filegzip();
 				col_pos[col_n] = out.getCompressedBytesSize();
 				
@@ -419,9 +536,9 @@ int main(int argc, char* argv[]) {
 			out.writeDatatype('f');
 			int count = 0;
 			for (int i = 0; i < width; i++) {
-				//float miu = 0.0f;
-				FloatRleEncoder* encoder = new FloatRleEncoder();
-				//FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
+				float miu = 0.0f;
+				//FloatRleEncoder* encoder = new FloatRleEncoder();
+				FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
 				//FragmentEncoder* encoder = new FragmentEncoder(miu,length);
 				for (int j = 0; j < length; j++) {
 					if (j% 510000==0) {
@@ -502,13 +619,13 @@ int main(int argc, char* argv[]) {
 						int r = decoder.readInt(in);
 						llArray0.push_back(r);
 						count++;
-						if (count % 10000 == 0)
-							cout << col << ": " << count << endl;
+						//if (count % 10000 == 0)
+						//	cout << col << ": " << count << endl;
 					}
 				}
 				//std::cout << llArray.size() << endl;
 			}
-			write_csvint7(argv[3], row_tol, llArray0, llArray1,",",col);
+			write_csvint7(argv[3], row_tol, llArray0, llArray1,',',col);
 		}
 		else if (jresult == 1) {
 			ByteArrayOutputStream baos(argv[2]);
