@@ -24,6 +24,13 @@ private:
 	int col_index;
 	int dstlength;
 public:
+
+	void print() {
+		for(auto u : bytes) {
+			cout<<(int)u<<" ";
+		}
+		cout<<endl;
+	}
 	
 	ByteArrayOutputStream() {
 		col_n = 0;

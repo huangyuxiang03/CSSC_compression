@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <time.h>
 #include <string>
@@ -202,10 +201,10 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 		i++;
 	}
 	i++;
-	row = 600000; //row 可以固定
+	row = 600000; //row 锟斤拷锟皆固讹拷
 	float** strArray;
 	strArray = new float * [col];
-	//miu_i = new float* [col]; // 前i个数的均值
+	//miu_i = new float* [col]; // 前i锟斤拷锟斤拷锟侥撅拷值
 	//float* sum = new float[col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new float[row];
@@ -300,7 +299,7 @@ double round_double(double number, int loc)
 {
 	unsigned long long a;
 	memcpy(&a, &number, sizeof(long long));
-	if (a == 9223372036854775808)
+	if (a == (unsigned long long)9223372036854775808)
 		return number;
 	
 
