@@ -1,4 +1,5 @@
 #include "IntRleEncoder.h"
+#include <iostream>
 
 void IntRleEncoder::encode(int value, ByteArrayOutputStream& out)
 {

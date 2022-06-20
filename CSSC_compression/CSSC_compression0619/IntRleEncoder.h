@@ -18,7 +18,7 @@ public:
 	IntRleEncoder() {
 		bufferedValues = new int[RLE_MIN_REPEATED_NUM];
 		preValue = 0;
-		//values = new ArrayList<>();
+		numBufferedValues = 0;
 	}
 	~IntRleEncoder() {
 		vector <int>().swap(values);
