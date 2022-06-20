@@ -17,12 +17,10 @@ void FragmentEncoder::encode(float num, int pos, ByteArrayOutputStream& out)
 	wait_compress_count++;
 	encoder->encode(num, out);
 	miu = (miu * (wait_compress_count - 1) + num) / wait_compress_count;
+	square_miu = (square_miu * (wait_compress_count - 1) + num * num) / wait_compress_count;
 	if (wait_compress_count > MINFRAGMENTLENGTH -1) {
 		sigma = 0.0f;
-		for (int i = 0; i < wait_compress_count; i++) {
-			sigma += pow(wait_compress[i] - miu, 2);
-		}
-		sigma /= wait_compress_count;
+		sigma = square_miu - miu * miu;
 	}
 	//miu = miu_i[pos];
 }
@@ -44,6 +42,7 @@ void FragmentEncoder::encode_bitvector(ByteArrayOutputStream& out)
 void FragmentEncoder::reset(float miu, int length)
 {
 	this->miu = miu;
+	this->square_miu = miu * miu;
 	this->sigma = 0.0f;
 	delete[] fragment_vector;
 	delete[] wait_compress;

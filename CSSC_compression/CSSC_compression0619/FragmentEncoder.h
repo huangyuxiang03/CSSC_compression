@@ -11,6 +11,7 @@ using namespace std;
 class FragmentEncoder {
 private:
 	float miu;
+	float square_miu;
 	float sigma;
 	//int sigma_count;
 	int* fragment_vector;
