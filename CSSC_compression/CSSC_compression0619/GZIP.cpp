@@ -14,8 +14,9 @@ int GZIP::data_compress(std::uint8_t*idata, int ilen, std::uint8_t*odata, int ol
 //ilen  待解压数据的长度
 //odata 解压后数据存储的buffer
 //olen  解压数据存储buffer的长度
-int GZIP::data_decompress(std::uint8_t* idata, int ilen, std::uint8_t* odata, int& dst_size) {
+int GZIP::data_decompress(std::uint8_t* idata, int ilen, std::string& odata, int& dst_size) {
     std::string decompressed = gzip::decompress((char*)idata, ilen);
-    memcpy((void*)odata, decompressed.data(), decompressed.size());
+    odata.resize(decompressed.size());
+    memcpy((void*)odata.data(), decompressed.data(), decompressed.size());
     return decompressed.size();
 }

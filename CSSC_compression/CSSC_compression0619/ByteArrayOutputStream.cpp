@@ -359,7 +359,6 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 	getbytes.insert(getbytes.begin(), bytes.begin(), bytes.begin() + col_pos[col_index]);
 	bytes.erase(bytes.begin(), bytes.begin() + col_pos[col_index]);
 	col_index++;
-	//return getbytes;
 
 	int olen = 0;
 	int ilen = getbytes.size();
@@ -369,7 +368,7 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 	}
 	GZIP gzip;
 	int dstsize = ilen * 100;
-	std::uint8_t* decompressed_bytes = new std::uint8_t[dstsize];
+	std::string decompressed_bytes;
 	olen = gzip.data_decompress(idata, ilen, decompressed_bytes, dstsize);
 	cout << "ilen: " << ilen << endl;
 	cout << "olen: " << olen << endl;
@@ -379,27 +378,8 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 	for (int i = 0; i < decompdstlength; i++) {
 		newgetbytes[i] = decompressed_bytes[i];
 	}
-	delete[] decompressed_bytes;
 	delete[] idata;
 	return newgetbytes;
-
-	//int size = getbytes.size();
-	//char* buffer = new char[size];
-	//for (int i = 0; i < size; i++) {
-	//    buffer[i] = getbytes[i];
-	//}
-	//const char* const src = buffer;
-	//char* dst = new char[size*1000];
-	///*int srcSize = length;*/
-	//int decompdstlength = LZ4_decompress_safe(src, dst, size, size * 1000);
-	////outfile << dst;
-	//cout << decompdstlength << endl;
-	//std::vector<std::uint8_t> newgetbytes(decompdstlength);
-	//for (int i = 0; i < decompdstlength; i++) {
-	//    newgetbytes[i] = dst[i];
-	//}
-	////col_n--;
-	//return newgetbytes;
 }
 
 // get bit_vector compressed part

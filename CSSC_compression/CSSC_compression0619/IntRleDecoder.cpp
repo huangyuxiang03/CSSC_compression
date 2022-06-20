@@ -17,7 +17,7 @@ int IntRleDecoder::readInt(ByteBuffer& buffer)
         readNext();
     }
     --currentCount;
-    int result;
+    int result{0};
     switch (mode) {
     case 0:
         result = currentValue;
@@ -35,6 +35,8 @@ int IntRleDecoder::readInt(ByteBuffer& buffer)
 
 void IntRleDecoder::initPacker()
 {
+    if (packerAllocated)
+        delete[] packer;
     packer = new IntPacker(bitWidth);
 }
 
@@ -45,6 +47,8 @@ void IntRleDecoder::readNumberInRle()
 
 void IntRleDecoder::readBitPackingBuffer(int bitPackedGroupCount, int lastBitPackedNum)
 {
+    if (currentBufferAllocated)
+        delete[] currentBuffer;
     currentBuffer = new int[bitPackedGroupCount * RLE_MIN_REPEATED_NUM];
     vector<std::uint8_t> bytes (bitPackedGroupCount * bitWidth);
     int bytesToRead = bitPackedGroupCount * bitWidth;

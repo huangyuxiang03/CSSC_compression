@@ -102,6 +102,8 @@ void ByteBuffer::get(std::vector<uint8_t>& tmp, int offset, int length)
 		cout << "under flow exception" << endl;
 		return;
 	}
-	int maxi = offset + length;
-	for (int i = offset; i < maxi; i++) tmp[i] = readuchar();
+	/*int maxi = offset + length;
+	for (int i = offset; i < maxi; i++) tmp[i] = readuchar();*/
+	memcpy(tmp.data(), bytes.data(), length);
+	bytes.erase(bytes.begin(), bytes.begin() + length);
 }

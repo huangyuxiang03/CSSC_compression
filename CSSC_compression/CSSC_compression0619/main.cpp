@@ -497,9 +497,13 @@ int main(int argc, char* argv[]) {
 					ByteBuffer in(baos.getColBytesGZip());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
+					int count = 0;
 					while (decoder.hasNext(in)) {
 						int r = decoder.readInt(in);
 						llArray0.push_back(r);
+						count++;
+						if (count % 10000 == 0)
+							cout << col << ": " << count << endl;
 					}
 				}
 				//std::cout << llArray.size() << endl;
