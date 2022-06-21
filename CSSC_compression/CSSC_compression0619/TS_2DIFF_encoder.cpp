@@ -1,3 +1,4 @@
+#pragma once
 #include "TS_2DIFF_encoder.h"
 #include <cmath>
 

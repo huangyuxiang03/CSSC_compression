@@ -11,9 +11,9 @@ class RleEncoder {
 protected:
 	//vector<T> values;
 	int bitWidth;
-	int repeatCount{ 0 };
-	int bitPackedGroupCount{0};
-	int numBufferedValues{ 0 };
+	int repeatCount;
+	int bitPackedGroupCount;
+	int numBufferedValues;
 	vector<vector<std::uint8_t>> bytesBuffer;
 	bool isBitPackRun;
 	//T preValue;
@@ -32,7 +32,6 @@ public:
 		RLE_MIN_REPEATED_NUM = 8;
 		RLE_MAX_BIT_PACKED_NUM = 31;
 		RLE_MAX_REPEATED_NUM = 0x7FFF;
-		numBufferedValues = 0;
 	}
 	~RleEncoder() {
 		vector <vector <std::uint8_t>>().swap(this->bytesBuffer);

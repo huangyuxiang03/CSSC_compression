@@ -1,3 +1,4 @@
+#pragma once
 #include "RleEncoder.h"
 
 void RleEncoder::reset() {
@@ -91,7 +92,6 @@ void RleEncoder::writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutput
 
 void RleEncoder::endPreviousBitPackedRun(int lastBitPackedNum)
 {
-    
     if (!isBitPackRun) {
         return;
     }

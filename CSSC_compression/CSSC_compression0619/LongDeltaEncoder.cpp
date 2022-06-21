@@ -1,3 +1,4 @@
+#pragma once
 #include "LongDeltaEncoder.h"
 
 LongDeltaEncoder::LongDeltaEncoder(int size) : TS_2DIFF_encoder(size) {

@@ -1,3 +1,4 @@
+#pragma once
 #include "IntDeltaEncoder.h"
 
 IntDeltaEncoder::IntDeltaEncoder(int size) : TS_2DIFF_encoder(size) {

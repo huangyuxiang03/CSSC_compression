@@ -1,3 +1,4 @@
+#pragma once
 #include "FloatDeltaEncoder.h"
 
 void FloatDeltaEncoder::encode(float v, ByteArrayOutputStream& out) {

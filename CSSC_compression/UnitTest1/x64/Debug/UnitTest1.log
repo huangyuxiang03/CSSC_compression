@@ -14,5 +14,4 @@ D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\RleEncoder.
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\RleEncoder.cpp(107,47): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(10,29): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(21,31): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-    正在创建库 D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\UnitTest1.lib 和对象 D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\UnitTest1.exp
   UnitTest1.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\UnitTest1.dll

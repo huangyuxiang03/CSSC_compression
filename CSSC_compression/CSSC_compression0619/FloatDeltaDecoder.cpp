@@ -1,3 +1,4 @@
+#pragma once
 #include "FloatDeltaDecoder.h"
 
 float FloatDeltaDecoder::readFloat(ByteBuffer& buffer) {

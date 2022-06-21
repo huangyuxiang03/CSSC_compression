@@ -1,3 +1,4 @@
+#pragma once
 #include "LongDeltaDecoder.h"
 
 ll LongDeltaDecoder::readT(ByteBuffer& buffer) {
