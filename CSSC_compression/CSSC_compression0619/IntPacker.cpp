@@ -50,7 +50,7 @@ void IntPacker::pack8Values(int* values, int offset, vector<std::uint8_t>& buf)
 void IntPacker::unpack8Values(vector<std::uint8_t>& buf, int offset, int* values)
 {
     int byteIdx = offset;
-    long buffer = 0;
+    unsigned long long buffer = 0;
     // total bits which have read from 'buf' to 'buffer'. i.e.,
     // number of available bits to be decoded.
     int totalBits = 0;

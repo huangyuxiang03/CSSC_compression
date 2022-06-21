@@ -34,7 +34,7 @@ public:
 	void reset() {};
 	~IntRleDecoder() {
 		if (packerAllocated)
-			delete[] packer;
+			delete packer;
 		if (currentBufferAllocated)
 			delete[] currentBuffer;
 	}

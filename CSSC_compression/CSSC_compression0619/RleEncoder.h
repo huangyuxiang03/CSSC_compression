@@ -10,15 +10,15 @@ using namespace std;
 class RleEncoder {
 protected:
 	//vector<T> values;
-	int bitWidth;
-	int repeatCount;
-	int bitPackedGroupCount;
-	int numBufferedValues;
+	int bitWidth{0};
+	int repeatCount{0};
+	int bitPackedGroupCount{0};
+	int numBufferedValues{0};
 	vector<vector<std::uint8_t>> bytesBuffer;
-	bool isBitPackRun;
+	bool isBitPackRun{0};
 	//T preValue;
 	//T[] bufferedValues;
-	bool isBitWidthSaved;
+	bool isBitWidthSaved{0};
 	ByteArrayOutputStream byteCache;
 	int RLE_MIN_REPEATED_NUM;
 	int RLE_MAX_BIT_PACKED_NUM;
@@ -30,7 +30,7 @@ public:
 		isBitWidthSaved = false;
 		//byteCache = new ByteArrayOutputStream();
 		RLE_MIN_REPEATED_NUM = 8;
-		RLE_MAX_BIT_PACKED_NUM = 31;
+		RLE_MAX_BIT_PACKED_NUM = 63;
 		RLE_MAX_REPEATED_NUM = 0x7FFF;
 	}
 	~RleEncoder() {

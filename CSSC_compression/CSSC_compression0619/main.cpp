@@ -290,7 +290,7 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 		}else if (buffer[i] == '\n') {
 			num_some_row = 0;
 			row_n++;
-			if (row_n == 180000) break;
+			// if (row_n == 180000) break;
 			col_n = 0;
 		}
 
@@ -329,10 +329,10 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 		i++;
 	}
 	i++;
-	row = 600000; //row ¿ÉÒÔ¹Ì¶¨
+	row = 600000; //row ï¿½ï¿½ï¿½Ô¹Ì¶ï¿½
 	float** strArray;
 	strArray = new float * [col];
-	//miu_i = new float* [col]; // Ç°i¸öÊýµÄ¾ùÖµ
+	//miu_i = new float* [col]; // Ç°iï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½Öµ
 	//float* sum = new float[col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new float[row];
@@ -479,6 +479,37 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 
 
 int main(int argc, char* argv[]) {
+
+	// vector<float> v;
+	// for (int i = 0; i < 200000; i++) {
+	// 	int r = rand();
+	// 	float f = (float)r/1000 - (int)r/1000;
+	// 	v.push_back(f);
+	// }
+	// ByteArrayOutputStream out;
+	// FloatRleEncoder encoder;
+	// FloatRleDecoder decoder;
+	// for (int i = 0; i < 200000; i++) {
+	// 	encoder.encode(v[i], out);
+	// }
+	// encoder.flush(out);
+	// ByteBuffer in(out.getBytes());
+	// for (int i = 0; i < 200000; i++) {
+	// 	float r = decoder.readFloat(in);
+	// 	cout<<r<<endl;
+	// 	if(v[i]!=r) {
+	// 		cout<<v[i]<<" "<< r <<endl;
+	// 		cout<<"fail at line: "<<i<<endl;
+	// 		return 0;
+	// 	}
+	// }
+	// if(decoder.hasNext(in)) {
+	// 	cout<<"not end"<<endl;
+	// 	return 0;
+	// }
+	// cout<<"success"<<endl;
+	// return 0;
+
 	time_t start, end;
 	double cost;
 	time(&start);
@@ -538,8 +569,8 @@ int main(int argc, char* argv[]) {
 			int count = 0;
 			for (int i = 0; i < width; i++) {
 				float miu = 0.0f;
-				//FloatRleEncoder* encoder = new FloatRleEncoder();
-				FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
+				FloatRleEncoder* encoder = new FloatRleEncoder();
+				//FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
 				//FragmentEncoder* encoder = new FragmentEncoder(miu,length);
 				for (int j = 0; j < length; j++) {
 					if (j% 510000==0) {
@@ -599,7 +630,6 @@ int main(int argc, char* argv[]) {
 					}
 					cout <<"row_tol: " << row_tol << endl;
 				}
-
 				else if (col >= 4 && col <= 6) {
 					IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytesGZip());
@@ -620,8 +650,8 @@ int main(int argc, char* argv[]) {
 						int r = decoder.readInt(in);
 						llArray0.push_back(r);
 						count++;
-						//if (count % 10000 == 0)
-						//	cout << col << ": " << count << endl;
+						if (count % 10000 == 0)
+							cout << col << ": " << count << endl;
 					}
 				}
 				//std::cout << llArray.size() << endl;
@@ -646,7 +676,11 @@ int main(int argc, char* argv[]) {
 				while (decoder.hasNext(in)) {
 					float r = decoder.readFloat(in);
 					fArray.push_back(r);
+					count++;
+					if(count%10000 == 0)
+						cout<<count<<endl;
 				}
+				cout<<"count: "<<count<<endl;
 				std::cout << fArray.size() << endl;
 			}
 			write_csvf(argv[3], fArray, " ", col);

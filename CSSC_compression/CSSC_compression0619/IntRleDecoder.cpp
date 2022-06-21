@@ -8,6 +8,7 @@ bool IntRleDecoder::readBoolean(ByteBuffer& buffer)
 
 int IntRleDecoder::readInt(ByteBuffer& buffer)
 {
+    
     if (!isLengthAndBitWidthReaded) {
         // start to read a new rle+bit-packing pattern
         readLengthAndBitWidth(buffer);
@@ -36,8 +37,9 @@ int IntRleDecoder::readInt(ByteBuffer& buffer)
 void IntRleDecoder::initPacker()
 {
     if (packerAllocated)
-        delete[] packer;
+        delete packer;
     packer = new IntPacker(bitWidth);
+    packerAllocated = true;
 }
 
 void IntRleDecoder::readNumberInRle()
@@ -50,6 +52,7 @@ void IntRleDecoder::readBitPackingBuffer(int bitPackedGroupCount, int lastBitPac
     if (currentBufferAllocated)
         delete[] currentBuffer;
     currentBuffer = new int[bitPackedGroupCount * RLE_MIN_REPEATED_NUM];
+    currentBufferAllocated = true;
     vector<std::uint8_t> bytes (bitPackedGroupCount * bitWidth);
     int bytesToRead = bitPackedGroupCount * bitWidth;
     bytesToRead = min(bytesToRead, byteCache.remaining());

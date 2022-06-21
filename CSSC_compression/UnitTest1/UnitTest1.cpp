@@ -46,6 +46,7 @@ namespace UnitTest1
 				ByteBuffer in(out.getBytes());
 				int r = decoder.readInt(in);
 				Assert::AreEqual(d, r);
+				Assert::AreEqual(false, decoder.hasNext(in));
 			}
 		}
 
