@@ -41,12 +41,22 @@ ll char16toll(char* num) {
 int char16toint(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
+
+// when encoding data, change data to int 
 int char16toint4byte(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
 int char16toint3byte(char* num) {
 	return char2hex(num[0]) * 256 + char2hex(num[1]) * 16 + char2hex(num[2]);
 }
+int char16toint2byte(char* num) {
+	return char2hex(num[0]) * 16 + char2hex(num[1]);
+}
+int char16toint1byte(char* num) {
+	return char2hex(num[0]);
+}
+
+// unused code
 void int2bytetochar16(int num, char* ch) {
 
 	int* ich = new int[2];
@@ -90,6 +100,7 @@ void int4bytetochar16(int num, char* ch) {
 	delete[] ich;
 }
 
+// when decoding data, concat each column data
 void intCol0Byte2Char16(int num, char* ch) {
 	int* ich = new int[2];
 	ich[1] = num & 15;
@@ -188,9 +199,7 @@ void intCol6Byte2Char16(int num, char* ch) {
 	delete[] ich;
 }
 
-int char16toint2byte(char* num) {
-	return char2hex(num[0]) * 16 + char2hex(num[1]);
-}
+
 float chartofloat(char* num) {
 	return atof(num);
 }
@@ -232,6 +241,7 @@ int justify_file_decode(string filename) {
 	return jresult;
 }
 
+// while encoding, read int data from the data_well_public.hxv file
 int** read_csvint7(string filename, char sep, int& row, int& col)
 {
 	ifstream inFile;
@@ -265,14 +275,14 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 			num[num_j] = buffer[i];
 			num_j++;
 			num_some_row++;
-			if (num_some_row == 2 || num_some_row == 4 ) {
+			if (num_some_row == 2 || num_some_row == 4) {
 				strArray[col_n][row_n] = char16toint2byte(num);
 				delete[] num;
 				num = new char[5];
 				num_j = 0;
 				col_n++;
 			}
-			else if (num_some_row == 8 ) {
+			else if (num_some_row == 8) {
 				strArray[col_n][row_n] = char16toint4byte(num);
 				delete[] num;
 				num = new char[5];
@@ -280,14 +290,23 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 				col_n++;
 			}
 			else if (num_some_row == 11 ||
-				num_some_row == 14 || num_some_row == 17 || num_some_row == 20) {
+				num_some_row == 14 || num_some_row == 17|| num_some_row == 20) {
 				strArray[col_n][row_n] = char16toint3byte(num);
 				delete[] num;
 				num = new char[5];
 				num_j = 0;
 				col_n++;
 			}
-		}else if (buffer[i] == '\n') {
+			//else if (num_some_row == 20 ||
+			//	num_some_row == 21 || num_some_row == 22) {
+			//	strArray[col_n][row_n] = char16toint1byte(num);
+			//	delete[] num;
+			//	num = new char[5];
+			//	num_j = 0;
+			//	col_n++;
+			//}
+		}
+		else if (buffer[i] == '\n') {
 			num_some_row = 0;
 			row_n++;
 			// if (row_n == 180000) break;
@@ -302,6 +321,7 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 	return strArray;
 
 }
+// while encoding, read float data from the shore_public.dat file
 float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_i)
 {
 	ifstream inFile;
@@ -384,6 +404,7 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	return strArray;
 }
 
+// while decoding, write int data to the data_well_public.hxv file
 void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, char seq, int col)
 {
 	ofstream outFile(filename);
@@ -421,37 +442,37 @@ double round_double(double number, int loc)
 		return number;
 	
 
-	switch (loc)
-	{
-	case 1:
-		if (number > 0)
-			return double(int((number + 0.05) * 10)) / 10;
-		else
-			return double(int((number - 0.05) * 10)) / 10;
-	case 2:
-		if (number > 0)
-			return double(int((number + 0.005) * 100)) / 100;
-		else
-			return double(int((number - 0.005) * 100)) / 100;
-	case 3:
-		if (number > 0)
-			return double(int((number + 0.0005) * 1000)) / 1000;
-		else
-			return double(int((number - 0.0005) * 1000)) / 1000;
-	case 4:
-		if (number > 0)
-			return double(int((number + 0.00005) * 10000)) / 10000;
-		else
-			return double(int((number - 0.00005) * 10000)) / 10000;
-	case 5:
-		if (number > 0)
-			return double(int((number + 0.000005) * 100000)) / 100000;
-		else
-			return double(int((number - 0.000005) * 100000)) / 100000;
-	default:
-		break;
+	switch (loc){
+		case 1:
+			if (number > 0)
+				return double(int((number + 0.05) * 10)) / 10;
+			else
+				return double(int((number - 0.05) * 10)) / 10;
+		case 2:
+			if (number > 0)
+				return double(int((number + 0.005) * 100)) / 100;
+			else
+				return double(int((number - 0.005) * 100)) / 100;
+		case 3:
+			if (number > 0)
+				return double(int((number + 0.0005) * 1000)) / 1000;
+			else
+				return double(int((number - 0.0005) * 1000)) / 1000;
+		case 4:
+			if (number > 0)
+				return double(int((number + 0.00005) * 10000)) / 10000;
+			else
+				return double(int((number - 0.00005) * 10000)) / 10000;
+		case 5:
+			if (number > 0)
+				return double(int((number + 0.000005) * 100000)) / 100000;
+			else
+				return double(int((number - 0.000005) * 100000)) / 100000;
+		default:
+			break;
 	}
 }
+// while decoding, write float data to the data_well_public.hxv file
 void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 {
 	ofstream outFile(filename);
@@ -480,35 +501,7 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 
 int main(int argc, char* argv[]) {
 
-	// vector<float> v;
-	// for (int i = 0; i < 200000; i++) {
-	// 	int r = rand();
-	// 	float f = (float)r/1000 - (int)r/1000;
-	// 	v.push_back(f);
-	// }
-	// ByteArrayOutputStream out;
-	// FloatRleEncoder encoder;
-	// FloatRleDecoder decoder;
-	// for (int i = 0; i < 200000; i++) {
-	// 	encoder.encode(v[i], out);
-	// }
-	// encoder.flush(out);
-	// ByteBuffer in(out.getBytes());
-	// for (int i = 0; i < 200000; i++) {
-	// 	float r = decoder.readFloat(in);
-	// 	cout<<r<<endl;
-	// 	if(v[i]!=r) {
-	// 		cout<<v[i]<<" "<< r <<endl;
-	// 		cout<<"fail at line: "<<i<<endl;
-	// 		return 0;
-	// 	}
-	// }
-	// if(decoder.hasNext(in)) {
-	// 	cout<<"not end"<<endl;
-	// 	return 0;
-	// }
-	// cout<<"success"<<endl;
-	// return 0;
+
 
 	time_t start, end;
 	double cost;
@@ -516,22 +509,25 @@ int main(int argc, char* argv[]) {
 
 	if (argc != 4) return 0;
 	if (argv[1][0] == 'c') {
-		//justify the number is ll or float
+		//justify the number is int or float
 		int jresult = justify_file(argv[2]);
 		if (jresult==0) {
 			/*std::cout << argv[2] << endl;*/
 			
 			int width = 0, length = 0;
 			int** strArrayll =  read_csvint7(argv[2], ',', length, width);
-			int* col_pos= new int[width+4]; // the position of per column data
+			int* col_pos= new int[width+1]; // the position of per column data
 			int col_n=0; //the number of remaining column of the ByteArrayOutputStream
 			col_pos[0] = 0;
 			std::cout << length << endl;
 			std::cout << "width: " << width << endl;
-			ByteArrayOutputStream out(argv[3]);
+			ByteArrayOutputStream out(argv[3]); // set file direction
 			out.writeDatatype('l');
+			// Walk through each column
 			for (int i = 0; i < width; i++) {
+				
 				IntRleEncoder encoder;
+				// Walk through each data
 				for (int j = 0; j < length; j++) {
 					if (j %18000000==0) {
 						cout << "col:"<<i << endl;
@@ -540,15 +536,16 @@ int main(int argc, char* argv[]) {
 					encoder.encode(strArrayll[i][j], out);
 				}
 				col_n++;
+				// flush the end data to out
 				encoder.flush(out);
+
 
 				//col_pos[col_n] = out.getBytes().size();
 				//out.write2file();
-				//if (i == 0)
-				//	cout << "the size of [out] is: "<<sizeof(out) << endl;
+
+				// gzip compress the data, and write the compressed data to file
 				out.write2filegzip();
-				col_pos[col_n] = out.getCompressedBytesSize();
-				
+				col_pos[col_n] = out.getCompressedBytesSize();				
 				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
 			}
 			cout << "finish encoding" << endl;
@@ -650,7 +647,7 @@ int main(int argc, char* argv[]) {
 						int r = decoder.readInt(in);
 						llArray0.push_back(r);
 						count++;
-						if (count % 10000 == 0)
+						if (count % 1000000 == 0)
 							cout << col << ": " << count << endl;
 					}
 				}
