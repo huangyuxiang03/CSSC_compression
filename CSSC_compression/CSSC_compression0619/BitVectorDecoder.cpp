@@ -3,6 +3,7 @@
 void BitVectorDecoder::decode_bitvector(ByteBuffer& buffer)
 {
 	int num_byte = length / 8;
+	cout<<num_byte<<endl;
 	for (int j = 0; j < num_byte; j++) {
 		std::uint8_t c = buffer.readuchar();
 		int single_num = c;

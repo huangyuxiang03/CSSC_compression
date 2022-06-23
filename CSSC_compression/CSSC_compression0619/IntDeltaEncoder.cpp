@@ -10,7 +10,7 @@ IntDeltaEncoder::IntDeltaEncoder(int size) : TS_2DIFF_encoder(size) {
 IntDeltaEncoder::IntDeltaEncoder() : IntDeltaEncoder(BLOCK_DEFAULT_SIZE) { }
 
 void IntDeltaEncoder::calcDelta(int value) {
-	ll delta = value - previousValue;
+	ll delta = value;// - previousValue;
 	if (delta < minDeltaBase)
 		minDeltaBase = delta;
 	deltaBlockBuffer[writeIndex++] = delta;

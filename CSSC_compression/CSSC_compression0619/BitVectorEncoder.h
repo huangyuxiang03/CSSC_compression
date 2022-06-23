@@ -23,8 +23,13 @@ public:
 		mid = middle;
 	}
 	void encode(int num, int pos, ByteArrayOutputStream& out1, ByteArrayOutputStream& out2);
-	void flush(ByteArrayOutputStream& out1, ByteArrayOutputStream& out2);
+	void flush(ByteArrayOutputStream& out1, ByteArrayOutputStream& out2);;
 	void encode_bitvector(ByteArrayOutputStream& out3);
+	~BitVectorEncoder() {
+		delete encoder1;
+		delete encoder2;
+		delete[] bit_vector;
+	}
 };
 
 #endif // !__BITVECTORENCODER__

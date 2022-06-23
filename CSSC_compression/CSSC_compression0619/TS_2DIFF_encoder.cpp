@@ -37,4 +37,4 @@ void TS_2DIFF_encoder::flush(ByteArrayOutputStream &out) {
 	flushBlockBuffer(out);
 }
 
-int TS_2DIFF_encoder::BLOCK_DEFAULT_SIZE = 4096;
+int TS_2DIFF_encoder::BLOCK_DEFAULT_SIZE = 1024;

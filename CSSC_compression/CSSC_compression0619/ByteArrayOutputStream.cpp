@@ -447,4 +447,15 @@ void ByteArrayOutputStream::reset()
 	//this->bytes.clear();
 }
 
+void ByteArrayOutputStream::addSizeBack() {
+	int sz = bytes.size();
+	std::uint8_t* u = (std::uint8_t*)&sz;
+	for(int i = 0; i < 4; i++)
+		bytes.push_back(*(u+i));
+}
+
+void ByteArrayOutputStream::concatenate(ByteArrayOutputStream& b) {
+	bytes.insert(bytes.end(), b.bytes.begin(), b.bytes.end());
+}
+
 

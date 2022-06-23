@@ -80,7 +80,7 @@ int bytesToint(char* result, int pos, int width) {
 
 void IntDeltaDecoder::readValue(int i) {
 	int v = bytesToint(deltaBuf, packWidth * i, packWidth);
-	data[i] = previous + minDeltaBase + v;
+	data[i] = v + minDeltaBase; //previous + minDeltaBase + v;
 }
 
 int IntDeltaDecoder::readInt(ByteBuffer& buffer) {

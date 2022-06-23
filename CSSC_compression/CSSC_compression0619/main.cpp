@@ -502,7 +502,7 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 int main(int argc, char* argv[]) {
 
 
-
+	time_t stt, edt;
 	time_t start, end;
 	double cost;
 	time(&start);
@@ -525,28 +525,68 @@ int main(int argc, char* argv[]) {
 			out.writeDatatype('l');
 			// Walk through each column
 			for (int i = 0; i < width; i++) {
-				
-				IntRleEncoder encoder;
-				// Walk through each data
-				for (int j = 0; j < length; j++) {
-					if (j %18000000==0) {
-						cout << "col:"<<i << endl;
-						cout << "row:" << j << endl;
-					} 
-					encoder.encode(strArrayll[i][j], out);
+				// if(i == 1 || i == 2 || i == 6)
+				// 	continue;
+				if (i != 3 && i != 4 && i != 5) {
+					IntRleEncoder encoder;
+					// Walk through each data
+					for (int j = 0; j < length; j++) {
+						if (j %18000000==0) {
+							cout << "col:"<<i << endl;
+							cout << "row:" << j << endl;
+						} 
+						encoder.encode(strArrayll[i][j], out);
+					}
+					col_n++;
+					// flush the end data to out
+					encoder.flush(out);
+
+					// gzip compress the data, and write the compressed data to file
+					out.write2filegzip();
+					col_pos[col_n] = out.getCompressedBytesSize();
+					cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
 				}
-				col_n++;
-				// flush the end data to out
-				encoder.flush(out);
+				else {
+
+					BitVectorEncoder encoder(length, 1000);
+					ByteArrayOutputStream out1(argv[3]), out2(argv[3]), out3(argv[3]);
+					for (int j = 0; j < length; j++) {
+						encoder.encode(strArrayll[i][j], j, out1, out2);
+						if(j<5)
+							cout<<"values: "<<strArrayll[i][j]<<endl;
+					}
+					encoder.flush(out1, out2);
+					encoder.encode_bitvector(out3);
+					cout<<out1.remaining()<<" "<<out2.remaining()<<" "<<out3.remaining()<<endl;
+					out1.addSizeBack();
+					out2.addSizeBack();
+					out3.addSizeBack();
+					out1.concatenate(out2);
+					out1.concatenate(out3);
 
 
-				//col_pos[col_n] = out.getBytes().size();
-				//out.write2file();
+					//IntRleEncoder encoder;
+					//// Walk through each data
+					//for (int j = 0; j < length; j++) {
+					//	if (j %18000000==0) {
+					//		cout << "col:"<<i << endl;
+					//		cout << "row:" << j << endl;
+					//	} 
+					//	encoder.encode(strArrayll[i][j], out);
+					//}
+					col_n++;
+					//// flush the end data to out
+					//encoder.flush(out);
 
-				// gzip compress the data, and write the compressed data to file
-				out.write2filegzip();
-				col_pos[col_n] = out.getCompressedBytesSize();				
-				cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
+
+					//col_pos[col_n] = out.getBytes().size();
+					//out.write2file();
+
+					// gzip compress the data, and write the compressed data to file
+					out1.write2filegzip();
+					col_pos[col_n] = out1.getCompressedBytesSize();
+					cout << "col_pos[" << col_n << "] : " << col_pos[col_n] << endl;
+				}
 			}
 			cout << "finish encoding" << endl;
 			out.writeRowCol(col_n, col_pos);
@@ -628,14 +668,37 @@ int main(int argc, char* argv[]) {
 					cout <<"row_tol: " << row_tol << endl;
 				}
 				else if (col >= 4 && col <= 6) {
-					IntRleDecoder decoder;
+				// else {
+					ByteBuffer in1(baos.getColBytesGZip()), in2, in3;
+					time(&stt);
+					in1.divideTo3Parts(in2, in3);
+					time(&edt);
+					cout<<"divide time: "<<(int)(edt-stt)<<endl;
+					cout<<in1.remaining()<<" "<<in2.remaining()<<" "<<in3.remaining()<<endl;
+					BitVectorDecoder decoder(row_tol, 1000);
+					time(&stt);
+					decoder.decode_bitvector(in3);
+					time(&edt);
+					cout<<"decode bitvector time: "<<(int)(edt-stt)<<endl;
+					int count = 0;
+					while (decoder.hasNext(in1, in2)) {
+						int r = decoder.readInt(count++, in1, in2);
+						llArray1.push_back(r);
+						if(count<6) 
+							cout<<"values: "<<r<<endl;
+						// if(count%100000 == 0)
+						// 	cout<<count<<endl;
+						// cout<<r<<endl;
+					}
+
+					/*IntRleDecoder decoder;
 					ByteBuffer in(baos.getColBytesGZip());
 					int lengthb = in.Bytes().size();
 					cout << "current bytes length: " << lengthb << endl;
 					while (decoder.hasNext(in)) {
 						int r = decoder.readInt(in);
 						llArray1.push_back(r);
-					}
+					}*/
 				}
 				else {
 					IntRleDecoder decoder;
@@ -651,8 +714,9 @@ int main(int argc, char* argv[]) {
 							cout << col << ": " << count << endl;
 					}
 				}
-				//std::cout << llArray.size() << endl;
+				// std::cout << llArray.size() << endl;
 			}
+			cout<<"finish!!!"<<endl;
 			write_csvint7(argv[3], row_tol, llArray0, llArray1,',',col);
 		}
 		else if (jresult == 1) {
@@ -674,8 +738,6 @@ int main(int argc, char* argv[]) {
 					float r = decoder.readFloat(in);
 					fArray.push_back(r);
 					count++;
-					if(count%10000 == 0)
-						cout<<count<<endl;
 				}
 				cout<<"count: "<<count<<endl;
 				std::cout << fArray.size() << endl;

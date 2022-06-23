@@ -64,6 +64,12 @@ public:
 	bool hasNextCol();
 	void writeRowCol(int col_n, int* col_pos);
 	void reset();
+
+	void addSizeBack();
+	void concatenate(ByteArrayOutputStream& b);
+	int remaining() {
+		return bytes.size();
+	}
 };
 
 #endif // !__BYTEARRAYOUTPUTSTREAM__

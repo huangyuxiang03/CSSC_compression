@@ -32,6 +32,7 @@ public:
 	std::vector<std::uint8_t> Bytes() {
 		return bytes;
 	}
+	void divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3);
 };
 
 #endif

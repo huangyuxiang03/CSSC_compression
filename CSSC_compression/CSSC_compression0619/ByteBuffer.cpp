@@ -107,3 +107,17 @@ void ByteBuffer::get(std::vector<uint8_t>& tmp, int offset, int length)
 	memcpy(tmp.data(), bytes.data(), length);
 	bytes.erase(bytes.begin(), bytes.begin() + length);
 }
+
+void ByteBuffer::divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3) {
+	int length_b3;
+	memcpy(&length_b3, bytes.data() + bytes.size() - 4, 4);
+	bytes.erase(bytes.end() - 4, bytes.end());
+	b3.bytes.insert(b3.bytes.begin(), bytes.end() - length_b3, bytes.end());
+	bytes.erase(bytes.end() - length_b3, bytes.end());
+
+	int length_b2;
+	memcpy(&length_b2, bytes.data() + bytes.size() - 4, 4);
+	bytes.erase(bytes.end() - 4, bytes.end());
+	b2.bytes.insert(b2.bytes.begin(), bytes.end() - length_b2, bytes.end());
+	bytes.erase(bytes.end() - length_b2 - 4, bytes.end());
+}

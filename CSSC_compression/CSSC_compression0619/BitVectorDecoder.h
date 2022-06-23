@@ -26,7 +26,15 @@ public:
 	void decode_bitvector(ByteBuffer& buffer);
 	int readInt(int j, ByteBuffer& buffer1, ByteBuffer& buffer2);
 	bool hasNext(ByteBuffer& buffer1, ByteBuffer& buffer2);
+
+	~BitVectorDecoder() {
+		delete decoder1;
+		delete decoder2;
+		delete[] bit_vector;
+	}
 };
+
+
 
 
 #endif // !__BITVECTORDECODER__
