@@ -48,8 +48,8 @@ class FloatSymmetryFragmentEncoder {
         this->bit_vector_index = 0;
         this->use_sign_encoding = use_sign;
 
-        signed_bit_vector = new uint8_t[this->length];
-        memset(signed_bit_vector, 0, this->length * sizeof(*signed_bit_vector));
+        signed_bit_vector = new uint8_t[this->signed_bit_vector_length];
+        memset(signed_bit_vector, 0, this->signed_bit_vector_length * sizeof(*signed_bit_vector));
 
         MINFRAGMENTLENGTH = 100;
         MAXFRAGMENTLENGTH = 10000;

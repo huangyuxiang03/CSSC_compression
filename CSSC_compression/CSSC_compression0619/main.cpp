@@ -588,26 +588,26 @@ int main(int argc, char* argv[]) {
             out.writeDatatype('f');
             int count = 0;
             for (int i = 0; i < width; i++) {
-                // float miu = 0.0f;
-                FloatRleEncoder* encoder = new FloatRleEncoder();
+                // float miu = 0.0f
+                // FloatRleEncoder* encoder = new FloatRleEncoder();
                 // FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
                 // FragmentEncoder* encoder = new FragmentEncoder(miu,length);
-                // FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder(calculate_col_mean(strArrayll[i], length), length);
-                // FloatSymmetryFragmentEncoder* encoder = new FloatSymmetryFragmentEncoder(length, false);
+                FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder(calculate_col_mean(strArrayll[i], length), length);
+                // FloatSymmetryFragmentEncoder* encoder = new FloatSymmetryFragmentEncoder(length, true);
 
                 for (int j = 0; j < length; j++) {
                     if (j % 510000 == 0) {
                         cout << "col:" << i << endl;
                         cout << "row:" << j << endl;
                     }
-                    encoder->encode(strArrayll[i][j], out);
+                    // encoder->encode(strArrayll[i][j], out);
 
-                    // encoder->encode(strArrayll[i][j], j, out);
+                    encoder->encode(strArrayll[i][j], j, out);
                 }
                 col_n++;
                 encoder->flush(out);
 
-                // encoder->encode_bitvector(out);
+                encoder->encode_bitvector(out);
 
                 // col_pos[col_n] = out.getBytes().size();
                 // out.write2file();

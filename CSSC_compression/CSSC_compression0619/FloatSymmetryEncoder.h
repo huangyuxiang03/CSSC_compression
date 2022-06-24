@@ -1,6 +1,8 @@
 #pragma once
 #ifndef __SYMMETRYENCODER__
 #define __SYMMETRYENCODER__
+#include <bits/stdc++.h>
+
 #include <cmath>
 #include <iostream>
 
@@ -16,7 +18,8 @@ class FloatSymmetryEncoder {
     size_t bit_vector_index;
     float miu;  // current mean
     int length = 0;
-    FloatRleEncoder* encoder = new FloatRleEncoder();
+    float last_value = 0;
+    FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
 
    public:
     FloatSymmetryEncoder(float n_miu, int length) {
