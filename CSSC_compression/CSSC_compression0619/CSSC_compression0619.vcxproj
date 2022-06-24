@@ -30,6 +30,7 @@
     <ClInclude Include="FloatDeltaEncoder.h" />
     <ClInclude Include="FloatRleDecoder.h" />
     <ClInclude Include="FloatRleEncoder.h" />
+    <ClInclude Include="FloatSymmetryEncoder.h" />
     <ClInclude Include="FragmentEncoder.h" />
     <ClInclude Include="GZIP.h" />
     <ClInclude Include="IndexDecoder.h" />
@@ -60,6 +61,7 @@
     <ClCompile Include="FloatDeltaEncoder.cpp" />
     <ClCompile Include="FloatRleDecoder.cpp" />
     <ClCompile Include="FloatRleEncoder.cpp" />
+    <ClCompile Include="FloatSymmetryEncoder.cpp" />
     <ClCompile Include="FragmentEncoder.cpp" />
     <ClCompile Include="GZIP.cpp" />
     <ClCompile Include="IndexDecoder.cpp" />

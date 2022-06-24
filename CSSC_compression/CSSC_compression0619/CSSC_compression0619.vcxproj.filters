@@ -108,6 +108,9 @@
     <ClInclude Include="version.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="FloatSymmetryEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TS_2DIFF_encoder.cpp">
@@ -180,6 +183,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BitVectorDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatSymmetryEncoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
