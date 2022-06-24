@@ -589,20 +589,20 @@ int main(int argc, char* argv[]) {
             int count = 0;
             for (int i = 0; i < width; i++) {
                 // float miu = 0.0f;
-                // FloatRleEncoder* encoder = new FloatRleEncoder();
+                FloatRleEncoder* encoder = new FloatRleEncoder();
                 // FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
                 // FragmentEncoder* encoder = new FragmentEncoder(miu,length);
                 // FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder(calculate_col_mean(strArrayll[i], length), length);
-                FloatSymmetryFragmentEncoder* encoder = new FloatSymmetryFragmentEncoder(length);
+                // FloatSymmetryFragmentEncoder* encoder = new FloatSymmetryFragmentEncoder(length, false);
 
                 for (int j = 0; j < length; j++) {
                     if (j % 510000 == 0) {
                         cout << "col:" << i << endl;
                         cout << "row:" << j << endl;
                     }
-                    // encoder->encode(strArrayll[i][j], out);
+                    encoder->encode(strArrayll[i][j], out);
 
-                    encoder->encode(strArrayll[i][j], j, out);
+                    // encoder->encode(strArrayll[i][j], j, out);
                 }
                 col_n++;
                 encoder->flush(out);

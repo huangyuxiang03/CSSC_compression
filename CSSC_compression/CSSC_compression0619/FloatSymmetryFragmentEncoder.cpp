@@ -8,6 +8,16 @@ void FloatSymmetryFragmentEncoder::encode(float num, int pos, ByteArrayOutputStr
         // start encoding
         for (size_t i = 0; i < wait_compress_count; i++) {
             float frag_num = wait_compress[i] - miu;
+            if (use_sign_encoding) {
+                if (frag_num < 0) {
+                    signed_bit_vector[bit_vector_index] |= 1;
+                    frag_num *= -1;
+                }
+                signed_bit_vector[bit_vector_index] <<= 1;
+                if (bit_vector_index % 8 == 0 && bit_vector_index != 0) {
+                    bit_vector_index++;
+                }
+            }
             encoder->encode(frag_num, out);
         }
 
@@ -18,7 +28,7 @@ void FloatSymmetryFragmentEncoder::encode(float num, int pos, ByteArrayOutputStr
         wait_compress_count = 0;
         wait_compress = new float[MAXFRAGMENTLENGTH];
         encoder->flush(out);
-        encoder = new FloatDeltaEncoder();
+        encoder = new FloatRleEncoder();
     }
     wait_compress[wait_compress_count] = num;
     wait_compress_count++;
@@ -44,8 +54,10 @@ void FloatSymmetryFragmentEncoder::flush(ByteArrayOutputStream& out) {
 }
 
 void FloatSymmetryFragmentEncoder::encode_bitvector(ByteArrayOutputStream& out) {
-    for (size_t i = 0; i < this->signed_bit_vector_length; i++) {
-        out.write(signed_bit_vector[i]);
+    if (use_sign_encoding) {
+        for (size_t i = 0; i < this->signed_bit_vector_length; i++) {
+            out.write(signed_bit_vector[i]);
+        }
     }
     for (int i = 0; i < fragment_vector_count; i++) {
         out.write(fragment_vector[i]);
