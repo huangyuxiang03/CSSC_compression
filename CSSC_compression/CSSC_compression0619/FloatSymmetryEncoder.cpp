@@ -6,9 +6,8 @@ void FloatSymmetryEncoder::encode(float num, int pos, ByteArrayOutputStream& out
     if (binary_search(change_indicies.begin(), change_indicies.end(), pos)) {
         delete encoder;
         encoder = new FloatDeltaEncoder();
-        last_value = num;
     }
-    encoder->encode(num - last_value, out);
+    encoder->encode(num, out);
 }
 
 void FloatSymmetryEncoder::flush(ByteArrayOutputStream& out) {

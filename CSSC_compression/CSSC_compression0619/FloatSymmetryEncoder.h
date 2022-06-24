@@ -18,7 +18,6 @@ class FloatSymmetryEncoder {
     size_t bit_vector_index;
     float miu;  // current mean
     int length = 0;
-    float last_value = 0;
     FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
 
    public:
