@@ -22,7 +22,7 @@
     <ClInclude Include="BitVectorDecoder.h" />
     <ClInclude Include="BitVectorEncoder.h" />
     <ClInclude Include="ByteArrayOutputStream.h" />
-    <ClInclude Include="ByteBuffer.h" />
+    <ClInclude Include="ByteBufferOld.h" />
     <ClInclude Include="compress.hpp" />
     <ClInclude Include="config.hpp" />
     <ClInclude Include="decompress.hpp" />
@@ -50,14 +50,14 @@
     <ClInclude Include="zconf.h" />
     <ClInclude Include="zlib.h" />
     <ClInclude Include="zutil.h" />
-    <ClInclude Include="ByteBufferV2.h" />
+    <ClInclude Include="ByteBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitVectorDecoder.cpp" />
     <ClCompile Include="BitVectorEncoder.cpp" />
-    <ClCompile Include="BitVectorV2.cpp" />
-    <ClCompile Include="ByteArrayOutputStream.cpp" />
     <ClCompile Include="ByteBuffer.cpp" />
+    <ClCompile Include="ByteArrayOutputStream.cpp" />
+    <ClCompile Include="ByteBufferOld.cpp" />
     <ClCompile Include="FloatDeltaDecoder.cpp" />
     <ClCompile Include="FloatDeltaEncoder.cpp" />
     <ClCompile Include="FloatRleDecoder.cpp" />

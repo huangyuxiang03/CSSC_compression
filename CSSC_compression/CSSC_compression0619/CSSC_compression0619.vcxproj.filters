@@ -24,7 +24,7 @@
     <ClInclude Include="ByteArrayOutputStream.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ByteBuffer.h">
+    <ClInclude Include="ByteBufferOld.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="FloatDeltaDecoder.h">
@@ -108,7 +108,7 @@
     <ClInclude Include="version.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ByteBufferV2.h">
+    <ClInclude Include="ByteBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -173,7 +173,7 @@
     <ClCompile Include="FloatDeltaDecoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ByteBuffer.cpp">
+    <ClCompile Include="ByteBufferOld.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ByteArrayOutputStream.cpp">
@@ -185,7 +185,7 @@
     <ClCompile Include="BitVectorDecoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="BitVectorV2.cpp">
+    <ClCompile Include="ByteBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
