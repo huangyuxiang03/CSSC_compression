@@ -55,6 +55,7 @@
   <ItemGroup>
     <ClCompile Include="BitVectorDecoder.cpp" />
     <ClCompile Include="BitVectorEncoder.cpp" />
+    <ClCompile Include="BitVectorV2.cpp" />
     <ClCompile Include="ByteArrayOutputStream.cpp" />
     <ClCompile Include="ByteBuffer.cpp" />
     <ClCompile Include="FloatDeltaDecoder.cpp" />

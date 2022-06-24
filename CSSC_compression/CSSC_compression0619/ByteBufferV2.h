@@ -17,6 +17,8 @@ private:
 	*	currentPosition is moving while reading data, i.e., it first pointing to the header, then it moves backwards.
 	*	The total length (number of bytes) should be ascertained while reading data.
 	*/
+
+	bool bytesAllocated{ false }; // turn bytesAllocated to true after allocating memory for bytes!!
 public:
 	ByteBufferV2() { }; // empty constructor;
 	ByteBufferV2(std::string fp); // constructor: copy fp to filepath, then do nothing.	[lr]
@@ -32,6 +34,7 @@ public:
 	void get(std::vector<uint8_t>& tmp, int offset, int length); // copy the current len'th bytes to tmp in normal order (offset is useless)	[hyx]
 	std::vector<std::uint8_t> Bytes(); // turn all bytes into a vector	[hyx]
 	void divideTo3Parts(ByteBufferV2& b2, ByteBufferV2& b3); //	[hyx]
+	~ByteBufferV2();
 };
 
 #endif
