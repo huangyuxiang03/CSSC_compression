@@ -21,4 +21,7 @@ void FloatSymmetryEncoder::encode_bitvector(ByteArrayOutputStream& out) {
     for (size_t i = 0; i < this->length + 1; i++) {
         out.write(sign_bit_vector[i]);
     }
+    int a;
+    memcpy(&a, &miu, sizeof(int));
+    out.write(a);
 }

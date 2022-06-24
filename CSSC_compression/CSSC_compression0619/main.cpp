@@ -16,6 +16,7 @@
 #include "FloatRleDecoder.h"
 #include "FloatRleEncoder.h"
 #include "FloatSymmetryEncoder.h"
+#include "FloatSymmetryFragmentEncoder.h"
 #include "FragmentEncoder.h"
 #include "GZIP.h"
 #include "IndexDecoder.h"
@@ -591,7 +592,8 @@ int main(int argc, char* argv[]) {
                 // FloatRleEncoder* encoder = new FloatRleEncoder();
                 // FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
                 // FragmentEncoder* encoder = new FragmentEncoder(miu,length);
-                FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder(calculate_col_mean(strArrayll[i], length), length);
+                // FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder(calculate_col_mean(strArrayll[i], length), length);
+                FloatSymmetryFragmentEncoder* encoder = new FloatSymmetryFragmentEncoder(length);
 
                 for (int j = 0; j < length; j++) {
                     if (j % 510000 == 0) {
