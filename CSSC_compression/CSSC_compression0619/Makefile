@@ -8,7 +8,7 @@ TARGET := task
  
 # compile and lib parameter
 CC      := g++
-LIBS    := libz.a
+LIBS    := -lz
 LDFLAGS := -L.
 DEFINES :=
 INCLUDE := -I.
@@ -16,7 +16,7 @@ CFLAGS  :=
 CXXFLAGS:= 
  
 # link
-$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStream.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main.o
+$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStream.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o FloatSymmetryEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main.o
 	$(CC) -O3 -std=c++14 -o $@ $^ $(LIBS)
 
 # compile
@@ -37,6 +37,8 @@ FloatRleEncoder.o: FloatRleEncoder.cpp
 FloatRleDecoder.o: FloatRleDecoder.cpp
 	$(CC) -O3 -std=c++14 -c $^ -o $@ 
 FragmentEncoder.o: FragmentEncoder.cpp
+	$(CC) -O3 -std=c++14 -c $^ -o $@ 
+FloatSymmetryEncoder.o: FloatSymmetryEncoder.cpp
 	$(CC) -O3 -std=c++14 -c $^ -o $@ 
 IndexDecoder.o: IndexDecoder.cpp
 	$(CC) -O3 -std=c++14 -c $^ -o $@ 
@@ -68,6 +70,11 @@ GZIP.o: GZIP.cpp
 	$(CC) -O3 -std=c++14 -c $^ -o $@
 main.o: main.cpp
 	$(CC) -O3 -std=c++14 -c $^ -o $@
+
+run-float:
+	./task c ../../../dataset/float.dat ../../../output/float_compress.dat > ../../../output/float_compress_submean.log  
+	echo "Finished Writing to Log"
+
 # clean
 clean:
 	rm -fr *.o
