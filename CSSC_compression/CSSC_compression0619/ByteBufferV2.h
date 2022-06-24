@@ -17,6 +17,7 @@ private:
 	*	currentPosition is moving while reading data, i.e., it first pointing to the header, then it moves backwards.
 	*	The total length (number of bytes) should be ascertained while reading data.
 	*/
+	bool bytesAllocated = { false };
 public:
 	ByteBufferV2() { }; // empty constructor;
 	ByteBufferV2(std::string fp); // constructor: copy fp to filepath, then do nothing.	[lr]
