@@ -1,8 +1,7 @@
 #pragma once
 #ifndef __SYMMETRYENCODER__
 #define __SYMMETRYENCODER__
-#include <bits/stdc++.h>
-
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 
@@ -14,10 +13,10 @@ using namespace std;
 
 class FloatSymmetryEncoder {
    private:
-    FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
+    FloatRleEncoder* encoder = new FloatRleEncoder();
 
    public:
-    FloatSymmetryEncoder();
+    FloatSymmetryEncoder() {}
     void encode(float num, int pos, ByteArrayOutputStream& out);
     void flush(ByteArrayOutputStream& out);
 };
