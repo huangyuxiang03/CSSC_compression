@@ -50,6 +50,7 @@
     <ClInclude Include="zconf.h" />
     <ClInclude Include="zlib.h" />
     <ClInclude Include="zutil.h" />
+    <ClInclude Include="ByteBufferV2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitVectorDecoder.cpp" />

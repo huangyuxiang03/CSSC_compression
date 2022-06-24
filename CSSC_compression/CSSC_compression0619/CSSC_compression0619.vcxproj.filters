@@ -108,6 +108,9 @@
     <ClInclude Include="version.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ByteBufferV2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TS_2DIFF_encoder.cpp">
