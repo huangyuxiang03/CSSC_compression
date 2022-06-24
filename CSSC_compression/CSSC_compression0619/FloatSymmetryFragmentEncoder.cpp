@@ -43,14 +43,6 @@ void FloatSymmetryFragmentEncoder::encode(float num, int pos, ByteArrayOutputStr
 void FloatSymmetryFragmentEncoder::flush(ByteArrayOutputStream& out) {
     cout << "fragment_vector_count: " << fragment_vector_count << endl;
     encoder->flush(out);
-    delete[] fragment_vector;
-    delete[] fragment_miu_vector;
-    delete[] wait_compress;
-    delete encoder;
-    fragment_vector = nullptr;
-    fragment_miu_vector = nullptr;
-    wait_compress = nullptr;
-    encoder = nullptr;
 }
 
 void FloatSymmetryFragmentEncoder::encode_bitvector(ByteArrayOutputStream& out) {
