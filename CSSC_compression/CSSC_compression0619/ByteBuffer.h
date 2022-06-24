@@ -34,6 +34,7 @@ public:
 	void get(std::vector<uint8_t>& tmp, int offset, int length); // copy the current len'th bytes to tmp in normal order (offset is useless)	[hyx]
 	std::vector<std::uint8_t> Bytes(); // turn all bytes into a vector	[hyx]
 	void divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3); //	[hyx]
+	ByteBuffer& operator=(ByteBuffer& b);
 	~ByteBuffer();
 };
 

@@ -670,22 +670,13 @@ int main(int argc, char* argv[]) {
 				else if (col >= 4 && col <= 6) {
 				// else {
 					ByteBuffer in1(baos.getColBytesGZip()), in2, in3;
-					time(&stt);
 					in1.divideTo3Parts(in2, in3);
-					time(&edt);
-					cout<<"divide time: "<<(int)(edt-stt)<<endl;
-					cout<<in1.remaining()<<" "<<in2.remaining()<<" "<<in3.remaining()<<endl;
 					BitVectorDecoder decoder(row_tol, 1000);
-					time(&stt);
 					decoder.decode_bitvector(in3);
-					time(&edt);
-					cout<<"decode bitvector time: "<<(int)(edt-stt)<<endl;
 					int count = 0;
 					while (decoder.hasNext(in1, in2)) {
 						int r = decoder.readInt(count++, in1, in2);
 						llArray1.push_back(r);
-						if(count<6) 
-							cout<<"values: "<<r<<endl;
 						// if(count%100000 == 0)
 						// 	cout<<count<<endl;
 						// cout<<r<<endl;
@@ -709,9 +700,9 @@ int main(int argc, char* argv[]) {
 					while (decoder.hasNext(in)) {
 						int r = decoder.readInt(in);
 						llArray0.push_back(r);
-						count++;
-						if (count % 1000000 == 0)
-							cout << col << ": " << count << endl;
+						// count++;
+						// if (count % 1000000 == 0)
+						// 	cout << col << ": " << count << endl;
 					}
 				}
 				// std::cout << llArray.size() << endl;

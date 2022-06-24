@@ -35,8 +35,8 @@ namespace UnitTest1
 
 		TEST_METHOD(IntSingleValue)
 		{
-			//int data[] = { 0, 1, 22, 333, 4444, 5555, 6666, 1213122, 2187800 };
-			int data[] = { 1804289383 };
+			int data[] = { 0, 1, 22, 333, 4444, 5555, 6666, 1213122, 2187800 };
+			//int data[] = { 1804289383 };
 			for (auto d : data) {
 				ByteArrayOutputStream out;
 				IntRleEncoder encoder;

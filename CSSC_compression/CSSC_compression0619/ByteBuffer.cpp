@@ -1,4 +1,5 @@
 #include "ByteBuffer.h"
+#include <iostream>
 
 long long ByteBuffer::readLong() {
 	long long rtn;
@@ -54,7 +55,10 @@ void ByteBuffer::divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3) {
 	b2.currentPosition = b2.bytes;
 	b2.bytesAllocated = true;
 	memcpy(b2.bytes, tail - length_b2, length_b2);
+	tail -= length_b2;
 	tail -= 4;
+	bytesLength = tail - bytes;
+	currentPosition = bytes;
 }
 
 ByteBuffer::~ByteBuffer() {
@@ -68,10 +72,12 @@ ByteBuffer::ByteBuffer(std::string fp) {
 
 // load the data from _bytes to bytes. use memcpy to enhance speed. [lr]
 ByteBuffer::ByteBuffer(std::vector<std::uint8_t> _bytes) {
-	bytes = new uint8_t[sizeof(_bytes)];
+	bytes = new uint8_t[_bytes.size()];
 	if (!_bytes.empty()) {
 		memcpy(bytes, &_bytes[0], _bytes.size() * sizeof(uint8_t));
 		bytesAllocated = true;
+		bytesLength = _bytes.size();
+		currentPosition = bytes;
 	}
 }
 
@@ -82,7 +88,7 @@ int ByteBuffer::remaining() {
 
 // if there is bytes left, return true, otherwise return false.	[lr]
 bool ByteBuffer::hasRemaining() {
-	return bytesLength > (currentPosition - bytes + 1);
+	return bytesLength >= (currentPosition - bytes + 1);
 }
 
 // read 4 bytes and concatenate to an int then return. currentPosition movebackwards 4 bytes. [lr]
@@ -104,4 +110,16 @@ std::uint8_t ByteBuffer::readuchar() {
 	std::uint8_t tempUint8_t = *reinterpret_cast<uint8_t*>(currentPosition);
 	currentPosition += 1;
 	return tempUint8_t;
+}
+
+
+ByteBuffer& ByteBuffer::operator=(ByteBuffer& b) {
+	if (this->bytesAllocated)
+		delete[] bytes;
+	bytes = new uint8_t[b.bytesLength];
+	memcpy(bytes, b.bytes, b.bytesLength);
+	bytesLength = b.bytesLength;
+	filepath = b.filepath;
+	currentPosition = bytes + (b.currentPosition - b.bytes);
+	return *this;
 }

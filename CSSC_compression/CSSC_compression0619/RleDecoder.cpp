@@ -48,7 +48,8 @@ void RleDecoder::readLengthAndBitWidth(ByteBuffer& buffer)
 	length = readUnsignedVarInt(buffer);
 	std::vector<uint8_t> tmp(length);
 	buffer.get(tmp, 0, length);
-	byteCache = ByteBuffer(tmp);
+	ByteBuffer tmpbuffer(tmp);
+	byteCache = tmpbuffer;
 	isLengthAndBitWidthReaded = true;
 	bitWidth = read(byteCache);
 	initPacker();
