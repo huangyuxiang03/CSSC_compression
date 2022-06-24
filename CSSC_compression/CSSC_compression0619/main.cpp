@@ -592,7 +592,7 @@ int main(int argc, char* argv[]) {
                 // FloatRleEncoder* encoder = new FloatRleEncoder();
                 // FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
                 // FragmentEncoder* encoder = new FragmentEncoder(miu,length);
-                FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder(calculate_col_mean(strArrayll[i], length), length);
+                FloatSymmetryEncoder* encoder = new FloatSymmetryEncoder();
                 // FloatSymmetryFragmentEncoder* encoder = new FloatSymmetryFragmentEncoder(length, true);
 
                 for (int j = 0; j < length; j++) {
@@ -607,7 +607,7 @@ int main(int argc, char* argv[]) {
                 col_n++;
                 encoder->flush(out);
 
-                encoder->encode_bitvector(out);
+                // encoder->encode_bitvector(out);
 
                 // col_pos[col_n] = out.getBytes().size();
                 // out.write2file();
