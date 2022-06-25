@@ -5,8 +5,23 @@ D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hp
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(9,88): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(21,87): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(10,89): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(23,73): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  dict_buffer.c
+  fl2_common.c
+  fl2_compress.c
+  fl2_decompress.c
+  fl2_pool.c
+  fl2_threading.c
+  lzma2_dec.c
+  lzma2_enc.c
+  radix_bitpack.c
+  radix_mf.c
+  radix_struct.c
+  range_enc.c
+  util.c
+  xxhash.c
+  正在生成代码...
 LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
-dict_buffer.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
+BitVectorDecoder.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
   CSSC_compression0619.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe

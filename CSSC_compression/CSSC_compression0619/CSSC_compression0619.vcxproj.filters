@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\7z">
-      <UniqueIdentifier>{9eeae352-2227-45c8-9671-a9be0414081f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\7z">
-      <UniqueIdentifier>{ebb9d9eb-7d9c-4f1a-9e37-ddfe21dedf4f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BitVectorDecoder.h">
@@ -117,74 +111,74 @@
     <ClInclude Include="ByteBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\atomic.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="atomic.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\compiler.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="compiler.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\count.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="count.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\data_block.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="data_block.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\dict_buffer.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="dict_buffer.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fast-lzma2.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fast-lzma2.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fastpos_table.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fastpos_table.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fl2_compress_internal.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fl2_compress_internal.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fl2_errors.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fl2_errors.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fl2_internal.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fl2_internal.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fl2_pool.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fl2_pool.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\fl2_threading.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="fl2_threading.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\lzma2_dec.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="lzma2_dec.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\lzma2_enc.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="lzma2_enc.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\mem.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="mem.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\platform.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="platform.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\radix_engine.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="radix_engine.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\radix_get.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="radix_get.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\radix_internal.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="radix_internal.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\radix_mf.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="radix_mf.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\range_enc.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="range_enc.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\util.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="util.h">
+      <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="7z\xxhash.h">
-      <Filter>头文件\7z</Filter>
+    <ClInclude Include="xxhash.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -263,47 +257,47 @@
     <ClCompile Include="ByteBuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\dict_buffer.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="dict_buffer.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\fl2_common.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="fl2_common.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\fl2_compress.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="fl2_compress.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\fl2_decompress.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="fl2_decompress.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\fl2_pool.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="fl2_pool.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\fl2_threading.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="fl2_threading.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\lzma2_dec.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="lzma2_dec.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\lzma2_enc.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="lzma2_enc.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\radix_bitpack.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="radix_bitpack.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\radix_mf.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="radix_mf.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\radix_struct.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="radix_struct.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\range_enc.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="range_enc.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\util.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="util.c">
+      <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="7z\xxhash.c">
-      <Filter>源文件\7z</Filter>
+    <ClCompile Include="xxhash.c">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
