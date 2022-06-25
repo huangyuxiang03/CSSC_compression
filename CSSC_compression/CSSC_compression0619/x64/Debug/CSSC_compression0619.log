@@ -1,6 +1,12 @@
-﻿  ByteBuffer.cpp
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteBuffer.cpp(75,30): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteBuffer.cpp(82,21): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+﻿  GZIP.cpp
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(9,88): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\GZIP.cpp(21,87): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
 LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
-BitVectorDecoder.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
+dict_buffer.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
   CSSC_compression0619.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe

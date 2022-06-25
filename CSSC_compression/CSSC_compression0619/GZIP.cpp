@@ -1,22 +1,30 @@
 #include "GZIP.h"
+#include "fast-lzma2.h"
+#include <iostream>
 
-//idata ´ýÑ¹ËõÊý¾Ý
-//ilen  ´ýÑ¹ËõÊý¾ÝµÄ³¤¶È
-//odata Ñ¹ËõºóÊý¾Ý´æ´¢µÄbuffer (Useless now)
+//idata ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ilen  ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ³ï¿½ï¿½ï¿½
+//odata Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½buffer (Useless now)
 int GZIP::data_compress(std::uint8_t*idata, int ilen, std::uint8_t*odata, int olen)
 {
-    std::string compressed = gzip::compress((char*)idata, ilen);
+    int compressed_size = FL2_compress(odata, olen, idata, ilen, FL2_p_compressionLevel);//FL2_p_highCompression);
+    return compressed_size;
+    /*std::string compressed = gzip::compress((char*)idata, ilen);
     memcpy((void*)odata, compressed.data(), compressed.size());
-    return compressed.size();
+    return compressed.size();*/
 }
 
-//idata ´ý½âÑ¹Êý¾Ý
-//ilen  ´ý½âÑ¹Êý¾ÝµÄ³¤¶È
-//odata ½âÑ¹ºóÊý¾Ý´æ´¢µÄbuffer
-//olen  ½âÑ¹Êý¾Ý´æ´¢bufferµÄ³¤¶È
-int GZIP::data_decompress(std::uint8_t* idata, int ilen, std::string& odata, int& dst_size) {
-    std::string decompressed = gzip::decompress((char*)idata, ilen);
+//idata ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½
+//ilen  ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ÝµÄ³ï¿½ï¿½ï¿½
+//odata ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½buffer
+//olen  ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½Ý´æ´¢bufferï¿½Ä³ï¿½ï¿½ï¿½
+int GZIP::data_decompress(std::uint8_t* idata, int ilen, uint8_t* odata, int& dst_size) {
+    std::cout<<ilen<<" "<<dst_size<<std::endl;
+    int decompressed_size = FL2_decompress(odata, dst_size, idata, ilen);
+    std::cout<<decompressed_size<<std::endl;
+    return decompressed_size;
+    /*std::string decompressed = gzip::decompress((char*)idata, ilen);
     odata.resize(decompressed.size());
     memcpy((void*)odata.data(), decompressed.data(), decompressed.size());
-    return decompressed.size();
+    return decompressed.size();*/
 }

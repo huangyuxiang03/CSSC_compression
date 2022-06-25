@@ -19,6 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="7z\atomic.h" />
+    <ClInclude Include="7z\compiler.h" />
+    <ClInclude Include="7z\count.h" />
+    <ClInclude Include="7z\data_block.h" />
+    <ClInclude Include="7z\dict_buffer.h" />
+    <ClInclude Include="7z\fast-lzma2.h" />
+    <ClInclude Include="7z\fastpos_table.h" />
+    <ClInclude Include="7z\fl2_compress_internal.h" />
+    <ClInclude Include="7z\fl2_errors.h" />
+    <ClInclude Include="7z\fl2_internal.h" />
+    <ClInclude Include="7z\fl2_pool.h" />
+    <ClInclude Include="7z\fl2_threading.h" />
+    <ClInclude Include="7z\lzma2_dec.h" />
+    <ClInclude Include="7z\lzma2_enc.h" />
+    <ClInclude Include="7z\mem.h" />
+    <ClInclude Include="7z\platform.h" />
+    <ClInclude Include="7z\radix_engine.h" />
+    <ClInclude Include="7z\radix_get.h" />
+    <ClInclude Include="7z\radix_internal.h" />
+    <ClInclude Include="7z\radix_mf.h" />
+    <ClInclude Include="7z\range_enc.h" />
+    <ClInclude Include="7z\util.h" />
+    <ClInclude Include="7z\xxhash.h" />
     <ClInclude Include="BitVectorDecoder.h" />
     <ClInclude Include="BitVectorEncoder.h" />
     <ClInclude Include="ByteArrayOutputStream.h" />
@@ -53,6 +76,20 @@
     <ClInclude Include="ByteBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="7z\dict_buffer.c" />
+    <ClCompile Include="7z\fl2_common.c" />
+    <ClCompile Include="7z\fl2_compress.c" />
+    <ClCompile Include="7z\fl2_decompress.c" />
+    <ClCompile Include="7z\fl2_pool.c" />
+    <ClCompile Include="7z\fl2_threading.c" />
+    <ClCompile Include="7z\lzma2_dec.c" />
+    <ClCompile Include="7z\lzma2_enc.c" />
+    <ClCompile Include="7z\radix_bitpack.c" />
+    <ClCompile Include="7z\radix_mf.c" />
+    <ClCompile Include="7z\radix_struct.c" />
+    <ClCompile Include="7z\range_enc.c" />
+    <ClCompile Include="7z\util.c" />
+    <ClCompile Include="7z\xxhash.c" />
     <ClCompile Include="BitVectorDecoder.cpp" />
     <ClCompile Include="BitVectorEncoder.cpp" />
     <ClCompile Include="ByteBuffer.cpp" />

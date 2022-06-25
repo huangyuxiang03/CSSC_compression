@@ -25,7 +25,7 @@ public:
 	GZIP() {};
 	int data_compress(std::uint8_t* idata, int ilen, std::uint8_t* odata, int olen);
 
-	int data_decompress(std::uint8_t* src, int src_size, std::string& dst, int& dst_size);
+	int data_decompress(std::uint8_t* src, int src_size, uint8_t* dst, int& dst_size);
 
 	
 
