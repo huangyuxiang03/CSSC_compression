@@ -40,6 +40,7 @@
     <ClInclude Include="fl2_threading.h" />
     <ClInclude Include="FloatDeltaDecoder.h" />
     <ClInclude Include="FloatDeltaEncoder.h" />
+    <ClInclude Include="FloatEncoder.h" />
     <ClInclude Include="FloatRleDecoder.h" />
     <ClInclude Include="FloatRleEncoder.h" />
     <ClInclude Include="FragmentEncoder.h" />
@@ -89,6 +90,7 @@
     <ClCompile Include="fl2_threading.c" />
     <ClCompile Include="FloatDeltaDecoder.cpp" />
     <ClCompile Include="FloatDeltaEncoder.cpp" />
+    <ClCompile Include="FloatEncoder.cpp" />
     <ClCompile Include="FloatRleDecoder.cpp" />
     <ClCompile Include="FloatRleEncoder.cpp" />
     <ClCompile Include="FragmentEncoder.cpp" />

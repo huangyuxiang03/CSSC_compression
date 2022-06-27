@@ -22,6 +22,7 @@
 #include "IntRleDecoder.h"
 #include "FragmentEncoder.h"
 #include "FloatRleDecoder.h"
+#include "FloatEncoder.h"
 
 #include "GZIP.h"
 
@@ -605,6 +606,25 @@ int main(int argc, char* argv[]) {
 			out.writeDatatype('f');
 			int count = 0;
 			for (int i = 0; i < width; i++) {
+
+				/*FloatEncoder encoder(length);
+				ByteArrayOutputStream out1(argv[3]), out2, out3;
+				for (int j = 0; j < length; j++) {
+					encoder.encode(strArrayll[i][j], j, out1, out2);
+				}
+				col_n++;
+				encoder.flush(out1, out2);
+				encoder.encode_bitvector(out3);
+				out1.addSizeBack();
+				out2.addSizeBack();
+				out3.addSizeBack();
+				out1.concatenate(out2);
+				out1.concatenate(out3);*/
+
+
+
+
+
 				float miu = 0.0f;
 				FloatRleEncoder* encoder = new FloatRleEncoder();
 				//FloatDeltaEncoder* encoder = new FloatDeltaEncoder();
