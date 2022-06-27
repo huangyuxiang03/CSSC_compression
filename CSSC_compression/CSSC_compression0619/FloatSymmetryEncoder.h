@@ -13,7 +13,19 @@ using namespace std;
 
 class FloatSymmetryEncoder {
    private:
-    FloatRleEncoder* encoder = new FloatRleEncoder();
+    FloatDeltaEncoder* sign_bit_encoder = new FloatDeltaEncoder();
+    FloatRleEncoder* exp_encoder = new FloatRleEncoder();
+    FloatDeltaEncoder* value_encoder = new FloatDeltaEncoder();
+
+    int currentSignBit = 0;
+    int currentExpBit = 0;
+    int currentValue = 0;
+
+    int convertFloatToInt(float f) {
+        int a = 0;
+        memcpy(&a, &f, sizeof(int));
+        return a;
+    }
 
    public:
     FloatSymmetryEncoder() {}
