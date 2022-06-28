@@ -16,7 +16,7 @@ CFLAGS  :=
 CXXFLAGS:= 
  
 # link
-$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStream.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main.o
+$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStream.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o BCHEncoder.o BCHDecoder.o main.o
 	$(CC) -o $@ $^ $(LIBS)
 
 # compile
@@ -65,6 +65,10 @@ TS_2DIFF_decoder.o: TS_2DIFF_decoder.cpp
 TS_2DIFF_encoder.o: TS_2DIFF_encoder.cpp
 	$(CC) -c $^ -o $@
 GZIP.o: GZIP.cpp
+	$(CC) -c $^ -o $@
+BCHEncoder.o: BCHEncoder.cpp
+	$(CC) -c $^ -o $@
+BCHDecoder.o: BCHDecoder.cpp
 	$(CC) -c $^ -o $@
 main.o: main.cpp
 	$(CC) -c $^ -o $@
