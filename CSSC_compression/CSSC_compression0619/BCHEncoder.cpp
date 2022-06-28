@@ -3,8 +3,8 @@
 void BCHEncoder::encode(int num, int ss, int yyyy, int hhh, int nnn, int www, ByteArrayOutputStream& out) {
 	if (ss == 0)
 		return;
-	int bch = BCH_63_51(concatenate(yyyy, hhh, nnn, www));
-	encoder.encode(bch, out);
+	// int bch = BCH_63_51(concatenate(yyyy, hhh, nnn, www));
+	encoder.encode(num, out);
 }
 
 void BCHEncoder::flush(ByteArrayOutputStream& out) {

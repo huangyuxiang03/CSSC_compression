@@ -529,7 +529,7 @@ int main(int argc, char* argv[]) {
 			for (int i = 0; i < width; i++) {
 				// if(i == 1 || i == 2 || i == 6)
 				// 	continue;
-				if (i != 3 && i != 4 && i != 5) {
+				if (i != 3 && i != 4 && i != 5 && i!=6) {
 					IntRleEncoder encoder;
 					// Walk through each data
 					for (int j = 0; j < length; j++) {
