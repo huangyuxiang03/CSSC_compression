@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="atomic.h" />
+    <ClInclude Include="BCHDecoder.h" />
+    <ClInclude Include="BCHEncoder.h" />
     <ClInclude Include="BitVectorDecoder.h" />
     <ClInclude Include="BitVectorEncoder.h" />
     <ClInclude Include="ByteArrayOutputStream.h" />
@@ -77,6 +79,8 @@
     <ClInclude Include="ByteBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BCHDecoder.cpp" />
+    <ClCompile Include="BCHEncoder.cpp" />
     <ClCompile Include="BitVectorDecoder.cpp" />
     <ClCompile Include="BitVectorEncoder.cpp" />
     <ClCompile Include="ByteBuffer.cpp" />

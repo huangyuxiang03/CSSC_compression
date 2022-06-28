@@ -1,4 +1,5 @@
-﻿  main.cpp
+﻿  BCHDecoder.cpp
+  BCHEncoder.cpp
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
@@ -6,19 +7,28 @@ D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
 D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteArrayOutputStream.h(71,1): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(205,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(208,13): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(253,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(333,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(481,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(681,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(717,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(744,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(506,14): warning C4101: “edt”: 未引用的局部变量
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(506,9): warning C4101: “stt”: 未引用的局部变量
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(665,19): warning C4101: “end_d”: 未引用的局部变量
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(666,10): warning C4101: “cost_d”: 未引用的局部变量
-D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(475): warning C4715: “round_double”: 不是所有的控件路径都返回值
+  main.cpp
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(69,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(70,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\compress.hpp(75,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(47,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(48,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\decompress.hpp(53,9): warning C4068: 未知的杂注“GCC”
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\ByteArrayOutputStream.h(71,1): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(206,13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(209,13): warning C4244: “return”: 从“int”转换到“float”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(254,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(334,13): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(482,30): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(674,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(710,37): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(733,36): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(507,14): warning C4101: “edt”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(507,9): warning C4101: “stt”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(659,19): warning C4101: “end_d”: 未引用的局部变量
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(660,10): warning C4101: “cost_d”: 未引用的局部变量
+  正在生成代码...
+D:\本科\Git\CSSC_compression\CSSC_compression\CSSC_compression0619\main.cpp(476): warning C4715: “round_double”: 不是所有的控件路径都返回值
 LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
-BitVectorDecoder.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
+BCHDecoder.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:REF”规范)
   CSSC_compression0619.vcxproj -> D:\本科\Git\CSSC_compression\CSSC_compression\x64\Debug\CSSC_compression0619.exe

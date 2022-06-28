@@ -183,6 +183,12 @@
     <ClInclude Include="FloatEncoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="BCHEncoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BCHDecoder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TS_2DIFF_encoder.cpp">
@@ -303,6 +309,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FloatEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BCHEncoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="BCHDecoder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
