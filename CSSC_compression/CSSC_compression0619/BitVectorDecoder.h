@@ -12,9 +12,9 @@ class BitVectorDecoder {
 private:
 	IntDeltaDecoder* decoder1;
 	IntDeltaDecoder* decoder2;
-	int* bit_vector;
-	int mid;
-	int length;
+	int* bit_vector;			//!< bit vector
+	int mid;					//!< mid of bit vector
+	int length;					//!< length of bit vector
 public:
 	BitVectorDecoder(int length, int middle) {
 		decoder1 = new IntDeltaDecoder();

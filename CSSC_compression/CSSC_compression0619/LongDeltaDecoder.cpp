@@ -1,7 +1,7 @@
 #pragma once
 #include "LongDeltaDecoder.h"
 /**
- * @brief 
+ * @brief  
  * 
  * @param buffer 
  * @return ll 
@@ -69,12 +69,12 @@ void LongDeltaDecoder::allocateDataArray() {
 	dataArrayAllocated = 1;
 }
 /**
- * @brief 
+ * @brief  convert the binary string to the ll value
  * 
- * @param result 
- * @param pos 
- * @param width 
- * @return ll 
+ * @param result  the binary string to be converted
+ * @param pos  the position of the binary string
+ * @param width  the length of the binary string
+ * @return ll  
  */
 ll bytesToLong(char* result, int pos, int width) {
 	long ret = 0;
@@ -96,7 +96,7 @@ ll bytesToLong(char* result, int pos, int width) {
 	return ret;
 }
 /**
- * @brief 
+ * @brief read the i th value from the binary string
  * 
  * @param i 
  */
@@ -105,7 +105,7 @@ void LongDeltaDecoder::readValue(int i) {
 	data[i] = previous + minDeltaBase + v;
 }
 /**
- * @brief 
+ * @brief  
  * 
  * @param buffer 
  * @return ll 

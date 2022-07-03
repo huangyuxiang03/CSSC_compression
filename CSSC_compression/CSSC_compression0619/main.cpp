@@ -290,14 +290,6 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 				num_j = 0;
 				col_n++;
 			}
-			//else if (num_some_row == 20 ||
-			//	num_some_row == 21 || num_some_row == 22) {
-			//	strArray[col_n][row_n] = char16toint1byte(num);
-			//	delete[] num;
-			//	num = new char[5];
-			//	num_j = 0;
-			//	col_n++;
-			//}
 		}
 		else if (buffer[i] == '\n') {
 			num_some_row = 0;
@@ -352,8 +344,6 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	row = 600000; //row ���Թ̶�
 	float** strArray;
 	strArray = new float * [col];
-	//miu_i = new float* [col]; // ǰi�����ľ�ֵ
-	//float* sum = new float[col];
 	for (int j = 0; j < col; j++) {
 		strArray[j] = new float[row];
 		//miu_i[j] = new float[row];
@@ -375,8 +365,6 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 				num[k] = buffer[i - num_j + k];
 			}
 			strArray[col_n][row_n] = chartofloat(num);
-			//sum[col_n] += strArray[col_n][row_n];
-			//miu_i[col_n][row_n] = sum[col_n] / (row_n + 1);
 			num_j = 0;
 			col_n++;
 		}
@@ -387,9 +375,6 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 				num[k] = buffer[i - num_j + k];
 			}
 			strArray[col_n][row_n] = chartofloat(num);
-			//sum[col_n] += strArray[col_n][row_n];
-			//miu_i[col_n][row_n] = sum[col_n] / (row_n + 1);
-
 			num_j = 0;
 			row_n++;
 			//if (row_n == 51000) break;
@@ -600,23 +585,7 @@ int main(int argc, char* argv[]) {
 					out1.concatenate(out2);
 					out1.concatenate(out3);
 
-
-					//IntRleEncoder encoder;
-					//// Walk through each data
-					//for (int j = 0; j < length; j++) {
-					//	if (j %18000000==0) {
-					//		cout << "col:"<<i << endl;
-					//		cout << "row:" << j << endl;
-					//	} 
-					//	encoder.encode(strArrayll[i][j], out);
-					//}
 					col_n++;
-					//// flush the end data to out
-					//encoder.flush(out);
-
-
-					//col_pos[col_n] = out.getBytes().size();
-					//out.write2file();
 
 					// gzip compress the data, and write the compressed data to file
 					out1.write2filegzip();

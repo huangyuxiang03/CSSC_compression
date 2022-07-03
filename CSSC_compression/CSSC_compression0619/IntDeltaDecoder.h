@@ -7,12 +7,12 @@
 
 class IntDeltaDecoder : public TS_2DIFF_decoder {
 private:
-	int firstValue;
-	int* data;
-	int previous;
-	int minDeltaBase;
-	bool dataArrayAllocated = false;
-	bool deltaBufAllocated = false;
+	int firstValue;						//!< first value of delta
+	int* data;							//!< data array
+	int previous;						//!< previous value of delta
+	int minDeltaBase;					//!< min delta base
+	bool dataArrayAllocated = false;	//!< data array allocated
+	bool deltaBufAllocated = false;		//!< delta buffer allocated
 public:
 	int readT(ByteBuffer& buffer);
 	int loadIntBatch(ByteBuffer& buffer);

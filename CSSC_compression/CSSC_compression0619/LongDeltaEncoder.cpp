@@ -27,7 +27,7 @@ void LongDeltaEncoder::calcDelta(ll value) {
 	deltaBlockBuffer[writeIndex++] = delta;
 }
 /**
- * @brief 
+ * @brief  reset the encoder
  * 
  */
 void LongDeltaEncoder::reset() {
@@ -40,7 +40,7 @@ void LongDeltaEncoder::reset() {
 	}
 }
 /**
- * @brief 
+ * @brief  get the width of the encoding block
  * 
  * @param v 
  * @return int 
@@ -56,12 +56,12 @@ int LongDeltaEncoder::getValueWidth(ll v) {
 	return 64-ans;
 }
 /**
- * @brief 
+ * @brief  Convert  ll value to the the binary string with the starting address pos and the word length width
  * 
- * @param srcNum 
- * @param result 
- * @param pos 
- * @param width 
+ * @param srcNum  the ll value to be converted
+ * @param result  the binary string
+ * @param pos  the starting address of the binary string
+ * @param width  the word length of the binary string
  */
 void longToBytes(ll srcNum, char* result, int pos, int width) {
 	int cnt = pos & (0x07);
@@ -106,7 +106,7 @@ char* longToBytes(ll num) {
 	return longToBytes(num, 8);
 }
 /**
- * @brief 
+ * @brief write the encoding block to the output stream
  * 
  * @param i 
  */
@@ -114,7 +114,7 @@ void LongDeltaEncoder::writeValueToBytes(int i) {
 	longToBytes(deltaBlockBuffer[i], encodingBlockBuffer, writeWidth * i, writeWidth);
 }
 /**
- * @brief 
+ * @brief calculate the difference between the minDeltaBase and the value
  * 
  * @param i 
  */
@@ -122,7 +122,7 @@ void LongDeltaEncoder::calcTwoDiff(int i) {
 	deltaBlockBuffer[i] = deltaBlockBuffer[i] - minDeltaBase;
 }
 /**
- * @brief 
+ * @brief
  * 
  * @param out 
  */

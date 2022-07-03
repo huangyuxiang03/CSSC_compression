@@ -16,7 +16,7 @@ IntDeltaEncoder::IntDeltaEncoder(int size) : TS_2DIFF_encoder(size) {
  */
 IntDeltaEncoder::IntDeltaEncoder() : IntDeltaEncoder(BLOCK_DEFAULT_SIZE) { }
 /**
- * @brief 
+ * @brief calulate the delta of the given block
  * 
  * @param value 
  */
@@ -27,7 +27,7 @@ void IntDeltaEncoder::calcDelta(int value) {
 	deltaBlockBuffer[writeIndex++] = delta;
 }
 /**
- * @brief 
+ * @brief reset the encoder
  * 
  */
 void IntDeltaEncoder::reset() {
@@ -40,7 +40,7 @@ void IntDeltaEncoder::reset() {
 	}
 }
 /**
- * @brief 
+ * @brief get the width of the encoding block
  * 
  * @param v 
  * @return int 
@@ -56,12 +56,12 @@ int IntDeltaEncoder::getValueWidth(int v) {
 	return 32 - ans;
 }
 /**
- * @brief 
+ * @brief Convert  int value to the the binary string with the starting address pos and the word length width
  * 
- * @param srcNum 
- * @param result 
- * @param pos 
- * @param width 
+ * @param srcNum the int value to be converted
+ * @param result the binary string
+ * @param pos  the starting address
+ * @param width  the word length
  */
 void intToBytes(int srcNum, char* result, int pos, int width) {
 	int cnt = pos & (0x07);
@@ -83,10 +83,10 @@ void intToBytes(int srcNum, char* result, int pos, int width) {
 	}
 }
 /**
- * @brief 
+ * @brief convert the int value to a binary string with the length of len
  * 
- * @param num 
- * @param len 
+ * @param num  the int value to be converted
+ * @param len  the length of the binary string
  * @return char* 
  */
 char* intToBytes(int num, int len) {
@@ -97,7 +97,7 @@ char* intToBytes(int num, int len) {
 	return byteNum;
 }
 /**
- * @brief 
+ * @brief  convert the ll value to a binary string with the length of len
  * 
  * @param num 
  * @return char* 
@@ -106,7 +106,7 @@ char* intToBytes(ll num) {
 	return intToBytes(num, 4);
 }
 /**
- * @brief 
+ * @brief  write the encoding block to the output stream
  * 
  * @param i 
  */
@@ -114,7 +114,7 @@ void IntDeltaEncoder::writeValueToBytes(int i) {
 	intToBytes(deltaBlockBuffer[i], encodingBlockBuffer, writeWidth * i, writeWidth);
 }
 /**
- * @brief 
+ * @brief  calculate the difference of the given block
  * 
  * @param i 
  */
@@ -122,7 +122,7 @@ void IntDeltaEncoder::calcTwoDiff(int i) {
 	deltaBlockBuffer[i] = deltaBlockBuffer[i] - minDeltaBase;
 }
 /**
- * @brief 
+ * @brief  write the encoding block to the output stream
  * 
  * @param out 
  */
@@ -135,7 +135,7 @@ void IntDeltaEncoder::writeHeader(ByteArrayOutputStream& out) {
 	delete[] b;
 }
 /**
- * @brief 
+ * @brief  encode the given block to the output stream
  * 
  * @param value 
  * @param out 
@@ -145,7 +145,7 @@ void IntDeltaEncoder::encode(int value, ByteArrayOutputStream& out) {
 	encodeValue(value, out);
 }
 /**
- * @brief 
+ * @brief  encode the given block to the output stream
  * 
  * @param value 
  * @param out 
@@ -164,7 +164,7 @@ void IntDeltaEncoder::encodeValue(int value, ByteArrayOutputStream& out) {
 	}
 }
 /**
- * @brief 
+ * @brief calculate the bit width for delta block buffer
  * 
  * @return int 
  */

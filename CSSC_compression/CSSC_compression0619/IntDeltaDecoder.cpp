@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 /**
- * @brief 
+ * @brief load bit vector from buffer or not
  * 
  * @param buffer 
  * @return int 
@@ -15,7 +15,7 @@ int IntDeltaDecoder::readT(ByteBuffer& buffer) {
 	return data[nextReadIndex++];
 }
 /**
- * @brief 
+ * @brief load bit vector from buffer
  * 
  * @param buffer 
  * @return int 
@@ -48,7 +48,7 @@ int IntDeltaDecoder::loadIntBatch(ByteBuffer& buffer) {
 	return firstValue;
 }
 /**
- * @brief 
+ * @brief  read header from buffer
  * 
  */
 void IntDeltaDecoder::readPack() {
@@ -78,11 +78,11 @@ void IntDeltaDecoder::allocateDataArray() {
 	dataArrayAllocated = 1;
 }
 /**
- * @brief 
+ * @brief Convert the binary string with the starting address pos and the word length width to the int value
  * 
- * @param result 
- * @param pos 
- * @param width 
+ * @param result Input string
+ * @param pos the starting address
+ * @param width the word length
  * @return int 
  */
 int bytesToint(char* result, int pos, int width) {
@@ -105,10 +105,10 @@ int bytesToint(char* result, int pos, int width) {
 	return ret;
 }
 /**
- * @brief 
+ * @brief Read the i th string with the length of packWidth
  * 
  * @param i 
- */
+ */ 
 void IntDeltaDecoder::readValue(int i) {
 	int v = bytesToint(deltaBuf, packWidth * i, packWidth);
 	data[i] = v + minDeltaBase; //previous + minDeltaBase + v;

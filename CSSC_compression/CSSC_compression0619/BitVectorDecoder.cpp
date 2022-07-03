@@ -1,5 +1,9 @@
 #include "BitVectorDecoder.h"
-
+/**
+ * @brief 
+ * 
+ * @param buffer 
+ */
 void BitVectorDecoder::decode_bitvector(ByteBuffer& buffer)
 {
 	int num_byte = length / 8;
@@ -23,16 +27,27 @@ void BitVectorDecoder::decode_bitvector(ByteBuffer& buffer)
 		single_num /= 2;
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @param j 
+ * @param buffer1 
+ * @param buffer2 
+ * @return int 
+ */
 int BitVectorDecoder::readInt(int j, ByteBuffer& buffer1, ByteBuffer& buffer2)
 {
-	//if(j%4600==0) 
-	//	cout << j << endl;
-	//cout << bit_vector[j] << endl;
 	if (bit_vector[j] == 1) return decoder1->readInt(buffer1);
 	else return decoder2->readInt(buffer2);
 }
-
+/**
+ * @brief 
+ * 
+ * @param buffer1 
+ * @param buffer2 
+ * @return true 
+ * @return false 
+ */
 bool BitVectorDecoder::hasNext(ByteBuffer& buffer1, ByteBuffer& buffer2)
 {
 	if (decoder1->hasNext(buffer1) || decoder2->hasNext(buffer2))
