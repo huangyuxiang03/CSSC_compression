@@ -7,25 +7,13 @@
 using namespace std;
 class RleDecoder {
 protected:
-	/** mode to indicate current encoding type 0 - RLE 1 - BIT_PACKED. */
-	int mode;
-	/** bit width for bit-packing and rle to decode. */
-	int bitWidth;
-	/** number of data left for reading in current buffer. */
-	int currentCount;
-	/**
-	 * how many bytes for all encoded data like [{@code <bitwidth> <encoded-data>}] in inputstream.
-	 */
-	int length;
-	/**
-	 * a flag to indicate whether current pattern is end. false - need to start reading a new page
-	 * true - current page isn't over.
-	 */
-	bool isLengthAndBitWidthReaded;
-	/** buffer to save data format like [{@code <bitwidth> <encoded-data>}] for decoder. */
-	ByteBuffer byteCache;
-	/** number of bit-packing group in which is saved in header. */
-	int bitPackingNum;
+	int mode;//!< mode to indicate current encoding type 0 - RLE 1 - BIT_PACKED.
+	int bitWidth;//!< bit width for bit-packing and rle to decode.
+	int currentCount;//!< number of data left for reading in current buffer.
+	int length;//!< how many bytes for all encoded data like [{@code <bitwidth> <encoded-data>}] in inputstream.
+	bool isLengthAndBitWidthReaded;//!< a flag to indicate whether current pattern is end. false - need to start reading a new page true - current page isn't over.
+	ByteBuffer byteCache;//!< buffer to save data format like [{@code <bitwidth> <encoded-data>}] for decoder.
+	int bitPackingNum;//!< number of bit-packing group in which is saved in header.
 	int RLE_MIN_REPEATED_NUM;
 public:
 	RleDecoder() {
