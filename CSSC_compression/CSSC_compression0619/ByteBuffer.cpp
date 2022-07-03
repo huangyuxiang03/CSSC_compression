@@ -1,20 +1,34 @@
 #include "ByteBuffer.h"
 #include <iostream>
-
+/**
+ * @brief read 8 bits and concatenate into a long long.
+ * @return long long
+ * @author hyx
+ */
 long long ByteBuffer::readLong() {
 	long long rtn;
 	memcpy(&rtn, currentPosition, 8);
 	currentPosition += 8;
 	return rtn;
 }
-
+/**
+ * @brief read 4 bits and concatenate into a float.
+ * @return float
+ * @author hyx
+ */
 float ByteBuffer::readFloat() {
 	float rtn;
 	memcpy(&rtn, currentPosition, 4);
 	currentPosition += 4;
 	return rtn;
 }
-
+/**
+ * @brief copy the current len'th byte to dst (in reverse order).
+ * @param dst
+ * @param len
+ * @return void
+ * @author hyx
+ */
 void ByteBuffer::get(char* dst, int len) {
 	for (int i = 0; i < len; i++) {
 		dst[i] = currentPosition[len - i - 1];
@@ -22,18 +36,36 @@ void ByteBuffer::get(char* dst, int len) {
 	currentPosition += len;
 	return;
 }
-
+/**
+ * @brief copy the current len'th bits to tmp in normal order (offset is useless).
+ * @param tmp
+ * @param offset
+ * @param length
+ * @return void
+ * @author hyx
+ */
 void ByteBuffer::get(std::vector<uint8_t>& tmp, int offset, int length) {
 	memcpy(tmp.data(), currentPosition, length);
 	currentPosition += length;
 }
-
+/**
+ * @brief turn all bytes into a vector.
+ * @param None
+ * @return std::vector<std::uint8_t>
+ * @author hyx
+ */
 std::vector<std::uint8_t> ByteBuffer::Bytes() {
 	std::vector<std::uint8_t> rtn(bytesLength);
 	memcpy(rtn.data(), bytes, bytesLength);
 	return rtn;
 }
-
+/**
+ * @brief cut the buffer into three parts, which are head, middle and tail.
+ * @param b2
+ * @param b3
+ * @return void
+ * @author hyx
+ */
 void ByteBuffer::divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3) {
 	uint8_t* tail = bytes + bytesLength;
 
@@ -60,17 +92,28 @@ void ByteBuffer::divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3) {
 	bytesLength = tail - bytes;
 	currentPosition = bytes;
 }
-
+/**
+ * @brief Destroy the Byte Buffer:: Byte Buffer object
+ * @param None
+ * @author lrs
+ */
 ByteBuffer::~ByteBuffer() {
 	if (bytesAllocated)
 		delete[] bytes;
 }
-
+/**
+ * @brief constructor: copy fp to filepath, then do nothing.
+ * @param fp
+ * @author lr
+ */
 ByteBuffer::ByteBuffer(std::string fp) {
 	filepath = fp;
 }
-
-// load the data from _bytes to bytes. use memcpy to enhance speed. [lr]
+/**
+ * @brief load the data from _bytes to bytes. use memcpy to enhance speed.
+ * @param _bytes
+ * @author lr
+ */
 ByteBuffer::ByteBuffer(std::vector<std::uint8_t> _bytes) {
 	bytes = new uint8_t[_bytes.size()];
 	if (!_bytes.empty()) {
@@ -80,39 +123,64 @@ ByteBuffer::ByteBuffer(std::vector<std::uint8_t> _bytes) {
 		currentPosition = bytes;
 	}
 }
-
-// calculate how many bytes left. (use currentPosition and bytesLength to calculate this value)	[lr]
+/**
+ * @brief calculate how many bytes left. (use currentPosition and bytesLength to calculate this value)
+ * @param None
+ * @return int
+ * @author lr
+ */
 int ByteBuffer::remaining() {
 	return bytesLength - (currentPosition - bytes);
 }
-
-// if there is bytes left, return true, otherwise return false.	[lr]
+/**
+ * @brief if there is bytes left, return true, otherwise return false.
+ * @param None
+ * @return true
+ * @return false
+ * @author lr
+ */
 bool ByteBuffer::hasRemaining() {
 	return bytesLength >= (currentPosition - bytes + 1);
 }
-
-// read 4 bytes and concatenate to an int then return. currentPosition movebackwards 4 bytes. [lr]
+/**
+ * @brief read 4 bytes and concatenate to an int then return. currentPosition movebackwards 4 bytes.
+ * @param None
+ * @return int
+ * @author lr
+ */
 int ByteBuffer::readInt() {
 	int tempInt = *reinterpret_cast<int*>(currentPosition);
 	currentPosition += 4;
 	return tempInt;
 }
-
-// read a byte and change into char.	[lr]
+/**
+ * @brief read a byte and change into char, and currentPosition movebackwards 1 byte.
+ * @param None
+ * @return char
+ * @author lr
+ */
 char ByteBuffer::readByte() {
 	char tempChar = *reinterpret_cast<char*>(currentPosition);
 	currentPosition += 1;
 	return tempChar;
 }
-
-// read a byte and change into uint8_t	[lr]
+/**
+ * @brief read a byte and change into uint8_t.
+ * @param None
+ * @return std::uint8_t
+ * @author lr
+ */
 std::uint8_t ByteBuffer::readuchar() {
 	std::uint8_t tempUint8_t = *reinterpret_cast<uint8_t*>(currentPosition);
 	currentPosition += 1;
 	return tempUint8_t;
 }
-
-
+/**
+ * @brief read a byte and change into uint8_t.
+ * @param None
+ * @return std::uint8_t
+ * @author hyx
+ */
 ByteBuffer& ByteBuffer::operator=(ByteBuffer& b) {
 	if (this->bytesAllocated)
 		delete[] bytes;
