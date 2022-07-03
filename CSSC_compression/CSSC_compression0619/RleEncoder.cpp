@@ -1,4 +1,3 @@
-#pragma once
 #include "RleEncoder.h"
 
 void RleEncoder::reset() {

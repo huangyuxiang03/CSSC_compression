@@ -72,7 +72,7 @@ void IntRleDecoder::readNumberInRle()
 void IntRleDecoder::readBitPackingBuffer(int bitPackedGroupCount, int lastBitPackedNum)
 {
     if (currentBufferAllocated)
-        delete[] currentBufsfer;
+        delete[] currentBuffer;
     currentBuffer = new int[bitPackedGroupCount * RLE_MIN_REPEATED_NUM];
     currentBufferAllocated = true;
     vector<std::uint8_t> bytes (bitPackedGroupCount * bitWidth);

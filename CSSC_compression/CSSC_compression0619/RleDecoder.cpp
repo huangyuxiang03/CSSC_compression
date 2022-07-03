@@ -48,7 +48,7 @@ void RleDecoder::callReadBitPackingBuffer(int header)
  * @param buffer
  * @return int
  */
-int RleDecoder::read(ByteBuffers& buffer)
+int RleDecoder::read(ByteBuffer& buffer)
 {
 	if (!buffer.hasRemaining()) {
 		return -1;
