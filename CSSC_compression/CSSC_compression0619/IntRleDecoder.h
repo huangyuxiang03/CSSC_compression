@@ -9,16 +9,9 @@
 using namespace std;
 class IntRleDecoder : public RleDecoder {
 private:
-	/** current value for rle repeated value. */
-	int currentValue;
-
-	/** buffer to save all values in group using bit-packing. */
-	int* currentBuffer;
-
-	/** packer for unpacking int values. */
-	IntPacker* packer;
-
-
+	int currentValue;//!< current value for rle repeated value.
+	int* currentBuffer;//!<  buffer to save all values in group using bit-packing.
+	IntPacker* packer;//!< packer for unpacking int values.
 	bool packerAllocated{ false };
 	bool currentBufferAllocated{ false };
 public:
