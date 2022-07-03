@@ -1,15 +1,29 @@
 #pragma once
 #include "ByteArrayOutputStream.h"
 
-
+/**
+ * @brief convert input to byte array
+ * 
+ * @tparam T 
+ * @param input 
+ * @return std::vector<std::uint8_t> 
+ */
 template <typename T>
 std::vector<std::uint8_t> ToByte(T input)
 {
 	std::uint8_t* bytePointer = reinterpret_cast<std::uint8_t*>(&input); 
 	return std::vector<std::uint8_t>(bytePointer, bytePointer + sizeof(T));
 }
+/**
+ * @brief read from vector to variable
+ * 
+ * @tparam T 
+ * @param in 
+ * @param out 
+ * @return std::vector<std::uint8_t>& 
+ */
 template <typename T>
-std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
+std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out) 
 {
 	if (in.size() >= sizeof(T)) {
 		out = *reinterpret_cast<T*>(in.data());
@@ -21,27 +35,49 @@ std::vector<std::uint8_t>& operator>>(std::vector<std::uint8_t>& in, T& out)
 	}
 	return in;
 }
+/**
+ * @brief write int to vector
+ * 
+ * @param b 
+ */
 void ByteArrayOutputStream::write(int b){
    std::vector<std::uint8_t> bytes_tmp = ToByte(b);
    this->bytes.insert(this->bytes.end(),bytes_tmp.begin(),bytes_tmp.end());
 
 }
+/**
+ * @brief  write long long to vector
+ * 
+ * @param b 
+ */
 void ByteArrayOutputStream::write(long long b){
    std::vector<std::uint8_t> bytes_tmp = ToByte(b);
    this->bytes.insert(this->bytes.end(),bytes_tmp.begin(),bytes_tmp.end());
 }
-
+/**
+ * @brief  write char to vector
+ * 
+ * @param b 
+ */
 void ByteArrayOutputStream::write(char b)
 {
 	std::vector<std::uint8_t> bytes_tmp = ToByte(b);
 	this->bytes.insert(this->bytes.end(), bytes_tmp.begin(), bytes_tmp.end());
 }
-
+/**
+ * @brief write uint8_t to vector
+ * 
+ * @param b 
+ */
 void ByteArrayOutputStream::write(std::uint8_t b)
 {
 	this->bytes.push_back(b);
 }
-
+/**
+ * @brief  write char array to vector
+ * 
+ * @param b 
+ */
 void ByteArrayOutputStream::writeBytes(char b[]){
 	int len = sizeof(b);
 	for (int i=0; i < len;i++) {
@@ -51,7 +87,13 @@ void ByteArrayOutputStream::writeBytes(char b[]){
     }
 	//delete[] b;
 }
-
+/**
+ * @brief 
+ * 
+ * @param b 
+ * @param offset 
+ * @param len 
+ */
 void ByteArrayOutputStream::write(char* b, int offset, int len)
 {
 	//int length = sizeof(b);
@@ -67,19 +109,27 @@ void ByteArrayOutputStream::write(char* b, int offset, int len)
 	}
 	//delete[] b;
 }
+/**
+ * @brief 
+ * 
+ * @param b 
+ * @param offset 
+ * @param len 
+ */
 void ByteArrayOutputStream::write(vector<std::uint8_t> b, int offset, int len)
 {
 	int end = offset + len;
-	/*if (end > length || offset < 0) {
-		std::cout << "offset error" << std::endl;
-		abort();
-	}*/
-	//for (int i = offset; i < end; i++) {
-	//	std::vector<std::uint8_t> byte_tmp = ToByte(b[len - i - 1]);
 	this->bytes.insert(this->bytes.end(), b.begin(), b.end());
 	vector <std::uint8_t>().swap(b);
 	//}
 }
+/**
+ * @brief 
+ * 
+ * @param b 
+ * @param offset 
+ * @param len 
+ */
 void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
 {
 	int end = offset + len;
@@ -88,20 +138,10 @@ void ByteArrayOutputStream::write(std::uint8_t* b, int offset, int len)
 	}
 	//delete[] b;
 }
-//void ByteArrayOutputStream::compress() {
-//	//int* olen;
-//	int ilen = this->bytes.size();
-//	std::uint8_t* idata = new std::uint8_t[ilen];
-//	for (int i = 0; i < ilen;i++) {
-//		 idata[i] = this->bytes[i];
-//	}
-//	//std::uint8_t* odata;
-//	GZIP gzip;
-//	this->compressed_bytes = new std::uint8_t[ilen];
-//	gzip.data_compress(idata, ilen, this->compressed_bytes, this->olen);
-//
-//
-//}
+/**
+ * @brief 
+ * 
+ */
 void ByteArrayOutputStream::write2file()
 {
 	ofstream outfile;
@@ -111,21 +151,6 @@ void ByteArrayOutputStream::write2file()
 		abort();
 	}else
 	{
-		//int size = this->bytes.size();
-		//cout << size << endl;
-		//char* buffer = new char[size];
-		//for (int i = 0; i < size; i++) {
-		//	buffer[i] = this->bytes[i];
-		//}
-		//const char* const src = buffer;
-		//char* dst = new char[size*2];
-		///*int srcSize = length;*/
-		//dstlength = LZ4_compress_default(src, dst, size, size*2);
-		////outfile << dst;
-		//cout <<"lz4 compress data size:" << dstlength << endl;
-		//for (int i = 0; i < dstlength; i++) {
-		//	outfile << dst[i];
-		//}
 		for (std::uint8_t bt : this->bytes) {
 			outfile <<  bt;
 		}
@@ -139,7 +164,10 @@ void ByteArrayOutputStream::write2file()
 
 	}		
 }
-
+/**
+ * @brief 
+ * 
+ */
 void ByteArrayOutputStream::write2filegzip()
 {
 	ofstream outfile;
@@ -174,35 +202,6 @@ void ByteArrayOutputStream::write2filegzip()
 		}
 		delete[] compressed_bytes;
 		delete[] idata;
-		// 1st lz4
-		//int size = this->bytes.size();
-		//cout << size << endl;
-		//char* buffer = new char[size];
-		//for (int i = 0; i < size; i++) {
-		//	buffer[i] = this->bytes[i];
-		//}
-		//const char* const src = buffer;
-		//char* dst = new char[size * 2];
-		//dstlength = LZ4_compress_default(src, dst, size, size * 2);
-
-		// 2nd lz4 compress
-		//cout << "lz4 compress data size:" << dstlength << endl;
-		//delete[] buffer;
-		//buffer = new char[dstlength];
-		//for (int i = 0; i < dstlength; i++) {
-		//	buffer[i] = dst[i];
-		//}
-
-		//const char* const src2 = buffer;
-		//delete[] dst;
-		//dst = new char[dstlength * 100];
-		//dstlength = LZ4_compress_default(src2, dst, dstlength, dstlength * 100);
-
-		//for (int i = 0; i < dstlength; i++) {
-		//	outfile << dst[i];
-		//}
-		//delete[] dst;
-		//delete[] buffer;
 
 		vector <std::uint8_t>().swap(this->bytes);
 
@@ -211,7 +210,10 @@ void ByteArrayOutputStream::write2filegzip()
 		//delete[] dst;
 	}
 }
-
+/**
+ * @brief 
+ * 
+ */
 void ByteArrayOutputStream::readFromFile()
 {
 	ifstream infile;
@@ -252,44 +254,16 @@ void ByteArrayOutputStream::readFromFile()
 		for (i=1; i < col_start; i++) {
 			this->bytes.push_back((std::uint8_t)buffer[i]);
 		}
-//		i = 1;
-//		int end_col_i=1;
-//		int start_col_i = 1;
-//		for (int j = 0; j < col_n; j++) {
-//			char* srctmp = new char[col_pos[j]];
-//			end_col_i += col_pos[j];
-//			for (; i < end_col_i; i++) {
-//				srctmp[i - start_col_i] = buffer[i];
-//				//this->bytes.push_back((std::uint8_t)buffer[i]);
-//			}
-//			
-//			const char* const src = srctmp;
-//			char* dst = new char[size];
-//start_col_i = end_col_i;
-//		}
-//
-//		int decompressed_size = LZ4_decompress_safe(compressed_data, regen_buffer, compressed_data_size, src_size);
-		
-        //col_pos = new int[100];
-		//int col_i_i = 0;
-		//for (int i = 0; i < length; i++) {
-		//	//cout << buffer[i] << endl;
-		//	if (buffer[i] == '\n') {	
-		//		col_pos[col_n] = col_i_i;
-		//		col_i_i = 0;
-		//		col_n++;
-		//		continue;
-		//	}
-		//	else {
-		//		col_i_i++;
-		//		this->bytes.push_back((std::uint8_t)buffer[i]);
-		//	}
-		//}
+
 		cout << this->bytes.size() << endl;
 		infile.close();
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @param datatype 
+ */
 void ByteArrayOutputStream::writeDatatype(char datatype)
 {
 	ofstream outfile;
@@ -306,7 +280,11 @@ void ByteArrayOutputStream::writeDatatype(char datatype)
 		outfile.close();
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @return std::vector<std::uint8_t> 
+ */
 std::vector<std::uint8_t> ByteArrayOutputStream::getInt()
 {
 	std::vector<std::uint8_t> getbytes;
@@ -315,17 +293,29 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getInt()
 	bytes.erase(bytes.begin(), bytes.begin() + getbytesnum);
 	return getbytes;
 }
-
+/**
+ * @brief 
+ * 
+ * @return std::vector<std::uint8_t> 
+ */
 std::vector<std::uint8_t> ByteArrayOutputStream::getBytes()
 {
 	return bytes;
 }
-
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int ByteArrayOutputStream::getCompressedBytesSize()
 {
 	return dstlength;
 }
-
+/**
+ * @brief 
+ * 
+ * @return std::vector<std::uint8_t> 
+ */
 std::vector<std::uint8_t> ByteArrayOutputStream::getColBytes()
 {
    std::vector<std::uint8_t> getbytes;
@@ -334,25 +324,12 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytes()
    col_index++;
    return getbytes;
 
-   //int size = getbytes.size();
-   //char* buffer = new char[size];
-   //for (int i = 0; i < size; i++) {
-	  // buffer[i] = getbytes[i];
-   //}
-   //const char* const src = buffer;
-   //char* dst = new char[size*1000];
-   ///*int srcSize = length;*/
-   //int decompdstlength = LZ4_decompress_safe(src, dst, size, size * 1000);
-   ////outfile << dst;
-   //cout << decompdstlength << endl;
-   //std::vector<std::uint8_t> newgetbytes(decompdstlength);
-   //for (int i = 0; i < decompdstlength; i++) {
-	  // newgetbytes[i] = dst[i];
-   //}
-   ////col_n--;
-   //return newgetbytes;
 }
-
+/**
+ * @brief 
+ * 
+ * @return std::vector<std::uint8_t> 
+ */
 std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 {
 	std::vector<std::uint8_t> getbytes;
@@ -383,8 +360,12 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getColBytesGZip()
 	delete[] idata;
 	return newgetbytes;
 }
-
-// get bit_vector compressed part
+/**
+ * @brief get bit_vector compressed part
+ * 
+ * @param length 
+ * @return std::vector<std::uint8_t> 
+ */
 std::vector<std::uint8_t> ByteArrayOutputStream::getBytesLength(int length)
 {
 	std::vector<std::uint8_t> getbytes;
@@ -394,30 +375,24 @@ std::vector<std::uint8_t> ByteArrayOutputStream::getBytesLength(int length)
 	
 	return getbytes;
 
-	//int size = getbytes.size();
-	//char* buffer = new char[size];
-	//for (int i = 0; i < size; i++) {
-	//	buffer[i] = getbytes[i];
-	//}
-	//const char* const src = buffer;
-	//char* dst = new char[size * 1000];
-	///*int srcSize = length;*/
-	//int decompdstlength = LZ4_decompress_safe(src, dst, size, size * 1000);
-	////outfile << dst;
-	//cout << decompdstlength << endl;
-	//std::vector<std::uint8_t> newgetbytes(decompdstlength);
-	//for (int i = 0; i < decompdstlength; i++) {
-	//	newgetbytes[i] = dst[i];
-	//}
-	////col_n--;
-	//return newgetbytes;
 }
+/**
+ * @brief 
+ * 
+ * @return true 
+ * @return false 
+ */
 bool ByteArrayOutputStream::hasNextCol()
 {
 	if (col_n > col_index) return true;
 	return false;
 }
-
+/**
+ * @brief 
+ * 
+ * @param col_nf 
+ * @param col_posf 
+ */
 void ByteArrayOutputStream::writeRowCol(int col_nf, int* col_posf)
 {
 	ofstream outfile;
@@ -442,20 +417,30 @@ void ByteArrayOutputStream::writeRowCol(int col_nf, int* col_posf)
 		outfile.close();
 	}
 }
-
+/**
+ * @brief 
+ * 
+ */
 void ByteArrayOutputStream::reset()
 {
 	vector <std::uint8_t>().swap(this->bytes);
 	//this->bytes.clear();
 }
-
+/**
+ * @brief 
+ * 
+ */
 void ByteArrayOutputStream::addSizeBack() {
 	int sz = bytes.size();
 	std::uint8_t* u = (std::uint8_t*)&sz;
 	for(int i = 0; i < 4; i++)
 		bytes.push_back(*(u+i));
 }
-
+/**
+ * @brief 
+ * 
+ * @param b 
+ */
 void ByteArrayOutputStream::concatenate(ByteArrayOutputStream& b) {
 	bytes.insert(bytes.end(), b.bytes.begin(), b.bytes.end());
 }

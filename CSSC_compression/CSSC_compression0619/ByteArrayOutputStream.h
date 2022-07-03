@@ -14,15 +14,15 @@ using namespace std;
 
 class ByteArrayOutputStream {
 private:
-	string filepath;
-	string filepath_compresssize;
-	std::vector<std::uint8_t> bytes;
+	string filepath;					//!< file path
+	string filepath_compresssize;		//!< compressed file path
+	std::vector<std::uint8_t> bytes;	//!< byte array
 	//std::uint8_t* compressed_bytes;
 	//int olen;
-	int* col_pos; // the position of per column data
-	int col_n; //the number of remaining column of the ByteArrayOutputStream
-	int col_index;
-	int dstlength;
+	int* col_pos; 						//!< the position of per column data
+	int col_n; 							//!< the number of remaining column of the ByteArrayOutputStream
+	int col_index;						//!< the index of the current column
+	int dstlength;						//!< the length of the compressed data
 public:
 	
 	ByteArrayOutputStream() {

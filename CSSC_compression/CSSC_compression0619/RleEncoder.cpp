@@ -1,6 +1,10 @@
 #pragma once
 #include "RleEncoder.h"
 
+/**
+ * @brief Reset the encoder
+ * 
+ */
 void RleEncoder::reset() {
     numBufferedValues = 0;
     repeatCount = 0;
@@ -12,6 +16,11 @@ void RleEncoder::reset() {
     byteCache.reset();
 }
 
+/**
+ * @brief flush the rle encoded data to the output stream
+ * 
+ * @param out the output stream
+ */
 void RleEncoder::flushrle(ByteArrayOutputStream& out)
 {
     int lastBitPackedNum = numBufferedValues;
@@ -21,7 +30,7 @@ void RleEncoder::flushrle(ByteArrayOutputStream& out)
 	else if (numBufferedValues > 0) {
 		clearBuffer();
 		writeOrAppendBitPackedRun();
-		endPreviousBitPackedRun(lastBitPackedNum);
+		endPreviousBitPackedRun(lastBitPackedNum);///< end the previous bit packed run
 	}
 	else {
 		endPreviousBitPackedRun(this->RLE_MIN_REPEATED_NUM);
@@ -33,6 +42,10 @@ void RleEncoder::flushrle(ByteArrayOutputStream& out)
     //cout << out.getBytes().size() << endl;
 }
 
+/**
+ * @brief 
+ * 
+ */
 void RleEncoder::writeOrAppendBitPackedRun()
 {
     if (bitPackedGroupCount >= RLE_MAX_BIT_PACKED_NUM) {
@@ -50,7 +63,13 @@ void RleEncoder::writeOrAppendBitPackedRun()
     repeatCount = 0;
     ++bitPackedGroupCount;
 }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ * @param out 
+ * @return int 
+ */
 int RleEncoder::writeUnsignedVarInt(int value, ByteArrayOutputStream& out)
 {
     int position = 1;
@@ -63,7 +82,12 @@ int RleEncoder::writeUnsignedVarInt(int value, ByteArrayOutputStream& out)
     return position;
 }
 
-
+/**
+ * @brief 
+ * 
+ * @param i 
+ * @return int 
+ */
 int RleEncoder::numberOfLeadingZeros(int i)
 {
     if (i <= 0)
@@ -75,7 +99,13 @@ int RleEncoder::numberOfLeadingZeros(int i)
     if (i >= 1 << 2) { n -= 2; i >>=  2; }
     return n - (i >> 1);
 }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ * @param out 
+ * @param bitWidth 
+ */
 void RleEncoder::writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream& out, int bitWidth)
 {
     int paddedByteNum = (bitWidth + 7) / 8;
@@ -89,7 +119,11 @@ void RleEncoder::writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutput
         paddedByteNum--;
     }
 }
-
+/**
+ * @brief 
+ * 
+ * @param lastBitPackedNum 
+ */
 void RleEncoder::endPreviousBitPackedRun(int lastBitPackedNum)
 {
     if (!isBitPackRun) {

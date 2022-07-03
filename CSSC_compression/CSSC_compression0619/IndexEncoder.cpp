@@ -1,5 +1,10 @@
 #include "IndexEncoder.h"
-
+/**
+ * @brief 
+ * 
+ * @param num 
+ * @param out 
+ */
 void IndexEncoder::encode(int num, ByteArrayOutputStream& out)
 {
 	increase_count++;
@@ -18,7 +23,11 @@ void IndexEncoder::encode(int num, ByteArrayOutputStream& out)
 	}
 	prevalue = num;
 }
-
+/**
+ * @brief 
+ * 
+ * @param out 
+ */
 void IndexEncoder::encode_bitvector(ByteArrayOutputStream& out)
 {
 	int num_byte = bit_vector0_count / 8;
@@ -40,7 +49,11 @@ void IndexEncoder::encode_bitvector(ByteArrayOutputStream& out)
 	std::uint8_t c = single_num;
 	out.write(c);
 }
-
+/**
+ * @brief 
+ * 
+ * @param out 
+ */
 void IndexEncoder::flush(ByteArrayOutputStream& out)
 {
 	if (increase_count == 255) {
@@ -64,7 +77,11 @@ void IndexEncoder::flush(ByteArrayOutputStream& out)
 	delete[] bit_vector1_num;
 	delete[] bit_vector0;
 }
-
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int IndexEncoder::getBit_vector1_num_count()
 {
 	return bit_vector1_num_count;

@@ -1,13 +1,9 @@
 #pragma once
 #ifndef _GZIP_
 #define _GZIP_
-//#include <stdio.h>
 #include <iostream>
 #include <string.h>
-//#include <malloc.h>
-//using namespace std;
-//#include "zlib.h"
-//#include "ByteArrayOutputStream.h"
+
 
 #include "compress.hpp"
 #include "config.hpp"

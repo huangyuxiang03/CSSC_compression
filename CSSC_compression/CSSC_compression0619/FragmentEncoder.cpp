@@ -1,5 +1,11 @@
 #include "FragmentEncoder.h"
-
+/**
+ * @brief Encode a float.
+ * 
+ * @param num  The float to encode.
+ * @param pos  The position of the float in the array.
+ * @param out  The output stream.
+ */
 void FragmentEncoder::encode(float num, int pos, ByteArrayOutputStream& out)
 {
 	float sig = sqrt(sigma);
@@ -24,22 +30,35 @@ void FragmentEncoder::encode(float num, int pos, ByteArrayOutputStream& out)
 	}
 	//miu = miu_i[pos];
 }
-
+/**
+ * @brief Flush the encoder.
+ * 
+ * @param out  The output stream.
+ */
 void FragmentEncoder::flush(ByteArrayOutputStream& out)
 {
 	cout << "fragment_vector_count: " << fragment_vector_count << endl;
 	encoder->flush(out);
 	reset(0, MAXFRAGMENTLENGTH);
 }
-
+/**
+ * @brief encode the bitvector
+ * 
+ * @param out  the output stream
+ */
 void FragmentEncoder::encode_bitvector(ByteArrayOutputStream& out)
 {
 	for (int i = 0; i < fragment_vector_count; i++) {
 		out.write(fragment_vector[i]);
 	}
 }
-
-void FragmentEncoder::reset(float miu, int length)
+/**
+ * @brief reset the encoder.
+ * 
+ * @param miu  the miu of the encoder.
+ * @param length  the length of the encoder.
+ */
+void FragmentEncoder::reset(float miu, int length)//
 {
 	this->miu = miu;
 	this->square_miu = miu * miu;

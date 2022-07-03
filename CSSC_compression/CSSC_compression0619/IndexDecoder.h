@@ -9,9 +9,9 @@ using namespace std;
 
 class IndexDecoder {
 private:
-	int prevalue;
-	int increase_count;
-	int* bit_vector0;
+	int prevalue;						
+	int increase_count;					
+	int* bit_vector0;					
 	std::uint8_t* bit_vector1_num;
 	int bit_vector0_count;
 	int bit_vector1_num_count;

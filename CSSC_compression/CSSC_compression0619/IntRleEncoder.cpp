@@ -1,10 +1,20 @@
 #include "IntRleEncoder.h"
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ * @param out 
+ */
 void IntRleEncoder::encode(int value, ByteArrayOutputStream& out)
 {
 	values.push_back(value);
 }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ * @param out 
+ */
 void IntRleEncoder::encode(bool value, ByteArrayOutputStream& out)
 {
     if (value) {
@@ -14,7 +24,12 @@ void IntRleEncoder::encode(bool value, ByteArrayOutputStream& out)
         this->encode(0, out);
     }
 }
-
+/**
+ * @brief 
+ * 
+ * @param list 
+ * @return int 
+ */
 int IntRleEncoder::getIntMaxBitWidth(vector<int> list)
 {
     int maxnum = 1;
@@ -24,7 +39,11 @@ int IntRleEncoder::getIntMaxBitWidth(vector<int> list)
     }
     return maxnum;
 }
-
+/**
+ * @brief Flush the buffer
+ * 
+ * @param out 
+ */
 void IntRleEncoder::flush(ByteArrayOutputStream& out)
 {
     this->bitWidth = getIntMaxBitWidth(values);
@@ -36,7 +55,10 @@ void IntRleEncoder::flush(ByteArrayOutputStream& out)
     flushrle(out);
     reset();
 }
-
+/**
+ * @brief 
+ * 
+ */
 void IntRleEncoder::reset()
 {
     //reset();
@@ -46,7 +68,10 @@ void IntRleEncoder::reset()
     bufferedValues = new int[RLE_MIN_REPEATED_NUM];
     preValue = 0;
 }
-
+/**
+ * @brief 
+ * 
+ */
 void IntRleEncoder::writeRleRun()
 {
     endPreviousBitPackedRun(RLE_MIN_REPEATED_NUM);
@@ -55,14 +80,20 @@ void IntRleEncoder::writeRleRun()
     repeatCount = 0;
     numBufferedValues = 0;
 }
-
+/**
+ * @brief 
+ * 
+ */
 void IntRleEncoder::clearBuffer()
 {
     for (int i = numBufferedValues; i < RLE_MIN_REPEATED_NUM; i++) {
         bufferedValues[i] = 0;
     }
 }
-
+/**
+ * @brief 
+ * 
+ */
 void IntRleEncoder::convertBuffer()
 {
     vector<std::uint8_t> bytes(bitWidth);
@@ -77,7 +108,11 @@ void IntRleEncoder::convertBuffer()
     bytesBuffer.push_back(bytes);
     delete[] tmpBuffer;
 }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ */
 void IntRleEncoder::encodeValue(int value)
 {
     if (!isBitWidthSaved) {

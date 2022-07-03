@@ -43,8 +43,12 @@ ll char16toll(char* num) {
 int char16toint(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
-
-// when encoding data, change data to int 
+/**
+ * @brief when encoding data, change data to int 
+ * 
+ * @param num 
+ * @return int 
+ */
 int char16toint4byte(char* num) {
 	return char2hex(num[0]) * 4096 + char2hex(num[1]) * 256 + char2hex(num[2]) * 16 + char2hex(num[3]);
 }
@@ -58,51 +62,12 @@ int char16toint1byte(char* num) {
 	return char2hex(num[0]);
 }
 
-// unused code
-void int2bytetochar16(int num, char* ch) {
-
-	int* ich = new int[2];
-	ich[1] = num & 15;
-	num >>= 4;
-	ich[0] = num & 15;
-	for (int i = 0; i < 2; i++) {
-		if (ich[i] >= 10) ch[i] = ich[i] + 55;
-		else if(ich[i] < 10) ch[i] = ich[i] + 48;
-	}
-	delete[] ich;
-}
-void int3bytetochar16(int num, char* ch) {
-
-	int* ich = new int[3];
-	ich[2] = num & 15;
-	num >>= 4;
-	ich[1] = num & 15;
-	num >>= 4;
-	ich[0] = num & 15;
-	for (int i = 0; i < 3; i++) {
-		if (ich[i] >= 10) ch[i] = ich[i] + 55;
-		else if (ich[i] < 10) ch[i] = ich[i] + 48;
-	}
-	delete[] ich;
-}
-void int4bytetochar16(int num, char* ch) {
-
-	int* ich = new int[4];
-	ich[3] = num & 15;
-	num >>= 4;
-	ich[2] = num & 15;
-	num >>= 4;
-	ich[1] = num & 15;
-	num >>= 4;
-	ich[0] = num & 15;
-	for (int i = 0; i < 4; i++) {
-		if (ich[i] >= 10) ch[i] = ich[i] + 55;
-		else if (ich[i] < 10) ch[i] = ich[i] + 48;
-	}
-	delete[] ich;
-}
-
-// when decoding data, concat each column data
+/**
+ * @brief when decoding data, concat each column data
+ * 
+ * @param num Number to be converted
+ * @param ch Pointer to the character that the number has been converted to
+ */
 void intCol0Byte2Char16(int num, char* ch) {
 	int* ich = new int[2];
 	ich[1] = num & 15;
@@ -201,15 +166,28 @@ void intCol6Byte2Char16(int num, char* ch) {
 	delete[] ich;
 }
 
-
-float chartofloat(char* num) {
+/**
+ * @brief Char type to float type
+ * 
+ */
+float chartofloat(char* num) {int
 	return atof(num);
 }
+
+/**
+ * @brief Char type to int type
+ * 
+ */
 float chartoint(char* num) {
 	return atoi(num);
 }
 
-//justify the number is int or float, if it is int, return 0;else return 1;
+/**
+ * @brief justify the number is int or float, if it is int, return 0;else return 1;
+ * 
+ * @param filename Input files
+ * @return int Returns 0 if the file data type is int, or 1 if the file data type is float
+ */
 int justify_file(string filename) {
 	int try_len = 10;
 	char* buffer = new char[try_len];
@@ -226,7 +204,12 @@ int justify_file(string filename) {
 	//cout << jresult << endl;
 	return jresult;
 }
-//justify the number is ll or float, if it is ll, return 0;else return 1;
+/**
+ * @brief justify the number is ll or float, if it is ll, return 0;else return 1;
+ * 
+ * @param filename 
+ * @return int Returns 0 if the file data type is ll, or 1 if the file data type is float
+ */
 int justify_file_decode(string filename) {
 	int try_len = 1;
 	char* buffer = new char[try_len];
@@ -243,7 +226,15 @@ int justify_file_decode(string filename) {
 	return jresult;
 }
 
-// while encoding, read int data from the data_well_public.hxv file
+/**
+ * @brief while encoding, read int data from the data_well_public.hxv file
+ * 
+ * @param filename 
+ * @param sep 
+ * @param row 
+ * @param col 
+ * @return int** 
+ */
 int** read_csvint7(string filename, char sep, int& row, int& col)
 {
 	ifstream inFile;
@@ -323,7 +314,14 @@ int** read_csvint7(string filename, char sep, int& row, int& col)
 	return strArray;
 
 }
-// while encoding, read float data from the shore_public.dat file
+/**
+ * @brief while encoding, read float data from the shore_public.dat file
+ * 
+ * @param filename
+ * @param sep
+ * @param row
+ * @param col
+ */
 float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_i)
 {
 	ifstream inFile;
@@ -406,7 +404,16 @@ float** read_csvf(string filename, char sep, int& row, int& col)//, float** miu_
 	return strArray;
 }
 
-// while decoding, write int data to the data_well_public.hxv file
+/**
+ * @brief while decoding, write int data to the data_well_public.hxv file
+ * 
+ * @param filename 
+ * @param row 
+ * @param strArray0 
+ * @param strArray1 
+ * @param seq 
+ * @param col 
+ */
 void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>& strArray1, char seq, int col)
 {
 	ofstream outFile(filename);
@@ -436,6 +443,14 @@ void write_csvint7(string filename,int row, vector<int>& strArray0, vector<int>&
 	}
 	std::cout << "finish writing " << endl;
 }
+
+/**
+ * @brief Rounding double
+ * 
+ * @param number 
+ * @param loc 
+ * @return double 
+ */
 double round_double(double number, int loc)
 {
 	unsigned long long a;
@@ -474,7 +489,14 @@ double round_double(double number, int loc)
 			break;
 	}
 }
-// while decoding, write float data to the data_well_public.hxv file
+/**
+ * @brief while decoding, write float data to the data_well_public.hxv file
+ * 
+ * @param filename 
+ * @param strArray 
+ * @param seq 
+ * @param col 
+ */
 void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 {
 	ofstream outFile(filename);

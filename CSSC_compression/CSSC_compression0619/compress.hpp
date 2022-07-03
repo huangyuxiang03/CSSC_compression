@@ -14,8 +14,8 @@ namespace gzip {
 
 class Compressor
 {
-    std::size_t max_;
-    int level_;
+    std::size_t max_;       //!< Maximum size of the compressed data.
+    int level_;             //!< Compression level.
 
   public:
     Compressor(int level = Z_DEFAULT_COMPRESSION,

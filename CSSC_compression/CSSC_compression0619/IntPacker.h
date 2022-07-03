@@ -7,8 +7,8 @@ using namespace std;
 
 class IntPacker {
 private:
-	int NUM_OF_INTS=8;
-	int width;
+	int NUM_OF_INTS=8;			//!< number of ints in a block
+	int width;					//!< width of a block
 public:
 	IntPacker() {
 		this->width = 0;

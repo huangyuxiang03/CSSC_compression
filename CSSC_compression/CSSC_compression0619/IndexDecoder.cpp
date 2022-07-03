@@ -1,10 +1,18 @@
 #include "IndexDecoder.h"
-
+/**
+ * @brief 
+ * 
+ * @param count 
+ */
 void IndexDecoder::setBit_vector0_count(int count)
 {
 	bit_vector0_count = count;
 }
-
+/**
+ * @brief 
+ * 
+ * @param buffer 
+ */
 void IndexDecoder::decode_bitvector(ByteBuffer& buffer)
 {
 	int num_byte = bit_vector0_count / 8;
@@ -27,7 +35,12 @@ void IndexDecoder::decode_bitvector(ByteBuffer& buffer)
 		single_num /= 2;
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @param array 
+ * @param buffer 
+ */
 void IndexDecoder::readInt(vector<int>& array, ByteBuffer& buffer)
 {
 	int j = 0;

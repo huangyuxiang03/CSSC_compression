@@ -13,7 +13,7 @@ namespace gzip {
 
 class Decompressor
 {
-    std::size_t max_;
+    std::size_t max_;       //!< Maximum size of the compressed data.
 
   public:
     Decompressor(std::size_t max_bytes = 1000000000) // by default refuse operation if compressed data is > 1GB

@@ -7,15 +7,15 @@
 
 class FloatRleEncoder {
 private:
-	IntRleEncoder encoder;
+	IntRleEncoder encoder; //!< The encoder for the integer part of the float.
 	int convertFloatToInt(float f) {
 		int a=0;
 		memcpy(&a, &f, sizeof(int));
 		return a;
 	}
 public:
-	void encode(float f, ByteArrayOutputStream& out);
-	void flush(ByteArrayOutputStream& out);
+	void encode(float f, ByteArrayOutputStream& out);	
+	void flush(ByteArrayOutputStream& out);				
 };
 
 #endif // !__FLOATDELTAENCODER__

@@ -1,21 +1,35 @@
 #pragma once
 #include "IntDeltaEncoder.h"
-
+/**
+ * @brief Construct a new Int Delta Encoder:: Int Delta Encoder object
+ * 
+ * @param size 
+ */
 IntDeltaEncoder::IntDeltaEncoder(int size) : TS_2DIFF_encoder(size) {
 	deltaBlockBuffer = new int[blockSize];
 	encodingBlockBuffer = new char[blockSize * 4];
 	reset();
 }
-
+/**
+ * @brief Construct a new Int Delta Encoder:: Int Delta Encoder object
+ * 
+ */
 IntDeltaEncoder::IntDeltaEncoder() : IntDeltaEncoder(BLOCK_DEFAULT_SIZE) { }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ */
 void IntDeltaEncoder::calcDelta(int value) {
 	ll delta = value;// - previousValue;
 	if (delta < minDeltaBase)
 		minDeltaBase = delta;
 	deltaBlockBuffer[writeIndex++] = delta;
 }
-
+/**
+ * @brief 
+ * 
+ */
 void IntDeltaEncoder::reset() {
 	firstValue = 0;
 	previousValue = 0;
@@ -25,7 +39,12 @@ void IntDeltaEncoder::reset() {
 		deltaBlockBuffer[i] = 0;
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @param v 
+ * @return int 
+ */
 int IntDeltaEncoder::getValueWidth(int v) {
 	int ans = 0;
 	for (int i = 63; i >= 0; i--) {
@@ -36,7 +55,14 @@ int IntDeltaEncoder::getValueWidth(int v) {
 	}
 	return 32 - ans;
 }
-
+/**
+ * @brief 
+ * 
+ * @param srcNum 
+ * @param result 
+ * @param pos 
+ * @param width 
+ */
 void intToBytes(int srcNum, char* result, int pos, int width) {
 	int cnt = pos & (0x07);
 	int index = pos >> 3;
@@ -56,7 +82,13 @@ void intToBytes(int srcNum, char* result, int pos, int width) {
 		}
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @param num 
+ * @param len 
+ * @return char* 
+ */
 char* intToBytes(int num, int len) {
 	char* byteNum = new char[len];
 	for (int ix = 0; ix < len; ix++) {
@@ -64,19 +96,36 @@ char* intToBytes(int num, int len) {
 	}
 	return byteNum;
 }
-
+/**
+ * @brief 
+ * 
+ * @param num 
+ * @return char* 
+ */
 char* intToBytes(ll num) {
 	return intToBytes(num, 4);
 }
-
+/**
+ * @brief 
+ * 
+ * @param i 
+ */
 void IntDeltaEncoder::writeValueToBytes(int i) {
 	intToBytes(deltaBlockBuffer[i], encodingBlockBuffer, writeWidth * i, writeWidth);
 }
-
+/**
+ * @brief 
+ * 
+ * @param i 
+ */
 void IntDeltaEncoder::calcTwoDiff(int i) {
 	deltaBlockBuffer[i] = deltaBlockBuffer[i] - minDeltaBase;
 }
-
+/**
+ * @brief 
+ * 
+ * @param out 
+ */
 void IntDeltaEncoder::writeHeader(ByteArrayOutputStream& out) {
 	char* a = intToBytes(minDeltaBase);
 	char* b = intToBytes(firstValue);
@@ -85,12 +134,22 @@ void IntDeltaEncoder::writeHeader(ByteArrayOutputStream& out) {
 	delete[] a;
 	delete[] b;
 }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ * @param out 
+ */
 void IntDeltaEncoder::encode(int value, ByteArrayOutputStream& out) {
 	//cout << value << endl;
 	encodeValue(value, out);
 }
-
+/**
+ * @brief 
+ * 
+ * @param value 
+ * @param out 
+ */
 void IntDeltaEncoder::encodeValue(int value, ByteArrayOutputStream& out) {
 	if (writeIndex == -1) {
 		writeIndex++;
@@ -104,7 +163,11 @@ void IntDeltaEncoder::encodeValue(int value, ByteArrayOutputStream& out) {
 		flush(out);
 	}
 }
-
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int IntDeltaEncoder::calculateBitWidthsForDeltaBlockBuffer() {
 	int width = 0;
 	for (int i = 0; i < writeIndex; i++) {
@@ -112,7 +175,10 @@ int IntDeltaEncoder::calculateBitWidthsForDeltaBlockBuffer() {
 	}
 	return width;
 }
-
+/**
+ * @brief Destroy the Int Delta Encoder:: Int Delta Encoder object
+ * 
+ */
 IntDeltaEncoder::~IntDeltaEncoder() {
 	delete[] deltaBlockBuffer;
 	delete[] encodingBlockBuffer;
