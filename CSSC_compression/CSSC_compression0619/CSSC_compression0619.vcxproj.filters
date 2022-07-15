@@ -189,6 +189,9 @@
     <ClInclude Include="BCHDecoder.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="array.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TS_2DIFF_encoder.cpp">

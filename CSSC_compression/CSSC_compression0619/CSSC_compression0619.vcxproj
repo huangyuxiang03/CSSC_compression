@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="array.h" />
     <ClInclude Include="atomic.h" />
     <ClInclude Include="BCHDecoder.h" />
     <ClInclude Include="BCHEncoder.h" />
