@@ -192,6 +192,9 @@
     <ClInclude Include="array.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="readFile.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TS_2DIFF_encoder.cpp">
@@ -204,9 +207,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="RleDecoder.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LongDeltaEncoder.cpp">
@@ -318,6 +318,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BCHDecoder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main_new.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

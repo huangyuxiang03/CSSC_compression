@@ -500,7 +500,7 @@ void write_csvf(string filename, vector<float>& strArray, string seq, int col)
 }
 
 
-int main(int argc, char* argv[]) {
+int oldmain(int argc, char* argv[]) {
 
 
 	time_t stt, edt;

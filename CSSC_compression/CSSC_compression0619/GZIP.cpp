@@ -7,11 +7,11 @@
 //odata ѹ�������ݴ洢��buffer (Useless now)
 int GZIP::data_compress(std::uint8_t*idata, int ilen, std::uint8_t*odata, int olen)
 {
-    int compressed_size = FL2_compress(odata, olen, idata, ilen, FL2_p_compressionLevel);//FL2_p_highCompression);
-    return compressed_size;
-    /*std::string compressed = gzip::compress((char*)idata, ilen);
+    //int compressed_size = fl2_compress(odata, olen, idata, ilen, fl2_p_compressionlevel);//fl2_p_highcompression);
+    //return compressed_size;
+    std::string compressed = gzip::compress((char*)idata, ilen);
     memcpy((void*)odata, compressed.data(), compressed.size());
-    return compressed.size();*/
+    return compressed.size();
 }
 
 //idata ����ѹ����
