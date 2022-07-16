@@ -104,7 +104,7 @@ class Compressor
 
 inline std::string compress(const char* data,
                             std::size_t size,
-                            int level = Z_DEFAULT_COMPRESSION)
+                            int level = 4)
 {
     Compressor comp(level);
     std::string output;
