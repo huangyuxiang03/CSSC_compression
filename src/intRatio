@@ -1,0 +1,6 @@
+#! /usr/bin/bash
+./task c data_well_public.hxv well
+origin=`stat -c "%s" data_well_public.hxv`
+encode=`stat -c "%s" well`
+ratio=`echo "scale=3; $origin/$encode" | bc`
+echo "压缩比为$ratio"

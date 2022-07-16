@@ -1,6 +1,0 @@
-#! /usr/bin/bash
-./task c shore_public.dat shore
-origin=`stat -c "%s" shore_public.dat`
-encode=`stat -c "%s" shore`
-ratio=`echo "scale=3; $origin/$encode" | bc`
-echo "压缩比为$ratio"
