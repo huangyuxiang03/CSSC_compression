@@ -1,4 +1,3 @@
-#pragma once
 #include "IntDeltaDecoder.h"
 #include <iostream>
 using namespace std;

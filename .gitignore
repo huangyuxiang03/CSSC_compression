@@ -60,3 +60,5 @@ CSSC_compression_code/Debug/wellffrag_0616lz4
 CSSC_compression_code/Debug/well0617lz4
 CSSC_compression_code/Debug/wellf_0617lz4
 CSSC_compression_code/Debug/wellt_0616lz4
+data/
+*.o

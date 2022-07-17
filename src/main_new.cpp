@@ -11,15 +11,15 @@ int main(int argc, char* argv[]) {
 		return -1;
 	if (argv[1][0] == 'c') {
 		time_t beg, end;
-		time(&beg);
+		beg = clock();
 		int valueLength = 0;
 		uint16_t* data = readOriginFile(argv[2], valueLength);
 		std::cout<<"read finish"<<std::endl;
 		GZIP gzip;
 		uint8_t* cdata = new uint8_t[valueLength*20];
 		int compressedLength = gzip.data_compress((uint8_t*)data, valueLength*2, cdata, 0);
-		writeBinaryFile(argv[3], cdata, valueLength*2);
-		time(&end);
+		writeBinaryFile(argv[3], cdata, compressedLength);
+		end = clock();
 		std::cout << "total time:" << end - beg << std::endl;
 		delete[] data;
 		delete[] cdata;
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 	}
 	else if (argv[1][0] == 'd') {
 		time_t beg, end;
-		time(&beg);
+		beg = clock();
 		int binaryLength = 0;
 		uint8_t* cdata = readBinaryFile(argv[2], binaryLength);
 
@@ -36,8 +36,8 @@ int main(int argc, char* argv[]) {
 		int temp;
 		int deconpressedLength = gzip.data_decompress(cdata, binaryLength, data, temp);
 		writeBinaryFile(argv[3], data, deconpressedLength);
-		time(&end);
-		std::cout << "total time:" << "end - beg" << std::endl;
+		end = clock();
+		std::cout << "total time:" << end - beg << std::endl;
 		delete[] cdata;
 		delete[] data;
 		return 0;
