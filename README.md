@@ -2,12 +2,24 @@
 
 在《effective STL》和其实很多 C++ 文章中都有指明，用`clear()`无法保证内存回收。但是**swap**技法可以。 用swap交换到一个新的类型的vector，将原来的 a 拷贝出去，然后自然销毁，而新的a是全新，无任何数据。
 
+**在重构的array类中，不要使用本方法，会导致奇怪的错误**
+
+**array类中增加了empty函数，可以清空内容的同时回收内存**
+
 ```c++
 //由于.clear()是懒删除，不会释放内存，使用交换的方法将 vector 对应的内存空间删除
 vector <std::uint8_t>().swap(this->bytes);
 //上述操作与下面代码等价
 std::vector<int> tmp;
 ivec.swap(tmp);
+```
+
+```c++
+array <std::uint8_t> arr;
+arr.push_back(1);
+arr.push_back(2);
+// code here
+arr.empty() // this method can empty the array and recycle memory at the meantime
 ```
 
 ### git切换远程分支命令
