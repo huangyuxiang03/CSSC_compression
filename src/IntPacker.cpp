@@ -1,6 +1,6 @@
 #include "IntPacker.h"
 
-void IntPacker::pack8Values(int* values, int offset, vector<std::uint8_t>& buf)
+void IntPacker::pack8Values(int* values, int offset, array<std::uint8_t>& buf)
 {
     int bufIdx = 0;
     int valueIdx = offset;
@@ -47,7 +47,7 @@ void IntPacker::pack8Values(int* values, int offset, vector<std::uint8_t>& buf)
 }
 
 
-void IntPacker::unpack8Values(vector<std::uint8_t>& buf, int offset, int* values)
+void IntPacker::unpack8Values(array<std::uint8_t>& buf, int offset, int* values)
 {
     int byteIdx = offset;
     unsigned long long buffer = 0;
@@ -77,7 +77,7 @@ void IntPacker::unpack8Values(vector<std::uint8_t>& buf, int offset, int* values
     }
 }
 
-void IntPacker::unpackAllValues(vector<std::uint8_t>& buf, int length, int* values)
+void IntPacker::unpackAllValues(array<std::uint8_t>& buf, int length, int* values)
 {
     int idx = 0;
     int k = 0;

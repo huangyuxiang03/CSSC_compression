@@ -75,7 +75,7 @@ void IntRleDecoder::readBitPackingBuffer(int bitPackedGroupCount, int lastBitPac
         delete[] currentBuffer;
     currentBuffer = new int[bitPackedGroupCount * RLE_MIN_REPEATED_NUM];
     currentBufferAllocated = true;
-    vector<std::uint8_t> bytes (bitPackedGroupCount * bitWidth);
+    array<std::uint8_t> bytes (bitPackedGroupCount * bitWidth);
     int bytesToRead = bitPackedGroupCount * bitWidth;
     bytesToRead = min(bytesToRead, byteCache.remaining());
     byteCache.get(bytes, 0, bytesToRead);

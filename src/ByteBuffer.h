@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include "array.h"
 #ifndef __ByteBuffer__
 #define __ByteBuffer__
 /**
@@ -31,6 +32,7 @@ public:
 	float readFloat();
 	void get(char* dst, int len);
 	void get(std::vector<uint8_t>& tmp, int offset, int length);
+	void get(array<uint8_t>& tmp, int offset, int length);
 	std::vector<std::uint8_t> Bytes();
 	void divideTo3Parts(ByteBuffer& b2, ByteBuffer& b3);
 	ByteBuffer& operator=(ByteBuffer& b);

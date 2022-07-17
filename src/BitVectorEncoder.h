@@ -3,7 +3,7 @@
 #define __BITVECTORENCODER__
 #include <iostream>
 #include "IntDeltaEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 
 using namespace std;
 

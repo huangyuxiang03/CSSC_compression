@@ -1,10 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
-//#include <cstdint>
 #include <vector>
 #include <fstream>
-//#include "lz4.h"
 #include "GZIP.h"
 
 using namespace std;
@@ -17,8 +15,6 @@ private:
 	string filepath;
 	string filepath_compresssize;
 	std::vector<std::uint8_t> bytes;
-	//std::uint8_t* compressed_bytes;
-	//int olen;
 	int* col_pos; // the position of per column data
 	int col_n; //the number of remaining column of the ByteArrayOutputStream
 	int col_index;
@@ -54,7 +50,6 @@ public:
 	void write2filegzip();
 	void readFromFile();
 	void writeDatatype(char datatype);
-	//void compress();
 	std::vector<std::uint8_t> getInt();
 	std::vector<std::uint8_t> getBytes(); 
 	int getCompressedBytesSize();

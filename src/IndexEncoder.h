@@ -2,7 +2,7 @@
 #ifndef __INDEXENCODER__
 #define __INDEXENCODER__
 #include <iostream>
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "IntDeltaEncoder.h"
 #include "IntRleEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 
 #ifndef __FLOATENCODER__
 #define __FLOATENCODER__

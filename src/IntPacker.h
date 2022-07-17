@@ -2,7 +2,7 @@
 #ifndef __INTPACKER__
 #define __INTPACKER__
 #include <iostream>
-#include <vector>
+#include "array.h"
 using namespace std;
 
 class IntPacker {
@@ -17,9 +17,9 @@ public:
 		this->width = width;
 	}
 	~IntPacker() {};
-	void pack8Values(int* values, int offset, vector<std::uint8_t>& buf);
-	void unpack8Values(vector<std::uint8_t>& buf, int offset, int* values);
-	void unpackAllValues(vector<std::uint8_t>& buf, int length, int* values);
+	void pack8Values(int* values, int offset, array<std::uint8_t>& buf);
+	void unpack8Values(array<std::uint8_t>& buf, int offset, int* values);
+	void unpackAllValues(array<std::uint8_t>& buf, int length, int* values);
 	void setWidth(int width);
 };
 

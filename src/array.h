@@ -1,6 +1,8 @@
 #ifndef __ARRAY__
 #define __ARRAY__
 #include <iostream>
+#include <cassert>
+#include <string.h>
 
 using namespace std;
 
@@ -13,8 +15,18 @@ class array {
     }
     array(T* first, T* last) {
         buffer = new T[capacity];
-
         insert(buffer, first, last);
+    }
+    array(const array& org) {
+        this->buffer = new T[org.capacity];
+        this->capacity = org.capacity;
+        this->length = org.length;
+        memcpy(this->buffer, org.buffer, sizeof(T) * capacity);
+    }
+    array(int _size) {
+        capacity = (1 + (_size / capacity)) * capacity;
+        buffer = new T[capacity];
+        length = _size;
     }
     ~array() {
         delete[] buffer;
@@ -26,14 +38,22 @@ class array {
 
     void swap(array<T>& target) {
         size_t t_length = target.length, t_capacity = target.capacity;
-        T* t_buff = target.buffer;
+        T* t_buff = new T[t_capacity];
+        memcpy(t_buff, target.buffer, sizeof(T) * t_capacity);
 
         target.length = this->length;
         target.capacity = this->capacity;
-        target.buffer = this->buffer;
+        delete[] target.buffer;
+        target.buffer = new T[target.capacity];
+        memcpy(target.buffer, this->buffer, sizeof(T) * target.capacity);
+    
         this->length = t_length;
         this->capacity = t_capacity;
-        this->buffer = t_buff;
+        delete[] this->buffer;
+        this->buffer = new T[this->capacity];
+        memcpy(this->buffer, t_buff, sizeof(T) * this->capacity);
+
+        delete[] t_buff;
     }
 
     void push_back(T value) {
@@ -49,7 +69,6 @@ class array {
             buffer = new_buffer;
             capacity = new_capacity;
         }
-
         buffer[length] = value;
         length++;
     }
@@ -101,6 +120,10 @@ class array {
         return 0;
     }
 
+    T* data() {
+        return buffer;
+    }
+
     T* begin() {
         return buffer;
     }
@@ -112,6 +135,22 @@ class array {
     T& operator[](int i) {
         assert(i >= 0 && i < length);
         return buffer[i];
+    }
+
+    array<T> operator=(array<T>& org) {
+        delete[] this->buffer;
+        this->buffer = new T[org.capacity];
+        this->capacity = org.capacity;
+        this->length = org.length;
+        memcpy(this->buffer, org.buffer, sizeof(T) * capacity);
+        return (*this);
+    }
+
+    void empty() {
+        length = 0;
+        capacity = 1024;
+        delete[] buffer;
+        buffer = new T[capacity];
     }
 
     // for debugging

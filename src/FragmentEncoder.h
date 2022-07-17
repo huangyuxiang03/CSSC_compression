@@ -3,7 +3,7 @@
 #define __FRAGMENTENCODER__
 #include <iostream>
 #include "FloatDeltaEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 #include <cmath>
 
 using namespace std;

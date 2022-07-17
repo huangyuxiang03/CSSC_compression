@@ -2,7 +2,7 @@
 #ifndef __FLOATRLEENCODER__
 #define __FLOATRLEENCODER__
 #include "IntRleEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 #include <cstring>
 
 class FloatRleEncoder {

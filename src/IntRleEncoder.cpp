@@ -15,11 +15,11 @@ void IntRleEncoder::encode(bool value, ByteArrayOutputStream& out)
     }
 }
 
-int IntRleEncoder::getIntMaxBitWidth(vector<int> list)
+int IntRleEncoder::getIntMaxBitWidth(array<int> list)
 {
     int maxnum = 1;
-    for (int num : list) {
-        int bitWidth = 32 - numberOfLeadingZeros(num);
+    for (int i = 0; i < list.size(); i++) {
+        int bitWidth = 32 - numberOfLeadingZeros(list[i]);
         maxnum = max(bitWidth, maxnum);
     }
     return maxnum;
@@ -28,10 +28,10 @@ int IntRleEncoder::getIntMaxBitWidth(vector<int> list)
 void IntRleEncoder::flush(ByteArrayOutputStream& out)
 {
     this->bitWidth = getIntMaxBitWidth(values);
-    IntPacker new_packer(bitWidth);
+    IntPacker new_packer(this->bitWidth);
     packer = new_packer;
-    for (int value : values) {
-        encodeValue(value);
+    for (int i = 0; i < values.size(); i++) {
+        encodeValue(values[i]);
     }
     flushrle(out);
     reset();
@@ -40,7 +40,7 @@ void IntRleEncoder::flush(ByteArrayOutputStream& out)
 void IntRleEncoder::reset()
 {
     //reset();
-    vector <int>().swap(values);
+    values.empty();
     //values.clear();
     delete[] bufferedValues;
     bufferedValues = new int[RLE_MIN_REPEATED_NUM];
@@ -65,7 +65,7 @@ void IntRleEncoder::clearBuffer()
 
 void IntRleEncoder::convertBuffer()
 {
-    vector<std::uint8_t> bytes(bitWidth);
+    array<std::uint8_t> bytes(bitWidth);
 
     int* tmpBuffer = new int[RLE_MIN_REPEATED_NUM];
     for (int i = 0; i < RLE_MIN_REPEATED_NUM; i++) {

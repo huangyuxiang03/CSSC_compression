@@ -48,6 +48,11 @@ void ByteBuffer::get(std::vector<uint8_t>& tmp, int offset, int length) {
 	memcpy(tmp.data(), currentPosition, length);
 	currentPosition += length;
 }
+
+void ByteBuffer::get(array<uint8_t>& tmp, int offset, int length) {
+	memcpy(tmp.data(), currentPosition, length);
+	currentPosition += length;
+}
 /**
  * @brief turn all bytes into a vector.
  * @param None

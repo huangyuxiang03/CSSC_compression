@@ -16,7 +16,7 @@ CFLAGS  :=
 CXXFLAGS:= 
  
 # link
-$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStream.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main_new.o
+$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStreamV2.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main_new.o
 	$(CC) -o $@ $^ $(LIBS)
 
 # compile
@@ -24,7 +24,7 @@ BitVectorDecoder.o: BitVectorDecoder.cpp
 	$(CC) -c $^ -o $@
 BitVectorEncoder.o: BitVectorEncoder.cpp
 	$(CC) -c $^ -o $@
-ByteArrayOutputStream.o: ByteArrayOutputStream.cpp
+ByteArrayOutputStreamV2.o: ByteArrayOutputStreamV2.cpp
 	$(CC) -c $^ -o $@ 
 ByteBuffer.o: ByteBuffer.cpp
 	$(CC) -c $^ -o $@ 

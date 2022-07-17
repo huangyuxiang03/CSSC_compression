@@ -1,7 +1,7 @@
 #pragma once
 #include "IntRleEncoder.h"
 #include "IntDeltaEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 
 #ifndef __SYSTEMWORD__
 #define __SYSTEMWORD__

@@ -3,18 +3,19 @@
 #ifndef __RLEENCODER__
 #define __RLEENCODER__
 #include <iostream>
-#include "ByteArrayOutputStream.h"
+#include "array.h"
+#include "ByteArrayOutputStreamV2.h"
 
 using namespace std;
 //template <typename T>
 class RleEncoder {
 protected:
-	//vector<T> values;
+	//array<T> values;
 	int bitWidth{0};
 	int repeatCount{0};
 	int bitPackedGroupCount{0};
 	int numBufferedValues{0};
-	vector<vector<std::uint8_t>> bytesBuffer;
+	array<array<std::uint8_t>> bytesBuffer;
 	bool isBitPackRun{0};
 	//T preValue;
 	//T[] bufferedValues;
@@ -34,7 +35,7 @@ public:
 		RLE_MAX_REPEATED_NUM = 0x7FFF;
 	}
 	~RleEncoder() {
-		vector <vector <std::uint8_t>>().swap(this->bytesBuffer);
+		this->bytesBuffer.empty();
 		byteCache.reset();
 	}
 	void reset();
@@ -44,7 +45,7 @@ public:
 	virtual void convertBuffer(){};
 	void writeOrAppendBitPackedRun();
 	int writeUnsignedVarInt(int value, ByteArrayOutputStream& out);
-	//static int getIntMaxBitWidth(vector<int> list);
+	//static int getIntMaxBitWidth(array<int> list);
 	static int numberOfLeadingZeros(int i);
 	static void writeIntLittleEndianPaddedOnBitWidth(int value, ByteArrayOutputStream& out, int bitWidth);
 	void endPreviousBitPackedRun(int lastBitPackedNum);

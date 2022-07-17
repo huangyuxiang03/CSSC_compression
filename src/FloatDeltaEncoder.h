@@ -3,7 +3,7 @@
 #ifndef __FLOATDELTAENCODER__
 #define __FLOATDELTAENCODER__
 #include "IntDeltaEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 #include <cstring>
 
 class FloatDeltaEncoder {

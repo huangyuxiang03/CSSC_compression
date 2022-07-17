@@ -2,15 +2,16 @@
 #ifndef __INTRLEENCODER__
 #define __INTRLEENCODER__
 #include <iostream>
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 #include "RleEncoder.h"
 #include "IntPacker.h"
+#include "array.h"
 
 using namespace std;
 
 class IntRleEncoder : public RleEncoder {
 protected:
-	vector<int> values;
+	array<int> values;
 	int preValue;
 	int* bufferedValues;
 	IntPacker packer;
@@ -21,11 +22,11 @@ public:
 		//values = new ArrayList<>();
 	}
 	~IntRleEncoder() {
-		vector <int>().swap(values);
+		values.empty();
 		delete[] bufferedValues;
 	}
 	void encode(int value, ByteArrayOutputStream& out);
-	int getIntMaxBitWidth(vector<int> list);
+	int getIntMaxBitWidth(array<int> list);
 	void encode(bool value, ByteArrayOutputStream& out);
 	void flush(ByteArrayOutputStream& out);
 	void reset(); 

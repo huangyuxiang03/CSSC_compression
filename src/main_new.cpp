@@ -1,12 +1,14 @@
 #include "readwriteFile.hpp"
 #include <iostream>
 #include "IntDeltaEncoder.h"
-#include "ByteArrayOutputStream.h"
+#include "IntRleEncoder.h"
+#include "ByteArrayOutputStreamV2.h"
 #include "GZIP.h"
 #include <time.h>
 
 
 int main(int argc, char* argv[]) {
+
 	if (argc != 4)
 		return -1;
 	if (argv[1][0] == 'c') {
@@ -15,6 +17,14 @@ int main(int argc, char* argv[]) {
 		int valueLength = 0;
 		uint16_t* data = readOriginFile(argv[2], valueLength);
 		std::cout<<"read finish"<<std::endl;
+
+		// IntDeltaEncoder encoder;
+		// ByteArrayOutputStream out(argv[3]);
+		// for (int i = 0; i < valueLength; i++) {
+		// 	encoder.encode(data[i], out);
+		// }
+		// encoder.flush(out);
+		// out.write2file();
 		GZIP gzip;
 		uint8_t* cdata = new uint8_t[valueLength*20];
 		int compressedLength = gzip.data_compress((uint8_t*)data, valueLength*2, cdata, 0);
@@ -22,7 +32,7 @@ int main(int argc, char* argv[]) {
 		end = clock();
 		std::cout << "total time:" << end - beg << std::endl;
 		delete[] data;
-		delete[] cdata;
+		// delete[] cdata;
 		return 0;
 	}
 	else if (argv[1][0] == 'd') {

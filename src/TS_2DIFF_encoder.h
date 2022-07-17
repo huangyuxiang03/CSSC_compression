@@ -2,7 +2,7 @@
 
 #ifndef __TS_2DIFF__
 #define __TS_2DIFF__
-#include "ByteArrayOutputStream.h"
+#include "ByteArrayOutputStreamV2.h"
 
 class TS_2DIFF_encoder {
 protected:
