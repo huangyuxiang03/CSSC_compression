@@ -3,6 +3,7 @@
 #ifndef __TS_2DIFF__
 #define __TS_2DIFF__
 #include "ByteArrayOutputStreamV2.h"
+#include <iostream>
 
 class TS_2DIFF_encoder {
 protected:
@@ -11,6 +12,9 @@ protected:
 	char* encodingBlockBuffer;
 	int writeIndex = -1;
 	int writeWidth = 0;
+	time_t flush_beg;
+	time_t flush_end;
+	time_t flush_time = 0;
 public:
 	TS_2DIFF_encoder(int size);
 	TS_2DIFF_encoder() : TS_2DIFF_encoder(BLOCK_DEFAULT_SIZE) { }

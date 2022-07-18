@@ -2,22 +2,17 @@
 #include "fast-lzma2.h"
 #include <iostream>
 
-//idata ��ѹ������
-//ilen  ��ѹ�����ݵĳ���
-//odata ѹ�������ݴ洢��buffer (Useless now)
 int GZIP::data_compress(std::uint8_t*idata, int ilen, std::uint8_t*odata, int olen)
 {
     // int compressed_size = Fl2_compress(odata, olen, idata, ilen, Fl2_p_compressionlevel);//fl2_p_highcompression);
     // return compressed_size;
-    std::string compressed = gzip::compress((char*)idata, ilen);
-    memcpy((void*)odata, compressed.data(), compressed.size());
-    return compressed.size();
+    return gzip::fast_compress((char*)idata, odata, ilen);
+    // std::string compressed = gzip::compress((char*)idata, ilen);
+    // memcpy((void*)odata, compressed.data(), compressed.size());
+    // return compressed.size();
 }
 
-//idata ����ѹ����
-//ilen  ����ѹ���ݵĳ���
-//odata ��ѹ�����ݴ洢��buffer
-//olen  ��ѹ���ݴ洢buffer�ĳ���
+
 int GZIP::data_decompress(std::uint8_t* idata, int ilen, uint8_t* odata, int& dst_size) {
     // std::cout<<ilen<<" "<<dst_size<<std::endl;
     // int decompressed_size = FL2_decompress(odata, dst_size, idata, ilen);

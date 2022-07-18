@@ -156,51 +156,17 @@ void ByteArrayOutputStream::write2filegzip()
 		cout << "olen: " << olen << endl;
 		dstlength = olen;
 		
-		//ofstream outfile1;
-		//outfile1.open(filepath_compresssize , ios::app | ios::out );
-		//outfile1 << olen << ',';
-		//outfile1.close();
-
-		for (int i = 0; i < dstlength; i++) {
-			outfile << compressed_bytes[i];
-		}
+		
+		FILE* fp = fopen((char*)this->filepath.c_str(), "wb");
+		fwrite(compressed_bytes, dstlength, 1, fp);
+		fclose(fp);
+		
 		delete[] compressed_bytes;
 		delete[] idata;
-		// 1st lz4
-		//int size = this->bytes.size();
-		//cout << size << endl;
-		//char* buffer = new char[size];
-		//for (int i = 0; i < size; i++) {
-		//	buffer[i] = this->bytes[i];
-		//}
-		//const char* const src = buffer;
-		//char* dst = new char[size * 2];
-		//dstlength = LZ4_compress_default(src, dst, size, size * 2);
+		
+		this->bytes.empty();
 
-		// 2nd lz4 compress
-		//cout << "lz4 compress data size:" << dstlength << endl;
-		//delete[] buffer;
-		//buffer = new char[dstlength];
-		//for (int i = 0; i < dstlength; i++) {
-		//	buffer[i] = dst[i];
-		//}
 
-		//const char* const src2 = buffer;
-		//delete[] dst;
-		//dst = new char[dstlength * 100];
-		//dstlength = LZ4_compress_default(src2, dst, dstlength, dstlength * 100);
-
-		//for (int i = 0; i < dstlength; i++) {
-		//	outfile << dst[i];
-		//}
-		//delete[] dst;
-		//delete[] buffer;
-
-		array <std::uint8_t>().swap(this->bytes);
-
-		outfile.close();
-
-		//delete[] dst;
 	}
 }
 

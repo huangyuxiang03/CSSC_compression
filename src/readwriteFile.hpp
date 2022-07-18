@@ -1,3 +1,6 @@
+#ifndef __READFILE__
+#define __READFILE__
+
 #include <cstdio>
 #include <iostream>
 
@@ -40,3 +43,5 @@ uint8_t* readBinaryFile(char fileName[], int& dataLength) {
 	fclose(fp);
 	return data;
 }
+
+#endif

@@ -27,7 +27,6 @@ void TS_2DIFF_encoder::flushBlockBuffer(ByteArrayOutputStream &out) {
 	writeWidth = calculateBitWidthsForDeltaBlockBuffer();
 	writeHeaderToBytes(out);
 	writeDataWithMinWidth(out);
-
 	reset();
 	writeIndex = -1;
 }
