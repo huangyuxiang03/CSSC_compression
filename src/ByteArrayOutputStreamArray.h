@@ -8,48 +8,37 @@
 
 using namespace std;
 
-#ifndef __BYTEARRAYOUTPUTSTREAMV3__
-#define __BYTEARRAYOUTPUTSTREAMV3__
+#ifndef __BYTEARRAYOUTPUTSTREAMV2__
+#define __BYTEARRAYOUTPUTSTREAMV2__
 
 class ByteArrayOutputStream {
 private:
 	string filepath;
 	string filepath_compresssize;
-    int length = 0;
-    uint8_t* bytes;
+	array<std::uint8_t> bytes;
 	int* col_pos; // the position of per column data
 	int col_n; //the number of remaining column of the ByteArrayOutputStream
 	int col_index;
 	int dstlength;
-
-    int size;
 public:
 	
-	ByteArrayOutputStream(int _size) {
+	ByteArrayOutputStream() {
 		col_n = 0;
 		col_index = 0;
 		dstlength = 0;
-        size = _size;
-        bytes = new uint8_t[_size];
 	};
-	ByteArrayOutputStream(string fp, int _size){
+	ByteArrayOutputStream(string fp){
 		col_n = 0;
 		col_index = 0;
 		this->filepath = fp;
 		dstlength = 0;
 		filepath_compresssize = "compresssize.csv";
-        size = _size;
-        bytes = new uint8_t[_size];
 	};
-	ByteArrayOutputStream(array<std::uint8_t> _bytes) {
-        size = _bytes.size();
-        bytes = new uint8_t[size];
-        memcpy(bytes, _bytes.data(), size);
+	ByteArrayOutputStream(array<std::uint8_t> bytes) {
+		array <std::uint8_t>().swap(this->bytes);
+		this->bytes.insert(this->bytes.begin(), bytes.begin(), bytes.end());
 		dstlength = 0;
 	};
-    ~ByteArrayOutputStream() {
-        delete[] bytes;
-    }
 	void write(int b);
 	void write(long long b);
 	void write(char b);
@@ -60,8 +49,23 @@ public:
 	void write(std::uint8_t* b, int offset, int len);
 	void write2file();
 	void write2filegzip();
+	void readFromFile();
+	void writeDatatype(char datatype);
+	array<std::uint8_t> getInt();
+	array<std::uint8_t> getBytes(); 
 	int getCompressedBytesSize();
+	array<std::uint8_t> getColBytes();
+	array<std::uint8_t> getColBytesGZip();
+	array<std::uint8_t> getBytesLength(int length);
+	bool hasNextCol();
+	void writeRowCol(int col_n, int* col_pos);
+	void reset();
 
+	void addSizeBack();
+	void concatenate(ByteArrayOutputStream& b);
+	int remaining() {
+		return bytes.size();
+	}
 };
 
 #endif // !__BYTEARRAYOUTPUTSTREAM__

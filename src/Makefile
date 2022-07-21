@@ -16,7 +16,7 @@ CFLAGS  :=
 CXXFLAGS:= 
  
 # link
-$(TARGET): BitVectorDecoder.o BitVectorEncoder.o ByteArrayOutputStreamV2.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o FloatRleEncoder.o FloatRleDecoder.o FragmentEncoder.o IndexDecoder.o IndexEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o IntRleDecoder.o IntRleEncoder.o LongDeltaDecoder.o LongDeltaEncoder.o RleDecoder.o RleEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main_new.o
+$(TARGET): ByteArrayOutputStreamV2.o ByteBuffer.o FloatDeltaDecoder.o FloatDeltaEncoder.o IntDeltaDecoder.o IntDeltaEncoder.o IntPacker.o LongDeltaDecoder.o LongDeltaEncoder.o TS_2DIFF_decoder.o TS_2DIFF_encoder.o GZIP.o main_new.o
 	$(CC) -o $@ $^ $(LIBS)
 
 # compile
@@ -28,37 +28,37 @@ ByteArrayOutputStreamV2.o: ByteArrayOutputStreamV2.cpp
 	$(CC) -c $^ -o $@ 
 ByteBuffer.o: ByteBuffer.cpp
 	$(CC) -c $^ -o $@ 
-FloatDeltaDecoder.o: FloatDeltaDecoder.cpp
-	$(CC) -c $^ -o $@ 
-FloatDeltaEncoder.o: FloatDeltaEncoder.cpp
-	$(CC) -c $^ -o $@ 
-FloatRleEncoder.o: FloatRleEncoder.cpp
-	$(CC) -c $^ -o $@ 
-FloatRleDecoder.o: FloatRleDecoder.cpp
-	$(CC) -c $^ -o $@ 
-FragmentEncoder.o: FragmentEncoder.cpp
-	$(CC) -c $^ -o $@ 
-IndexDecoder.o: IndexDecoder.cpp
-	$(CC) -c $^ -o $@ 
-IndexEncoder.o: IndexEncoder.cpp
-	$(CC) -c $^ -o $@ 
+# FloatDeltaDecoder.o: FloatDeltaDecoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# FloatDeltaEncoder.o: FloatDeltaEncoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# FloatRleEncoder.o: FloatRleEncoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# FloatRleDecoder.o: FloatRleDecoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# FragmentEncoder.o: FragmentEncoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# IndexDecoder.o: IndexDecoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# IndexEncoder.o: IndexEncoder.cpp
+# 	$(CC) -c $^ -o $@ 
 IntDeltaDecoder.o: IntDeltaDecoder.cpp
 	$(CC) -c $^ -o $@ 
 IntDeltaEncoder.o: IntDeltaEncoder.cpp
 	$(CC) -c $^ -o $@ 
-IntPacker.o: IntPacker.cpp
-	$(CC) -c $^ -o $@ 
-IntRleDecoder.o: IntRleDecoder.cpp
-	$(CC) -c $^ -o $@ 
-IntRleEncoder.o: IntRleEncoder.cpp
-	$(CC) -c $^ -o $@ 
+# IntPacker.o: IntPacker.cpp
+# 	$(CC) -c $^ -o $@ 
+# IntRleDecoder.o: IntRleDecoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# IntRleEncoder.o: IntRleEncoder.cpp
+# 	$(CC) -c $^ -o $@ 
 LongDeltaDecoder.o: LongDeltaDecoder.cpp
 	$(CC) -c $^ -o $@ 
 LongDeltaEncoder.o: LongDeltaEncoder.cpp
 	$(CC) -c $^ -o $@ 
-RleDecoder.o: RleDecoder.cpp
-	$(CC) -c $^ -o $@ 
-RleEncoder.o: RleEncoder.cpp
+# RleDecoder.o: RleDecoder.cpp
+# 	$(CC) -c $^ -o $@ 
+# RleEncoder.o: RleEncoder.cpp
 	$(CC) -c $^ -o $@ 
 TS_2DIFF_decoder.o: TS_2DIFF_decoder.cpp
 	$(CC) -c $^ -o $@ 

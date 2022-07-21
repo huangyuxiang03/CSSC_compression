@@ -107,12 +107,25 @@ ByteBuffer::~ByteBuffer() {
 		delete[] bytes;
 }
 /**
- * @brief constructor: copy fp to filepath, then do nothing.
+ * @brief constructor: copy fp to filepath, then read from binary file.
  * @param fp
  * @author lr
  */
-ByteBuffer::ByteBuffer(std::string fp) {
-	filepath = fp;
+ByteBuffer::ByteBuffer(std::string fileName) {
+	filepath = fileName;
+	// open file as binary file
+	FILE* fp = fopen(fileName.c_str(), "rb+");
+
+	// calculate the length of bytes
+	fseek(fp, 0, SEEK_END);
+	bytesLength = ftell(fp);
+	fseek(fp, 0, SEEK_SET);
+
+	bytes = new uint8_t[bytesLength];
+	bytesAllocated = true;
+	currentPosition = bytes;
+	fread(bytes, bytesLength, 1, fp);
+	fclose(fp);
 }
 /**
  * @brief load the data from _bytes to bytes. use memcpy to enhance speed.

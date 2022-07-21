@@ -148,7 +148,7 @@ class array {
 
     void empty() {
         length = 0;
-        capacity = 2;
+        capacity = 4;
         delete[] buffer;
         buffer = new T[capacity];
     }
@@ -163,7 +163,7 @@ class array {
 
    private:
     size_t length = 0;
-    size_t capacity = 2;
+    size_t capacity = 4;
     T* buffer = nullptr;
 };
 

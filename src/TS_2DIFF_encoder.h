@@ -18,6 +18,10 @@ protected:
 public:
 	TS_2DIFF_encoder(int size);
 	TS_2DIFF_encoder() : TS_2DIFF_encoder(BLOCK_DEFAULT_SIZE) { }
+
+	~TS_2DIFF_encoder() {
+		// std::cout <<"total flush time: " << flush_time << std::endl;
+	}
 	virtual void writeHeader(ByteArrayOutputStream& out) {};
 	virtual void writeValueToBytes(int i) {};
 	virtual void calcTwoDiff(int i) {};

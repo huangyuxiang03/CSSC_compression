@@ -22,6 +22,7 @@ void TS_2DIFF_encoder::writeHeaderToBytes(ByteArrayOutputStream& out) {
 void TS_2DIFF_encoder::flushBlockBuffer(ByteArrayOutputStream &out) {
 	if (writeIndex == -1)
 		return;
+	
 	for (int i = 0; i < writeIndex; i++)
 		calcTwoDiff(i);
 	writeWidth = calculateBitWidthsForDeltaBlockBuffer();

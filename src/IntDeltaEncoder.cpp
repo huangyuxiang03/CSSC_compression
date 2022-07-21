@@ -27,7 +27,7 @@ void IntDeltaEncoder::reset() {
 
 int IntDeltaEncoder::getValueWidth(int v) {
 	int ans = 0;
-	for (int i = 63; i >= 0; i--) {
+	for (int i = 31; i >= 0; i--) {
 		if (!(((int)1 << i) & v))
 			ans++;
 		else
@@ -105,10 +105,16 @@ void IntDeltaEncoder::encodeValue(int value, ByteArrayOutputStream& out) {
 }
 
 int IntDeltaEncoder::calculateBitWidthsForDeltaBlockBuffer() {
+	flush_beg = clock();
 	int width = 0;
+	int maxValue = -2147483648;
 	for (int i = 0; i < writeIndex; i++) {
-		width = max(width, getValueWidth(deltaBlockBuffer[i]));
+		maxValue = max(maxValue, deltaBlockBuffer[i]);
+		// width = max(width, getValueWidth(deltaBlockBuffer[i]));
 	}
+	width = getValueWidth(maxValue);
+	flush_end = clock();
+	flush_time += flush_end - flush_beg;
 	return width;
 }
 
